@@ -1,4 +1,4 @@
-# AlathraExtras
+# AlathraExtras Verison 1.0.9
 ## A pack of random add-ons and bugfixes for AlathraMC
 
 ### Custom Voting Listener
