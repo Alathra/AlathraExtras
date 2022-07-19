@@ -53,6 +53,8 @@ public class Main extends JavaPlugin {
 	        this.getServer().getPluginManager().registerEvents((Listener)new VotingListener(), (Plugin)this);
 	        this.getServer().getPluginManager().registerEvents((Listener)new PlayerClickHelpBook(), (Plugin)this);
 	        this.getServer().getPluginManager().registerEvents((Listener)new CraftingEvent(), (Plugin)this);
+	        this.getServer().getPluginManager().registerEvents((Listener)new AnvilListener(), (Plugin)this);
+	        this.getServer().getPluginManager().registerEvents((Listener)new PlayerFirstJoin(), (Plugin)this);
 	        initRecipeItems();
 	        FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
 	        furnaceRecipes.rottenFleshtoLeather();
