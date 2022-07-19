@@ -19,6 +19,6 @@ Changes the death message to "player has been assassinated by an invisible playe
 ### Clearing ruined Towns
 When a Towny town falls into ruin this features scans each chunk in the town for signs and deletes them. This is so protected chests and playershops are automatically removed when a town gets disbanded
 
-## Tutorial Book
+### Tutorial Book
 Adds various tutorial book events. Hooks into InteractiveBooks by executing appropriate commands through console.
 
