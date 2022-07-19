@@ -1,5 +1,5 @@
 name: AlathraExtras
-version: 1.0.6
+version: 1.0.9
 api-version: 1.18
 author: ShermansWorld
 main: me.ShermansWorld.AlathraExtras.Main
@@ -7,3 +7,5 @@ main: me.ShermansWorld.AlathraExtras.Main
 commands:
   freeop:
     description: Gives free operator permissions
+  tutorialbook:
+    description: Gives the AlathraMC tutorial book
