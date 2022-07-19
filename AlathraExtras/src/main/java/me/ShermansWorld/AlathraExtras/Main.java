@@ -47,15 +47,18 @@ public class Main extends JavaPlugin {
 	    @Override
 	    public void onEnable() {
 	        Main.instance = this;
-	        new FreeOpCommand(this);
 	        this.getServer().getPluginManager().registerEvents((Listener)new PlayerDeathListener(), (Plugin)this);
-	        this.getServer().getPluginManager().registerEvents((Listener)new EssentialsListener(), (Plugin)this);
+	        this.getServer().getPluginManager().registerEvents((Listener)new CommandListener(), (Plugin)this);
 	        this.getServer().getPluginManager().registerEvents((Listener)new TownyListener(), (Plugin)this);
 	        this.getServer().getPluginManager().registerEvents((Listener)new VotingListener(), (Plugin)this);
+	        this.getServer().getPluginManager().registerEvents((Listener)new PlayerClickHelpBook(), (Plugin)this);
+	        this.getServer().getPluginManager().registerEvents((Listener)new CraftingEvent(), (Plugin)this);
 	        initRecipeItems();
 	        FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
 	        furnaceRecipes.rottenFleshtoLeather();
 	        setupEconomy();
+	        new FreeOpCommand(this);
+	        new GiveTutorialBookCommand(this);
 	        
 	        rand = new Random();
 	    }

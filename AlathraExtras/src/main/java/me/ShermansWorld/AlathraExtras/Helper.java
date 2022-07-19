@@ -11,4 +11,5 @@ public class Helper
     public static String Chatlabel() {
         return color("&6[&aAlathraExtras&6]&r ");
     }
+    
 }
