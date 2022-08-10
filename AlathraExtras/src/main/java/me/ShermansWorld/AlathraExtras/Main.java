@@ -1,7 +1,14 @@
 package me.ShermansWorld.AlathraExtras;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Map;
 import java.util.Random;
+import java.util.UUID;
 
+import me.ShermansWorld.AlathraExtras.customroles.AssassinCommand;
+import me.ShermansWorld.AlathraExtras.customroles.MercCommand;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
@@ -9,6 +16,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+
 
 import me.ShermansWorld.AlathraExtras.deathmsgs.PlayerDeathListener;
 import me.ShermansWorld.AlathraExtras.freeop.FreeOpCommand;
@@ -22,18 +30,22 @@ import me.ShermansWorld.AlathraExtras.voting.VotingListener;
 import net.milkbowl.vault.economy.Economy;
 
 public class Main extends JavaPlugin {
-	
-	    public static Main instance;
-	    public static ItemStack recycledLeather;
+
+	public static Main instance;
+	public static ItemStack recycledLeather;
 	    
-	    public static Economy economy = null;
+	public static Economy economy = null;
 	    
-	    public static Random rand;
-	    
-	    public static Main getInstance() {
+	public static Random rand;
+
+	public static Main getInstance() {
 	        return Main.instance;
 	    }
-	    
+
+		public static AlathraExtrasLogger logger;
+
+		public static AlathraExtrasData DataManager;
+
 	    public static void initRecipeItems () {
 	    	recycledLeather = new ItemStack(Material.LEATHER, 1);
 	    	ItemMeta meta = recycledLeather.getItemMeta();
@@ -52,10 +64,40 @@ public class Main extends JavaPlugin {
 			economy = rsp.getProvider();
 			return economy != null;
 		}
-	    
+
+		public static void initLogs() {
+			File logsFolder = new File("plugins" + File.separator + "AlathraExtras" + File.separator + "logs");
+			if (!logsFolder.exists()) {
+				logsFolder.mkdirs();
+			}
+			File log = new File("plugins" + File.separator + "AlathraExtras" + File.separator + "logs" + File.separator + "log.txt");
+			if (!log.exists()) {
+				try {
+					log.createNewFile();
+				} catch (IOException e) {
+					Bukkit.getLogger().warning("[AlathraExtras] Encountered error when creating log file!");
+				}
+			}
+			logger = new AlathraExtrasLogger();
+
+		}
+
+		public static void initData() {
+			File userDataFolder = new File("plugins" + File.separator + "AlathraExtras" + File.separator + "userdata");
+			if (!userDataFolder.exists()) {
+				userDataFolder.mkdirs();
+			}
+			DataManager = new AlathraExtrasData();
+		}
+
 	    @Override
 	    public void onEnable() {
 	        Main.instance = this;
+
+			getConfig().options().copyDefaults();
+			saveConfig();
+
+
 	        this.getServer().getPluginManager().registerEvents((Listener)new PlayerDeathListener(), (Plugin)this);
 	        this.getServer().getPluginManager().registerEvents((Listener)new CommandListener(), (Plugin)this);
 	        this.getServer().getPluginManager().registerEvents((Listener)new TownyListener(), (Plugin)this);
@@ -64,17 +106,25 @@ public class Main extends JavaPlugin {
 	        this.getServer().getPluginManager().registerEvents((Listener)new CraftingEvent(), (Plugin)this);
 	        this.getServer().getPluginManager().registerEvents((Listener)new AnvilListener(), (Plugin)this);
 	        this.getServer().getPluginManager().registerEvents((Listener)new PlayerFirstJoin(), (Plugin)this);
+			this.getServer().getPluginManager().registerEvents((Listener) new JoinLeave(), (Plugin) this);
 	        initRecipeItems();
 	        FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
 	        furnaceRecipes.rottenFleshtoLeather();
 	        setupEconomy();
+			logger = new AlathraExtrasLogger();
 	        new FreeOpCommand(this);
 	        new GiveTutorialBookCommand(this);
-	        
+			new MercCommand(this);
+			new AssassinCommand(this);
+
 	        rand = new Random();
+			initLogs();
+			initData();
 	    }
 	    
 	    @Override
 	    public void onDisable() {
 	    }
+
+
 }
