@@ -53,7 +53,7 @@ public class AlathraExtrasData {
         Yaml yaml = new Yaml();
         Map<String, Object> data = yaml.load(inputStream);
         //System.out.println(data);
-        if (!(data instanceof Map<String, Object>)) {data = DefaultData; setPlayer(pID, data);}
+        if (data == null) {data = DefaultData; setPlayer(pID, data);}
         return data;
     }
 
