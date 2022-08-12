@@ -31,6 +31,7 @@ public class CustomRoleTabCompletion implements TabCompleter {
                 if ((Boolean) pData.get("MercPermission")) {
                     completions.add("accept");
                     completions.add("decline");
+                    completions.add("complete");
                 }
                 if (player.hasPermission("AlathraExtras.Admin")) {
                     completions.add("add");
@@ -70,6 +71,7 @@ public class CustomRoleTabCompletion implements TabCompleter {
                 if ((Boolean) pData.get("AssassinPermission")) {
                     completions.add("accept");
                     completions.add("decline");
+                    completions.add("complete");
                 }
                 if (player.hasPermission("AlathraExtras.Admin")) {
                     completions.add("add");
