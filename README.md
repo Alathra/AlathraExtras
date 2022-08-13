@@ -1,4 +1,4 @@
-# AlathraExtras Verison 1.0.11
+# AlathraExtras Verison 1.1.0
 ## A pack of random add-ons and bugfixes for AlathraMC
 
 ### Custom Voting Listener
@@ -21,6 +21,3 @@ When a Towny town falls into ruin this features scans each chunk in the town for
 
 ### Tutorial Book
 Adds various tutorial book events. Hooks into InteractiveBooks by executing appropriate commands through console.
-
-### Custom Roles
-Adds mercenary and assassin roles, and economy management for payment.
