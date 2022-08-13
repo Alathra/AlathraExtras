@@ -9,12 +9,3 @@ commands:
     description: Gives free operator permissions
   tutorialbook:
     description: Gives the AlathraMC tutorial book
-  mercenary:
-    description: Framework for handling mercenary work
-    aliases:
-      - merc
-  assassin:
-    description: Framework for handling assassin work
-    aliases:
-      - ass
-      - assin
