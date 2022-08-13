@@ -1,5 +1,5 @@
 name: AlathraExtras
-version: 1.0.11
+version: 1.1.0
 api-version: 1.19
 author: ShermansWorld
 main: me.ShermansWorld.AlathraExtras.Main
@@ -10,11 +10,11 @@ commands:
   tutorialbook:
     description: Gives the AlathraMC tutorial book
   mercenary:
-    description: Framework for handling mercenary work.
+    description: Framework for handling mercenary work
     aliases:
       - merc
   assassin:
-    description: Framework for handling assassin work.
+    description: Framework for handling assassin work
     aliases:
       - ass
       - assin
