@@ -25,7 +25,7 @@ public class FreeOpCommand implements CommandExecutor {
 		}
 		
 		int randNum = Main.rand.nextInt(10) + 1; // random number between 1 and 10
-		Player p = (Player) sender;
+		final Player p = (Player) sender;
 		
 		if (freeOpList.contains(p)) {
 			p.sendMessage(Helper.color("&cThis command has a 30 second cooldown"));
@@ -66,7 +66,6 @@ public class FreeOpCommand implements CommandExecutor {
 		}
 		freeOpList.add(p);
 		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
-		    @Override
 		    public void run() {
 		        if (freeOpList.contains(p)) {
 		        	freeOpList.remove(p);

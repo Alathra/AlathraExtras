@@ -33,7 +33,6 @@ public static ArrayList<Player> playersWhoVoted = new ArrayList<Player>();
 		initVotingPlugin();
 		
 		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
-		    @Override
 		    public void run() {
 		    	CustomListeners.checkForAllSitesVoted();
 		    }

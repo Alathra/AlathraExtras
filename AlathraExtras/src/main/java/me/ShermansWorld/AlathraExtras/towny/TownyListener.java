@@ -19,7 +19,7 @@ import me.ShermansWorld.AlathraExtras.Main;
 public class TownyListener implements Listener {
 
 	private static long delay = 20;
-	private static final Set<Material> signs = new HashSet<>();
+	private static final Set<Material> signs = new HashSet<Material>();
 	static {
 		signs.add(Material.ACACIA_SIGN);
 		signs.add(Material.BIRCH_SIGN);
@@ -63,10 +63,9 @@ public class TownyListener implements Listener {
 	@EventHandler
 	public static void checkForSigns(TownRuinedEvent e) {
 		Town town = e.getTown();
-		World w = town.getWorld();
-		for (TownBlock townBlock : town.getTownBlocks()) {
+		final World w = town.getWorld();
+		for (final TownBlock townBlock : town.getTownBlocks()) {
 			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
-			    @Override
 			    public void run() {
 			    	deleteSignsInChunk(townBlock, w, delay);
 			    }
