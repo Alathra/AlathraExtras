@@ -18,7 +18,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import me.ShermansWorld.AlathraExtras.deathmsgs.PlayerDeathListener;
 import me.ShermansWorld.AlathraExtras.freeop.FreeOpCommand;
-import me.ShermansWorld.AlathraExtras.stonecutter.SmithingTableListener;
+import me.ShermansWorld.AlathraExtras.smithing.SmithingTableListener;
+import me.ShermansWorld.AlathraExtras.stonecutter.StonecutterRecipes;
 import me.ShermansWorld.AlathraExtras.towny.TownyListener;
 import me.ShermansWorld.AlathraExtras.tutorialbook.AnvilListener;
 import me.ShermansWorld.AlathraExtras.tutorialbook.CraftingEvent;
@@ -101,6 +102,8 @@ public class Main extends JavaPlugin {
 	        initRecipeItems();
 	        FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
 	        furnaceRecipes.rottenFleshtoLeather();
+	        StonecutterRecipes stoneCutterRecipes = new StonecutterRecipes(); 
+	        stoneCutterRecipes.gravelFromCobble();
 	        setupEconomy();
 			logger = new AlathraExtrasLogger();
 	        new FreeOpCommand(this);
