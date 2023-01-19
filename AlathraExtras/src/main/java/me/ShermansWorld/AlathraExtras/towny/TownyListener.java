@@ -7,19 +7,31 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.plugin.java.JavaPlugin;
 
+import com.palmergames.bukkit.TownyChat.Chat;
+import com.palmergames.bukkit.TownyChat.channels.Channel;
+import com.palmergames.bukkit.TownyChat.channels.ChannelsHolder;
 import com.palmergames.bukkit.towny.event.town.TownRuinedEvent;
 import com.palmergames.bukkit.towny.object.Town;
 import com.palmergames.bukkit.towny.object.TownBlock;
 
+import me.ShermansWorld.AlathraExtras.Helper;
 import me.ShermansWorld.AlathraExtras.Main;
 
 public class TownyListener implements Listener {
 
+	private static Chat tc;
+	private static ChannelsHolder ch;
+	private static Channel g;
+
 	private static long delay = 20;
 	private static final Set<Material> signs = new HashSet<Material>();
+
 	static {
 		signs.add(Material.ACACIA_SIGN);
 		signs.add(Material.BIRCH_SIGN);
@@ -39,10 +51,9 @@ public class TownyListener implements Listener {
 		signs.add(Material.CRIMSON_WALL_SIGN);
 		signs.add(Material.WARPED_WALL_SIGN);
 		signs.add(Material.MANGROVE_WALL_SIGN);
-		
+
 	}
-	
-	
+
 	public static void deleteSignsInChunk(TownBlock townBlock, World w, long delay) {
 		int x = townBlock.getX() * 16;
 		int z = townBlock.getZ() * 16;
@@ -59,18 +70,40 @@ public class TownyListener implements Listener {
 			}
 		}
 	}
-	
+
 	@EventHandler
 	public static void checkForSigns(TownRuinedEvent e) {
 		Town town = e.getTown();
 		final World w = town.getWorld();
 		for (final TownBlock townBlock : town.getTownBlocks()) {
 			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
-			    public void run() {
-			    	deleteSignsInChunk(townBlock, w, delay);
-			    }
-			}, delay); //20 Tick (1 Second) delay before run() is called
+				public void run() {
+					deleteSignsInChunk(townBlock, w, delay);
+				}
+			}, delay); // 20 Tick (1 Second) delay before run() is called
 			delay += 100; // 5 seconds
 		}
 	}
+
+	public static void initTownyChat() {
+		tc = JavaPlugin.getPlugin(Chat.class);
+		ch = tc.getChannelsHandler();
+		g = ch.getDefaultChannel();
+	}
+
+	public static boolean hasGeneralChatMuted(String playername) {
+		return g.isAbsent(playername);
+	}
+
+		@EventHandler
+		public static void onPlayerJoin(PlayerJoinEvent e) {
+			Player p = e.getPlayer();
+			if (hasGeneralChatMuted(p.getName())) {
+				Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
+				    public void run() {
+				        p.sendMessage(Helper.Chatlabel() + Helper.color("&5You are getting this notification because you have muted general chat. To see general chat again type &e/channel join general"));
+				    }
+				}, 80L); //20 Tick (3 second delay)
+			}
+		}
 }

@@ -2,9 +2,7 @@ package me.ShermansWorld.AlathraExtras;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Map;
 import java.util.Random;
-import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -14,7 +12,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
-
 
 import me.ShermansWorld.AlathraExtras.deathmsgs.PlayerDeathListener;
 import me.ShermansWorld.AlathraExtras.freeop.FreeOpCommand;
@@ -33,89 +30,88 @@ public class Main extends JavaPlugin {
 
 	public static Main instance;
 	public static ItemStack recycledLeather;
-	    
+
 	public static Economy economy = null;
-	    
+
 	public static Random rand;
 
 	public static Main getInstance() {
-	        return Main.instance;
-	    }
+		return Main.instance;
+	}
 
-		public static AlathraExtrasLogger logger;
+	public static AlathraExtrasLogger logger;
 
-	    public static void initRecipeItems () {
-	    	recycledLeather = new ItemStack(Material.LEATHER, 1);
-	    	ItemMeta meta = recycledLeather.getItemMeta();
-	    	meta.setDisplayName(Helper.color("&aRecycled Leather"));
-	    	recycledLeather.setItemMeta(meta);
-	    }
-	    
-	    private boolean setupEconomy() {
-			if (getServer().getPluginManager().getPlugin("Vault") == null) {
-				return false;
-			}
-			RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
-			if (rsp == null) {
-				return false;
-			}
-			economy = rsp.getProvider();
-			return economy != null;
+	public static void initRecipeItems() {
+		recycledLeather = new ItemStack(Material.LEATHER, 1);
+		ItemMeta meta = recycledLeather.getItemMeta();
+		meta.setDisplayName(Helper.color("&aRecycled Leather"));
+		recycledLeather.setItemMeta(meta);
+	}
+
+	private boolean setupEconomy() {
+		if (getServer().getPluginManager().getPlugin("Vault") == null) {
+			return false;
 		}
-
-		public static void initLogs() {
-			File logsFolder = new File("plugins" + File.separator + "AlathraExtras" + File.separator + "logs");
-			if (!logsFolder.exists()) {
-				logsFolder.mkdirs();
-			}
-			File log = new File("plugins" + File.separator + "AlathraExtras" + File.separator + "logs" + File.separator + "log.txt");
-			if (!log.exists()) {
-				try {
-					log.createNewFile();
-				} catch (IOException e) {
-					Bukkit.getLogger().warning("[AlathraExtras] Encountered error when creating log file!");
-				}
-			}
-			logger = new AlathraExtrasLogger();
-
+		RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+		if (rsp == null) {
+			return false;
 		}
+		economy = rsp.getProvider();
+		return economy != null;
+	}
 
+	public static void initLogs() {
+		File logsFolder = new File("plugins" + File.separator + "AlathraExtras" + File.separator + "logs");
+		if (!logsFolder.exists()) {
+			logsFolder.mkdirs();
+		}
+		File log = new File(
+				"plugins" + File.separator + "AlathraExtras" + File.separator + "logs" + File.separator + "log.txt");
+		if (!log.exists()) {
+			try {
+				log.createNewFile();
+			} catch (IOException e) {
+				Bukkit.getLogger().warning("[AlathraExtras] Encountered error when creating log file!");
+			}
+		}
+		logger = new AlathraExtrasLogger();
 
-	    @Override
-	    public void onEnable() {
-	        Main.instance = this;
+	}
 
-			getConfig().options().copyDefaults();
-			saveConfig();
+	@Override
+	public void onEnable() {
+		Main.instance = this;
 
+		getConfig().options().copyDefaults();
+		saveConfig();
+		TownyListener.initTownyChat();
 
-	        this.getServer().getPluginManager().registerEvents((Listener)new PlayerDeathListener(), (Plugin)this);
-	        this.getServer().getPluginManager().registerEvents((Listener)new CommandListener(), (Plugin)this);
-	        this.getServer().getPluginManager().registerEvents((Listener)new TownyListener(), (Plugin)this);
-	        this.getServer().getPluginManager().registerEvents((Listener)new VotingListener(), (Plugin)this);
-	        this.getServer().getPluginManager().registerEvents((Listener)new PlayerClickHelpBook(), (Plugin)this);
-	        this.getServer().getPluginManager().registerEvents((Listener)new CraftingEvent(), (Plugin)this);
-	        this.getServer().getPluginManager().registerEvents((Listener)new AnvilListener(), (Plugin)this);
-	        this.getServer().getPluginManager().registerEvents((Listener)new PlayerFirstJoin(), (Plugin)this);
+		this.getServer().getPluginManager().registerEvents((Listener) new PlayerDeathListener(), (Plugin) this);
+		this.getServer().getPluginManager().registerEvents((Listener) new CommandListener(), (Plugin) this);
+		this.getServer().getPluginManager().registerEvents((Listener) new TownyListener(), (Plugin) this);
+		this.getServer().getPluginManager().registerEvents((Listener) new VotingListener(), (Plugin) this);
+		this.getServer().getPluginManager().registerEvents((Listener) new PlayerClickHelpBook(), (Plugin) this);
+		this.getServer().getPluginManager().registerEvents((Listener) new CraftingEvent(), (Plugin) this);
+		this.getServer().getPluginManager().registerEvents((Listener) new AnvilListener(), (Plugin) this);
+		this.getServer().getPluginManager().registerEvents((Listener) new PlayerFirstJoin(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new PlayerListeners(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new SmithingTableListener(), (Plugin) this);
-	        initRecipeItems();
-	        FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
-	        furnaceRecipes.rottenFleshtoLeather();
-	        StonecutterRecipes stoneCutterRecipes = new StonecutterRecipes(); 
-	        stoneCutterRecipes.gravelFromCobble();
-	        setupEconomy();
-			logger = new AlathraExtrasLogger();
-	        new FreeOpCommand(this);
-	        new GiveTutorialBookCommand(this);
+		initRecipeItems();
+		FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
+		furnaceRecipes.rottenFleshtoLeather();
+		StonecutterRecipes stoneCutterRecipes = new StonecutterRecipes();
+		stoneCutterRecipes.gravelFromCobble();
+		setupEconomy();
+		logger = new AlathraExtrasLogger();
+		new FreeOpCommand(this);
+		new GiveTutorialBookCommand(this);
 
-	        rand = new Random();
-			initLogs();
-	    }
-	    
-	    @Override
-	    public void onDisable() {
-	    }
+		rand = new Random();
+		initLogs();
+	}
 
+	@Override
+	public void onDisable() {
+	}
 
 }
