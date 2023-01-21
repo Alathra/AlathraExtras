@@ -16,6 +16,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.palmergames.bukkit.TownyChat.Chat;
 import com.palmergames.bukkit.TownyChat.channels.Channel;
 import com.palmergames.bukkit.TownyChat.channels.ChannelsHolder;
+import com.palmergames.bukkit.TownyChat.events.AsyncChatHookEvent;
 import com.palmergames.bukkit.towny.event.town.TownRuinedEvent;
 import com.palmergames.bukkit.towny.object.Town;
 import com.palmergames.bukkit.towny.object.TownBlock;
@@ -95,15 +96,50 @@ public class TownyListener implements Listener {
 		return g.isAbsent(playername);
 	}
 
-		@EventHandler
-		public static void onPlayerJoin(PlayerJoinEvent e) {
-			Player p = e.getPlayer();
-			if (hasGeneralChatMuted(p.getName())) {
-				Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
-				    public void run() {
-				        p.sendMessage(Helper.Chatlabel() + Helper.color("&5You are getting this notification because you have muted general chat. To see general chat again type &e/channel join general"));
-				    }
-				}, 80L); //20 Tick (3 second delay)
-			}
+	@EventHandler
+	public static void onPlayerJoin(PlayerJoinEvent e) {
+		Player p = e.getPlayer();
+		if (hasGeneralChatMuted(p.getName())) {
+			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
+				public void run() {
+					p.sendMessage(Helper.Chatlabel() + Helper.color(
+							"&5You are getting this notification because you have muted general chat. To see general chat again type &e/channel join general"));
+				}
+			}, 80L); // 20 Tick (3 second delay)
 		}
+	}
+
+	@EventHandler
+	public static void onChatMsg(AsyncChatHookEvent e) {
+		switch (e.getChannel().getName()) {
+			case "global":
+				e.setMessage(Helper.color("&f" + e.getMessage()));
+				break;
+			case "local":
+				e.setMessage(Helper.color("&5" + e.getMessage()));
+				break;
+			case "rp":
+				e.setMessage(Helper.color("&9" + e.getMessage()));
+				break;
+			case "sh":
+				e.setMessage(Helper.color("&c" + e.getMessage()));
+				break;
+			case "wh":
+				e.setMessage(Helper.color("&6" + e.getMessage()));
+				break;
+			case "town":
+				e.setMessage(Helper.color("&b" + e.getMessage()));
+				break;
+			case "nation":
+				e.setMessage(Helper.color("&6" + e.getMessage()));
+				break;
+			case "staff":
+				e.setMessage(Helper.color("&c" + e.getMessage()));
+				break;
+			default:
+				break;
+		}
+
+	}
+
 }
