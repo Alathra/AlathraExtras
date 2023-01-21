@@ -121,10 +121,10 @@ public class TownyListener implements Listener {
 			case "rp":
 				e.setMessage(Helper.color("&9" + e.getMessage()));
 				break;
-			case "sh":
+			case "shout":
 				e.setMessage(Helper.color("&c" + e.getMessage()));
 				break;
-			case "wh":
+			case "whisper":
 				e.setMessage(Helper.color("&6" + e.getMessage()));
 				break;
 			case "town":
