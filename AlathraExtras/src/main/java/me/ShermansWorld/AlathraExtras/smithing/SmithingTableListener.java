@@ -30,8 +30,7 @@ public class SmithingTableListener implements Listener {
 							p.closeInventory();
 							p.getInventory().addItem(gravel);
 							p.getWorld().playSound(p.getLocation(), Sound.UI_STONECUTTER_TAKE_RESULT, 1.0f, 0.25f);
-						}
-						if (e.getInventory().getItem(0).getType() == Material.GRAVEL) {
+						} else if (e.getInventory().getItem(0).getType() == Material.GRAVEL) {
 							int amount = e.getInventory().getItem(0).getAmount();
 							ItemStack sand = new ItemStack(Material.SAND, amount);
 							e.getInventory().clear();

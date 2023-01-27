@@ -23,6 +23,11 @@ public class CommandListener implements Listener {
 			Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ibooks open tutorial_book " + e.getPlayer().getName());
 			p.playSound(p.getLocation(), Sound.ITEM_BOOK_PUT, 10F, 1F);
 			e.setCancelled(true);
+			return;
+		} else if (e.getMessage().charAt(1) == ' ') {
+			Bukkit.broadcastMessage(Helper.Chatlabel() + Helper.color("&cThis command is not allowed"));
+			e.setCancelled(true);
+			return;
 		}
 	}
 }
