@@ -25,7 +25,8 @@ public class CommandListener implements Listener {
 			e.setCancelled(true);
 			return;
 		} else if (e.getMessage().charAt(1) == ' ') {
-			Bukkit.broadcastMessage(Helper.Chatlabel() + Helper.color("&cThis command is not allowed"));
+			Player p = e.getPlayer();
+			p.sendMessage(Helper.Chatlabel() + Helper.color("&cThis command is not allowed"));
 			e.setCancelled(true);
 			return;
 		}
