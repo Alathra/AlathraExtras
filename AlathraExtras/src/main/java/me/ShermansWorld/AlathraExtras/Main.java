@@ -13,7 +13,6 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import me.ShermansWorld.AlathraExtras.deathmsgs.PlayerDeathListener;
 import me.ShermansWorld.AlathraExtras.freeop.FreeOpCommand;
 import me.ShermansWorld.AlathraExtras.smithing.SmithingTableListener;
 import me.ShermansWorld.AlathraExtras.towny.TownyListener;
@@ -85,7 +84,6 @@ public class Main extends JavaPlugin {
 		saveConfig();
 		TownyListener.initTownyChat();
 
-		this.getServer().getPluginManager().registerEvents((Listener) new PlayerDeathListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new CommandListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new TownyListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new VotingListener(), (Plugin) this);
