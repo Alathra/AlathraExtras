@@ -18,15 +18,15 @@ public class PlayerListeners implements Listener {
 
 	@EventHandler
 	public void chatReplace(PlayerChatEvent e) {
-		if (e.getMessage().toLowerCase().contains("stoneworks")) {
-			e.setMessage(e.getMessage().toLowerCase().replace("stoneworks", "inferior Minecraft server"));
-		}
-		if (e.getMessage().toLowerCase().contains("stone works")) {
-			e.setMessage(e.getMessage().toLowerCase().replace("stone works", "inferior Minecraft server"));
-		}
-		if (e.getMessage().toLowerCase().contains(" sw ")) {
-			e.setMessage(e.getMessage().toLowerCase().replace(" sw ", " inferior Minecraft server "));
-		}
+		//if (e.getMessage().toLowerCase().contains("stoneworks")) {
+			//e.setMessage(e.getMessage().toLowerCase().replace("stoneworks", "inferior Minecraft server"));
+		//}
+		//if (e.getMessage().toLowerCase().contains("stone works")) {
+			//e.setMessage(e.getMessage().toLowerCase().replace("stone works", "inferior Minecraft server"));
+		//}
+		//if (e.getMessage().toLowerCase().contains(" sw ")) {
+			//e.setMessage(e.getMessage().toLowerCase().replace(" sw ", " inferior Minecraft server "));
+		//}
 		if (e.getMessage().toLowerCase().contains("o_o")) {
 			e.setMessage(e.getMessage().replace("o_o", Helper.color("&9&lO_O&r")));
 		}
