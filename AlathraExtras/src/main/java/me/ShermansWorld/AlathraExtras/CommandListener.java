@@ -24,6 +24,8 @@ public class CommandListener implements Listener {
 			p.playSound(p.getLocation(), Sound.ITEM_BOOK_PUT, 10F, 1F);
 			e.setCancelled(true);
 			return;
+		} else if (e.getMessage().length() == 1) {
+			return;
 		} else if (e.getMessage().charAt(1) == ' ') {
 			Player p = e.getPlayer();
 			p.sendMessage(Helper.Chatlabel() + Helper.color("&cThis command is not allowed"));
