@@ -13,6 +13,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import me.ShermansWorld.AlathraExtras.disablevillagers.CureListener;
 import me.ShermansWorld.AlathraExtras.freeop.FreeOpCommand;
 import me.ShermansWorld.AlathraExtras.smithing.SmithingTableListener;
 import me.ShermansWorld.AlathraExtras.towny.TownyListener;
@@ -93,6 +94,7 @@ public class Main extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents((Listener) new PlayerFirstJoin(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new PlayerListeners(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new SmithingTableListener(), (Plugin) this);
+		this.getServer().getPluginManager().registerEvents((Listener) new CureListener(), (Plugin) this);
 		initRecipeItems();
 		FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
 		furnaceRecipes.rottenFleshtoLeather();
