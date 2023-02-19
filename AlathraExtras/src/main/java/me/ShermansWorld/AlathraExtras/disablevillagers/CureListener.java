@@ -22,6 +22,12 @@ public class CureListener implements Listener {
 					e.setCancelled(true);
 				}
 			}
+		} else if (e.getRightClicked().getType() == EntityType.VILLAGER) {
+			if (e.getRightClicked().getWorld().getName().contentEquals("World-o")) {
+				Player p = e.getPlayer();
+				p.sendMessage(Helper.Chatlabel() + Helper.color("&cYou cannot trade villagers!"));
+				e.setCancelled(true);
+			}
 		}
 	}
 }
