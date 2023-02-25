@@ -38,6 +38,14 @@ public class SmithingTableListener implements Listener {
 							p.closeInventory();
 							p.getInventory().addItem(sand);
 							p.getWorld().playSound(p.getLocation(), Sound.UI_STONECUTTER_TAKE_RESULT, 1.0f, 0.25f);
+						} else if (e.getInventory().getItem(0).getType() == Material.DIORITE) {
+							int amount = e.getInventory().getItem(0).getAmount();
+							ItemStack quartz = new ItemStack(Material.QUARTZ, amount);
+							e.getInventory().clear();
+							Player p = (Player) e.getView().getPlayer();
+							p.closeInventory();
+							p.getInventory().addItem(quartz);
+							p.getWorld().playSound(p.getLocation(), Sound.UI_STONECUTTER_TAKE_RESULT, 1.0f, 0.25f);
 						}
 					}
 				}
