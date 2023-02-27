@@ -13,9 +13,11 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import me.ShermansWorld.AlathraExtras.crafting.CraftingRecipes;
+import me.ShermansWorld.AlathraExtras.crafting.FurnaceRecipes;
+import me.ShermansWorld.AlathraExtras.crafting.SmithingTableListener;
 import me.ShermansWorld.AlathraExtras.disablevillagers.CureListener;
 import me.ShermansWorld.AlathraExtras.freeop.FreeOpCommand;
-import me.ShermansWorld.AlathraExtras.smithing.SmithingTableListener;
 import me.ShermansWorld.AlathraExtras.towny.TownyListener;
 import me.ShermansWorld.AlathraExtras.tutorialbook.AnvilListener;
 import me.ShermansWorld.AlathraExtras.tutorialbook.CraftingEvent;
@@ -98,10 +100,17 @@ public class Main extends JavaPlugin {
 		initRecipeItems();
 		FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
 		furnaceRecipes.rottenFleshtoLeather();
+		CraftingRecipes craftingRecipes = new CraftingRecipes();
+		craftingRecipes.saddleRecipe();
+		craftingRecipes.charcoalBlock();
+		craftingRecipes.redDyeRecipe();
+		craftingRecipes.redSandRecipe();
+		craftingRecipes.bellRecipe();
 		setupEconomy();
 		logger = new AlathraExtrasLogger();
 		new FreeOpCommand(this);
 		new GiveTutorialBookCommand(this);
+		
 
 		rand = new Random();
 		initLogs();

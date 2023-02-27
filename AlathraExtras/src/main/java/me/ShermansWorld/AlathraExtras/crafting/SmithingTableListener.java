@@ -1,4 +1,4 @@
-package me.ShermansWorld.AlathraExtras.smithing;
+package me.ShermansWorld.AlathraExtras.crafting;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
