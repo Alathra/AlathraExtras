@@ -106,6 +106,8 @@ public class Main extends JavaPlugin {
 		craftingRecipes.redDyeRecipe();
 		craftingRecipes.redSandRecipe();
 		craftingRecipes.bellRecipe();
+		craftingRecipes.blackDyeRecipe1();
+		craftingRecipes.blackDyeRecipe2();
 		setupEconomy();
 		logger = new AlathraExtrasLogger();
 		new FreeOpCommand(this);

@@ -69,4 +69,22 @@ public class CraftingRecipes {
 		Main.getInstance().getServer().addRecipe((Recipe) bellRecipe);
 	}
 	
+	public void blackDyeRecipe1() {
+		ItemStack blackDye1 = new ItemStack(Material.BLACK_DYE, 1);
+		NamespacedKey key = new NamespacedKey((Plugin) Main.getInstance(),
+				String.valueOf(Main.getInstance().getDescription().getName()) + "7");
+		ShapelessRecipe blackDyeRecipe1 = new ShapelessRecipe(key, blackDye1);
+		blackDyeRecipe1.addIngredient(1, Material.COAL);
+		Main.getInstance().getServer().addRecipe((Recipe) blackDyeRecipe1);
+	}
+	
+	public void blackDyeRecipe2() {
+		ItemStack blackDye2 = new ItemStack(Material.BLACK_DYE, 1);
+		NamespacedKey key = new NamespacedKey((Plugin) Main.getInstance(),
+				String.valueOf(Main.getInstance().getDescription().getName()) + "8");
+		ShapelessRecipe blackDyeRecipe2 = new ShapelessRecipe(key, blackDye2);
+		blackDyeRecipe2.addIngredient(1, Material.CHARCOAL);
+		Main.getInstance().getServer().addRecipe((Recipe) blackDyeRecipe2);
+	}
+	
 }
