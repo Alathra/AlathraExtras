@@ -17,6 +17,7 @@ import com.palmergames.bukkit.TownyChat.Chat;
 import com.palmergames.bukkit.TownyChat.channels.Channel;
 import com.palmergames.bukkit.TownyChat.channels.ChannelsHolder;
 import com.palmergames.bukkit.TownyChat.events.AsyncChatHookEvent;
+import com.palmergames.bukkit.towny.event.NewTownEvent;
 import com.palmergames.bukkit.towny.event.town.TownRuinedEvent;
 import com.palmergames.bukkit.towny.object.Town;
 import com.palmergames.bukkit.towny.object.TownBlock;
@@ -140,6 +141,13 @@ public class TownyListener implements Listener {
 				break;
 		}
 
+	}
+	
+	@EventHandler
+	public static void onChatMsg(NewTownEvent e) {
+		Town town = e.getTown();
+		town.getAccount().deposit(500.0, "Town Creation");
+		town.getMayor().getPlayer().sendMessage(Helper.Chatlabel() + Helper.color("&a$&c500 &ahas been deposited into your town bank. Towns use money each day or they fall into ruin. To put money in your town type &e/t deposit [amount]"));
 	}
 
 }
