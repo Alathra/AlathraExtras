@@ -17,8 +17,10 @@ import com.palmergames.bukkit.TownyChat.Chat;
 import com.palmergames.bukkit.TownyChat.channels.Channel;
 import com.palmergames.bukkit.TownyChat.channels.ChannelsHolder;
 import com.palmergames.bukkit.TownyChat.events.AsyncChatHookEvent;
+import com.palmergames.bukkit.towny.event.NewNationEvent;
 import com.palmergames.bukkit.towny.event.NewTownEvent;
 import com.palmergames.bukkit.towny.event.town.TownRuinedEvent;
+import com.palmergames.bukkit.towny.object.Nation;
 import com.palmergames.bukkit.towny.object.Town;
 import com.palmergames.bukkit.towny.object.TownBlock;
 
@@ -144,10 +146,19 @@ public class TownyListener implements Listener {
 	}
 	
 	@EventHandler
-	public static void onChatMsg(NewTownEvent e) {
+	public static void onTownCreation(NewTownEvent e) {
 		Town town = e.getTown();
 		town.getAccount().deposit(500.0, "Town Creation");
-		town.getMayor().getPlayer().sendMessage(Helper.Chatlabel() + Helper.color("&a$&c500 &ahas been deposited into your town bank. Towns use money each day or they fall into ruin. To put money in your town type &e/t deposit [amount]"));
+		town.getMayor().getPlayer().sendMessage(Helper.Chatlabel() + Helper.color("&b$500 &chas been deposited into your town bank. Towns use money each day or they fall into ruin. To put money in your town type &e/t deposit [amount]"));
 	}
+	
+	@EventHandler
+	public static void onNationCreation(NewNationEvent e) {
+		Nation nation = e.getNation();
+		nation.getAccount().deposit(2000.0, "Nation Creation");
+		nation.getKing().getPlayer().sendMessage(Helper.Chatlabel() + Helper.color("&b$2000 &chas been deposited into your nation bank. Nations use money each day or they fall into ruin. To put money in your nation type &e/t deposit [amount]"));
+	}
+	
+	
 
 }

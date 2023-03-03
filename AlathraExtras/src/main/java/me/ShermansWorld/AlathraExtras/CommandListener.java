@@ -14,8 +14,8 @@ public class CommandListener implements Listener {
 	public static void commandSent(PlayerCommandPreprocessEvent e) {
 		if (e.getMessage().toLowerCase().contains("tpa")) {
 			double bal = Main.economy.getBalance(Bukkit.getOfflinePlayer(e.getPlayer().getUniqueId()));
-			if (bal < 500) {
-				e.getPlayer().sendMessage(Helper.Chatlabel() + Helper.color("&ctpa/tpahere request canceled. You must have at least &a$500 &cto run this command!"));
+			if (bal < 50) {
+				e.getPlayer().sendMessage(Helper.Chatlabel() + Helper.color("&ctpa/tpahere request canceled. You must have at least &a$50 &cto run this command!"));
 				e.setCancelled(true);
 			}
 		} else if (e.getMessage().equalsIgnoreCase("/help")) {
