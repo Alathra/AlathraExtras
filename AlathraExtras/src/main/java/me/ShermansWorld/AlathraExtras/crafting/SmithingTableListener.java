@@ -46,7 +46,15 @@ public class SmithingTableListener implements Listener {
 							p.closeInventory();
 							p.getInventory().addItem(quartz);
 							p.getWorld().playSound(p.getLocation(), Sound.UI_STONECUTTER_TAKE_RESULT, 1.0f, 0.25f);
-						}
+						} else if (e.getInventory().getItem(0).getType() == Material.COARSE_DIRT) {
+                            int amount = e.getInventory().getItem(0).getAmount();
+                            ItemStack quartz = new ItemStack(Material.DIRT, amount);
+                            e.getInventory().clear();
+                            Player p = (Player) e.getView().getPlayer();
+                            p.closeInventory();
+                            p.getInventory().addItem(quartz);
+                            p.getWorld().playSound(p.getLocation(), Sound.UI_STONECUTTER_TAKE_RESULT, 1.0f, 0.25f);
+                        }
 					}
 				}
 			}, 5L); // 20 Tick (1 Second) delay before run() is called
