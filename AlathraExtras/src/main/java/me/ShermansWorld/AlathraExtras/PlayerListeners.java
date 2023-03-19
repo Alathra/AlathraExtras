@@ -1,12 +1,12 @@
 package me.ShermansWorld.AlathraExtras;
 
+import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerChatEvent;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.util.Vector;
 
-@SuppressWarnings("deprecation")
 public class PlayerListeners implements Listener {
 
 	@EventHandler
@@ -17,7 +17,7 @@ public class PlayerListeners implements Listener {
 	}
 
 	@EventHandler
-	public void chatReplace(PlayerChatEvent e) {
+	public void chatReplace(AsyncPlayerChatEvent e) {
 		//if (e.getMessage().toLowerCase().contains("stoneworks")) {
 			//e.setMessage(e.getMessage().toLowerCase().replace("stoneworks", "inferior Minecraft server"));
 		//}
@@ -59,6 +59,16 @@ public class PlayerListeners implements Listener {
 		}
 		if (e.getMessage().toLowerCase().contains("o==")) {
 			e.setMessage(e.getMessage().replace("o==", Helper.color("&b☄&r")));
+		}
+		if (e.getMessage().toLowerCase().contains("nigga")) {
+			e.setMessage(e.getMessage().replace("nigga", Helper.color("[Racial Slur]")));
+			Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tempban " + e.getPlayer().getName() + " 3d Auto-banned for racial slur");
+			Bukkit.broadcastMessage(Helper.Chatlabel() + e.getPlayer().getName() + " was bammed for saying a racial slur in chat");
+		}
+		if (e.getMessage().toLowerCase().contains("nigger")) {
+			e.setMessage(e.getMessage().replace("nigger", Helper.color("[Racial Slur]")));
+			Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ban " + e.getPlayer().getName() + " Auto-banned for racial slur");
+			Bukkit.broadcastMessage(Helper.Chatlabel() + e.getPlayer().getName() + " was bammed for saying a racial slur in chat");
 		}
 	}
 }
