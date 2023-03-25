@@ -18,15 +18,21 @@ public class PlayerListeners implements Listener {
 
 	@EventHandler
 	public void chatReplace(AsyncPlayerChatEvent e) {
-		//if (e.getMessage().toLowerCase().contains("stoneworks")) {
-			//e.setMessage(e.getMessage().toLowerCase().replace("stoneworks", "inferior Minecraft server"));
-		//}
-		//if (e.getMessage().toLowerCase().contains("stone works")) {
-			//e.setMessage(e.getMessage().toLowerCase().replace("stone works", "inferior Minecraft server"));
-		//}
-		//if (e.getMessage().toLowerCase().contains(" sw ")) {
-			//e.setMessage(e.getMessage().toLowerCase().replace(" sw ", " inferior Minecraft server "));
-		//}
+		if (e.getMessage().toLowerCase().contains("stoneworks")) {
+			e.setMessage(e.getMessage().toLowerCase().replace("stoneworks", "rock function "));
+		}
+		if (e.getMessage().toLowerCase().contains("stone works")) {
+			e.setMessage(e.getMessage().toLowerCase().replace("stone works", "rock function "));
+		}
+		if (e.getMessage().toLowerCase().contains("stonework")) {
+			e.setMessage(e.getMessage().toLowerCase().replace("stonework", "rock function "));
+		}
+		if (e.getMessage().toLowerCase().contains(" sw ")) {
+			e.setMessage(e.getMessage().toLowerCase().replace(" sw ", "rock function "));
+		}
+		if (e.getMessage().toLowerCase().contains(" sw")) {
+			e.setMessage(e.getMessage().toLowerCase().replace(" sw", "rock function "));
+		}
 		if (e.getMessage().toLowerCase().contains("o_o")) {
 			e.setMessage(e.getMessage().replace("o_o", Helper.color("&9&lO_O&r")));
 		}
@@ -67,6 +73,16 @@ public class PlayerListeners implements Listener {
 		}
 		if (e.getMessage().toLowerCase().contains("nigger")) {
 			e.setMessage(e.getMessage().replace("nigger", Helper.color("[Racial Slur]")));
+			Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ban " + e.getPlayer().getName() + " Auto-banned for racial slur");
+			Bukkit.broadcastMessage(Helper.Chatlabel() + e.getPlayer().getName() + " was bammed for saying a racial slur in chat");
+		}
+		if (e.getMessage().toLowerCase().contains("chink")) {
+			e.setMessage(e.getMessage().replace("chink", Helper.color("[Racial Slur]")));
+			Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ban " + e.getPlayer().getName() + " Auto-banned for racial slur");
+			Bukkit.broadcastMessage(Helper.Chatlabel() + e.getPlayer().getName() + " was bammed for saying a racial slur in chat");
+		} 
+		if (e.getMessage().toLowerCase().contains("spic")) {
+			e.setMessage(e.getMessage().replace("spic", Helper.color("[Racial Slur]")));
 			Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ban " + e.getPlayer().getName() + " Auto-banned for racial slur");
 			Bukkit.broadcastMessage(Helper.Chatlabel() + e.getPlayer().getName() + " was bammed for saying a racial slur in chat");
 		}
