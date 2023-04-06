@@ -30,6 +30,9 @@ public class PlayerListeners implements Listener {
 		if (e.getMessage().toLowerCase().contains(" sw ")) {
 			e.setMessage(e.getMessage().toLowerCase().replace(" sw ", "rock function "));
 		}
+		if (e.getMessage().toLowerCase().contains("shears")) {
+			e.setMessage(e.getMessage().toLowerCase().replace("shears", "✂"));
+		}
 		if (e.getMessage().toLowerCase().contains("o_o")) {
 			e.setMessage(e.getMessage().replace("o_o", Helper.color("&9&lO_O&r")));
 		}
