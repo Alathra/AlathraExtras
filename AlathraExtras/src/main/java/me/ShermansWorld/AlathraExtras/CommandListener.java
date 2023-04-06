@@ -7,6 +7,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 public class CommandListener implements Listener {
 	
@@ -24,6 +26,18 @@ public class CommandListener implements Listener {
 			p.playSound(p.getLocation(), Sound.ITEM_BOOK_PUT, 10F, 1F);
 			e.setCancelled(true);
 			return;
+		} else if (e.getMessage().equalsIgnoreCase("/rtp")) {
+			Player p = e.getPlayer();
+			if (p.getWorld().getName().contentEquals("world")) {
+				p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 400, 9));
+			}
+			return;
+		} else if (e.getMessage().equalsIgnoreCase("/wild")) {
+			Player p = e.getPlayer();
+			if (p.getWorld().getName().contentEquals("world")) {
+				p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 400, 9));
+			}
+			return;
 		} else if (e.getMessage().length() == 1) {
 			return;
 		} else if (e.getMessage().charAt(1) == ' ') {
@@ -32,5 +46,6 @@ public class CommandListener implements Listener {
 			e.setCancelled(true);
 			return;
 		}
+		
 	}
 }
