@@ -29,13 +29,13 @@ public class CommandListener implements Listener {
 		} else if (e.getMessage().equalsIgnoreCase("/rtp")) {
 			Player p = e.getPlayer();
 			if (p.getWorld().getName().contentEquals("world")) {
-				p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 400, 9));
+				p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 200, 9));
 			}
 			return;
 		} else if (e.getMessage().equalsIgnoreCase("/wild")) {
 			Player p = e.getPlayer();
 			if (p.getWorld().getName().contentEquals("world")) {
-				p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 400, 9));
+				p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 200, 9));
 			}
 			return;
 		} else if (e.getMessage().length() == 1) {
