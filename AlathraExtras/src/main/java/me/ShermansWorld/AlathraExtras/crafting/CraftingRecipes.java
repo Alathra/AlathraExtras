@@ -87,4 +87,32 @@ public class CraftingRecipes {
 		Main.getInstance().getServer().addRecipe((Recipe) blackDyeRecipe2);
 	}
 	
+	public void beetRootPouchRecipe() {
+		ItemStack beetRootPouch = new ItemStack(Material.PAPER, 1);
+		ItemMeta meta = beetRootPouch.getItemMeta();
+		meta.setCustomModelData(14700);
+		meta.setDisplayName(Helper.color("&4Beetroot Pouch"));
+		beetRootPouch.setItemMeta(meta);
+		NamespacedKey key = new NamespacedKey((Plugin) Main.getInstance(),
+				String.valueOf(Main.getInstance().getDescription().getName()) + "9");
+		ShapedRecipe beetRootPouchRecipe = new ShapedRecipe(key, beetRootPouch);
+		beetRootPouchRecipe.shape(new String[] { "@@@", "@@@", "@@@" });
+		beetRootPouchRecipe.setIngredient('@', Material.BEETROOT);
+		Main.getInstance().getServer().addRecipe((Recipe) beetRootPouchRecipe);
+	}
+	
+	public void carrotPouchRecipe() {
+		ItemStack carrotPouch = new ItemStack(Material.PAPER, 1);
+		ItemMeta meta = carrotPouch.getItemMeta();
+		meta.setCustomModelData(14701);
+		meta.setDisplayName(Helper.color("&6Carrot Pouch"));
+		carrotPouch.setItemMeta(meta);
+		NamespacedKey key = new NamespacedKey((Plugin) Main.getInstance(),
+				String.valueOf(Main.getInstance().getDescription().getName()) + "10");
+		ShapedRecipe CarrotPouchRecipe = new ShapedRecipe(key, carrotPouch);
+		CarrotPouchRecipe.shape(new String[] { "@@@", "@@@", "@@@" });
+		CarrotPouchRecipe.setIngredient('@', Material.CARROT);
+		Main.getInstance().getServer().addRecipe((Recipe) CarrotPouchRecipe);
+	}
+	
 }
