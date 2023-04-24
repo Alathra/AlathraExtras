@@ -9,6 +9,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
+import me.ShermansWorld.AlathraExtras.CustomItems;
 import me.ShermansWorld.AlathraExtras.Helper;
 import me.ShermansWorld.AlathraExtras.Main;
 
@@ -88,11 +89,7 @@ public class CraftingRecipes {
 	}
 	
 	public void beetRootPouchRecipe() {
-		ItemStack beetRootPouch = new ItemStack(Material.PAPER, 1);
-		ItemMeta meta = beetRootPouch.getItemMeta();
-		meta.setCustomModelData(14700);
-		meta.setDisplayName(Helper.color("&4Beetroot Pouch"));
-		beetRootPouch.setItemMeta(meta);
+		ItemStack beetRootPouch = CustomItems.getBeetrootPouch();
 		NamespacedKey key = new NamespacedKey((Plugin) Main.getInstance(),
 				String.valueOf(Main.getInstance().getDescription().getName()) + "9");
 		ShapedRecipe beetRootPouchRecipe = new ShapedRecipe(key, beetRootPouch);
@@ -102,11 +99,7 @@ public class CraftingRecipes {
 	}
 	
 	public void carrotPouchRecipe() {
-		ItemStack carrotPouch = new ItemStack(Material.PAPER, 1);
-		ItemMeta meta = carrotPouch.getItemMeta();
-		meta.setCustomModelData(14701);
-		meta.setDisplayName(Helper.color("&6Carrot Pouch"));
-		carrotPouch.setItemMeta(meta);
+		ItemStack carrotPouch = CustomItems.getCarrotPouch();
 		NamespacedKey key = new NamespacedKey((Plugin) Main.getInstance(),
 				String.valueOf(Main.getInstance().getDescription().getName()) + "10");
 		ShapedRecipe CarrotPouchRecipe = new ShapedRecipe(key, carrotPouch);

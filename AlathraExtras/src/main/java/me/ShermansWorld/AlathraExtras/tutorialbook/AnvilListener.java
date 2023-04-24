@@ -5,6 +5,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.PrepareAnvilEvent;
 
+import me.ShermansWorld.AlathraExtras.CustomItems;
 import me.ShermansWorld.AlathraExtras.Helper;
 
 public class AnvilListener implements Listener {

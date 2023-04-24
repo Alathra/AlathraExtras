@@ -13,7 +13,6 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import me.ShermansWorld.AlathraExtras.crafting.CraftingListener;
 import me.ShermansWorld.AlathraExtras.crafting.CraftingRecipes;
 import me.ShermansWorld.AlathraExtras.crafting.FurnaceRecipes;
 import me.ShermansWorld.AlathraExtras.crafting.SmithingTableListener;
@@ -21,7 +20,6 @@ import me.ShermansWorld.AlathraExtras.disablevillagers.CureListener;
 import me.ShermansWorld.AlathraExtras.freeop.FreeOpCommand;
 import me.ShermansWorld.AlathraExtras.towny.TownyListener;
 import me.ShermansWorld.AlathraExtras.tutorialbook.AnvilListener;
-import me.ShermansWorld.AlathraExtras.tutorialbook.CraftingEvent;
 import me.ShermansWorld.AlathraExtras.tutorialbook.GiveTutorialBookCommand;
 import me.ShermansWorld.AlathraExtras.tutorialbook.PlayerClickHelpBook;
 import me.ShermansWorld.AlathraExtras.tutorialbook.PlayerFirstJoin;
@@ -99,7 +97,6 @@ public class Main extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents((Listener) new SmithingTableListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new CureListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new CraftingEvent(), (Plugin) this);
-		this.getServer().getPluginManager().registerEvents((Listener) new CraftingListener(), (Plugin) this);
 		initRecipeItems();
 		FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
 		furnaceRecipes.rottenFleshtoLeather();
