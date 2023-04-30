@@ -1,10 +1,12 @@
-package me.ShermansWorld.AlathraExtras;
+package me.ShermansWorld.AlathraExtras.misc;
 
 import java.util.Arrays;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.CraftItemEvent;
+
+import me.ShermansWorld.AlathraExtras.Helper;
 
 public class CraftingEvent implements Listener {
 	@EventHandler

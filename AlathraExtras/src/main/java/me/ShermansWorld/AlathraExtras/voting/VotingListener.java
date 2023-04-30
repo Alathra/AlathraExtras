@@ -12,7 +12,6 @@ import com.bencodez.votingplugin.VotingPluginMain;
 import com.bencodez.votingplugin.events.PlayerVoteEvent;
 import com.bencodez.votingplugin.user.UserManager;
 
-import me.ShermansWorld.AlathraExtras.CustomListeners;
 import me.ShermansWorld.AlathraExtras.Main;
 public class VotingListener implements Listener {
 	
@@ -34,7 +33,7 @@ public static ArrayList<Player> playersWhoVoted = new ArrayList<Player>();
 		
 		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
 		    public void run() {
-		    	CustomListeners.checkForAllSitesVoted();
+		    	CustomVotingListener.checkForAllSitesVoted();
 		    }
 		}, 20L); //20 Tick (1 Second) delay before run() is called
 				

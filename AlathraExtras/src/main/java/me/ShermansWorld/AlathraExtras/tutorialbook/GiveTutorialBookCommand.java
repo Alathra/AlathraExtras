@@ -5,9 +5,9 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.ShermansWorld.AlathraExtras.CustomItems;
 import me.ShermansWorld.AlathraExtras.Helper;
 import me.ShermansWorld.AlathraExtras.Main;
+import me.ShermansWorld.AlathraExtras.misc.CustomItems;
 
 public class GiveTutorialBookCommand implements CommandExecutor {
 	

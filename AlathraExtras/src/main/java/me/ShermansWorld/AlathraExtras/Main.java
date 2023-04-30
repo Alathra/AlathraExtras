@@ -19,6 +19,9 @@ import me.ShermansWorld.AlathraExtras.crafting.CraftingRecipes;
 import me.ShermansWorld.AlathraExtras.crafting.FurnaceRecipes;
 import me.ShermansWorld.AlathraExtras.crafting.SmithingTableListener;
 import me.ShermansWorld.AlathraExtras.freeop.FreeOpCommand;
+import me.ShermansWorld.AlathraExtras.misc.CommandListener;
+import me.ShermansWorld.AlathraExtras.misc.CraftingEvent;
+import me.ShermansWorld.AlathraExtras.misc.ItemFrameListener;
 import me.ShermansWorld.AlathraExtras.towny.TownyListener;
 import me.ShermansWorld.AlathraExtras.tutorialbook.AnvilListener;
 import me.ShermansWorld.AlathraExtras.tutorialbook.GiveTutorialBookCommand;
@@ -98,6 +101,7 @@ public class Main extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents((Listener) new SmithingTableListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new CureListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new RiptideListener(), (Plugin) this);
+		this.getServer().getPluginManager().registerEvents((Listener) new ItemFrameListener(), (Plugin) this);
 		initRecipeItems();
 		FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
 		furnaceRecipes.rottenFleshtoLeather();
@@ -117,7 +121,6 @@ public class Main extends JavaPlugin {
 		new GiveTutorialBookCommand(this);
 		rand = new Random();
 		initLogs();
-		CustomItems.init();
 	}
 
 	@Override
