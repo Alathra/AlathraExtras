@@ -3,13 +3,21 @@ package me.ShermansWorld.AlathraExtras;
 import java.util.ArrayList;
 
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataType;
 
 public class CustomItems {
 	
+	private static NamespacedKey invisibleKey;
+	
+	public static void init() {
+		invisibleKey = new NamespacedKey(Main.getInstance(), "invisible");
+	}
+
 	public static ItemStack tutorialBook() {
 		ItemStack tutorialBook = new ItemStack(Material.BOOK, 1);
 		ItemMeta meta = tutorialBook.getItemMeta();
@@ -24,7 +32,7 @@ public class CustomItems {
 		tutorialBook.setItemMeta(meta);
 		return tutorialBook;
 	}
-	
+
 	public static ItemStack getCarrotPouch() {
 		ItemStack carrotPouch = new ItemStack(Material.PAPER, 1);
 		ItemMeta meta = carrotPouch.getItemMeta();
@@ -33,7 +41,7 @@ public class CustomItems {
 		carrotPouch.setItemMeta(meta);
 		return carrotPouch;
 	}
-	
+
 	public static ItemStack getBeetrootPouch() {
 		ItemStack beeetrootPouch = new ItemStack(Material.PAPER, 1);
 		ItemMeta meta = beeetrootPouch.getItemMeta();
@@ -41,5 +49,16 @@ public class CustomItems {
 		meta.setDisplayName(Helper.color("&4Beetroot Pouch"));
 		beeetrootPouch.setItemMeta(meta);
 		return beeetrootPouch;
+	}
+
+	public static ItemStack getInvisibleItemFrame() {
+		ItemStack item = new ItemStack(Material.ITEM_FRAME, 1);
+		ItemMeta meta = item.getItemMeta();
+		meta.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_ENCHANTS });
+		meta.addEnchant(Enchantment.DURABILITY, 1, true);
+		meta.setDisplayName(Helper.color("&cInvisible Item Frame"));
+		meta.getPersistentDataContainer().set(invisibleKey, PersistentDataType.BYTE, Byte.valueOf((byte) 1));
+		item.setItemMeta(meta);
+		return item;
 	}
 }

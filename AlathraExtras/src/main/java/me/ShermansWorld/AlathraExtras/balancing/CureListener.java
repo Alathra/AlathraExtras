@@ -1,4 +1,4 @@
-package me.ShermansWorld.AlathraExtras.disablevillagers;
+package me.ShermansWorld.AlathraExtras.balancing;
 
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;

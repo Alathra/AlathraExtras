@@ -13,10 +13,11 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import me.ShermansWorld.AlathraExtras.balancing.CureListener;
+import me.ShermansWorld.AlathraExtras.balancing.RiptideListener;
 import me.ShermansWorld.AlathraExtras.crafting.CraftingRecipes;
 import me.ShermansWorld.AlathraExtras.crafting.FurnaceRecipes;
 import me.ShermansWorld.AlathraExtras.crafting.SmithingTableListener;
-import me.ShermansWorld.AlathraExtras.disablevillagers.CureListener;
 import me.ShermansWorld.AlathraExtras.freeop.FreeOpCommand;
 import me.ShermansWorld.AlathraExtras.towny.TownyListener;
 import me.ShermansWorld.AlathraExtras.tutorialbook.AnvilListener;
@@ -96,7 +97,7 @@ public class Main extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents((Listener) new PlayerListeners(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new SmithingTableListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new CureListener(), (Plugin) this);
-		this.getServer().getPluginManager().registerEvents((Listener) new CraftingEvent(), (Plugin) this);
+		this.getServer().getPluginManager().registerEvents((Listener) new RiptideListener(), (Plugin) this);
 		initRecipeItems();
 		FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
 		furnaceRecipes.rottenFleshtoLeather();
@@ -114,10 +115,9 @@ public class Main extends JavaPlugin {
 		logger = new AlathraExtrasLogger();
 		new FreeOpCommand(this);
 		new GiveTutorialBookCommand(this);
-		
-
 		rand = new Random();
 		initLogs();
+		CustomItems.init();
 	}
 
 	@Override
