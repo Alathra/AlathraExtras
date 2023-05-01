@@ -1,9 +1,12 @@
 package me.ShermansWorld.AlathraExtras.tpacooldown.listener.essentialsx;
 
+import me.ShermansWorld.AlathraExtras.Helper;
+import me.ShermansWorld.AlathraExtras.Main;
 import me.ShermansWorld.AlathraExtras.tpacooldown.CooldownCache;
 import me.ShermansWorld.AlathraExtras.tpacooldown.CooldownTPACache;
 import net.ess3.api.IUser;
 import net.ess3.api.events.teleport.PreTeleportEvent;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -26,12 +29,23 @@ public class PreTeleportListener implements Listener {
 
         CooldownTPACache.teleportingRemove(uuid);
 
+        // Check TPA Cost
+        final double bal = Main.economy.getBalance(Bukkit.getOfflinePlayer(p.getUniqueId()));
+        if (bal < 50) {
+            p.sendMessage(Helper.Chatlabel() + Helper.color("&cTeleportation canceled. You need at least &a$50 &cto teleport!"));
+            e.setCancelled(true);
+            return;
+        }
+
         // Check if player has cooldown
         if (CooldownCache.isCooldownActive(uuid)) {
             e.setCancelled(true);
             p.sendMessage(CooldownCache.getCooldownMessage(CooldownCache.get(uuid)));
             return;
         }
+
+        // TPA Cost
+        Main.economy.withdrawPlayer(p, 50);
 
         // Add different user depending on what type of teleport this is
         CooldownCache.add(uuid);

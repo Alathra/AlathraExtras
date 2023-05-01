@@ -1,6 +1,9 @@
 package me.ShermansWorld.AlathraExtras.tpacooldown.listener.player;
 
+import me.ShermansWorld.AlathraExtras.Helper;
+import me.ShermansWorld.AlathraExtras.Main;
 import me.ShermansWorld.AlathraExtras.tpacooldown.CooldownCache;
+import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -28,9 +31,21 @@ public class PlayerCommandPreprocessListener implements Listener {
 
         if (!BLOCKED_COMMANDS.contains(originalCommand)) return;
 
+        // Tpa cost
+        final double bal = Main.economy.getBalance(Bukkit.getOfflinePlayer(e.getPlayer().getUniqueId()));
+        if (bal < 50) {
+            e.getPlayer().sendMessage(Helper.Chatlabel() + Helper.color("&cTeleportation request canceled. You need at least &a$50 &cto run this command!"));
+            e.setCancelled(true);
+            return;
+        }
+
         if (CooldownCache.isCooldownActive(e.getPlayer().getUniqueId())) {
             e.setCancelled(true);
             e.getPlayer().sendMessage(CooldownCache.getCooldownMessage(CooldownCache.get(e.getPlayer().getUniqueId())));
+            return;
         }
+
+        // TPA Cost
+        Main.economy.withdrawPlayer(e.getPlayer(), 50);
     }
 }
