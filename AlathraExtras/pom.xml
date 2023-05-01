@@ -11,6 +11,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
 	</properties>
 
 	<repositories>
@@ -20,16 +22,20 @@
 			<url>https://papermc.io/repo/repository/maven-public/</url>
 		</repository>
 		<repository>
-			<id>everything</id>
-			<url>https://repo.citizensnpcs.co/</url>
+			<id>citizens-repo</id>
+			<url>https://maven.citizensnpcs.co/repo</url>
 		</repository>
 		<repository>
-			<id>jitpack.io</id>
-			<url>https://jitpack.io</url>
+			<id>glaremasters repo</id>
+			<url>https://repo.glaremasters.me/repository/towny/</url>
 		</repository>
 		<repository>
 			<id>BenCodez Repo</id>
 			<url>https://nexus.bencodez.com/repository/maven-public/</url>
+		</repository>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
 		</repository>
 	</repositories>
 
@@ -47,16 +53,29 @@
 			<version>2.0.29-SNAPSHOT</version>
 			<type>jar</type>
 			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>*</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>com.github.LlmDl</groupId>
-			<artifactId>Towny</artifactId>
-			<version>0.98.3.3</version>
+			<groupId>com.palmergames.bukkit.towny</groupId>
+			<artifactId>towny</artifactId>
+			<version>0.98.6.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.github.TownyAdvanced</groupId>
+			<artifactId>TownyChat</artifactId>
+			<version>0.104</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.bencodez</groupId>
 			<artifactId>votingplugin</artifactId>
-			<version>6.9.3</version>
+			<version>6.12.1</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
