@@ -1,4 +1,4 @@
-package me.ShermansWorld.AlathraExtras;
+package me.ShermansWorld.AlathraExtras.misc;
 
 import java.util.ArrayList;
 
@@ -8,8 +8,10 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import me.ShermansWorld.AlathraExtras.Helper;
+
 public class CustomItems {
-	
+
 	public static ItemStack tutorialBook() {
 		ItemStack tutorialBook = new ItemStack(Material.BOOK, 1);
 		ItemMeta meta = tutorialBook.getItemMeta();
@@ -24,7 +26,7 @@ public class CustomItems {
 		tutorialBook.setItemMeta(meta);
 		return tutorialBook;
 	}
-	
+
 	public static ItemStack getCarrotPouch() {
 		ItemStack carrotPouch = new ItemStack(Material.PAPER, 1);
 		ItemMeta meta = carrotPouch.getItemMeta();
@@ -33,7 +35,7 @@ public class CustomItems {
 		carrotPouch.setItemMeta(meta);
 		return carrotPouch;
 	}
-	
+
 	public static ItemStack getBeetrootPouch() {
 		ItemStack beeetrootPouch = new ItemStack(Material.PAPER, 1);
 		ItemMeta meta = beeetrootPouch.getItemMeta();
@@ -41,5 +43,13 @@ public class CustomItems {
 		meta.setDisplayName(Helper.color("&4Beetroot Pouch"));
 		beeetrootPouch.setItemMeta(meta);
 		return beeetrootPouch;
+	}
+
+	public static ItemStack getInvisibleItemFrame() {
+		ItemStack item = new ItemStack(Material.ITEM_FRAME, 1);
+		ItemMeta meta = item.getItemMeta();
+		meta.setDisplayName(Helper.color("&cInvisible Item Frame"));
+		item.setItemMeta(meta);
+		return item;
 	}
 }

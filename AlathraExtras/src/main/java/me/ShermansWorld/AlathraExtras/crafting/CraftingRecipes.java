@@ -9,9 +9,9 @@ import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
-import me.ShermansWorld.AlathraExtras.CustomItems;
 import me.ShermansWorld.AlathraExtras.Helper;
 import me.ShermansWorld.AlathraExtras.Main;
+import me.ShermansWorld.AlathraExtras.misc.CustomItems;
 
 public class CraftingRecipes {
 	

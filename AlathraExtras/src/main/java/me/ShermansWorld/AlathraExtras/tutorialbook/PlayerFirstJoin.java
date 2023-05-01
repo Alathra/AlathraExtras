@@ -5,7 +5,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import me.ShermansWorld.AlathraExtras.CustomItems;
+import me.ShermansWorld.AlathraExtras.misc.CustomItems;
 
 public class PlayerFirstJoin implements Listener {
 	@EventHandler
