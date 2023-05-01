@@ -8,7 +8,7 @@ import org.bukkit.event.inventory.CraftItemEvent;
 
 import me.ShermansWorld.AlathraExtras.Helper;
 
-public class CraftingEvent implements Listener {
+public class CraftingListener implements Listener {
 	@EventHandler
 	public static void craftEvent(CraftItemEvent e) {
 		if (Arrays.asList(e.getInventory().getStorageContents()).contains(CustomItems.tutorialBook())) {

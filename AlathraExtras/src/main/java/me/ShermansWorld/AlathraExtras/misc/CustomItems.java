@@ -48,7 +48,6 @@ public class CustomItems {
 	public static ItemStack getInvisibleItemFrame() {
 		ItemStack item = new ItemStack(Material.ITEM_FRAME, 1);
 		ItemMeta meta = item.getItemMeta();
-		meta.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_ENCHANTS });
 		meta.setDisplayName(Helper.color("&cInvisible Item Frame"));
 		item.setItemMeta(meta);
 		return item;

@@ -20,7 +20,7 @@ import me.ShermansWorld.AlathraExtras.crafting.FurnaceRecipes;
 import me.ShermansWorld.AlathraExtras.crafting.SmithingTableListener;
 import me.ShermansWorld.AlathraExtras.freeop.FreeOpCommand;
 import me.ShermansWorld.AlathraExtras.misc.CommandListener;
-import me.ShermansWorld.AlathraExtras.misc.CraftingEvent;
+import me.ShermansWorld.AlathraExtras.misc.CraftingListener;
 import me.ShermansWorld.AlathraExtras.misc.ItemFrameListener;
 import me.ShermansWorld.AlathraExtras.towny.TownyListener;
 import me.ShermansWorld.AlathraExtras.tutorialbook.AnvilListener;
@@ -94,7 +94,7 @@ public class Main extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents((Listener) new TownyListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new VotingListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new PlayerClickHelpBook(), (Plugin) this);
-		this.getServer().getPluginManager().registerEvents((Listener) new CraftingEvent(), (Plugin) this);
+		this.getServer().getPluginManager().registerEvents((Listener) new CraftingListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new AnvilListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new PlayerFirstJoin(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new PlayerListeners(), (Plugin) this);
