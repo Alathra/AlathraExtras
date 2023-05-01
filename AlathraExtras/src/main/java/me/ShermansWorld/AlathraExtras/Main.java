@@ -1,18 +1,5 @@
 package me.ShermansWorld.AlathraExtras;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Random;
-
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.event.Listener;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.RegisteredServiceProvider;
-import org.bukkit.plugin.java.JavaPlugin;
-
 import me.ShermansWorld.AlathraExtras.balancing.CureListener;
 import me.ShermansWorld.AlathraExtras.balancing.RiptideListener;
 import me.ShermansWorld.AlathraExtras.crafting.CraftingRecipes;
@@ -23,12 +10,30 @@ import me.ShermansWorld.AlathraExtras.misc.CommandListener;
 import me.ShermansWorld.AlathraExtras.misc.CraftingListener;
 import me.ShermansWorld.AlathraExtras.misc.ItemFrameListener;
 import me.ShermansWorld.AlathraExtras.towny.TownyListener;
+import me.ShermansWorld.AlathraExtras.tpacooldown.CooldownManager;
+import me.ShermansWorld.AlathraExtras.tpacooldown.listener.essentialsx.PreTeleportListener;
+import me.ShermansWorld.AlathraExtras.tpacooldown.listener.essentialsx.TeleportRequestResponseListener;
+import me.ShermansWorld.AlathraExtras.tpacooldown.listener.player.PlayerCommandPreprocessListener;
+import me.ShermansWorld.AlathraExtras.tpacooldown.listener.player.PlayerJoinListener;
+import me.ShermansWorld.AlathraExtras.tpacooldown.listener.player.PlayerQuitListener;
 import me.ShermansWorld.AlathraExtras.tutorialbook.AnvilListener;
 import me.ShermansWorld.AlathraExtras.tutorialbook.GiveTutorialBookCommand;
 import me.ShermansWorld.AlathraExtras.tutorialbook.PlayerClickHelpBook;
 import me.ShermansWorld.AlathraExtras.tutorialbook.PlayerFirstJoin;
 import me.ShermansWorld.AlathraExtras.voting.VotingListener;
 import net.milkbowl.vault.economy.Economy;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.event.Listener;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.RegisteredServiceProvider;
+import org.bukkit.plugin.java.JavaPlugin;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Random;
 
 public class Main extends JavaPlugin {
 
@@ -102,6 +107,11 @@ public class Main extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents((Listener) new CureListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new RiptideListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new ItemFrameListener(), (Plugin) this);
+		this.getServer().getPluginManager().registerEvents((Listener) new PlayerJoinListener(), (Plugin) this);
+		this.getServer().getPluginManager().registerEvents((Listener) new PlayerQuitListener(), (Plugin) this);
+		this.getServer().getPluginManager().registerEvents((Listener) new PlayerCommandPreprocessListener(), (Plugin) this);
+		this.getServer().getPluginManager().registerEvents((Listener) new PreTeleportListener(), (Plugin) this);
+		this.getServer().getPluginManager().registerEvents((Listener) new TeleportRequestResponseListener(), (Plugin) this);
 		initRecipeItems();
 		FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
 		furnaceRecipes.rottenFleshtoLeather();
@@ -120,11 +130,13 @@ public class Main extends JavaPlugin {
 		new FreeOpCommand(this);
 		new GiveTutorialBookCommand(this);
 		rand = new Random();
+		if (instance.getServer().getPluginManager().isPluginEnabled("Essentials")) CooldownManager.getInstance();
 		initLogs();
 	}
 
 	@Override
 	public void onDisable() {
+		if (instance.getServer().getPluginManager().isPluginEnabled("Essentials")) CooldownManager.onDisable();
 	}
 
 }
