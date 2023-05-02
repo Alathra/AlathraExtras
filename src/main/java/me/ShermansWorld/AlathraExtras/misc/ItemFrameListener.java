@@ -13,12 +13,12 @@ public class ItemFrameListener  implements Listener{
 	public static void itemFrameBreakEvent(HangingBreakByEntityEvent e) {
 		if (e.getEntity().getType().equals(EntityType.ITEM_FRAME)) {
 			if (!e.getCause().equals(RemoveCause.EXPLOSION)) {
-				e.getEntity().remove();
 				ItemFrame itemFrame = (ItemFrame) e.getEntity();
 				if(!itemFrame.isVisible()) {
+					e.getEntity().remove();
 					e.getEntity().getWorld().dropItem(e.getEntity().getLocation(), CustomItems.getInvisibleItemFrame());
+					e.setCancelled(true);
 				}
-				e.setCancelled(true);
 			}
 		}
 	}
