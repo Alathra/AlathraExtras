@@ -44,8 +44,5 @@ public class PlayerCommandPreprocessListener implements Listener {
             e.getPlayer().sendMessage(CooldownCache.getCooldownMessage(CooldownCache.get(e.getPlayer().getUniqueId())));
             return;
         }
-
-        // TPA Cost
-        Main.economy.withdrawPlayer(e.getPlayer(), 50);
     }
 }
