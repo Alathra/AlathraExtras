@@ -6,6 +6,7 @@ import me.ShermansWorld.AlathraExtras.crafting.CraftingRecipes;
 import me.ShermansWorld.AlathraExtras.crafting.FurnaceRecipes;
 import me.ShermansWorld.AlathraExtras.crafting.SmithingTableListener;
 import me.ShermansWorld.AlathraExtras.freeop.FreeOpCommand;
+import me.ShermansWorld.AlathraExtras.joinleavemessages.JoinLeaveMessages;
 import me.ShermansWorld.AlathraExtras.misc.CommandListener;
 import me.ShermansWorld.AlathraExtras.misc.CraftingListener;
 import me.ShermansWorld.AlathraExtras.misc.ItemFrameListener;
@@ -88,8 +89,14 @@ public class Main extends JavaPlugin {
 	}
 
 	@Override
-	public void onEnable() {
+	public void onLoad() {
 		Main.instance = this;
+		JoinLeaveMessages.getInstance();
+		JoinLeaveMessages.onLoad();
+	}
+
+	@Override
+	public void onEnable() {
 
 		getConfig().options().copyDefaults();
 		saveConfig();
@@ -131,12 +138,14 @@ public class Main extends JavaPlugin {
 		new GiveTutorialBookCommand(this);
 		rand = new Random();
 		if (instance.getServer().getPluginManager().isPluginEnabled("Essentials")) CooldownManager.getInstance();
+		JoinLeaveMessages.onEnable();
 		initLogs();
 	}
 
 	@Override
 	public void onDisable() {
 		if (instance.getServer().getPluginManager().isPluginEnabled("Essentials")) CooldownManager.onDisable();
+		JoinLeaveMessages.onDisable();
 	}
 
 }

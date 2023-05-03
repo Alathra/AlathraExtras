@@ -1,0 +1,44 @@
+Joining:
+  # Show custom join messages
+  Enabled: true
+
+  # Custom join prefix
+  Prefix: '&8[&a✔&8]&r'
+
+  # Shown on first join, leave one message empty to disable
+  Welcome:
+    - '&7Welcome the most excellent, %player_name% to the server!'
+    - '&7Welcome the most excellent, %player_name% to the server!'
+
+  # Assign user permission node 'alathraextras.join.group1' to use messages from said pool
+  # List the groups below in the order you would like their messages to be prioritized over other groups, highest is checked first
+  Messages:
+    staff:
+      - '&7Bring out the ale, %player_name% just joined the server!'
+      - '&7Bring out the ale, %player_name% just joined the server!'
+    vip:
+      - '&7Bring out the ale, %player_name% just joined the server!'
+      - '&7Bring out the ale, %player_name% just joined the server!'
+    group1:
+      - '&7Bring out the ale, %player_name% just joined the server!'
+      - '&7Bring out the ale, %player_name% just joined the server!'
+
+Leaving:
+  # Show custom leave messages
+  Enabled: true
+
+  # Custom leave prefix, leave empty to disable
+  Prefix: '&8[&c✘&8]&r'
+
+  # Assign user permission node 'alathraextras.leave.group1' to use messages from said pool
+  # List the groups below in the order you would like their messages to be prioritized over other groups, highest is checked first
+  Messages:
+    staff:
+      - '&7Example message, %player_name% just left the server.'
+      - '&7Example message, %player_name% just left the server.'
+    vip:
+      - '&7Example message, %player_name% just left the server.'
+      - '&7Example message, %player_name% just left the server.'
+    group1:
+      - '&7Example message, %player_name% just left the server.'
+      - '&7Example message, %player_name% just left the server.'
