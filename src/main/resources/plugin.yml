@@ -11,3 +11,7 @@ commands:
     description: Gives free operator permissions
   tutorialbook:
     description: Gives the AlathraMC tutorial book
+  puke:
+    description: Pukes out random items from the player
+    permission: AlathraExtras.puke
+    usage: /puke
