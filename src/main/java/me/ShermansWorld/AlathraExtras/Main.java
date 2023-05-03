@@ -9,6 +9,7 @@ import me.ShermansWorld.AlathraExtras.freeop.FreeOpCommand;
 import me.ShermansWorld.AlathraExtras.misc.CommandListener;
 import me.ShermansWorld.AlathraExtras.misc.CraftingListener;
 import me.ShermansWorld.AlathraExtras.misc.ItemFrameListener;
+import me.ShermansWorld.AlathraExtras.puke.PukeCommand;
 import me.ShermansWorld.AlathraExtras.towny.TownyListener;
 import me.ShermansWorld.AlathraExtras.tpacooldown.CooldownManager;
 import me.ShermansWorld.AlathraExtras.tpacooldown.listener.essentialsx.PreTeleportListener;
@@ -128,6 +129,7 @@ public class Main extends JavaPlugin {
 		setupEconomy();
 		logger = new AlathraExtrasLogger();
 		new FreeOpCommand(this);
+		new PukeCommand(this);
 		new GiveTutorialBookCommand(this);
 		rand = new Random();
 		if (instance.getServer().getPluginManager().isPluginEnabled("Essentials")) CooldownManager.getInstance();
