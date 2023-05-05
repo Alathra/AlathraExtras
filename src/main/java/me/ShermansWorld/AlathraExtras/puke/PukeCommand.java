@@ -53,7 +53,7 @@ public class PukeCommand implements CommandExecutor, TabCompleter {
     }
 
     private void doPuke(Puke puke) {
-        Bukkit.getLogger().info("puking for " + puke.getTarget().getName());
+//        Bukkit.getLogger().info("puking for " + puke.getTarget().getName());
         //decrement duration
         puke.decrDura();
         //check remaining time
