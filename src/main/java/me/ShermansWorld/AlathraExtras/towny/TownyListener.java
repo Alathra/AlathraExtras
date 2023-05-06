@@ -112,7 +112,7 @@ public class TownyListener implements Listener {
 		}
 	}
 
-	@EventHandler
+	/*@EventHandler
 	public static void onChatMsg(AsyncChatHookEvent e) {
 		switch (e.getChannel().getName()) {
 			case "global":
@@ -143,7 +143,7 @@ public class TownyListener implements Listener {
 				break;
 		}
 
-	}
+	}*/
 	
 	@EventHandler
 	public static void onTownCreation(NewTownEvent e) {
