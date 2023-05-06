@@ -89,6 +89,8 @@ public class PukeCommand implements CommandExecutor, TabCompleter {
         item.setCustomNameVisible(false);
         item.setTicksLived(5800);
         item.setVelocity(direction);
+        item.addScoreboardTag("puke");
+        item.addScoreboardTag("puke2");
     }
 
 
