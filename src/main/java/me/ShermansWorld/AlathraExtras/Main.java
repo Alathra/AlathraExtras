@@ -9,6 +9,7 @@ import me.ShermansWorld.AlathraExtras.freeop.FreeOpCommand;
 import me.ShermansWorld.AlathraExtras.misc.CommandListener;
 import me.ShermansWorld.AlathraExtras.misc.CraftingListener;
 import me.ShermansWorld.AlathraExtras.misc.ItemFrameListener;
+import me.ShermansWorld.AlathraExtras.puke.HopperListener;
 import me.ShermansWorld.AlathraExtras.puke.PukeCommand;
 import me.ShermansWorld.AlathraExtras.towny.TownyListener;
 import me.ShermansWorld.AlathraExtras.tpacooldown.CooldownManager;
@@ -25,6 +26,7 @@ import me.ShermansWorld.AlathraExtras.voting.VotingListener;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.block.Hopper;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -97,6 +99,7 @@ public class Main extends JavaPlugin {
 		TownyListener.initTownyChat();
 
 		this.getServer().getPluginManager().registerEvents((Listener) new CommandListener(), (Plugin) this);
+		this.getServer().getPluginManager().registerEvents((Listener) new HopperListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new TownyListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new VotingListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new PlayerClickHelpBook(), (Plugin) this);
