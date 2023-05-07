@@ -112,23 +112,23 @@ public class TownyListener implements Listener {
 		}
 	}
 
-	/*@EventHandler
+	@EventHandler
 	public static void onChatMsg(AsyncChatHookEvent e) {
 		switch (e.getChannel().getName()) {
-			case "global":
-				e.setMessage(Helper.color("&f" + e.getMessage()));
-				break;
+			//case "global":
+				//e.setMessage(Helper.color("&f" + e.getMessage()));
+				//break;
 			case "local":
 				e.setMessage(Helper.color("&5" + e.getMessage()));
 				break;
 			case "rp":
-				e.setMessage(Helper.color("&9" + e.getMessage()));
+				e.setMessage(Helper.color("&d" + e.getMessage()));
 				break;
 			case "shout":
-				e.setMessage(Helper.color("&c" + e.getMessage()));
+				e.setMessage(Helper.color("&d" + e.getMessage()));
 				break;
 			case "whisper":
-				e.setMessage(Helper.color("&6" + e.getMessage()));
+				e.setMessage(Helper.color("&d" + e.getMessage()));
 				break;
 			case "town":
 				e.setMessage(Helper.color("&b" + e.getMessage()));
@@ -143,7 +143,7 @@ public class TownyListener implements Listener {
 				break;
 		}
 
-	}*/
+	}
 	
 	@EventHandler
 	public static void onTownCreation(NewTownEvent e) {
