@@ -4,13 +4,13 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.ItemFrame;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.hanging.HangingBreakByEntityEvent;
+import org.bukkit.event.hanging.HangingBreakEvent;
 import org.bukkit.event.hanging.HangingBreakEvent.RemoveCause;
 import org.bukkit.event.hanging.HangingPlaceEvent;
 
 public class ItemFrameListener  implements Listener{
 	@EventHandler
-	public static void itemFrameBreakEvent(HangingBreakByEntityEvent e) {
+	public static void itemFrameBreakEvent(HangingBreakEvent e) {
 		if (e.getEntity().getType().equals(EntityType.ITEM_FRAME)) {
 			if (!e.getCause().equals(RemoveCause.EXPLOSION)) {
 				ItemFrame itemFrame = (ItemFrame) e.getEntity();
