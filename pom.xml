@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.ShermansWorld</groupId>
-    <artifactId>AlathraExtrasND47Test</artifactId>
-    <version>1.4.1</version>
+    <artifactId>AlathraExtras</artifactId>
+    <version>1.4.2</version>
     <packaging>jar</packaging>
 
-    <name>AlathraExtrasND47Test</name>
+    <name>AlathraExtras</name>
     <url>http://maven.apache.org</url>
 
     <properties>
