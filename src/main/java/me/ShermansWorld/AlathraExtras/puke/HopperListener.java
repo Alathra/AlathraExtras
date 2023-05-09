@@ -1,6 +1,5 @@
 package me.ShermansWorld.AlathraExtras.puke;
 
-import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -11,7 +10,7 @@ public class HopperListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onHopper(InventoryPickupItemEvent event) {
-        Bukkit.getLogger().info(event.getItem().getScoreboardTags().toString());
+//        Bukkit.getLogger().info(event.getItem().getScoreboardTags().toString());
         if(event.getItem().getScoreboardTags().contains("puke") || event.getItem().getScoreboardTags().contains("puke2")) {
             event.setCancelled(true);
         }
@@ -19,7 +18,7 @@ public class HopperListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onHopper(EntityPickupItemEvent event) {
-        Bukkit.getLogger().info(event.getItem().getScoreboardTags().toString());
+//        Bukkit.getLogger().info(event.getItem().getScoreboardTags().toString());
         if(event.getItem().getScoreboardTags().contains("puke") || event.getItem().getScoreboardTags().contains("puke2")) {
             event.setCancelled(true);
         }
