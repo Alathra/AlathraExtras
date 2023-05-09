@@ -81,7 +81,7 @@ public class PlayerQuitListener implements Listener {
         return null;
     }
 
-    @EventHandler(priority = EventPriority.LOWEST)
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onPlayerQuit(PlayerQuitEvent e) {
         final Player p = e.getPlayer();
 
