@@ -93,7 +93,7 @@ public class PlayerJoinListener implements Listener {
         return null;
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerJoin(PlayerJoinEvent e) {
         final Player p = e.getPlayer();
 
