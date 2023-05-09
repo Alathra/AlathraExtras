@@ -10,6 +10,7 @@ import me.ShermansWorld.AlathraExtras.joinleavemessages.JoinLeaveMessages;
 import me.ShermansWorld.AlathraExtras.misc.CommandListener;
 import me.ShermansWorld.AlathraExtras.misc.CraftingListener;
 import me.ShermansWorld.AlathraExtras.misc.ItemFrameListener;
+import me.ShermansWorld.AlathraExtras.misc.MsgEditor;
 import me.ShermansWorld.AlathraExtras.puke.HopperListener;
 import me.ShermansWorld.AlathraExtras.puke.PukeCommand;
 import me.ShermansWorld.AlathraExtras.towny.TownyListener;
@@ -123,6 +124,7 @@ public class Main extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents((Listener) new PlayerCommandPreprocessListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new PreTeleportListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new TeleportRequestResponseListener(), (Plugin) this);
+		this.getServer().getPluginManager().registerEvents((Listener) new MsgEditor(), (Plugin) this);
 		initRecipeItems();
 		FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
 		furnaceRecipes.rottenFleshtoLeather();
