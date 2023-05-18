@@ -1,6 +1,7 @@
 package me.ShermansWorld.AlathraExtras;
 
 import me.ShermansWorld.AlathraExtras.balancing.CureListener;
+import me.ShermansWorld.AlathraExtras.balancing.GrindstoneListener;
 import me.ShermansWorld.AlathraExtras.balancing.RiptideListener;
 import me.ShermansWorld.AlathraExtras.crafting.CraftingRecipes;
 import me.ShermansWorld.AlathraExtras.crafting.FurnaceRecipes;
@@ -28,7 +29,6 @@ import me.ShermansWorld.AlathraExtras.voting.VotingListener;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.block.Hopper;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -125,6 +125,7 @@ public class Main extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents((Listener) new PreTeleportListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new TeleportRequestResponseListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new MsgEditor(), (Plugin) this);
+		this.getServer().getPluginManager().registerEvents((Listener) new GrindstoneListener(), (Plugin) this);
 		initRecipeItems();
 		FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
 		furnaceRecipes.rottenFleshtoLeather();
