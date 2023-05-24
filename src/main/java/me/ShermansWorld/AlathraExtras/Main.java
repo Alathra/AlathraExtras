@@ -26,6 +26,7 @@ import me.ShermansWorld.AlathraExtras.tutorialbook.GiveTutorialBookCommand;
 import me.ShermansWorld.AlathraExtras.tutorialbook.PlayerClickHelpBook;
 import me.ShermansWorld.AlathraExtras.tutorialbook.PlayerFirstJoin;
 import me.ShermansWorld.AlathraExtras.voting.VotingListener;
+import me.ShermansWorld.AlathraExtras.disablespawners.DisableSpawners;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -105,7 +106,8 @@ public class Main extends JavaPlugin {
 		getConfig().options().copyDefaults();
 		saveConfig();
 		TownyListener.initTownyChat();
-
+		
+		this.getServer().getPluginManager().registerEvents((Listener) new DisableSpawners(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new CommandListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new HopperListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new TownyListener(), (Plugin) this);
