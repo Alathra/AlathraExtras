@@ -3,6 +3,8 @@ package me.ShermansWorld.AlathraExtras;
 import me.ShermansWorld.AlathraExtras.balancing.CureListener;
 import me.ShermansWorld.AlathraExtras.balancing.GrindstoneListener;
 import me.ShermansWorld.AlathraExtras.balancing.RiptideListener;
+import me.ShermansWorld.AlathraExtras.cm.CMVoteCommands;
+import me.ShermansWorld.AlathraExtras.cm.CMVoteData;
 import me.ShermansWorld.AlathraExtras.crafting.CraftingRecipes;
 import me.ShermansWorld.AlathraExtras.crafting.FurnaceRecipes;
 import me.ShermansWorld.AlathraExtras.crafting.SmithingTableListener;
@@ -49,6 +51,9 @@ public class Main extends JavaPlugin {
 	public static Economy economy = null;
 
 	public static Random rand;
+	
+	public static CMVoteData cmVoteData;
+
 
 	public static Main getInstance() {
 		return Main.instance;
@@ -73,6 +78,10 @@ public class Main extends JavaPlugin {
 		}
 		economy = rsp.getProvider();
 		return economy != null;
+	}
+	
+	private void initData() {
+		cmVoteData = new CMVoteData(this);
 	}
 
 	public static void initLogs() {
@@ -129,6 +138,7 @@ public class Main extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents((Listener) new MsgEditor(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new GrindstoneListener(), (Plugin) this);
 		initRecipeItems();
+		initData();
 		FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
 		furnaceRecipes.rottenFleshtoLeather();
 		CraftingRecipes craftingRecipes = new CraftingRecipes();
@@ -146,6 +156,7 @@ public class Main extends JavaPlugin {
 		new FreeOpCommand(this);
 		new PukeCommand(this);
 		new GiveTutorialBookCommand(this);
+		new CMVoteCommands(this);
 		rand = new Random();
 		if (instance.getServer().getPluginManager().isPluginEnabled("Essentials")) CooldownManager.getInstance();
 		JoinLeaveMessages.onEnable();
