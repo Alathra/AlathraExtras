@@ -1,7 +1,6 @@
 package me.ShermansWorld.AlathraExtras.cm;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashSet;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Statistic;
@@ -12,9 +11,16 @@ import me.ShermansWorld.AlathraExtras.Main;
 
 public class CMUtil {
 
-	public static ArrayList<String> candidates = new ArrayList<String>(
-			Arrays.asList("slayer10300, gnomesaying_, xdmoon, iclockwork"));
-
+	public static HashSet<String> candidates = new HashSet<>();
+		
+	static {
+		candidates.add("slayer10300");
+		candidates.add("gnomesaying_");
+		candidates.add("xdmoon");
+		candidates.add("iclockwork");
+	}
+	
+	
 	public static boolean hasEnoughPlaytime(Player p) {
 		// Name misleading, actually records ticks
 		long playtime = p.getStatistic(Statistic.PLAY_ONE_MINUTE);
@@ -41,14 +47,12 @@ public class CMUtil {
 	}
 
 	public static void addVote(Player p, String candidate) {
-		if (!isAlt(p, candidate)) {
 			Main.cmVoteData.getConfig().set(candidate + "." + p.getUniqueId().toString(), null);
 			Main.cmVoteData.getConfig().set(candidate + "." + p.getUniqueId().toString() + ".name", p.getName());
 			Main.cmVoteData.getConfig().set(candidate + "." + p.getUniqueId().toString() + ".ip",
 					p.getAddress().toString());
 			Main.cmVoteData.saveConfig();
 			p.sendMessage(Helper.Chatlabel() + Helper.color("&a&lVote added to &e" + candidate));
-		}
 	}
 
 	public static void removeVote(Player p, String candidate) {

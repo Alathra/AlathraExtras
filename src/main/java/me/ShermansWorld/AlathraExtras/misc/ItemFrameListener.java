@@ -16,6 +16,7 @@ public class ItemFrameListener  implements Listener{
 				ItemFrame itemFrame = (ItemFrame) e.getEntity();
 				if(!itemFrame.isVisible()) {
 					e.getEntity().remove();
+					e.getEntity().getWorld().dropItem(e.getEntity().getLocation(), itemFrame.getItem());
 					e.getEntity().getWorld().dropItem(e.getEntity().getLocation(), CustomItems.getInvisibleItemFrame());
 					e.setCancelled(true);
 				}

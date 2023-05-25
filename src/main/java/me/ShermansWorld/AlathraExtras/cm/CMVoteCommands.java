@@ -34,7 +34,7 @@ public class CMVoteCommands implements CommandExecutor {
 					helpMsg(p);
 					return false;
 				}
-				String candidate = args[0].toLowerCase();
+				String candidate = args[1].toLowerCase();
 				CMUtil.addVote(p, candidate);
 			} else if (args.length == 2 && args[0].equalsIgnoreCase("remove")) {
 				if (!CMUtil.candidates.contains(args[1].toLowerCase())) {
@@ -42,7 +42,7 @@ public class CMVoteCommands implements CommandExecutor {
 					helpMsg(p);
 					return false;
 				}
-				String candidate = args[0].toLowerCase();
+				String candidate = args[1].toLowerCase();
 				CMUtil.removeVote(p, candidate);
 			} else {
 				helpMsg(p);
