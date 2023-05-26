@@ -15,7 +15,6 @@ public class CMUtil {
 		
 	static {
 		candidates.add("slayer10300");
-		candidates.add("gnomesaying_");
 		candidates.add("xdmoon");
 		candidates.add("iclockwork");
 	}
@@ -27,8 +26,6 @@ public class CMUtil {
 		playtime /= 20; // playtime in seconds
 		playtime /= 60; // playtime in minutes
 		playtime /= 60; // playtime in hours
-
-		Bukkit.broadcastMessage(String.valueOf(playtime));
 
 		return playtime >= 10;
 	}
@@ -47,6 +44,10 @@ public class CMUtil {
 	}
 
 	public static void addVote(Player p, String candidate) {
+		if (!hasEnoughPlaytime(p)) {
+			p.sendMessage(Helper.Chatlabel() + Helper.color("&c&lYou do not have enough playtime to vote!"));
+			return;
+		}
 			Main.cmVoteData.getConfig().set(candidate + "." + p.getUniqueId().toString(), null);
 			Main.cmVoteData.getConfig().set(candidate + "." + p.getUniqueId().toString() + ".name", p.getName());
 			Main.cmVoteData.getConfig().set(candidate + "." + p.getUniqueId().toString() + ".ip",

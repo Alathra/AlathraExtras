@@ -20,7 +20,6 @@ public class CMTabCompleter implements TabCompleter {
 			return completions;
 		} else if (args.length == 2) {
 			completions.add("Slayer10300");
-			completions.add("GnomeSaying_");
 			completions.add("xdMoon");
 			completions.add("IClockwork");
 			return completions;
