@@ -3,6 +3,7 @@ package me.ShermansWorld.AlathraExtras;
 import me.ShermansWorld.AlathraExtras.balancing.CureListener;
 import me.ShermansWorld.AlathraExtras.balancing.GrindstoneListener;
 import me.ShermansWorld.AlathraExtras.balancing.RiptideListener;
+import me.ShermansWorld.AlathraExtras.cm.CMTabCompleter;
 import me.ShermansWorld.AlathraExtras.cm.CMVoteCommands;
 import me.ShermansWorld.AlathraExtras.cm.CMVoteData;
 import me.ShermansWorld.AlathraExtras.crafting.CraftingRecipes;
@@ -157,6 +158,7 @@ public class Main extends JavaPlugin {
 		new PukeCommand(this);
 		new GiveTutorialBookCommand(this);
 		new CMVoteCommands(this);
+		getCommand("cmvote").setTabCompleter(new CMTabCompleter());
 		rand = new Random();
 		if (instance.getServer().getPluginManager().isPluginEnabled("Essentials")) CooldownManager.getInstance();
 		JoinLeaveMessages.onEnable();

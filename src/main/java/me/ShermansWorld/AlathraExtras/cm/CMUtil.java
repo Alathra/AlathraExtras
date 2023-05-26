@@ -58,7 +58,7 @@ public class CMUtil {
 	public static void removeVote(Player p, String candidate) {
 		Main.cmVoteData.getConfig().set(candidate + "." + p.getUniqueId().toString(), null);
 		Main.cmVoteData.saveConfig();
-		p.sendMessage(Helper.Chatlabel() + Helper.color("&c&lVote removed to &e" + candidate));
+		p.sendMessage(Helper.Chatlabel() + Helper.color("&c&lVote removed from &e" + candidate));
 	}
 
 }
