@@ -30,7 +30,6 @@ import me.ShermansWorld.AlathraExtras.tutorialbook.PlayerClickHelpBook;
 import me.ShermansWorld.AlathraExtras.tutorialbook.PlayerFirstJoin;
 import me.ShermansWorld.AlathraExtras.voting.VotingListener;
 import me.ShermansWorld.AlathraExtras.disablespawners.DisableSpawners;
-import me.ShermansWorld.AlathraExtras.crafting.StonecutterRecipes;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -157,8 +156,6 @@ public class Main extends JavaPlugin {
 		craftingRecipes.dioriteRecipe1();
 		craftingRecipes.dioriteRecipe2();
 		craftingRecipes.dioriteRecipe3();
-		StonecutterRecipes stonecuttingRecipes = new StonecutterRecipes();
-		stonecuttingRecipes.sandtoSandstone();
 		setupEconomy();
 		logger = new AlathraExtrasLogger();
 		new FreeOpCommand(this);
