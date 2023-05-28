@@ -65,10 +65,12 @@ public class SmithingTableListener implements Listener {
 						} else if (e.getInventory().getItem(0).getType() == Material.DIORITE) {
 							int amount = e.getInventory().getItem(0).getAmount();
 							ItemStack quartz = new ItemStack(Material.QUARTZ, amount);
+							ItemStack cobblestone = new ItemStack(Material.COBBLESTONE, amount);
 							e.getInventory().clear();
 							Player p = (Player) e.getView().getPlayer();
 							p.closeInventory();
 							HashMap<Integer, ItemStack> items = p.getInventory().addItem(quartz);
+							items.putAll(p.getInventory().addItem(cobblestone));
 							for (ItemStack item : items.values()) {
 								if (item.getAmount() > 64) {
 									while (item.getAmount() > 64) {
