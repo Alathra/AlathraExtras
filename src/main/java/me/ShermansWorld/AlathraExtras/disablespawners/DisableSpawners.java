@@ -1,36 +1,49 @@
 package me.ShermansWorld.AlathraExtras.disablespawners;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
-
+import me.ShermansWorld.AlathraExtras.Main;
 import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.block.CreatureSpawner;
+import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.SpawnerSpawnEvent;
 
-public class DisableSpawners implements Listener{
-	
-	public static ArrayList<String> badSpawners = new ArrayList<String>(Arrays.asList("ZOMBIE", "SKELETON", "SPIDER", "CAVE_SPIDER", "SILVERFISH", "BLAZE"));
-	public static ArrayList<String> rewardBlocks = new ArrayList<String>(Arrays.asList("RAW_IRON_BLOCK", "RAW_GOLD_BLOCK", "EMERALD_BLOCK", "DIAMOND_BLOCK"));
-	public static ArrayList<String> appliedWorlds = new ArrayList<String>(Arrays.asList("World-o", "World-o_nether"));
-	
-	@EventHandler
-	public static void spawnerReplace(SpawnerSpawnEvent e) {
-		try {
-			CreatureSpawner spawner = e.getSpawner();
-			
-			if (badSpawners.contains(spawner.getSpawnedType().toString()) && appliedWorlds.contains(e.getLocation().getWorld().getName())) {
-				Random rand = new Random();
-				int reward = rand.nextInt(rewardBlocks.size());
-				
-				spawner.getBlock().setType(Material.valueOf(rewardBlocks.get(reward)));
-				
-				e.setCancelled(true);
-			}
-		} catch (NullPointerException error) {
-			return;
-		}
-	}
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
+
+public class DisableSpawners implements Listener {
+
+    private final static ArrayList<String> enabledInWorlds = new ArrayList<>(Arrays.asList("World-o", "World-o_nether"));
+    public static ArrayList<EntityType> badSpawners = new ArrayList<>(Arrays.asList(EntityType.ZOMBIE, EntityType.SKELETON, EntityType.SPIDER, EntityType.CAVE_SPIDER, EntityType.SILVERFISH, EntityType.BLAZE));
+    public static ArrayList<Material> rewardBlocks = new ArrayList<>(Arrays.asList(Material.RAW_IRON_BLOCK, Material.RAW_GOLD_BLOCK, Material.EMERALD_BLOCK, Material.DIAMOND_BLOCK));
+    public static ArrayList<World> activeWorlds = new ArrayList<>();
+
+    public DisableSpawners() {
+        parseWorldConfig();
+    }
+
+    @EventHandler
+    public static void spawnerReplace(SpawnerSpawnEvent e) {
+        if (!activeWorlds.contains(e.getLocation().getWorld())) return;
+
+        CreatureSpawner spawner = e.getSpawner();
+
+        if (!badSpawners.contains(spawner.getSpawnedType())) return;
+
+        final int reward = new Random().nextInt(rewardBlocks.size());
+
+        spawner.getBlock().setType(rewardBlocks.get(reward - 1));
+
+        e.setCancelled(true);
+    }
+
+    private void parseWorldConfig() {
+        enabledInWorlds.forEach((worldName) -> {
+            if (Main.getInstance().getServer().getWorld(worldName) != null) {
+                activeWorlds.add(Main.getInstance().getServer().getWorld(worldName));
+            }
+        });
+    }
 }
