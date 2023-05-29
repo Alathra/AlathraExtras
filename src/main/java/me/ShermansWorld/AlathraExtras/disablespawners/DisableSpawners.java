@@ -34,7 +34,7 @@ public class DisableSpawners implements Listener {
 
         final int reward = new Random().nextInt(rewardBlocks.size());
 
-        spawner.getBlock().setType(rewardBlocks.get(reward - 1));
+        spawner.getBlock().setType(rewardBlocks.get(reward));
 
         e.setCancelled(true);
     }
