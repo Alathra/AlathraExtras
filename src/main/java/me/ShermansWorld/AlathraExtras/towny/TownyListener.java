@@ -35,6 +35,7 @@ public class TownyListener implements Listener {
 
 	private static long delay = 20;
 	private static final Set<Material> signs = new HashSet<Material>();
+	private static final Set<Character> approvedChars = new HashSet<Character>();
 
 	static {
 		signs.add(Material.ACACIA_SIGN);
@@ -55,7 +56,70 @@ public class TownyListener implements Listener {
 		signs.add(Material.CRIMSON_WALL_SIGN);
 		signs.add(Material.WARPED_WALL_SIGN);
 		signs.add(Material.MANGROVE_WALL_SIGN);
-
+		
+		approvedChars.add('1');
+		approvedChars.add('2');
+		approvedChars.add('3');
+		approvedChars.add('4');
+		approvedChars.add('5');
+		approvedChars.add('6');
+		approvedChars.add('7');
+		approvedChars.add('8');
+		approvedChars.add('9');
+		approvedChars.add('a');
+		approvedChars.add('b');
+		approvedChars.add('c');
+		approvedChars.add('d');
+		approvedChars.add('e');
+		approvedChars.add('f');
+		approvedChars.add('g');
+		approvedChars.add('h');
+		approvedChars.add('i');
+		approvedChars.add('j');
+		approvedChars.add('k');
+		approvedChars.add('l');
+		approvedChars.add('m');
+		approvedChars.add('n');
+		approvedChars.add('o');
+		approvedChars.add('p');
+		approvedChars.add('q');
+		approvedChars.add('r');
+		approvedChars.add('s');
+		approvedChars.add('t');
+		approvedChars.add('u');
+		approvedChars.add('v');
+		approvedChars.add('w');
+		approvedChars.add('x');
+		approvedChars.add('y');
+		approvedChars.add('z');
+		approvedChars.add('A');
+		approvedChars.add('B');
+		approvedChars.add('C');
+		approvedChars.add('D');
+		approvedChars.add('E');
+		approvedChars.add('F');
+		approvedChars.add('G');
+		approvedChars.add('H');
+		approvedChars.add('I');
+		approvedChars.add('J');
+		approvedChars.add('K');
+		approvedChars.add('L');
+		approvedChars.add('M');
+		approvedChars.add('N');
+		approvedChars.add('O');
+		approvedChars.add('P');
+		approvedChars.add('Q');
+		approvedChars.add('R');
+		approvedChars.add('S');
+		approvedChars.add('T');
+		approvedChars.add('U');
+		approvedChars.add('V');
+		approvedChars.add('W');
+		approvedChars.add('X');
+		approvedChars.add('Y');
+		approvedChars.add('Z');
+		approvedChars.add('_');
+		approvedChars.add(' ');
 	}
 
 	public static void deleteSignsInChunk(TownBlock townBlock, World w, long delay) {
@@ -148,7 +212,17 @@ public class TownyListener implements Listener {
 	@EventHandler
 	public static void onTownCreation(NewTownEvent e) {
 		Town town = e.getTown();
-		town.getAccount().deposit(500.0, "Town Creation");
+		String townName = "";
+		for (int i = 0; i < town.getName().length(); i++) {
+			if (!approvedChars.contains(town.getName().charAt(i))) {
+				town.getMayor().getPlayer().sendMessage(Helper.Chatlabel() + Helper.color("&cInvalid character '" + String.valueOf(town.getName().charAt(i)) + "'. Character replaced with a '_'."));
+				townName += "_";
+			} else {
+				townName += town.getName().charAt(i);
+			}
+		}
+		town.setName(townName);
+ 		town.getAccount().deposit(500.0, "Town Creation");
 		town.getMayor().getPlayer().sendMessage(Helper.Chatlabel() + Helper.color("&b$500 &chas been deposited into your town bank. Towns use money each day or they fall into ruin. To put money in your town type &e/t deposit [amount]"));
 	}
 	
