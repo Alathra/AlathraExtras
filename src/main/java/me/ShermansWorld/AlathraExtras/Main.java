@@ -30,7 +30,6 @@ import me.ShermansWorld.AlathraExtras.tutorialbook.PlayerClickHelpBook;
 import me.ShermansWorld.AlathraExtras.tutorialbook.PlayerFirstJoin;
 import me.ShermansWorld.AlathraExtras.voting.VotingListener;
 import me.ShermansWorld.AlathraExtras.disablespawners.DisableSpawners;
-import me.ShermansWorld.AlathraExtras.essentials.AFKListener;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -139,7 +138,6 @@ public class Main extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents((Listener) new TeleportRequestResponseListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new MsgEditor(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new GrindstoneListener(), (Plugin) this);
-		this.getServer().getPluginManager().registerEvents((Listener) new AFKListener(), (Plugin) this);
 		initRecipeItems();
 		initData();
 		FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
