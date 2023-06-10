@@ -1,5 +1,5 @@
 name: AlathraExtras
-version: 1.6.2
+version: 1.6.4
 api-version: 1.19
 author: ShermansWorld
 main: me.ShermansWorld.AlathraExtras.Main
@@ -17,3 +17,5 @@ commands:
     description: Pukes out random items from the player
     permission: AlathraExtras.puke
     usage: /puke
+  alathraextras:
+    description: Some random commands

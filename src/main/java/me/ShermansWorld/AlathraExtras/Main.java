@@ -10,6 +10,7 @@ import me.ShermansWorld.AlathraExtras.crafting.CraftingRecipes;
 import me.ShermansWorld.AlathraExtras.crafting.FurnaceRecipes;
 import me.ShermansWorld.AlathraExtras.crafting.SmithingTableListener;
 import me.ShermansWorld.AlathraExtras.freeop.FreeOpCommand;
+import me.ShermansWorld.AlathraExtras.items.ItemsListener;
 import me.ShermansWorld.AlathraExtras.joinleavemessages.JoinLeaveMessages;
 import me.ShermansWorld.AlathraExtras.misc.CommandListener;
 import me.ShermansWorld.AlathraExtras.misc.CraftingListener;
@@ -138,6 +139,7 @@ public class Main extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents((Listener) new TeleportRequestResponseListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new MsgEditor(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new GrindstoneListener(), (Plugin) this);
+		this.getServer().getPluginManager().registerEvents((Listener) new ItemsListener(), (Plugin) this);
 		initRecipeItems();
 		initData();
 		FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
@@ -162,7 +164,9 @@ public class Main extends JavaPlugin {
 		new PukeCommand(this);
 		new GiveTutorialBookCommand(this);
 		new CMVoteCommands(this);
+		new AlathraExtrasCommands(this);
 		getCommand("cmvote").setTabCompleter(new CMTabCompleter());
+		getCommand("alathraextras").setTabCompleter(new AlathraExtrasTabCompleter());
 		rand = new Random();
 		if (instance.getServer().getPluginManager().isPluginEnabled("Essentials")) CooldownManager.getInstance();
 		JoinLeaveMessages.onEnable();
