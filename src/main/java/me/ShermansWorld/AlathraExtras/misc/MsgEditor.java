@@ -11,7 +11,7 @@ public class MsgEditor implements Listener {
 	public static void craftEvent(PrivateMessagePreSendEvent e) {
 		// if the player has a nickname
 		if (!e.getSender().getDisplayName().contains(e.getSender().getName())) {
-			String recipientMsg = Helper.color("&6[&f" + e.getSender().getName() + " &6-> &cme&6]");
+			String recipientMsg = Helper.color("&7&o" + e.getSender().getName() + " has messaged you");
 			e.getRecipient().sendMessage(recipientMsg);
 		}
 	}
