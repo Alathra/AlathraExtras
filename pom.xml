@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>me.ShermansWorld</groupId>
 	<artifactId>AlathraExtras</artifactId>
-	<version>1.6.8</version>
+	<version>1.6.9</version>
 	<packaging>jar</packaging>
 	<name>AlathraExtras</name>
 	<url>http://maven.apache.org</url>
@@ -16,6 +16,7 @@
 		<resources>
 			<resource>
 				<directory>resources</directory>
+				<filtering>true</filtering>
 			</resource>
 		</resources>
 		<plugins>
