@@ -3,7 +3,7 @@ name: Build with Maven
 on:
   release:
     types: [ published ]
-    branches: [ master ]
+    branches: [ main ]
 jobs:
   publish_build_files:
     runs-on: ubuntu-latest
