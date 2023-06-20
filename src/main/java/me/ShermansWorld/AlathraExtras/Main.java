@@ -158,6 +158,7 @@ public class Main extends JavaPlugin {
 		craftingRecipes.dioriteRecipe1();
 		craftingRecipes.dioriteRecipe2();
 		craftingRecipes.dioriteRecipe3();
+		craftingRecipes.greenDyeRecipe();
 		setupEconomy();
 		logger = new AlathraExtrasLogger();
 		new FreeOpCommand(this);

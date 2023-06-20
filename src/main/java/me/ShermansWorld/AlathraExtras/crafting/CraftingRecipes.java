@@ -137,5 +137,14 @@ public class CraftingRecipes {
 		dioriteRecipe3.addIngredient(1, Material.GRANITE);
 		Main.getInstance().getServer().addRecipe((Recipe) dioriteRecipe3);
 	}
-	
+
+	public void greenDyeRecipe() {
+		ItemStack greenDye = new ItemStack(Material.GREEN_DYE, 1);
+		NamespacedKey key = new NamespacedKey((Plugin) Main.getInstance(),
+				String.valueOf(Main.getInstance().getDescription().getName()) + "15");
+		ShapelessRecipe greenDyeRecipe = new ShapelessRecipe(key, greenDye);
+		greenDyeRecipe.addIngredient(1, Material.BLUE_DYE);
+		greenDyeRecipe.addIngredient(1, Material.YELLOW_DYE);
+		Main.getInstance().getServer().addRecipe((Recipe) greenDyeRecipe);
+	}
 }
