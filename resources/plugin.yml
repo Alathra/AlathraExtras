@@ -7,6 +7,9 @@ depend: [Towny, TownyChat]
 softdepend: [Essentials, PlaceholderAPI]
 
 commands:
+  roll:
+    description: A plugin used to roll dice.
+    usage: /roll
   cmvote:
     description: Vote system for selecting the community manager
   freeop:
