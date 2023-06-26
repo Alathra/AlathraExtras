@@ -11,10 +11,12 @@ import me.ShermansWorld.AlathraExtras.Helper;
 public class RiptideListener implements Listener {
 	
 	@EventHandler
-	public static void onCure(PlayerMoveEvent e) {
+	public static void onRipTide(PlayerMoveEvent e) {
 		if (e.getPlayer().isRiptiding()) {
-			e.setCancelled(true);
-			e.getPlayer().sendMessage(Helper.Chatlabel() + Helper.color("&cRiptide is disabled."));
+			if (e.getPlayer().getWorld().hasStorm()) {
+				e.getPlayer().sendMessage(Helper.Chatlabel() + Helper.color("&cRiptide is disabled while it is raining."));
+				e.setCancelled(true);
+			}
 		}
 	}
 }
