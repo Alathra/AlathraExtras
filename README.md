@@ -21,3 +21,6 @@ When a Towny town falls into ruin this features scans each chunk in the town for
 
 ### Tutorial Book
 Adds various tutorial book events. Hooks into InteractiveBooks by executing appropriate commands through console.
+
+### Roll
+Adds the /roll command to the server. Command can be used to roll dice with modifiers and checks. '/roll 1d6+1>2 to hit' rolls 1 6-sided-die with a modifier of +1 and checks if the value is >2. Returns success or failure regarding the action.

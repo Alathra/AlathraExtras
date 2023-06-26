@@ -18,6 +18,7 @@ import me.ShermansWorld.AlathraExtras.misc.ItemFrameListener;
 import me.ShermansWorld.AlathraExtras.misc.MsgEditor;
 import me.ShermansWorld.AlathraExtras.puke.HopperListener;
 import me.ShermansWorld.AlathraExtras.puke.PukeCommand;
+import me.ShermansWorld.AlathraExtras.roll.RollCommand;
 import me.ShermansWorld.AlathraExtras.towny.TownyListener;
 import me.ShermansWorld.AlathraExtras.tpacooldown.CooldownManager;
 import me.ShermansWorld.AlathraExtras.tpacooldown.listener.essentialsx.PreTeleportListener;
@@ -44,6 +45,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
+import java.util.regex.Pattern;
 
 public class Main extends JavaPlugin {
 
@@ -161,6 +163,7 @@ public class Main extends JavaPlugin {
 		craftingRecipes.greenDyeRecipe();
 		setupEconomy();
 		logger = new AlathraExtrasLogger();
+		new RollCommand(this);
 		new FreeOpCommand(this);
 		new PukeCommand(this);
 		new GiveTutorialBookCommand(this);
