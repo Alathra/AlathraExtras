@@ -163,7 +163,7 @@ public class Main extends JavaPlugin {
 		craftingRecipes.greenDyeRecipe();
 		setupEconomy();
 		logger = new AlathraExtrasLogger();
-		new RollCommand(this, new Random(), Pattern.compile("^(\\d*)d?(\\d*)([-+*/]?)(\\d*)([><=><=]*)(\\d*)"));
+		new RollCommand(this);
 		new FreeOpCommand(this);
 		new PukeCommand(this);
 		new GiveTutorialBookCommand(this);

@@ -1,6 +1,6 @@
 package me.ShermansWorld.AlathraExtras.roll;
 
-import com.palmergames.bukkit.TownyChat.listener.TownyChatPlayerListener;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -8,30 +8,24 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
+import me.ShermansWorld.AlathraExtras.Helper;
 import com.palmergames.bukkit.TownyChat.Chat;
-import com.palmergames.bukkit.TownyChat.TownyChatFormatter;
 import com.palmergames.bukkit.TownyChat.channels.Channel;
-import com.palmergames.bukkit.TownyChat.channels.channelTypes;
-import com.palmergames.bukkit.TownyChat.config.ChatSettings;
-import com.palmergames.bukkit.towny.TownyAPI;
-import com.palmergames.bukkit.towny.TownyMessaging;
+
 
 public class RollCommand implements CommandExecutor {
 
-    private final Random random;
-    private final Pattern pattern;
+    private final Random random = new Random();
+    private final Pattern pattern = Pattern.compile("^(\\d*)d?(\\d*)([-+*/]?)(\\d*)([><=><=]?)(\\d*)");
 
-    public RollCommand(final JavaPlugin plugin, Random random, Pattern pattern) {
-        Objects.requireNonNull(plugin.getCommand("roll")).setExecutor(this);
-        this.pattern = pattern;
-        this.random = random;
+    public RollCommand(final JavaPlugin plugin) {
+        plugin.getCommand("roll").setExecutor(this);
     }
+
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -54,6 +48,9 @@ public class RollCommand implements CommandExecutor {
             }
         }
 
+        if (numberOfDie > 100) numberOfDie = 100;
+        if (dieSides > 100) dieSides = 100;
+
         List<Integer> rolls = new ArrayList<>();
         for (int i = 0; i < numberOfDie; i++) {
             int roll = random.nextInt(dieSides) + 1;
@@ -75,7 +72,7 @@ public class RollCommand implements CommandExecutor {
         if (sender instanceof Player player) {
             Channel channel = Chat.getTownyChat().getPlayerChannel(player);
             channel.chatProcess(new AsyncPlayerChatEvent(true, player, message, new HashSet<>()));
-            player.chat(message);
+            player.chat(Helper.color("&c") + message);
         }
         return true;
 
