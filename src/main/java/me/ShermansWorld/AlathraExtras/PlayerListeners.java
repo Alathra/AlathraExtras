@@ -71,6 +71,7 @@ public class PlayerListeners implements Listener {
 			Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tempban " + e.getPlayer().getName() + " 3d Auto-banned for racial slur");
 			Bukkit.broadcastMessage(Helper.Chatlabel() + e.getPlayer().getName() + " was bammed for saying a racial slur in chat");
 		}
+
 		if (e.getMessage().toLowerCase().contains("nigger")) {
 			e.setMessage(e.getMessage().replace("nigger", Helper.color("[Racial Slur]")));
 			Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ban " + e.getPlayer().getName() + " Auto-banned for racial slur");

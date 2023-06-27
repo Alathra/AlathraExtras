@@ -10,6 +10,9 @@ commands:
   roll:
     description: A plugin used to roll dice.
     usage: /roll
+  chatItem:
+    description: A plugin used to insert item into chat.
+    usage: /chatitem
   cmvote:
     description: Vote system for selecting the community manager
   freeop:
