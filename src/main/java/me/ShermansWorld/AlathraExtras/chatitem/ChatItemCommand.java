@@ -53,45 +53,34 @@ public class ChatItemCommand implements CommandExecutor {
 
     private Set<Player> getRecipients(Player player, Town town, Nation nation, Channel channel, Set<Player> recipients) {
         return switch (channel.getType()) {
-            case TOWN -> new HashSet<>(findRecipients(channel, player, TownyAPI.getInstance().getOnlinePlayers(town)));
-            case NATION ->
-                    new HashSet<>(findRecipients(channel, player, TownyAPI.getInstance().getOnlinePlayers(nation)));
-            case ALLIANCE ->
-                    new HashSet<>(findRecipients(channel, player, TownyAPI.getInstance().getOnlinePlayersAlliance(nation)));
-            case DEFAULT -> new HashSet<>(findRecipients(channel, player, new ArrayList<>(recipients)));
-            case GLOBAL, PRIVATE -> new HashSet<>(findRecipients(channel, player, new ArrayList<>(recipients)));
+            case TOWN -> new HashSet<>(receivers(channel, player, TownyAPI.getInstance().getOnlinePlayers(town)));
+            case NATION -> new HashSet<>(receivers(channel, player, TownyAPI.getInstance().getOnlinePlayers(nation)));
+            case ALLIANCE -> new HashSet<>(receivers(channel, player, TownyAPI.getInstance().getOnlinePlayersAlliance(nation)));
+            case DEFAULT, GLOBAL, PRIVATE -> new HashSet<>(receivers(channel, player, new ArrayList<>(recipients)));
         };
     }
 
-    private Set<Player> findRecipients(Channel channel, Player sender, List<Player> playerList) {
-        // Refresh the potential channels a player can see, if they are not currently in the channel.
-        playerList.forEach(p -> refreshPlayer(channel, p));
+    private Set<Player> receivers(Channel channel, Player sender, List<Player> playerList) {
+        playerList.forEach(player-> checkChannels(player, channel));
         return playerList.stream()
-                .filter(p -> channel.hasPermission(p)) // Check permission.
-                .filter(p -> testDistance(sender, p, channel.getRange())) // Within range.
-                .filter(p -> !Chat.getTownyChat().isIgnoredByEssentials(sender, p)) // Check essentials ignore.
-                .filter(p -> !channel.isAbsent(p.getName())) // Check if player is purposefully absent.
+                .filter(player -> !Chat.getTownyChat().isIgnoredByEssentials(sender, player))
+                .filter(player -> !channel.isAbsent(player.getName()))
+                .filter(channel::hasPermission)
+                .filter(player -> isInRange(channel.getRange(), sender, player))
                 .collect(Collectors.toSet());
     }
 
-    private boolean testDistance(Player player1, Player player2, double range) {
-
-        // unlimited range (all worlds)
-        if (range == -1)
-            return true;
-
-        // Same world only
-        if (range == 0)
-            return player1.getWorld().equals(player2.getWorld());
-
-        // Range check (same world)
-        return player1.getWorld().equals(player2.getWorld()) &&
-                player1.getLocation().distance(player2.getLocation()) < range;
+    private boolean isInRange(double range, Player firstPlayer, Player secondPlayer) {
+        return switch ((int) range) {
+            case -1 -> true;
+            case 0 -> firstPlayer.getWorld().equals(secondPlayer.getWorld());
+            default -> firstPlayer.getWorld().equals(secondPlayer.getWorld()) &&
+                    firstPlayer.getLocation().distance(secondPlayer.getLocation()) < range;
+        };
     }
 
-    private void refreshPlayer(Channel channel, Player player) {
-        if (!channel.isPresent(player.getName()))
-            channel.forgetPlayer(player);
+    private void checkChannels(Player player, Channel channel) {
+        if (!channel.isPresent(player.getName())) channel.forgetPlayer(player);
     }
 
 
