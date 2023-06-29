@@ -72,7 +72,7 @@ public class RollCommand implements CommandExecutor {
         if (sender instanceof Player player) {
             Channel channel = Chat.getTownyChat().getPlayerChannel(player);
             channel.chatProcess(new AsyncPlayerChatEvent(true, player, message, new HashSet<>()));
-            player.chat(Helper.color("&c") + message);
+            player.chat(message);
         }
         return true;
 
