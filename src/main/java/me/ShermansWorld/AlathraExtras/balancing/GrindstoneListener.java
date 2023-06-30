@@ -12,10 +12,11 @@ public class GrindstoneListener implements Listener {
 	@EventHandler
 	public static void onCure(InventoryClickEvent e) {
 		if (e.getInventory().getType() == InventoryType.GRINDSTONE && e.getSlotType() == InventoryType.SlotType.RESULT ) {
-			GrindstoneInventory grindstoneInv =  (GrindstoneInventory) e.getInventory();
-			for (int i = 0; i < grindstoneInv.getContents().length; i++) {
-				ItemStack item = grindstoneInv.getContents()[i];
-				if (item.hasItemMeta()) {
+			if (!(e.getInventory() instanceof GrindstoneInventory grindstoneInv))
+				return;
+
+			for (ItemStack item : grindstoneInv.getContents()) {
+				if (item != null && item.hasItemMeta()) {
 					if (item.getItemMeta().hasLore()) {
 						for (String loreLine : item.getItemMeta().getLore()) {
 							if (loreLine.contains(Helper.color("&a&lAlathran Item"))) {
