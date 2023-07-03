@@ -30,7 +30,7 @@ public class CustomVotingListener {
 			VotingPluginUser votingUser;
 			try {
 				votingUser = VotingListener.votingUserManager.getVotingPluginUser(p);
-				if (votingUser.getSitesVotedOn() == 5) {
+				if (votingUser.getSitesVotedOn() == 6) {
 					if (playersWithAllSitesVoted.isEmpty()) {
 						playersWithAllSitesVoted.add(p);
 						Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "broadcast &2Thank you &c" + p.getName() + " &2for voting for &bAlathra &2on all sites!");
