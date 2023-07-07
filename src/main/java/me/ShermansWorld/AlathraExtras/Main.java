@@ -1,5 +1,6 @@
 package me.ShermansWorld.AlathraExtras;
 
+import me.ShermansWorld.AlathraExtras.anitblockclimb.BlockPlaceListener;
 import me.ShermansWorld.AlathraExtras.balancing.CureListener;
 import me.ShermansWorld.AlathraExtras.balancing.GrindstoneListener;
 import me.ShermansWorld.AlathraExtras.balancing.RiptideListener;
@@ -142,6 +143,7 @@ public class Main extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents((Listener) new MsgEditor(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new GrindstoneListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new ItemsListener(), (Plugin) this);
+		this.getServer().getPluginManager().registerEvents((Listener) new BlockPlaceListener(), (Plugin) this);
 		initRecipeItems();
 		initData();
 		FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
