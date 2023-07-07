@@ -1,0 +1,14 @@
+# Announcer message configuration
+Announcer:
+
+  # Time in seconds between messages
+  Interval: 120
+
+  # Announcements
+  Announcements:
+    - |-
+      <reset>
+      <gradient:#D6C69B:#A99667><bold>Did you know?
+      <reset><gray>AlathraMC was deemed an excellent server, by no other than <gradient:#D6C69B:#A99667>darksaid98<gray> himself.
+      <reset>
+    - "<reset>\n<gradient:#D6C69B:#A99667><bold>Did you know?\n<reset><gray>You can use <gradient:#D6C69B:#A99667>/help<gray> to get help. It's very useful. \n<reset>"

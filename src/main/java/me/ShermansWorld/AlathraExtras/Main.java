@@ -1,6 +1,7 @@
 package me.ShermansWorld.AlathraExtras;
 
 import me.ShermansWorld.AlathraExtras.anitblockclimb.BlockPlaceListener;
+import me.ShermansWorld.AlathraExtras.announcer.Announcer;
 import me.ShermansWorld.AlathraExtras.balancing.CureListener;
 import me.ShermansWorld.AlathraExtras.balancing.GrindstoneListener;
 import me.ShermansWorld.AlathraExtras.balancing.RiptideListener;
@@ -46,7 +47,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
-import java.util.regex.Pattern;
 
 public class Main extends JavaPlugin {
 
@@ -54,7 +54,6 @@ public class Main extends JavaPlugin {
 	public static ItemStack recycledLeather;
 
 	public static Economy economy = null;
-
 	public static Random rand;
 	
 	public static CMVoteData cmVoteData;
@@ -110,8 +109,8 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onLoad() {
 		Main.instance = this;
-		JoinLeaveMessages.getInstance();
-		JoinLeaveMessages.onLoad();
+		JoinLeaveMessages.getInstance().onLoad();
+		Announcer.getInstance().onLoad();
 	}
 
 	@Override
@@ -175,14 +174,16 @@ public class Main extends JavaPlugin {
 		getCommand("alathraextras").setTabCompleter(new AlathraExtrasTabCompleter());
 		rand = new Random();
 		if (instance.getServer().getPluginManager().isPluginEnabled("Essentials")) CooldownManager.getInstance();
-		JoinLeaveMessages.onEnable();
+		JoinLeaveMessages.getInstance().onEnable();
+		Announcer.getInstance().onEnable();
 		initLogs();
 	}
 
 	@Override
 	public void onDisable() {
 		if (instance.getServer().getPluginManager().isPluginEnabled("Essentials")) CooldownManager.onDisable();
-		JoinLeaveMessages.onDisable();
+		JoinLeaveMessages.getInstance().onDisable();
+		Announcer.getInstance().onDisable();
 	}
 
 }
