@@ -11,6 +11,7 @@ import me.ShermansWorld.AlathraExtras.cm.CMVoteData;
 import me.ShermansWorld.AlathraExtras.crafting.CraftingRecipes;
 import me.ShermansWorld.AlathraExtras.crafting.FurnaceRecipes;
 import me.ShermansWorld.AlathraExtras.crafting.SmithingTableListener;
+import me.ShermansWorld.AlathraExtras.enderchersblock.EnderChestBlockListener;
 import me.ShermansWorld.AlathraExtras.endermanexp.EndermanExpDropListener;
 import me.ShermansWorld.AlathraExtras.freeop.FreeOpCommand;
 import me.ShermansWorld.AlathraExtras.items.ItemsListener;
@@ -143,6 +144,7 @@ public class Main extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents((Listener) new MsgEditor(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new GrindstoneListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new ItemsListener(), (Plugin) this);
+		this.getServer().getPluginManager().registerEvents((Listener) new EnderChestBlockListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new EndermanExpDropListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new BlockPlaceListener(), (Plugin) this);
 		initRecipeItems();
