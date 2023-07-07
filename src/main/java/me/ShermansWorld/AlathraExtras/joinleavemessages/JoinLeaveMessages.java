@@ -25,16 +25,16 @@ public class JoinLeaveMessages {
         return cfg;
     }
 
-    public static void onLoad() {
+    public void onLoad() {
         cfg = new Config("joinleavemessages", Main.getInstance().getDataFolder().getPath(), Main.getInstance().getResource("joinleavemessages.yml"));
         listenerHandler = new ListenerHandler(cfg);
     }
 
-    public static void onEnable() {
+    public void onEnable() {
         listenerHandler.onEnable();
     }
 
-    public static void onDisable() {
+    public void onDisable() {
         listenerHandler.onDisable();
     }
 }
