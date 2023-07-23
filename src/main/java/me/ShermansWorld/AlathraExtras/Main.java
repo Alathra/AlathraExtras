@@ -155,6 +155,7 @@ public class Main extends JavaPlugin {
 		FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
 		furnaceRecipes.rottenFleshtoLeather();
 		furnaceRecipes.mossyCobbletoAndesite();
+
 		CraftingRecipes craftingRecipes = new CraftingRecipes();
 		craftingRecipes.saddleRecipe();
 		craftingRecipes.charcoalBlock();
@@ -165,10 +166,12 @@ public class Main extends JavaPlugin {
 		craftingRecipes.blackDyeRecipe2();
 		craftingRecipes.beetRootPouchRecipe();
 		craftingRecipes.carrotPouchRecipe();
+		craftingRecipes.potatoPouchRecipe();
 		craftingRecipes.dioriteRecipe1();
 		craftingRecipes.dioriteRecipe2();
 		craftingRecipes.dioriteRecipe3();
 		craftingRecipes.greenDyeRecipe();
+
 		setupEconomy();
 		logger = new AlathraExtrasLogger();
 		new RollCommand(this);

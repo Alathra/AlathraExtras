@@ -107,11 +107,21 @@ public class CraftingRecipes {
 		CarrotPouchRecipe.setIngredient('@', Material.CARROT);
 		Main.getInstance().getServer().addRecipe((Recipe) CarrotPouchRecipe);
 	}
+
+	public void potatoPouchRecipe() {
+		ItemStack potatoPouch = CustomItems.getPotatoPouch();
+		NamespacedKey key = new NamespacedKey((Plugin) Main.getInstance(),
+				String.valueOf(Main.getInstance().getDescription().getName()) + "11");
+		ShapedRecipe PotatoPouchRecipe = new ShapedRecipe(key, potatoPouch);
+		PotatoPouchRecipe.shape(new String[] { "@@@", "@@@", "@@@" });
+		PotatoPouchRecipe.setIngredient('@', Material.POTATO);
+		Main.getInstance().getServer().addRecipe((Recipe) PotatoPouchRecipe);
+	}
 	
 	public void dioriteRecipe1() {
 		ItemStack diorite1 = new ItemStack(Material.DIORITE, 2);
 		NamespacedKey key = new NamespacedKey((Plugin) Main.getInstance(),
-				String.valueOf(Main.getInstance().getDescription().getName()) + "11");
+				String.valueOf(Main.getInstance().getDescription().getName()) + "12");
 		ShapelessRecipe dioriteRecipe1 = new ShapelessRecipe(key, diorite1);
 		dioriteRecipe1.addIngredient(2, Material.ANDESITE);
 		dioriteRecipe1.addIngredient(1, Material.QUARTZ);
@@ -121,7 +131,7 @@ public class CraftingRecipes {
 	public void dioriteRecipe2() {
 		ItemStack diorite2 = new ItemStack(Material.DIORITE, 2);
 		NamespacedKey key = new NamespacedKey((Plugin) Main.getInstance(),
-				String.valueOf(Main.getInstance().getDescription().getName()) + "12");
+				String.valueOf(Main.getInstance().getDescription().getName()) + "13");
 		ShapelessRecipe dioriteRecipe2 = new ShapelessRecipe(key, diorite2);
 		dioriteRecipe2.addIngredient(1, Material.GRANITE);
 		dioriteRecipe2.addIngredient(1, Material.COBBLESTONE);
@@ -131,7 +141,7 @@ public class CraftingRecipes {
 	public void dioriteRecipe3() {
 		ItemStack diorite3 = new ItemStack(Material.DIORITE, 3);
 		NamespacedKey key = new NamespacedKey((Plugin) Main.getInstance(),
-				String.valueOf(Main.getInstance().getDescription().getName()) + "13");
+				String.valueOf(Main.getInstance().getDescription().getName()) + "14");
 		ShapelessRecipe dioriteRecipe3 = new ShapelessRecipe(key, diorite3);
 		dioriteRecipe3.addIngredient(2, Material.ANDESITE);
 		dioriteRecipe3.addIngredient(1, Material.GRANITE);
@@ -141,7 +151,7 @@ public class CraftingRecipes {
 	public void greenDyeRecipe() {
 		ItemStack greenDye = new ItemStack(Material.GREEN_DYE, 1);
 		NamespacedKey key = new NamespacedKey((Plugin) Main.getInstance(),
-				String.valueOf(Main.getInstance().getDescription().getName()) + "15");
+				String.valueOf(Main.getInstance().getDescription().getName()) + "16");
 		ShapelessRecipe greenDyeRecipe = new ShapelessRecipe(key, greenDye);
 		greenDyeRecipe.addIngredient(1, Material.BLUE_DYE);
 		greenDyeRecipe.addIngredient(1, Material.YELLOW_DYE);

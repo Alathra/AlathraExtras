@@ -16,7 +16,7 @@ public class FurnaceRecipes {
 	}
 	
 	public void mossyCobbletoAndesite() {
-		NamespacedKey key = new NamespacedKey(Main.getInstance(), Main.getInstance().getDescription().getName() + "14");
+		NamespacedKey key = new NamespacedKey(Main.getInstance(), Main.getInstance().getDescription().getName() + "15");
 		ItemStack outputAndesite = new ItemStack(Material.ANDESITE, 1);
 		FurnaceRecipe andesiteRecipe = new FurnaceRecipe(key, outputAndesite, Material.MOSSY_COBBLESTONE, 0.1F, 200);
 		Main.getInstance().getServer().addRecipe(andesiteRecipe);

@@ -2,6 +2,7 @@ package me.ShermansWorld.AlathraExtras.misc;
 
 import java.util.ArrayList;
 
+import com.github.milkdrinkers.colorparser.ColorParser;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -40,6 +41,15 @@ public class CustomItems {
 		meta.setDisplayName(Helper.color("&4Beetroot Pouch"));
 		beeetrootPouch.setItemMeta(meta);
 		return beeetrootPouch;
+	}
+
+	public static ItemStack getPotatoPouch() {
+		ItemStack potatoPouch = new ItemStack(Material.PAPER, 1);
+		ItemMeta meta = potatoPouch.getItemMeta();
+		meta.setCustomModelData(14713);
+		meta.setDisplayName(Helper.color("&ePotato Pouch"));
+		potatoPouch.setItemMeta(meta);
+		return potatoPouch;
 	}
 
 	public static ItemStack getInvisibleItemFrame() {
