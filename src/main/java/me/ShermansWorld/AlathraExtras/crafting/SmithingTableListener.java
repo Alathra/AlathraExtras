@@ -117,6 +117,11 @@ public class SmithingTableListener implements Listener {
 																														// pouch
 									result = new ItemStack(Material.CARROT, 9 * amount);
 									found = true;
+								} else if (e.getInventory().getItem(0).getItemMeta().getCustomModelData() == 14713) { // is
+																														// potato
+																														// pouch
+									result = new ItemStack(Material.POTATO, 9 * amount);
+									found = true;
 								}
 							}
 							if (found) {
