@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "me.ShermansWorld.AlathraExtras"
-version = "1.11.0"
+version = "1.12.0"
 description = ""
 
 java {
@@ -156,6 +156,9 @@ bukkit {
         }
         register("alathraextras") {
             description = "Some random commands."
+        }
+        register("playtime") {
+            description = "Display a player's playtime."
         }
     }
 }
