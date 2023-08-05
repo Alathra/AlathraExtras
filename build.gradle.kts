@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "me.ShermansWorld.AlathraExtras"
-version = "1.12.1"
+version = "1.13.1"
 description = ""
 
 java {
@@ -59,7 +59,7 @@ dependencies {
     compileOnly("org.jetbrains:annotations:24.0.1")
 
     implementation("com.github.milkdrinkers:simplixstorage:3.2.7")
-    implementation("com.github.milkdrinkers:colorparser:1.0.7")
+    implementation("com.github.milkdrinkers:colorparser:2.0.0")
 
 //    implementation("dev.jorel:commandapi-bukkit-shade:9.0.3")
 //    compileOnly("dev.jorel:commandapi-annotations:9.0.3")
@@ -159,6 +159,11 @@ bukkit {
         }
         register("playtime") {
             description = "Display a player's playtime."
+            usage = "/playtime"
+        }
+        register("showitem") {
+            description = "Show an item in chat."
+            usage = "/showitem"
         }
     }
 }

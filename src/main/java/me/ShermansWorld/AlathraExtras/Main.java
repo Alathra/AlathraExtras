@@ -5,6 +5,7 @@ import me.ShermansWorld.AlathraExtras.announcer.Announcer;
 import me.ShermansWorld.AlathraExtras.balancing.CureListener;
 import me.ShermansWorld.AlathraExtras.balancing.GrindstoneListener;
 import me.ShermansWorld.AlathraExtras.balancing.RiptideListener;
+import me.ShermansWorld.AlathraExtras.chatitem.ShowItemCommand;
 import me.ShermansWorld.AlathraExtras.cm.CMTabCompleter;
 import me.ShermansWorld.AlathraExtras.cm.CMVoteCommands;
 import me.ShermansWorld.AlathraExtras.cm.CMVoteData;
@@ -183,6 +184,7 @@ public class Main extends JavaPlugin {
 		new CMVoteCommands(this);
 		new AlathraExtrasCommands(this);
 		new PlaytimeCommand(this);
+		new ShowItemCommand(this);
 		getCommand("cmvote").setTabCompleter(new CMTabCompleter());
 		getCommand("alathraextras").setTabCompleter(new AlathraExtrasTabCompleter());
 		getCommand("playtime").setTabCompleter(new PlaytimeTabCompleter());
