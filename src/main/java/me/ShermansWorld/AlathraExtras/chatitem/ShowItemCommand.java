@@ -47,11 +47,12 @@ public class ShowItemCommand implements CommandExecutor {
             @Nullable Nation nation = TownyAPI.getInstance().getResidentNationOrNull(resident);
             var recipients = getRecipients(player, town, nation, channel, new HashSet<>(Bukkit.getOnlinePlayers()));
             ItemStack itemStack = player.getInventory().getItemInMainHand();
-            var message = ColorParser.of("<hover:show_item:<hoveritem>><channel> <#44FFA6><player> is showing off their item. (Hover to view)</hover>")
-            	    .parseMinimessagePlaceholder("channel", channel.getChannelTag())
-            	    .parseMinimessagePlaceholder("player", player.getName())
-            	    .parseMinimessagePlaceholder("hoveritem", Component.text().hoverEvent(itemStack.asHoverEvent()))
-            	    .build();
+            var message = ColorParser.of("<channel><#44FFA6><player> <dark_gray>»<#44FFA6> is showing off their item. (Hover to view)")
+                .parseMinimessagePlaceholder("channel", channel.getChannelTag().isEmpty() ? "" : "%s ".formatted(channel.getChannelTag())) // Add trailing space after tag
+                .parseMinimessagePlaceholder("player", player.getName())
+                .build()
+                .hoverEvent(itemStack.asHoverEvent());
+
             recipients.forEach(recipient -> recipient.sendMessage(message));
         }
         return true;
