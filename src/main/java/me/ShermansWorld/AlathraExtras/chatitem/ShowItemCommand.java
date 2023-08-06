@@ -22,6 +22,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -42,9 +43,9 @@ public class ShowItemCommand implements CommandExecutor {
         if (sender instanceof Player player) {
             var channel = Chat.getTownyChat().getPlayerChannel(player);
             Resident resident = TownyUniverse.getInstance().getResident(player.getUniqueId());
-            Town town = TownyAPI.getInstance().getResidentTownOrNull(resident);
-            Nation nation = TownyAPI.getInstance().getResidentNationOrNull(resident);
-            var recipients = getRecipients(player, town, nation, channel, Bukkit.getOnlinePlayers().stream().collect(Collectors.toSet()));
+            @Nullable Town town = TownyAPI.getInstance().getResidentTownOrNull(resident);
+            @Nullable Nation nation = TownyAPI.getInstance().getResidentNationOrNull(resident);
+            var recipients = getRecipients(player, town, nation, channel, new HashSet<>(Bukkit.getOnlinePlayers()));
             ItemStack itemStack = player.getInventory().getItemInMainHand();
             var message = ColorParser.of("<hover:show_item:<hoveritem>><channel> <#44FFA6><player> is showing off their item. (Hover to view)</hover>")
             	    .parseMinimessagePlaceholder("channel", channel.getChannelTag())
@@ -56,11 +57,11 @@ public class ShowItemCommand implements CommandExecutor {
         return true;
     }
 
-    private Set<Player> getRecipients(Player player, Town town, Nation nation, Channel channel, Set<Player> recipients) {
+    private Set<Player> getRecipients(Player player, @Nullable Town town, @Nullable Nation nation, Channel channel, Set<Player> recipients) {
         return switch (channel.getType()) {
-            case TOWN -> new HashSet<>(receivers(channel, player, TownyAPI.getInstance().getOnlinePlayers(town)));
-            case NATION -> new HashSet<>(receivers(channel, player, TownyAPI.getInstance().getOnlinePlayers(nation)));
-            case ALLIANCE -> new HashSet<>(receivers(channel, player, TownyAPI.getInstance().getOnlinePlayersAlliance(nation)));
+            case TOWN -> town != null ? new HashSet<>(receivers(channel, player, TownyAPI.getInstance().getOnlinePlayers(town))) : new HashSet<>();
+            case NATION -> nation != null ? new HashSet<>(receivers(channel, player, TownyAPI.getInstance().getOnlinePlayers(nation))) : new HashSet<>();
+            case ALLIANCE -> nation != null ? new HashSet<>(receivers(channel, player, TownyAPI.getInstance().getOnlinePlayersAlliance(nation))) : new HashSet<>();
             case DEFAULT, GLOBAL, PRIVATE -> new HashSet<>(receivers(channel, player, new ArrayList<>(recipients)));
         };
     }
