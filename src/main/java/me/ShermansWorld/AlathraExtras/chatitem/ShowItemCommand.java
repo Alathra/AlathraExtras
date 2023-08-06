@@ -16,6 +16,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -47,6 +48,12 @@ public class ShowItemCommand implements CommandExecutor {
             @Nullable Nation nation = TownyAPI.getInstance().getResidentNationOrNull(resident);
             var recipients = getRecipients(player, town, nation, channel, new HashSet<>(Bukkit.getOnlinePlayers()));
             ItemStack itemStack = player.getInventory().getItemInMainHand();
+
+            if (itemStack.getType().equals(Material.AIR)) {
+                player.sendMessage(ColorParser.of("<red>No one wants to see your air!").build());
+                return true;
+            }
+
             var message = ColorParser.of("<channel><#44FFA6><player> <dark_gray>»<#44FFA6> is showing off their item. (Hover to view)")
                 .parseMinimessagePlaceholder("channel", channel.getChannelTag().isEmpty() ? "" : "%s ".formatted(channel.getChannelTag())) // Add trailing space after tag
                 .parseMinimessagePlaceholder("player", player.getName())
