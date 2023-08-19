@@ -167,13 +167,4 @@ public class CraftingRecipes {
 		Main.getInstance().getServer().addRecipe((Recipe) pinkPetalsRecipe);
 	}
 	
-	public void decorativePotRecipe() {
-		ItemStack decorativePot = new ItemStack(Material.DECORATED_POT, 1);
-		NamespacedKey key = new NamespacedKey((Plugin) Main.getInstance(),
-				String.valueOf(Main.getInstance().getDescription().getName()) + "18");
-		ShapedRecipe decorativePotRecipe = new ShapedRecipe(key, decorativePot);
-		decorativePotRecipe.shape(new String[] { "@ @", "@ @", "@@@" });
-		decorativePotRecipe.setIngredient('@', Material.BRICK);
-		Main.getInstance().getServer().addRecipe((Recipe) decorativePotRecipe);
-	}
 }

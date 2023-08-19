@@ -175,7 +175,6 @@ public class Main extends JavaPlugin {
 		craftingRecipes.dioriteRecipe3();
 		craftingRecipes.greenDyeRecipe();
 		craftingRecipes.pinkPetalsRecipe();
-		craftingRecipes.decorativePotRecipe();
 
 		setupEconomy();
 		logger = new AlathraExtrasLogger();
