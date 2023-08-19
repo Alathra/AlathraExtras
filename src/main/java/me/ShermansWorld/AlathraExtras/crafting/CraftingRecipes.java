@@ -157,4 +157,23 @@ public class CraftingRecipes {
 		greenDyeRecipe.addIngredient(1, Material.YELLOW_DYE);
 		Main.getInstance().getServer().addRecipe((Recipe) greenDyeRecipe);
 	}
+	
+	public void pinkPetalsRecipe() {
+		ItemStack pinkPetals = new ItemStack(Material.PINK_PETALS, 1);
+		NamespacedKey key = new NamespacedKey((Plugin) Main.getInstance(),
+				String.valueOf(Main.getInstance().getDescription().getName()) + "17");
+		ShapelessRecipe pinkPetalsRecipe = new ShapelessRecipe(key, pinkPetals);
+		pinkPetalsRecipe.addIngredient(1, Material.CHERRY_LEAVES);
+		Main.getInstance().getServer().addRecipe((Recipe) pinkPetalsRecipe);
+	}
+	
+	public void decorativePotRecipe() {
+		ItemStack decorativePot = new ItemStack(Material.DECORATED_POT, 1);
+		NamespacedKey key = new NamespacedKey((Plugin) Main.getInstance(),
+				String.valueOf(Main.getInstance().getDescription().getName()) + "18");
+		ShapedRecipe decorativePotRecipe = new ShapedRecipe(key, decorativePot);
+		decorativePotRecipe.shape(new String[] { "@ @", "@ @", "@@@" });
+		decorativePotRecipe.setIngredient('@', Material.BRICK);
+		Main.getInstance().getServer().addRecipe((Recipe) decorativePotRecipe);
+	}
 }

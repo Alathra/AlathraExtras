@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "me.ShermansWorld.AlathraExtras"
-version = "1.14.0"
+version = "1.14.1"
 description = ""
 
 java {
@@ -54,7 +54,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
 
     compileOnly("org.jetbrains:annotations:24.0.1")
 
