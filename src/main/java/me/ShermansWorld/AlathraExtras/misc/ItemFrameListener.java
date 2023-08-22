@@ -8,7 +8,7 @@ import org.bukkit.event.hanging.HangingBreakEvent;
 import org.bukkit.event.hanging.HangingBreakEvent.RemoveCause;
 import org.bukkit.event.hanging.HangingPlaceEvent;
 
-public class ItemFrameListener  implements Listener{
+public class ItemFrameListener implements Listener{
 	@EventHandler
 	public static void itemFrameBreakEvent(HangingBreakEvent e) {
 		if (e.getEntity().getType().equals(EntityType.ITEM_FRAME)) {
