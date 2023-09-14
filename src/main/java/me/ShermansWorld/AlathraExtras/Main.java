@@ -175,6 +175,13 @@ public class Main extends JavaPlugin {
 		craftingRecipes.dioriteRecipe3();
 		craftingRecipes.greenDyeRecipe();
 		craftingRecipes.pinkPetalsRecipe();
+		craftingRecipes.stonesToGravel();
+		craftingRecipes.gravelToSand();
+		craftingRecipes.dioriteToQuartz();
+		craftingRecipes.coarseDirtToDirt();
+		craftingRecipes.beetrootPouchToBeetroot();
+		craftingRecipes.carrotPouchToCarrot();
+		craftingRecipes.potatoPouchToPotato();
 
 		setupEconomy();
 		logger = new AlathraExtrasLogger();

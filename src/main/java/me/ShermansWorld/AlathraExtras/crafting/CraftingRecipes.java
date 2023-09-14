@@ -2,10 +2,7 @@ package me.ShermansWorld.AlathraExtras.crafting;
 
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.Recipe;
-import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.inventory.ShapelessRecipe;
+import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
@@ -149,7 +146,7 @@ public class CraftingRecipes {
 	}
 
 	public void greenDyeRecipe() {
-		ItemStack greenDye = new ItemStack(Material.GREEN_DYE, 1);
+		ItemStack greenDye = new ItemStack(Material.GREEN_DYE, 2);
 		NamespacedKey key = new NamespacedKey((Plugin) Main.getInstance(),
 				String.valueOf(Main.getInstance().getDescription().getName()) + "16");
 		ShapelessRecipe greenDyeRecipe = new ShapelessRecipe(key, greenDye);
@@ -166,5 +163,95 @@ public class CraftingRecipes {
 		pinkPetalsRecipe.addIngredient(1, Material.CHERRY_LEAVES);
 		Main.getInstance().getServer().addRecipe((Recipe) pinkPetalsRecipe);
 	}
-	
+
+	public void stonesToGravel() {
+		NamespacedKey key = new NamespacedKey(Main.getInstance(),
+				String.valueOf(Main.getInstance().getDescription().getName()) + "18");
+		RecipeChoice.MaterialChoice input = new RecipeChoice.MaterialChoice(Material.COBBLESTONE, Material.COBBLED_DEEPSLATE);
+		ItemStack result = new ItemStack(Material.GRAVEL, 1);
+
+		ShapelessRecipe recipe = new ShapelessRecipe(key, result);
+
+		recipe.addIngredient(input);
+
+		Main.getInstance().getServer().addRecipe(recipe);
+	}
+
+	public void gravelToSand() {
+		NamespacedKey key = new NamespacedKey(Main.getInstance(),
+				String.valueOf(Main.getInstance().getDescription().getName()) + "19");
+		RecipeChoice.MaterialChoice input = new RecipeChoice.MaterialChoice(Material.GRAVEL);
+		ItemStack result = new ItemStack(Material.SAND, 1);
+
+		ShapelessRecipe recipe = new ShapelessRecipe(key, result);
+
+		recipe.addIngredient(input);
+
+		Main.getInstance().getServer().addRecipe(recipe);
+	}
+
+	public void dioriteToQuartz() {
+		NamespacedKey key = new NamespacedKey(Main.getInstance(),
+				String.valueOf(Main.getInstance().getDescription().getName()) + "20");
+		RecipeChoice.MaterialChoice input = new RecipeChoice.MaterialChoice(Material.DIORITE);
+		ItemStack result = new ItemStack(Material.QUARTZ, 1);
+
+		ShapelessRecipe recipe = new ShapelessRecipe(key, result);
+
+		recipe.addIngredient(input);
+
+		Main.getInstance().getServer().addRecipe(recipe);
+	}
+
+	public void coarseDirtToDirt() {
+		NamespacedKey key = new NamespacedKey(Main.getInstance(),
+				String.valueOf(Main.getInstance().getDescription().getName()) + "21");
+		RecipeChoice.MaterialChoice input = new RecipeChoice.MaterialChoice(Material.COARSE_DIRT);
+		ItemStack result = new ItemStack(Material.DIRT, 1);
+
+		ShapelessRecipe recipe = new ShapelessRecipe(key, result);
+
+		recipe.addIngredient(input);
+
+		Main.getInstance().getServer().addRecipe(recipe);
+	}
+
+	public void beetrootPouchToBeetroot() {
+		NamespacedKey key = new NamespacedKey(Main.getInstance(),
+				String.valueOf(Main.getInstance().getDescription().getName()) + "22");
+		RecipeChoice.ExactChoice input = new RecipeChoice.ExactChoice(CustomItems.getBeetrootPouch());
+		ItemStack result = new ItemStack(Material.BEETROOT, 9);
+
+		ShapelessRecipe recipe = new ShapelessRecipe(key, result);
+
+		recipe.addIngredient(input);
+
+		Main.getInstance().getServer().addRecipe(recipe);
+	}
+
+	public void carrotPouchToCarrot() {
+		NamespacedKey key = new NamespacedKey(Main.getInstance(),
+				String.valueOf(Main.getInstance().getDescription().getName()) + "23");
+		RecipeChoice.ExactChoice input = new RecipeChoice.ExactChoice(CustomItems.getCarrotPouch());
+		ItemStack result = new ItemStack(Material.CARROT, 9);
+
+		ShapelessRecipe recipe = new ShapelessRecipe(key, result);
+
+		recipe.addIngredient(input);
+
+		Main.getInstance().getServer().addRecipe(recipe);
+	}
+
+	public void potatoPouchToPotato() {
+		NamespacedKey key = new NamespacedKey(Main.getInstance(),
+				String.valueOf(Main.getInstance().getDescription().getName()) + "24");
+		RecipeChoice.ExactChoice input = new RecipeChoice.ExactChoice(CustomItems.getPotatoPouch());
+		ItemStack result = new ItemStack(Material.POTATO, 9);
+
+		ShapelessRecipe recipe = new ShapelessRecipe(key, result);
+
+		recipe.addIngredient(input);
+
+		Main.getInstance().getServer().addRecipe(recipe);
+	}
 }

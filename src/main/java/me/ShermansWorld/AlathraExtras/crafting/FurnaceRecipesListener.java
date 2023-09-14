@@ -76,4 +76,26 @@ public class FurnaceRecipesListener implements Listener {
 
         e.setResult(cooked);
     }
+
+    @EventHandler
+    public static void cookedCalamari(FurnaceSmeltEvent e) {
+        if (!(e.getSource().getType() == Material.COD))
+            return;
+
+        if (!e.getSource().getItemMeta().hasCustomModelData())
+            return;
+
+        if (!(e.getSource().getItemMeta().getCustomModelData() == 2801))
+            return;
+
+        ItemStack cooked = new ItemStack(Material.COOKED_COD);
+        ItemMeta meta = cooked.getItemMeta();
+
+        meta.displayName(new ColorParser("Cooked Calamari").build());
+        meta.setCustomModelData(2801);
+
+        cooked.setItemMeta(meta);
+
+        e.setResult(cooked);
+    }
 }
