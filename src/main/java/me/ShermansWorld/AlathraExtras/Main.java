@@ -4,7 +4,9 @@ import me.ShermansWorld.AlathraExtras.anitblockclimb.BlockPlaceListener;
 import me.ShermansWorld.AlathraExtras.announcer.Announcer;
 import me.ShermansWorld.AlathraExtras.balancing.CureListener;
 import me.ShermansWorld.AlathraExtras.balancing.GrindstoneListener;
+import me.ShermansWorld.AlathraExtras.balancing.ItemDamageListener;
 import me.ShermansWorld.AlathraExtras.balancing.RiptideListener;
+import me.ShermansWorld.AlathraExtras.balancing.SiegeWorldBuildListener;
 import me.ShermansWorld.AlathraExtras.chatitem.ShowItemCommand;
 import me.ShermansWorld.AlathraExtras.cm.CMTabCompleter;
 import me.ShermansWorld.AlathraExtras.cm.CMVoteCommands;
@@ -152,6 +154,8 @@ public class Main extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents((Listener) new TeleportRequestResponseListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new TownyListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new VotingListener(), (Plugin) this);
+		this.getServer().getPluginManager().registerEvents((Listener) new ItemDamageListener(), (Plugin) this);
+		this.getServer().getPluginManager().registerEvents((Listener) new SiegeWorldBuildListener(), (Plugin) this);
 
 		initRecipeItems();
 		initData();

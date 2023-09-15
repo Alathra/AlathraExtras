@@ -12,6 +12,7 @@ public class AlathraExtrasTabCompleter implements TabCompleter {
 		List<String> completions = new ArrayList<String>();
 		if (args.length == 1) {
 			completions.add("give");
+			completions.add("toggleitemdamage");
 			return completions;
 		} else if (args.length == 2) {
 			completions.add("tiny_xp_pouch");
