@@ -29,8 +29,13 @@ public class SiegeWorldBuildListener implements Listener {
 	@EventHandler
 	public static void onBlockPlace(BlockPlaceEvent e) {
 		if (e.getPlayer().getWorld().equals(Bukkit.getWorld("siege_world"))) {
+			if (e.getPlayer().hasPermission("alathraextas.siegeoverride")) {
+				return;
+			}
 			if (!allowedBlocks.contains(e.getBlockPlaced().getType())) {
 				e.getPlayer().sendMessage(Helper.Chatlabel() + Helper.color("&cYou can only build cannons during the siege event!"));
+				e.setCancelled(true);
+				return;
 			}
 		}
 		return;
@@ -39,8 +44,12 @@ public class SiegeWorldBuildListener implements Listener {
 	@EventHandler
 	public static void onBlockBreak(BlockBreakEvent e) {
 		if (e.getPlayer().getWorld().equals(Bukkit.getWorld("siege_world"))) {
+			if (e.getPlayer().hasPermission("alathraextas.siegeoverride")) {
+				return;
+			}
 			if (!allowedBlocks.contains(e.getBlock().getType())) {
 				e.getPlayer().sendMessage(Helper.Chatlabel() + Helper.color("&cYou can only build cannons during the siege event!"));
+				e.setCancelled(true);
 			}
 		}
 		return;
