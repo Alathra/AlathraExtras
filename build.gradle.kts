@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "me.ShermansWorld.AlathraExtras"
-version = "1.15.3"
+version = "1.16.0"
 description = ""
 
 java {
@@ -75,6 +75,7 @@ dependencies {
     compileOnly("com.github.MilkBowl:VaultAPI:1.7")
     compileOnly("net.essentialsx:EssentialsX:2.20.0")
     compileOnly("me.clip:placeholderapi:2.11.3")
+    compileOnly("dev.cubxity.plugins:unifiedmetrics-api:0.3.8")
 }
 
 tasks {
@@ -130,7 +131,7 @@ bukkit {
     // Misc properties
     load = net.minecrell.pluginyml.bukkit.BukkitPluginDescription.PluginLoadOrder.POSTWORLD // STARTUP or POSTWORLD
     depend = listOf("Towny", "TownyChat")
-    softDepend = listOf("Essentials", "PlaceholderAPI")
+    softDepend = listOf("Essentials", "PlaceholderAPI", "UnifiedMetrics")
 
     commands {
         register("roll") {

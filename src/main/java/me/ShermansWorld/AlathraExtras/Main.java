@@ -20,6 +20,8 @@ import me.ShermansWorld.AlathraExtras.endermanexp.EndermanExpDropListener;
 import me.ShermansWorld.AlathraExtras.freeop.FreeOpCommand;
 import me.ShermansWorld.AlathraExtras.items.ItemsListener;
 import me.ShermansWorld.AlathraExtras.joinleavemessages.JoinLeaveMessages;
+import me.ShermansWorld.AlathraExtras.metrics.MetricsManager;
+import me.ShermansWorld.AlathraExtras.metrics.PlayerFirstJoinListener;
 import me.ShermansWorld.AlathraExtras.misc.CommandListener;
 import me.ShermansWorld.AlathraExtras.misc.CraftingListener;
 import me.ShermansWorld.AlathraExtras.misc.ItemFrameListener;
@@ -156,6 +158,7 @@ public class Main extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents((Listener) new VotingListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new ItemDamageListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new SiegeWorldBuildListener(), (Plugin) this);
+		this.getServer().getPluginManager().registerEvents((Listener) new PlayerFirstJoinListener(), (Plugin) this);
 
 		initRecipeItems();
 		initData();
@@ -205,6 +208,7 @@ public class Main extends JavaPlugin {
 		JoinLeaveMessages.getInstance().onEnable();
 		Announcer.getInstance().onEnable();
 		initLogs();
+		new MetricsManager();
 	}
 
 	@Override
