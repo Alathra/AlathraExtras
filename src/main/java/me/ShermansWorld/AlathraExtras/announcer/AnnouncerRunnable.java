@@ -2,7 +2,7 @@ package me.ShermansWorld.AlathraExtras.announcer;
 
 import com.earth2me.essentials.Essentials;
 import com.github.milkdrinkers.colorparser.ColorParser;
-import me.ShermansWorld.AlathraExtras.Main;
+import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -19,8 +19,8 @@ public class AnnouncerRunnable extends BukkitRunnable {
         messages = Announcer.getConfig().getStringList("Announcer.Announcements");
         lastMessageIndex = -1;
 
-        essentialsEnabled = Main.getInstance().getServer().getPluginManager().isPluginEnabled("Essentials");
-        essentials = (Essentials) Main.getInstance().getServer().getPluginManager().getPlugin("Essentials");
+        essentialsEnabled = AlathraExtras.getInstance().getServer().getPluginManager().isPluginEnabled("Essentials");
+        essentials = (Essentials) AlathraExtras.getInstance().getServer().getPluginManager().getPlugin("Essentials");
     }
 
     private String randomMessage() {
@@ -37,13 +37,13 @@ public class AnnouncerRunnable extends BukkitRunnable {
 
     @Override
     public void run() {
-        if (!Main.getInstance().getServer().getOnlinePlayers().isEmpty() && !messages.isEmpty()) {
+        if (!AlathraExtras.getInstance().getServer().getOnlinePlayers().isEmpty() && !messages.isEmpty()) {
             announce(randomMessage());
         }
     }
 
     private void announce(String message) {
-        for (Player p : Main.getInstance().getServer().getOnlinePlayers()) {
+        for (Player p : AlathraExtras.getInstance().getServer().getOnlinePlayers()) {
             if ((!essentialsEnabled || !essentials.getUser(p).isAfk()))
                 p.sendMessage(
                     new ColorParser(message)

@@ -3,7 +3,7 @@ package me.ShermansWorld.AlathraExtras.joinleavemessages.listener.player;
 import com.earth2me.essentials.Essentials;
 import de.leonhard.storage.Config;
 import me.ShermansWorld.AlathraExtras.Helper;
-import me.ShermansWorld.AlathraExtras.Main;
+import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import me.ShermansWorld.AlathraExtras.joinleavemessages.JoinLeaveMessages;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
@@ -25,8 +25,8 @@ public class PlayerJoinListener implements Listener {
     private final String messagePrefix = cfg.getOrDefault("Joining.Prefix", "");
     private final HashMap<String, List<String>> messagesJoin = new HashMap<>();
     private final List<String> messagesFirstJoin = cfg.getStringList("Joining.Welcome");
-    private final boolean essentialsLoaded = Main.getInstance().getServer().getPluginManager().isPluginEnabled("Essentials");
-    private final Essentials essentials = (Essentials) Main.getInstance().getServer().getPluginManager().getPlugin("Essentials");
+    private final boolean essentialsLoaded = AlathraExtras.getInstance().getServer().getPluginManager().isPluginEnabled("Essentials");
+    private final Essentials essentials = (Essentials) AlathraExtras.getInstance().getServer().getPluginManager().getPlugin("Essentials");
     private final Random random = new Random();
 
     public PlayerJoinListener() {

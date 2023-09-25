@@ -1,6 +1,6 @@
 package me.ShermansWorld.AlathraExtras.disablespawners;
 
-import me.ShermansWorld.AlathraExtras.Main;
+import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.CreatureSpawner;
@@ -41,8 +41,8 @@ public class DisableSpawners implements Listener {
 
     private void parseWorldConfig() {
         enabledInWorlds.forEach((worldName) -> {
-            if (Main.getInstance().getServer().getWorld(worldName) != null) {
-                activeWorlds.add(Main.getInstance().getServer().getWorld(worldName));
+            if (AlathraExtras.getInstance().getServer().getWorld(worldName) != null) {
+                activeWorlds.add(AlathraExtras.getInstance().getServer().getWorld(worldName));
             }
         });
     }

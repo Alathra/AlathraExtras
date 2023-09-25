@@ -12,7 +12,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
 
-import me.ShermansWorld.AlathraExtras.Main;
+import me.ShermansWorld.AlathraExtras.AlathraExtras;
 
 public class SmithingTableListener implements Listener {
 
@@ -20,7 +20,7 @@ public class SmithingTableListener implements Listener {
 	public void onInvClick(final InventoryClickEvent e) {
 		if (e.getInventory().getType() == InventoryType.SMITHING) {
 			// if empty inventory
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
+			Bukkit.getScheduler().scheduleSyncDelayedTask(AlathraExtras.getInstance(), new Runnable() {
 				public void run() {
 					if (e.getInventory().getItem(0) != null) {
 						if (e.getInventory().getItem(0).getType() == Material.COBBLESTONE

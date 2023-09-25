@@ -1,7 +1,7 @@
 package me.ShermansWorld.AlathraExtras.announcer;
 
 import de.leonhard.storage.Config;
-import me.ShermansWorld.AlathraExtras.Main;
+import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import org.bukkit.scheduler.BukkitTask;
 
 public class Announcer {
@@ -26,12 +26,12 @@ public class Announcer {
     }
 
     public void onLoad() {
-        cfg = new Config("announcer", Main.getInstance().getDataFolder().getPath(), Main.getInstance().getResource("announcer.yml"));
+        cfg = new Config("announcer", AlathraExtras.getInstance().getDataFolder().getPath(), AlathraExtras.getInstance().getResource("announcer.yml"));
     }
 
     public void onEnable() {
         task = new AnnouncerRunnable()
-            .runTaskTimerAsynchronously(Main.getInstance(), 0, (20L * cfg.getInt("Announcer.Interval")));
+            .runTaskTimerAsynchronously(AlathraExtras.getInstance(), 0, (20L * cfg.getInt("Announcer.Interval")));
     }
 
     public void onDisable() {

@@ -8,9 +8,6 @@ import me.ShermansWorld.AlathraExtras.balancing.ItemDamageListener;
 import me.ShermansWorld.AlathraExtras.balancing.RiptideListener;
 import me.ShermansWorld.AlathraExtras.balancing.SiegeWorldBuildListener;
 import me.ShermansWorld.AlathraExtras.chatitem.ShowItemCommand;
-import me.ShermansWorld.AlathraExtras.cm.CMTabCompleter;
-import me.ShermansWorld.AlathraExtras.cm.CMVoteCommands;
-import me.ShermansWorld.AlathraExtras.cm.CMVoteData;
 import me.ShermansWorld.AlathraExtras.crafting.CraftingRecipes;
 import me.ShermansWorld.AlathraExtras.crafting.FurnaceRecipes;
 import me.ShermansWorld.AlathraExtras.crafting.FurnaceRecipesListener;
@@ -58,19 +55,17 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
-public class Main extends JavaPlugin {
+public class AlathraExtras extends JavaPlugin {
 
-	public static Main instance;
+	public static AlathraExtras instance;
 	public static ItemStack recycledLeather;
 
 	public static Economy economy = null;
 	public static Random rand;
-	
-	public static CMVoteData cmVoteData;
 
 
-	public static Main getInstance() {
-		return Main.instance;
+	public static AlathraExtras getInstance() {
+		return AlathraExtras.instance;
 	}
 
 	public static AlathraExtrasLogger logger;
@@ -93,10 +88,6 @@ public class Main extends JavaPlugin {
 		economy = rsp.getProvider();
 		return economy != null;
 	}
-	
-	private void initData() {
-		cmVoteData = new CMVoteData(this);
-	}
 
 	public static void initLogs() {
 		File logsFolder = new File("plugins" + File.separator + "AlathraExtras" + File.separator + "logs");
@@ -118,7 +109,7 @@ public class Main extends JavaPlugin {
 
 	@Override
 	public void onLoad() {
-		Main.instance = this;
+		AlathraExtras.instance = this;
 		JoinLeaveMessages.getInstance().onLoad();
 		Announcer.getInstance().onLoad();
 	}
@@ -161,7 +152,6 @@ public class Main extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents((Listener) new PlayerFirstJoinListener(), (Plugin) this);
 
 		initRecipeItems();
-		initData();
 		FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
 		furnaceRecipes.rottenFleshtoLeather();
 		furnaceRecipes.mossyCobbletoAndesite();
@@ -196,11 +186,9 @@ public class Main extends JavaPlugin {
 		new FreeOpCommand(this);
 		new PukeCommand(this);
 		new GiveTutorialBookCommand(this);
-		new CMVoteCommands(this);
 		new AlathraExtrasCommands(this);
 		new PlaytimeCommand(this);
 		new ShowItemCommand(this);
-		getCommand("cmvote").setTabCompleter(new CMTabCompleter());
 		getCommand("alathraextras").setTabCompleter(new AlathraExtrasTabCompleter());
 		getCommand("playtime").setTabCompleter(new PlaytimeTabCompleter());
 		rand = new Random();

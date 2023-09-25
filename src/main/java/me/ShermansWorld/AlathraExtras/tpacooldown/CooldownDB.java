@@ -2,7 +2,7 @@ package me.ShermansWorld.AlathraExtras.tpacooldown;
 
 import de.leonhard.storage.Json;
 import de.leonhard.storage.internal.settings.ReloadSettings;
-import me.ShermansWorld.AlathraExtras.Main;
+import me.ShermansWorld.AlathraExtras.AlathraExtras;
 
 import java.io.File;
 import java.util.UUID;
@@ -16,7 +16,7 @@ public class CooldownDB {
 
     CooldownDB() {
         // Initialize database
-        db = new Json("cooldowns_db", Main.getInstance().getDataFolder().getPath() + File.separator + "database", Main.getInstance().getResource("cooldowns_db.json"));
+        db = new Json("cooldowns_db", AlathraExtras.getInstance().getDataFolder().getPath() + File.separator + "database", AlathraExtras.getInstance().getResource("cooldowns_db.json"));
         db.setReloadSettings(ReloadSettings.INTELLIGENT);
     }
 

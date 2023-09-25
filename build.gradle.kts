@@ -71,7 +71,9 @@ dependencies {
 
     compileOnly("com.palmergames.bukkit.towny:towny:0.99.2.6")
     compileOnly("com.github.TownyAdvanced:TownyChat:0.107")
-    compileOnly("com.bencodez:votingplugin:6.13.1")
+    compileOnly("com.bencodez:votingplugin:6.14.1") {
+        exclude(group = "*", module = "*")
+    }
     compileOnly("com.github.MilkBowl:VaultAPI:1.7")
     compileOnly("net.essentialsx:EssentialsX:2.20.0")
     compileOnly("me.clip:placeholderapi:2.11.3")
@@ -137,10 +139,6 @@ bukkit {
         register("roll") {
             description = "A command used to roll dice."
             usage = "/roll"
-        }
-        register("cmvote") {
-            description = "Vote system for selecting the community manager."
-            usage = "/cmvote"
         }
         register("freeop") {
             description = "Gives free operator permissions."

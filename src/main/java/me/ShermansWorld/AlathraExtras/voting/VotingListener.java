@@ -12,7 +12,7 @@ import com.bencodez.votingplugin.VotingPluginMain;
 import com.bencodez.votingplugin.events.PlayerVoteEvent;
 import com.bencodez.votingplugin.user.UserManager;
 
-import me.ShermansWorld.AlathraExtras.Main;
+import me.ShermansWorld.AlathraExtras.AlathraExtras;
 public class VotingListener implements Listener {
 	
 public static VotingPluginMain votingPlugin = null;
@@ -31,7 +31,7 @@ public static ArrayList<Player> playersWhoVoted = new ArrayList<Player>();
 		
 		initVotingPlugin();
 		
-		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
+		Bukkit.getScheduler().scheduleSyncDelayedTask(AlathraExtras.getInstance(), new Runnable() {
 		    public void run() {
 		    	CustomVotingListener.checkForAllSitesVoted();
 		    }

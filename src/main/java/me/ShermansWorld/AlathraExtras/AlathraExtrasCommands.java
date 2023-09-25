@@ -13,7 +13,7 @@ public class AlathraExtrasCommands implements CommandExecutor {
 	
 	public static boolean itemDamageOn;
 
-	public AlathraExtrasCommands(Main plugin) {
+	public AlathraExtrasCommands(AlathraExtras plugin) {
 		plugin.getCommand("alathraextras").setExecutor(this);
 		itemDamageOn = true;
 	}

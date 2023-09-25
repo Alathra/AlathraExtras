@@ -1,7 +1,7 @@
 package me.ShermansWorld.AlathraExtras.joinleavemessages;
 
 import de.leonhard.storage.Config;
-import me.ShermansWorld.AlathraExtras.Main;
+import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import me.ShermansWorld.AlathraExtras.joinleavemessages.listener.ListenerHandler;
 
 public class JoinLeaveMessages {
@@ -26,7 +26,7 @@ public class JoinLeaveMessages {
     }
 
     public void onLoad() {
-        cfg = new Config("joinleavemessages", Main.getInstance().getDataFolder().getPath(), Main.getInstance().getResource("joinleavemessages.yml"));
+        cfg = new Config("joinleavemessages", AlathraExtras.getInstance().getDataFolder().getPath(), AlathraExtras.getInstance().getResource("joinleavemessages.yml"));
         listenerHandler = new ListenerHandler(cfg);
     }
 

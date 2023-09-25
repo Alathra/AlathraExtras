@@ -6,12 +6,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import me.ShermansWorld.AlathraExtras.Helper;
-import me.ShermansWorld.AlathraExtras.Main;
+import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import me.ShermansWorld.AlathraExtras.misc.CustomItems;
 
 public class GiveTutorialBookCommand implements CommandExecutor {
 	
-	public GiveTutorialBookCommand(final Main plugin) {
+	public GiveTutorialBookCommand(final AlathraExtras plugin) {
 		plugin.getCommand("tutorialbook").setExecutor((CommandExecutor) this);
 	}
 	

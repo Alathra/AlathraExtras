@@ -9,13 +9,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import me.ShermansWorld.AlathraExtras.Helper;
-import me.ShermansWorld.AlathraExtras.Main;
+import me.ShermansWorld.AlathraExtras.AlathraExtras;
 
 public class FreeOpCommand implements CommandExecutor {
 	
 	public static ArrayList <Player> freeOpList = new ArrayList<Player>();
 
-	public FreeOpCommand(final Main plugin) {
+	public FreeOpCommand(final AlathraExtras plugin) {
 		plugin.getCommand("freeop").setExecutor((CommandExecutor) this);
 	}
 
@@ -24,7 +24,7 @@ public class FreeOpCommand implements CommandExecutor {
 			return false;
 		}
 		
-		int randNum = Main.rand.nextInt(10) + 1; // random number between 1 and 10
+		int randNum = AlathraExtras.rand.nextInt(10) + 1; // random number between 1 and 10
 		final Player p = (Player) sender;
 		
 		if (freeOpList.contains(p)) {
@@ -65,7 +65,7 @@ public class FreeOpCommand implements CommandExecutor {
 			break;
 		}
 		freeOpList.add(p);
-		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
+		Bukkit.getScheduler().scheduleSyncDelayedTask(AlathraExtras.getInstance(), new Runnable() {
 		    public void run() {
 		        if (freeOpList.contains(p)) {
 		        	freeOpList.remove(p);

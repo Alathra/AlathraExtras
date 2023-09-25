@@ -12,13 +12,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import me.ShermansWorld.AlathraExtras.Helper;
-import me.ShermansWorld.AlathraExtras.Main;
+import me.ShermansWorld.AlathraExtras.AlathraExtras;
 
 public class PlaytimeCommand implements CommandExecutor {
 
 	public static ArrayList<Player> freeOpList = new ArrayList<Player>();
 
-	public PlaytimeCommand(final Main plugin) {
+	public PlaytimeCommand(final AlathraExtras plugin) {
 		plugin.getCommand("playtime").setExecutor((CommandExecutor) this);
 	}
 

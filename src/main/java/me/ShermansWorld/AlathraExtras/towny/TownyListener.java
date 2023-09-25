@@ -25,7 +25,7 @@ import com.palmergames.bukkit.towny.object.Town;
 import com.palmergames.bukkit.towny.object.TownBlock;
 
 import me.ShermansWorld.AlathraExtras.Helper;
-import me.ShermansWorld.AlathraExtras.Main;
+import me.ShermansWorld.AlathraExtras.AlathraExtras;
 
 public class TownyListener implements Listener {
 
@@ -144,7 +144,7 @@ public class TownyListener implements Listener {
 		Town town = e.getTown();
 		final World w = town.getWorld();
 		for (final TownBlock townBlock : town.getTownBlocks()) {
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
+			Bukkit.getScheduler().scheduleSyncDelayedTask(AlathraExtras.getInstance(), new Runnable() {
 				public void run() {
 					deleteSignsInChunk(townBlock, w, delay);
 				}
@@ -167,7 +167,7 @@ public class TownyListener implements Listener {
 	public static void onPlayerJoin(PlayerJoinEvent e) {
 		Player p = e.getPlayer();
 		if (hasGeneralChatMuted(p.getName())) {
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
+			Bukkit.getScheduler().scheduleSyncDelayedTask(AlathraExtras.getInstance(), new Runnable() {
 				public void run() {
 					p.sendMessage(Helper.Chatlabel() + Helper.color(
 							"&5You are getting this notification because you have muted general chat. To see general chat again type &e/channel join general"));

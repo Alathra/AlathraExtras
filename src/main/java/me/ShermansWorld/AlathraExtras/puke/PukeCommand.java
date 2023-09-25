@@ -2,7 +2,7 @@ package me.ShermansWorld.AlathraExtras.puke;
 
 import com.palmergames.bukkit.towny.utils.NameUtil;
 import me.ShermansWorld.AlathraExtras.Helper;
-import me.ShermansWorld.AlathraExtras.Main;
+import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -25,12 +25,12 @@ public class PukeCommand implements CommandExecutor, TabCompleter {
 
     static int[] bukkitId = new int[1];
 
-    public PukeCommand(final Main plugin) {
+    public PukeCommand(final AlathraExtras plugin) {
         plugin.getCommand("puke").setExecutor(this);
         plugin.getCommand("puke").setTabCompleter(this);
 
         //tick loop
-        bukkitId[0] = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Main.getInstance(),
+        bukkitId[0] = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(AlathraExtras.getInstance(),
                 () -> {
 //                    Bukkit.getLogger().info("doing puke loop");
                     for (Player p : active.keySet()) {
