@@ -119,7 +119,7 @@ tasks {
 
 bukkit {
     // Plugin main class (required)
-    main = "${project.group}.Main"
+    main = "${project.group}.AlathraExtras"
 
     // Plugin Information
     name = "${project.name}"
