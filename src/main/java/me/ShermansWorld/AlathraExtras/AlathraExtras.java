@@ -11,7 +11,6 @@ import me.ShermansWorld.AlathraExtras.chatitem.ShowItemCommand;
 import me.ShermansWorld.AlathraExtras.crafting.CraftingRecipes;
 import me.ShermansWorld.AlathraExtras.crafting.FurnaceRecipes;
 import me.ShermansWorld.AlathraExtras.crafting.FurnaceRecipesListener;
-import me.ShermansWorld.AlathraExtras.crafting.SmithingTableListener;
 import me.ShermansWorld.AlathraExtras.enderchersblock.EnderChestBlockListener;
 import me.ShermansWorld.AlathraExtras.endermanexp.EndermanExpDropListener;
 import me.ShermansWorld.AlathraExtras.freeop.FreeOpCommand;
@@ -143,7 +142,6 @@ public class AlathraExtras extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents((Listener) new PlayerQuitListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new PreTeleportListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new RiptideListener(), (Plugin) this);
-		this.getServer().getPluginManager().registerEvents((Listener) new SmithingTableListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new TeleportRequestResponseListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new TownyListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new VotingListener(), (Plugin) this);

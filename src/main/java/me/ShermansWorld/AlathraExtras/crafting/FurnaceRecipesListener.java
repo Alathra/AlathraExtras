@@ -24,7 +24,7 @@ public class FurnaceRecipesListener implements Listener {
         ItemStack cooked = new ItemStack(Material.COOKED_COD);
         ItemMeta meta = cooked.getItemMeta();
 
-        meta.displayName(new ColorParser("Cooked Shark Meat").build());
+        meta.displayName(ColorParser.of("Cooked Shark Meat").build());
         meta.setCustomModelData(2800);
 
         cooked.setItemMeta(meta);
@@ -47,7 +47,7 @@ public class FurnaceRecipesListener implements Listener {
         ItemStack cooked = new ItemStack(Material.COOKED_MUTTON);
         ItemMeta meta = cooked.getItemMeta();
 
-        meta.displayName(new ColorParser("Cooked Venison").build());
+        meta.displayName(ColorParser.of("Cooked Venison").build());
         meta.setCustomModelData(2800);
 
         cooked.setItemMeta(meta);
@@ -69,7 +69,7 @@ public class FurnaceRecipesListener implements Listener {
         ItemStack cooked = new ItemStack(Material.COOKED_BEEF);
         ItemMeta meta = cooked.getItemMeta();
 
-        meta.displayName(new ColorParser("Cooked Elephant Meat").build());
+        meta.displayName(ColorParser.of("Cooked Elephant Meat").build());
         meta.setCustomModelData(2800);
 
         cooked.setItemMeta(meta);
@@ -91,7 +91,7 @@ public class FurnaceRecipesListener implements Listener {
         ItemStack cooked = new ItemStack(Material.COOKED_COD);
         ItemMeta meta = cooked.getItemMeta();
 
-        meta.displayName(new ColorParser("Cooked Calamari").build());
+        meta.displayName(ColorParser.of("Cooked Calamari").build());
         meta.setCustomModelData(2801);
 
         cooked.setItemMeta(meta);
