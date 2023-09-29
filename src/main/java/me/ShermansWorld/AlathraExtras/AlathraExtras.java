@@ -14,6 +14,7 @@ import me.ShermansWorld.AlathraExtras.crafting.FurnaceRecipesListener;
 import me.ShermansWorld.AlathraExtras.enderchersblock.EnderChestBlockListener;
 import me.ShermansWorld.AlathraExtras.endermanexp.EndermanExpDropListener;
 import me.ShermansWorld.AlathraExtras.freeop.FreeOpCommand;
+import me.ShermansWorld.AlathraExtras.halloween.CandyEatListener;
 import me.ShermansWorld.AlathraExtras.items.ItemsListener;
 import me.ShermansWorld.AlathraExtras.joinleavemessages.JoinLeaveMessages;
 import me.ShermansWorld.AlathraExtras.metrics.MetricsManager;
@@ -148,6 +149,7 @@ public class AlathraExtras extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents((Listener) new ItemDamageListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new SiegeWorldBuildListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new PlayerFirstJoinListener(), (Plugin) this);
+		this.getServer().getPluginManager().registerEvents((Listener) new CandyEatListener(), (Plugin) this);
 
 		initRecipeItems();
 		FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
