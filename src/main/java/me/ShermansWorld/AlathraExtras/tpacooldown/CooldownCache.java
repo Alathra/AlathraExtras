@@ -9,7 +9,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class CooldownCache {
-    private static final int COMMAND_COOLDOWN = 12 * 3600 * 1000; // Cooldown duration (12 hours)
+    private static final int COMMAND_COOLDOWN = 5 * 3600 * 1000; // Cooldown duration (12 hours)
     private static final ConcurrentHashMap<UUID, Long> cooldowns = new ConcurrentHashMap<>();
 
     /**
