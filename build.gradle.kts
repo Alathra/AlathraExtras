@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "me.ShermansWorld.AlathraExtras"
-version = "1.16.3"
+version = "1.17.0"
 description = ""
 
 java {
@@ -51,6 +51,8 @@ repositories {
     maven("https://repo.extendedclip.com/content/repositories/placeholderapi/") {
         content { includeGroup("me.clip") }
     }
+    
+    maven("https://repo.codemc.org/repository/maven-public/")
 }
 
 dependencies {
@@ -78,6 +80,7 @@ dependencies {
     compileOnly("net.essentialsx:EssentialsX:2.20.0")
     compileOnly("me.clip:placeholderapi:2.11.3")
     compileOnly("dev.cubxity.plugins:unifiedmetrics-api:0.3.8")
+    compileOnly("nl.rutgerkok:blocklocker:1.10.4")
 }
 
 tasks {

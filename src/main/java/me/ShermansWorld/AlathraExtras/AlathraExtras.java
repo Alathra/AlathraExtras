@@ -2,6 +2,7 @@ package me.ShermansWorld.AlathraExtras;
 
 import me.ShermansWorld.AlathraExtras.anitblockclimb.BlockPlaceListener;
 import me.ShermansWorld.AlathraExtras.announcer.Announcer;
+import me.ShermansWorld.AlathraExtras.balancing.BlockLockerTownMayor;
 import me.ShermansWorld.AlathraExtras.balancing.CureListener;
 import me.ShermansWorld.AlathraExtras.balancing.GrindstoneListener;
 import me.ShermansWorld.AlathraExtras.balancing.ItemDamageListener;
@@ -150,6 +151,7 @@ public class AlathraExtras extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents((Listener) new SiegeWorldBuildListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new PlayerFirstJoinListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new CandyEatListener(), (Plugin) this);
+		this.getServer().getPluginManager().registerEvents((Listener) new BlockLockerTownMayor(), (Plugin) this);
 
 		initRecipeItems();
 		FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
