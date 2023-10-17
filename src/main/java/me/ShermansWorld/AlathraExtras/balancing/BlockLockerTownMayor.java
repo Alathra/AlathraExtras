@@ -57,10 +57,7 @@ public class BlockLockerTownMayor implements Listener {
 				if (BlockLockerAPIv2.isOwner(e.getPlayer(), e.getBlock())) {
 					return;
 				}
-				OfflinePlayer owner = BlockLockerAPIv2.getOwner(e.getBlock()).get();
-				if (hasLoggedOnInLast30Days(owner)) {
-					return;
-				}
+				//OfflinePlayer owner = BlockLockerAPIv2.getOwner(e.getBlock()).get();
 				TownyAPI townyAPI = TownyAPI.getInstance();
 				Town town = townyAPI.getTownOrNull(townyAPI.getTownBlock(e.getBlock().getLocation()));
 				if (town != null) {
@@ -77,20 +74,6 @@ public class BlockLockerTownMayor implements Listener {
 				}
 			}
 		}
-	}
-
-	private static boolean hasLoggedOnInLast30Days(OfflinePlayer player) {
-		long thirtyDaysAgo = getThirtyDaysAgoInMillis();
-		long lastLogin = player.getLastLogin();
-
-		return lastLogin >= thirtyDaysAgo;
-	}
-
-	private static long getThirtyDaysAgoInMillis() {
-		Calendar calendar = Calendar.getInstance();
-		calendar.add(Calendar.DAY_OF_MONTH, -30);
-		Date thirtyDaysAgo = calendar.getTime();
-		return thirtyDaysAgo.getTime();
 	}
 
 }
