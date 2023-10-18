@@ -9,7 +9,7 @@ import me.ShermansWorld.AlathraExtras.misc.CustomItems;
 
 public class PlayerFirstJoin implements Listener {
 	@EventHandler
-	public static void commandSent(PlayerJoinEvent e) {
+	public void commandSent(PlayerJoinEvent e) {
 		Player p = e.getPlayer();
 		if (!(p.hasPlayedBefore())) {
 			p.getInventory().addItem(CustomItems.tutorialBook());

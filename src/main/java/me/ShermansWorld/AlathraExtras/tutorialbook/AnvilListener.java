@@ -10,7 +10,7 @@ import me.ShermansWorld.AlathraExtras.misc.CustomItems;
 
 public class AnvilListener implements Listener {
 	@EventHandler
-	public static void commandSent(PrepareAnvilEvent e) { 
+	public void commandSent(PrepareAnvilEvent e) { 
 		if (e.getInventory().getItem(0) != null) {
 			if (e.getInventory().getItem(0).isSimilar(CustomItems.tutorialBook())) {
 				Player p = (Player) e.getView().getPlayer();

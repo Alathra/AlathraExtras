@@ -13,7 +13,7 @@ public class PlayerClickHelpBook implements Listener {
 	
 	
 	@EventHandler
-	public static void onPlayerUse(PlayerInteractEvent e) {
+	public void onPlayerUse(PlayerInteractEvent e) {
 		Player p = e.getPlayer();
 		if (e.getItem() == null) {
 			return;

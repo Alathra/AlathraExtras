@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class CraftingListener implements Listener {
 	@EventHandler
-	public static void craftEvent(CraftItemEvent e) {
+	public void craftEvent(CraftItemEvent e) {
 		if (Arrays.asList(e.getInventory().getStorageContents()).contains(CustomItems.tutorialBook())) {
 			e.getWhoClicked()
 					.sendMessage(Helper.Chatlabel() + Helper.color("&cYou cannot craft with the Player's Guide!"));

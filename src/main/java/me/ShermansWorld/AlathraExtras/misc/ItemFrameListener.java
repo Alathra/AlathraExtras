@@ -10,7 +10,7 @@ import org.bukkit.event.hanging.HangingPlaceEvent;
 
 public class ItemFrameListener implements Listener{
 	@EventHandler
-	public static void itemFrameBreakEvent(HangingBreakEvent e) {
+	public void itemFrameBreakEvent(HangingBreakEvent e) {
 		if (e.getEntity().getType().equals(EntityType.ITEM_FRAME)) {
 			if (!e.getCause().equals(RemoveCause.EXPLOSION)) {
 				ItemFrame itemFrame = (ItemFrame) e.getEntity();
@@ -25,7 +25,7 @@ public class ItemFrameListener implements Listener{
 	}
 	
 	@EventHandler
-	public static void itemFramePlaceEvent(HangingPlaceEvent e) {
+	public void itemFramePlaceEvent(HangingPlaceEvent e) {
 		if (e.getEntity().getType().equals(EntityType.ITEM_FRAME)) {
 			ItemFrame itemFrame = (ItemFrame) e.getEntity();
 			if (e.getItemStack().isSimilar(CustomItems.getInvisibleItemFrame())) {

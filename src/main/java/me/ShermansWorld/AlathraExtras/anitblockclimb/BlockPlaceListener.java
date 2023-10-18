@@ -37,6 +37,8 @@ public class BlockPlaceListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onBlockPlace(BlockPlaceEvent event) {
+    	
+    	
 
         if (event.isCancelled()) {
             Player player = event.getPlayer();

@@ -14,7 +14,7 @@ import org.bukkit.potion.PotionEffectType;
 public class CommandListener implements Listener {
 	
 	@EventHandler(priority = EventPriority.HIGH)
-	public static void commandSent(PlayerCommandPreprocessEvent e) {
+	public void commandSent(PlayerCommandPreprocessEvent e) {
 		if (e.getMessage().equalsIgnoreCase("/help")) {
 			Player p = e.getPlayer();
 			Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ibooks open tutorial_book " + e.getPlayer().getName());
