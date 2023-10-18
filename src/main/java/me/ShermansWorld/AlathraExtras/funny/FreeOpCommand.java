@@ -1,4 +1,4 @@
-package me.ShermansWorld.AlathraExtras.freeop;
+package me.ShermansWorld.AlathraExtras.funny;
 
 import java.util.ArrayList;
 

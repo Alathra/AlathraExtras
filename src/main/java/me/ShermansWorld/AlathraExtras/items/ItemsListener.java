@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemStack;
 public class ItemsListener implements Listener {
 
 	@EventHandler
-	public static void tinyXPPouchUse(PlayerInteractEvent e) {
+	public void tinyXPPouchUse(PlayerInteractEvent e) {
 		if (e.getHand() == EquipmentSlot.HAND) {
 			if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
 				if (e.getPlayer().getInventory().getItemInMainHand().getType() == Material.PAPER) {

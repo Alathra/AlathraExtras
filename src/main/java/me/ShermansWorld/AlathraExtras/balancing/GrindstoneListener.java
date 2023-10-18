@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
 import me.ShermansWorld.AlathraExtras.Helper;
 public class GrindstoneListener implements Listener {
 	@EventHandler
-	public static void onCure(InventoryClickEvent e) {
+	public void onCure(InventoryClickEvent e) {
 		if (e.getInventory().getType() == InventoryType.GRINDSTONE && e.getSlotType() == InventoryType.SlotType.RESULT ) {
 			if (!(e.getInventory() instanceof GrindstoneInventory grindstoneInv))
 				return;

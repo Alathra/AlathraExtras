@@ -27,7 +27,7 @@ public class SiegeWorldBuildListener implements Listener {
 	}
 	
 	@EventHandler
-	public static void onBlockPlace(BlockPlaceEvent e) {
+	public void onBlockPlace(BlockPlaceEvent e) {
 		if (e.getPlayer().getWorld().equals(Bukkit.getWorld("siege_world"))) {
 			if (e.getPlayer().hasPermission("alathraextas.siegeoverride")) {
 				return;
@@ -42,7 +42,7 @@ public class SiegeWorldBuildListener implements Listener {
 	}
 	
 	@EventHandler
-	public static void onBlockBreak(BlockBreakEvent e) {
+	public void onBlockBreak(BlockBreakEvent e) {
 		if (e.getPlayer().getWorld().equals(Bukkit.getWorld("siege_world"))) {
 			if (e.getPlayer().hasPermission("alathraextas.siegeoverride")) {
 				return;

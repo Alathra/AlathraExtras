@@ -13,7 +13,7 @@ import me.ShermansWorld.AlathraExtras.Helper;
 public class CureListener implements Listener {
 	
 	@EventHandler
-	public static void onCure(PlayerInteractEntityEvent e) {
+	public void onCure(PlayerInteractEntityEvent e) {
 		if (e.getRightClicked().getType() == EntityType.ZOMBIE_VILLAGER) {
 			Player p = e.getPlayer();
 			if (p.getInventory().getItemInMainHand() != null) {

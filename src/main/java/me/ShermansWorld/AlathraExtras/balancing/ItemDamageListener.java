@@ -10,7 +10,7 @@ import me.ShermansWorld.AlathraExtras.AlathraExtrasCommands;
 
 public class ItemDamageListener implements Listener {
 	@EventHandler(priority = EventPriority.HIGHEST)
-	public static void onItemDamage(PlayerItemDamageEvent e) {
+	public void onItemDamage(PlayerItemDamageEvent e) {
 		if (!AlathraExtrasCommands.itemDamageOn) {
 			e.setCancelled(true);
 		}

@@ -122,7 +122,7 @@ public class TownyListener implements Listener {
 		approvedChars.add(' ');
 	}
 
-	public static void deleteSignsInChunk(TownBlock townBlock, World w, long delay) {
+	public void deleteSignsInChunk(TownBlock townBlock, World w, long delay) {
 		int x = townBlock.getX() * 16;
 		int z = townBlock.getZ() * 16;
 		for (int xx = x; xx < x + 16; xx++) {
@@ -140,7 +140,7 @@ public class TownyListener implements Listener {
 	}
 
 	@EventHandler
-	public static void checkForSigns(TownRuinedEvent e) {
+	public void checkForSigns(TownRuinedEvent e) {
 		Town town = e.getTown();
 		final World w = town.getWorld();
 		for (final TownBlock townBlock : town.getTownBlocks()) {
@@ -164,7 +164,7 @@ public class TownyListener implements Listener {
 	}
 
 	@EventHandler
-	public static void onPlayerJoin(PlayerJoinEvent e) {
+	public void onPlayerJoin(PlayerJoinEvent e) {
 		Player p = e.getPlayer();
 		if (hasGeneralChatMuted(p.getName())) {
 			Bukkit.getScheduler().scheduleSyncDelayedTask(AlathraExtras.getInstance(), new Runnable() {
@@ -177,7 +177,7 @@ public class TownyListener implements Listener {
 	}
 	
 	@EventHandler
-	public static void onTownCreation(NewTownEvent e) {
+	public void onTownCreation(NewTownEvent e) {
 		Town town = e.getTown();
 		String townName = "";
 		for (int i = 0; i < town.getName().length(); i++) {
@@ -194,7 +194,7 @@ public class TownyListener implements Listener {
 	}
 	
 	@EventHandler
-	public static void onNationCreation(NewNationEvent e) {
+	public void onNationCreation(NewNationEvent e) {
 		Nation nation = e.getNation();
 		nation.getAccount().deposit(2000.0, "Nation Creation");
 		nation.getKing().getPlayer().sendMessage(Helper.Chatlabel() + Helper.color("&b$2000 &chas been deposited into your nation bank. Nations use money each day or they fall into ruin. To put money in your nation type &e/t deposit [amount]"));

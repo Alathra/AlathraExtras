@@ -10,7 +10,7 @@ import org.bukkit.potion.PotionEffectType;
 public class CandyEatListener implements Listener {
 
 	@EventHandler
-	public static void onCandyEat(PlayerItemConsumeEvent e) {
+	public void onCandyEat(PlayerItemConsumeEvent e) {
 		if (!e.getItem().hasItemMeta()) {
 			return;
 		}

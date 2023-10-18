@@ -12,7 +12,7 @@ import me.ShermansWorld.AlathraExtras.Helper;
 public class RiptideListener implements Listener {
 
 	@EventHandler
-	public static void onRipTide(PlayerMoveEvent e) {
+	public void onRipTide(PlayerMoveEvent e) {
 		if (!e.getPlayer().isRiptiding())
 			return;
 

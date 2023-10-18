@@ -10,7 +10,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class FurnaceRecipesListener implements Listener {
     @EventHandler
-    public static void cookedSharkMeat(FurnaceSmeltEvent e) {
+    public void cookedSharkMeat(FurnaceSmeltEvent e) {
 
         if (!(e.getSource().getType() == Material.COD))
             return;
@@ -33,7 +33,7 @@ public class FurnaceRecipesListener implements Listener {
     }
 
     @EventHandler
-    public static void cookedVenison(FurnaceSmeltEvent e) {
+    public void cookedVenison(FurnaceSmeltEvent e) {
 
         if (!(e.getSource().getType() == Material.MUTTON))
             return;
