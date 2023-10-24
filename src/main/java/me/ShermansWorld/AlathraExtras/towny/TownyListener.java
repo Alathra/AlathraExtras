@@ -177,23 +177,6 @@ public class TownyListener implements Listener {
 	}
 	
 	@EventHandler
-	public void onTownCreation(NewTownEvent e) {
-		Town town = e.getTown();
-		String townName = "";
-		for (int i = 0; i < town.getName().length(); i++) {
-			if (!approvedChars.contains(town.getName().charAt(i))) {
-				town.getMayor().getPlayer().sendMessage(Helper.Chatlabel() + Helper.color("&cInvalid character '" + String.valueOf(town.getName().charAt(i)) + "'. Character replaced with a '_'."));
-				townName += "_";
-			} else {
-				townName += town.getName().charAt(i);
-			}
-		}
-		town.setName(townName);
- 		town.getAccount().deposit(500.0, "Town Creation");
-		town.getMayor().getPlayer().sendMessage(Helper.Chatlabel() + Helper.color("&b$500 &chas been deposited into your town bank. Towns use money each day or they fall into ruin. To put money in your town type &e/t deposit [amount]"));
-	}
-	
-	@EventHandler
 	public void onNationCreation(NewNationEvent e) {
 		Nation nation = e.getNation();
 		nation.getAccount().deposit(2000.0, "Nation Creation");
