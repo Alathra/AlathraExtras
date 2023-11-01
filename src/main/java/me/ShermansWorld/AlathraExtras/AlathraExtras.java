@@ -17,6 +17,7 @@ import me.ShermansWorld.AlathraExtras.endermanexp.EndermanExpDropListener;
 import me.ShermansWorld.AlathraExtras.funny.AetherPortalListener;
 import me.ShermansWorld.AlathraExtras.funny.FreeOpCommand;
 import me.ShermansWorld.AlathraExtras.halloween.CandyEatListener;
+import me.ShermansWorld.AlathraExtras.funny.HeadScourgeListener;
 import me.ShermansWorld.AlathraExtras.items.ItemsListener;
 import me.ShermansWorld.AlathraExtras.joinleavemessages.JoinLeaveMessages;
 import me.ShermansWorld.AlathraExtras.metrics.MetricsManager;
@@ -154,7 +155,8 @@ public class AlathraExtras extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents((Listener) new CandyEatListener(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new BlockLockerTownMayor(), (Plugin) this);
 		this.getServer().getPluginManager().registerEvents((Listener) new AetherPortalListener(), (Plugin) this);
-		
+		this.getServer().getPluginManager().registerEvents((Listener) new HeadScourgeListener(), (Plugin) this);
+
 		initRecipeItems();
 		FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
 		furnaceRecipes.rottenFleshtoLeather();
@@ -200,7 +202,7 @@ public class AlathraExtras extends JavaPlugin {
 		JoinLeaveMessages.getInstance().onEnable();
 		Announcer.getInstance().onEnable();
 		initLogs();
-		new MetricsManager();
+		if (instance.getServer().getPluginManager().isPluginEnabled("UnifiedMetrics")) new MetricsManager();
 	}
 
 	@Override
