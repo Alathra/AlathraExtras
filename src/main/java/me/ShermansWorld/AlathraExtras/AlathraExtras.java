@@ -138,7 +138,7 @@ public class AlathraExtras extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents(new DisableSpawners(), this);
 		this.getServer().getPluginManager().registerEvents(new FurnaceRecipesListener(), this);
 		this.getServer().getPluginManager().registerEvents(new GrindstoneListener(), this);
-		this.getServer().getPluginManager().registerEvents(new HeadScourgeListener(), this);
+		// this.getServer().getPluginManager().registerEvents(new HeadScourgeListener(), this);
 		this.getServer().getPluginManager().registerEvents(new HopperListener(), this);
 		this.getServer().getPluginManager().registerEvents(new ItemDamageListener(), this);
 		this.getServer().getPluginManager().registerEvents(new ItemFrameListener(), this);
