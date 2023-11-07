@@ -24,7 +24,7 @@ public class FreeOpCommand implements CommandExecutor {
 			return false;
 		}
 		
-		int randNum = AlathraExtras.rand.nextInt(10) + 1; // random number between 1 and 10
+		int randNum = AlathraExtras.rand.nextInt(13) + 1; // random number between 1 and 10
 		final Player p = (Player) sender;
 		
 		if (freeOpList.contains(p)) {
@@ -52,16 +52,25 @@ public class FreeOpCommand implements CommandExecutor {
 			p.chat("Am I a dunderhead? Yes or No?");
 			break;
 		case 7:
-			p.chat("My head is as empty as Prospit.");
+			p.chat("My head is as empty as the island of Valtara.");
 			break;
 		case 8:
-			p.chat("I am a fool!");
+			p.chat("Does anyone have any shmeckles?");
 			break;
 		case 9:
 			p.chat("Sometimes I like to take a can of baked beans, strain out the goo, and then slurp on it through a silly straw.");
 			break;
 		case 10:
 			p.chat("Anyone know the lore behind Binky Barnes? He's my favorite side character of all time.");
+			break;
+		case 11:
+			p.chat("I like to drink orange juice right after I brush my teeth.");
+			break;
+		case 12:
+			p.chat("Who wants free money?");
+			break;
+		case 13:
+			p.chat("Knock knock!");
 			break;
 		}
 		freeOpList.add(p);
