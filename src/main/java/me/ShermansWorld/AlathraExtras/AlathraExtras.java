@@ -139,6 +139,7 @@ public class AlathraExtras extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents(new FurnaceRecipesListener(), this);
 		this.getServer().getPluginManager().registerEvents(new GrindstoneListener(), this);
 		// this.getServer().getPluginManager().registerEvents(new HeadScourgeListener(), this);
+		// Do not re-enable this without editing it. As is, it kills players that touch any heads.
 		this.getServer().getPluginManager().registerEvents(new HopperListener(), this);
 		this.getServer().getPluginManager().registerEvents(new ItemDamageListener(), this);
 		this.getServer().getPluginManager().registerEvents(new ItemFrameListener(), this);
