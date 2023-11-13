@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "me.ShermansWorld.AlathraExtras"
-version = "1.20.0"
+version = "1.19.3"
 description = ""
 
 java {
