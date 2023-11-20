@@ -60,7 +60,7 @@ dependencies {
 
     compileOnly("org.jetbrains:annotations:24.0.1")
 
-    implementation("com.github.milkdrinkers:simplixstorage:3.2.7")
+    implementation("com.github.milkdrinkers:crate:1.1.0")
     implementation("com.github.milkdrinkers:colorparser:2.0.0")
 
 //    implementation("dev.jorel:commandapi-bukkit-shade:9.0.3")
@@ -109,7 +109,7 @@ tasks {
         // helper function to relocate a package into our package
         fun reloc(originPkg: String, targetPkg: String) = relocate(originPkg, "${project.group}.${targetPkg}")
 
-        reloc("de.leonhard.storage", "storageapi")
+        reloc("com.github.milkdrinkers.Crate", "crate")
         reloc("com.github.milkdrinkers.colorparser", "colorparser")
 //        reloc("dev.jorel.commandapi", "commandapi")
     }
