@@ -68,11 +68,11 @@ public class ItemsListener implements Listener {
 								xpAmount = 112;
 								break;
 							// xp 8
-							case 147010:
+							case 14710:
 								xpAmount = 160;
 								break;
 							// xp 9
-							case 147011:
+							case 14711:
 								xpAmount = 216;
 								break;
 							// xp 10
