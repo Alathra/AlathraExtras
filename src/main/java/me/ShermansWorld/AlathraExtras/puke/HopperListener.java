@@ -11,7 +11,7 @@ public class HopperListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onHopper(InventoryPickupItemEvent event) {
 //        Bukkit.getLogger().info(event.getItem().getScoreboardTags().toString());
-        if(event.getItem().getScoreboardTags().contains("puke") || event.getItem().getScoreboardTags().contains("puke2")) {
+        if (event.getItem().getScoreboardTags().contains("puke") || event.getItem().getScoreboardTags().contains("puke2")) {
             event.setCancelled(true);
         }
     }
@@ -19,7 +19,7 @@ public class HopperListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onHopper(EntityPickupItemEvent event) {
 //        Bukkit.getLogger().info(event.getItem().getScoreboardTags().toString());
-        if(event.getItem().getScoreboardTags().contains("puke") || event.getItem().getScoreboardTags().contains("puke2")) {
+        if (event.getItem().getScoreboardTags().contains("puke") || event.getItem().getScoreboardTags().contains("puke2")) {
             event.setCancelled(true);
         }
     }

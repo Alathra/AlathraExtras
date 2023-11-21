@@ -1,6 +1,8 @@
 package me.ShermansWorld.AlathraExtras.roll;
 
 
+import com.palmergames.bukkit.TownyChat.Chat;
+import com.palmergames.bukkit.TownyChat.channels.Channel;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -11,10 +13,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import me.ShermansWorld.AlathraExtras.Helper;
-import com.palmergames.bukkit.TownyChat.Chat;
-import com.palmergames.bukkit.TownyChat.channels.Channel;
 
 
 public class RollCommand implements CommandExecutor {

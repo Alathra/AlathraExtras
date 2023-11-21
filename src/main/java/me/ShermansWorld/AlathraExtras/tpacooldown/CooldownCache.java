@@ -16,9 +16,7 @@ public final class CooldownCache {
      * Get the blocked command message
      *
      * @param cooldownExpirationTime timestamp
-     *
      * @return message
-     *
      * @apiNote Check isCooldownApplicable before using this
      */
     public static String getCooldownMessage(long cooldownExpirationTime) {
@@ -30,16 +28,15 @@ public final class CooldownCache {
             return "";
         }
 
-        final String durationString = ( "%s hours, %s minutes and %s seconds" ).formatted(duration.toHoursPart(), duration.toMinutesPart(), duration.toSecondsPart());
+        final String durationString = ("%s hours, %s minutes and %s seconds").formatted(duration.toHoursPart(), duration.toMinutesPart(), duration.toSecondsPart());
 
-        return Helper.color(( "&cYou can teleport again in %s." ).formatted(durationString));
+        return Helper.color(("&cYou can teleport again in %s.").formatted(durationString));
     }
 
     /**
      * Does this timestamp still represent an active cooldown
      *
      * @param cooldownExpirationTime timestamp
-     *
      * @return boolean
      */
     public static boolean isCooldownApplicable(long cooldownExpirationTime) {
@@ -51,9 +48,7 @@ public final class CooldownCache {
      * Does the player have an active cooldown
      *
      * @param uuid player UUID
-     *
      * @return boolean
-     *
      * @apiNote Returns 0L if no cooldown was found for player
      */
     public static boolean isCooldownActive(UUID uuid) {
@@ -66,9 +61,7 @@ public final class CooldownCache {
      * Get cooldown value for player
      *
      * @param uuid player UUID
-     *
      * @return long or null
-     *
      * @apiNote Returns null if player data is not in cache
      */
     public static long get(UUID uuid) {
@@ -97,7 +90,7 @@ public final class CooldownCache {
     /**
      * Add player data to cache
      *
-     * @param uuid player UUID
+     * @param uuid                   player UUID
      * @param cooldownExpirationTime long or null
      */
     public static void add(UUID uuid, long cooldownExpirationTime) {

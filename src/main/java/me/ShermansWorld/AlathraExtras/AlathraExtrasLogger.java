@@ -14,7 +14,7 @@ public class AlathraExtrasLogger {
     public AlathraExtrasLogger() {
         logsFolder = new File("plugins" + File.separator + "AlathraExtras" + File.separator + "logs");
         log = new File(
-                "plugins" + File.separator + "AlathraExtras" + File.separator + "logs" + File.separator + "log.txt");
+            "plugins" + File.separator + "AlathraExtras" + File.separator + "logs" + File.separator + "log.txt");
     }
 
     public static boolean checkFiles() {
@@ -32,13 +32,12 @@ public class AlathraExtrasLogger {
     }
 
 
-
     private void initFileWriter() {
         // init file writer
         try {
             FileWriter fw = new FileWriter(
-                    "plugins" + File.separator + "AlathraExtras" + File.separator + "logs" + File.separator + "log.txt",
-                    true);
+                "plugins" + File.separator + "AlathraExtras" + File.separator + "logs" + File.separator + "log.txt",
+                true);
             BufferedWriter bw = new BufferedWriter(fw);
             output = new PrintWriter(bw);
         } catch (IOException e1) {

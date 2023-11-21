@@ -1,8 +1,8 @@
 package me.ShermansWorld.AlathraExtras.puke;
 
 import com.palmergames.bukkit.towny.utils.NameUtil;
-import me.ShermansWorld.AlathraExtras.Helper;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
+import me.ShermansWorld.AlathraExtras.Helper;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -31,25 +31,25 @@ public class PukeCommand implements CommandExecutor, TabCompleter {
 
         //tick loop
         bukkitId[0] = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(AlathraExtras.getInstance(),
-                () -> {
+            () -> {
 //                    Bukkit.getLogger().info("doing puke loop");
-                    for (Player p : active.keySet()) {
-                        Puke puke = active.get(p);
-                        int loops = (int) Math.floor(puke.getIntensity());
-                        double remainder = puke.getIntensity() - loops;
+                for (Player p : active.keySet()) {
+                    Puke puke = active.get(p);
+                    int loops = (int) Math.floor(puke.getIntensity());
+                    double remainder = puke.getIntensity() - loops;
 //                        Bukkit.getLogger().info("Intensity: " + puke.getIntensity());
 //                        Bukkit.getLogger().info("Loops: " + loops);
 //                        Bukkit.getLogger().info("Remainder: " + remainder);
-                        for(int i = 0; i < loops; i ++) {
-                             doPuke(puke);
-                        }
-                        if(remainder > 0.0) {
-                            if(remainder > new Random().nextDouble()) {
-                                doPuke(puke);
-                            }
+                    for (int i = 0; i < loops; i++) {
+                        doPuke(puke);
+                    }
+                    if (remainder > 0.0) {
+                        if (remainder > new Random().nextDouble()) {
+                            doPuke(puke);
                         }
                     }
-                }, 0L, 1);
+                }
+            }, 0L, 1);
     }
 
     private void doPuke(Puke puke) {
@@ -95,10 +95,10 @@ public class PukeCommand implements CommandExecutor, TabCompleter {
 
 
     /**
-     * @param sender command sender
+     * @param sender  command sender
      * @param command command
-     * @param s string
-     * @param args args
+     * @param s       string
+     * @param args    args
      * @return success
      */
     @Override
@@ -111,8 +111,8 @@ public class PukeCommand implements CommandExecutor, TabCompleter {
         double yspread = 12.0;
         double speed = 0.5;
         boolean doAll = false;
-        if(args.length >= 1) {
-            if(args[0].equalsIgnoreCase("help")) {
+        if (args.length >= 1) {
+            if (args[0].equalsIgnoreCase("help")) {
                 sender.sendMessage(Helper.Chatlabel() + Helper.color("&r/puke (amount) (rate) (material) (player) (speed) (xzSpread) (ySpread)"));
                 return true;
             }
@@ -123,24 +123,24 @@ public class PukeCommand implements CommandExecutor, TabCompleter {
                 intensity = Double.parseDouble(args[1]);
 
                 //cap
-                if(time > 3000) time = 3000;
-                if(time < 1) time = 1;
-                if(intensity > time) intensity = time;
-                if(intensity <= 0.0) intensity = 1.0;
+                if (time > 3000) time = 3000;
+                if (time < 1) time = 1;
+                if (intensity > time) intensity = time;
+                if (intensity <= 0.0) intensity = 1.0;
 
                 if (args.length >= 3) {
                     material = Material.getMaterial(args[2]);
-                    if(args[1].equalsIgnoreCase("RANDOM")) {
+                    if (args[1].equalsIgnoreCase("RANDOM")) {
                         material = null;
                     } else {
                         if (args.length >= 4) {
-                            if(args[3].equalsIgnoreCase("**")) {
+                            if (args[3].equalsIgnoreCase("**")) {
                                 doAll = true;
-                                if(args.length >= 5) {
+                                if (args.length >= 5) {
                                     speed = Double.parseDouble(args[4]);
-                                    if(args.length >= 6) {
+                                    if (args.length >= 6) {
                                         xzspread = Double.parseDouble(args[5]);
-                                        if(args.length >= 7) {
+                                        if (args.length >= 7) {
                                             yspread = Double.parseDouble(args[6]);
                                         }
                                     }
@@ -149,11 +149,11 @@ public class PukeCommand implements CommandExecutor, TabCompleter {
                                 Player p = Bukkit.getPlayer(args[3]);
                                 if (p != null) {
                                     target = p;
-                                    if(args.length >= 5) {
+                                    if (args.length >= 5) {
                                         speed = Double.parseDouble(args[4]);
-                                        if(args.length >= 6) {
+                                        if (args.length >= 6) {
                                             xzspread = Double.parseDouble(args[5]);
-                                            if(args.length >= 7) {
+                                            if (args.length >= 7) {
                                                 yspread = Double.parseDouble(args[6]);
                                             }
                                         }
@@ -176,7 +176,7 @@ public class PukeCommand implements CommandExecutor, TabCompleter {
             }
         }
         //do for all **
-        if(doAll) {
+        if (doAll) {
             for (Player p : Bukkit.getOnlinePlayers()) {
                 Puke puke = new Puke(p, time, intensity, material, speed, xzspread, yspread);
                 active.put(p, puke);
@@ -200,17 +200,14 @@ public class PukeCommand implements CommandExecutor, TabCompleter {
         //create the tick loop if needed
 
 
-
-
-
         return true;
     }
 
     @Nullable
     @Override
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
-        if(args.length > 1) {
-            if(args.length > 2) {
+        if (args.length > 1) {
+            if (args.length > 2) {
                 if (args.length > 3) {
                     if (args.length > 4) {
                         return Collections.emptyList();
@@ -231,10 +228,10 @@ public class PukeCommand implements CommandExecutor, TabCompleter {
                     return NameUtil.filterByStart(mats, args[2]);
                 }
             } else {
-                return List.of(new String[] {String.valueOf(2.0)});
+                return List.of(new String[]{String.valueOf(2.0)});
             }
         } else {
-            return List.of(new String[] {String.valueOf(100), "help"});
+            return List.of(new String[]{String.valueOf(100), "help"});
         }
     }
 

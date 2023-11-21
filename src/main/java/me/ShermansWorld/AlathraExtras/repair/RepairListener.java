@@ -16,9 +16,9 @@ import java.util.Map;
 
 public class RepairListener implements Listener {
     private final Map<Material, Material> customRepairRecipes = Map.of(Material.BOW, Material.STRING,
-            Material.CROSSBOW, Material.STRING, Material.TRIDENT, Material.PRISMARINE_CRYSTALS,
-            Material.SHEARS, Material.IRON_INGOT, Material.FLINT_AND_STEEL, Material.IRON_INGOT,
-            Material.FISHING_ROD, Material.STRING);
+        Material.CROSSBOW, Material.STRING, Material.TRIDENT, Material.PRISMARINE_CRYSTALS,
+        Material.SHEARS, Material.IRON_INGOT, Material.FLINT_AND_STEEL, Material.IRON_INGOT,
+        Material.FISHING_ROD, Material.STRING);
 
     @EventHandler
     public void disableRepairCostIncrease(PrepareAnvilEvent anvilEvent) {
@@ -62,10 +62,10 @@ public class RepairListener implements Listener {
         if (!resultDamageable.hasDamage()) return;
 
         int repairItemsUsed = getRepairItemsUsed(resultDamageable.getDamage(), result.getType().getMaxDurability(),
-                anvilEvent.getInventory().getSecondItem().getAmount());
+            anvilEvent.getInventory().getSecondItem().getAmount());
 
         int reducedDamage = resultDamageable.getDamage() -
-                ((result.getType().getMaxDurability() / 4) * repairItemsUsed);
+            ((result.getType().getMaxDurability() / 4) * repairItemsUsed);
 
         if (reducedDamage <= 0) reducedDamage = 0;
 
@@ -95,7 +95,7 @@ public class RepairListener implements Listener {
         Damageable resultDamageable = (Damageable) anvil.getFirstItem().getItemMeta();
 
         int repairItemsUsed = getRepairItemsUsed(resultDamageable.getDamage(),
-                anvil.getFirstItem().getType().getMaxDurability(), anvil.getSecondItem().getAmount());
+            anvil.getFirstItem().getType().getMaxDurability(), anvil.getSecondItem().getAmount());
 
         if (!(clickEvent.getWhoClicked() instanceof Player player)) return;
 
