@@ -1,7 +1,7 @@
 package me.ShermansWorld.AlathraExtras.joinleavemessages.listener.player;
 
 import com.earth2me.essentials.Essentials;
-import de.leonhard.storage.Config;
+import com.github.milkdrinkers.Crate.Config;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import me.ShermansWorld.AlathraExtras.Helper;
 import me.ShermansWorld.AlathraExtras.joinleavemessages.JoinLeaveMessages;

@@ -1,6 +1,6 @@
 package me.ShermansWorld.AlathraExtras.announcer;
 
-import de.leonhard.storage.Config;
+import com.github.milkdrinkers.Crate.Config;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import org.bukkit.scheduler.BukkitTask;
 

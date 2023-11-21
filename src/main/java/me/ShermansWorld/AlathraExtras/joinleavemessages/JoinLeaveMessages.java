@@ -1,6 +1,6 @@
 package me.ShermansWorld.AlathraExtras.joinleavemessages;
 
-import de.leonhard.storage.Config;
+import com.github.milkdrinkers.Crate.Config;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import me.ShermansWorld.AlathraExtras.joinleavemessages.listener.ListenerHandler;
 
