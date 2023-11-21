@@ -139,7 +139,7 @@ tasks {
 
 bukkit {
     // Plugin main class (required)
-    main = "${project.group}.${rootProject.name}"
+    main = "${mainPackage}.${rootProject.name}"
 
     // Plugin Information
     name = project.name
