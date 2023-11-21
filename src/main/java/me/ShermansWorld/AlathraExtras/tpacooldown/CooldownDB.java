@@ -24,7 +24,6 @@ public class CooldownDB {
      * Fetch data for player from DB
      *
      * @param uuid player uuid
-     *
      * @return defaults to  0.0
      */
     public static long getPlayerData(UUID uuid) {
@@ -34,7 +33,7 @@ public class CooldownDB {
     /**
      * Save data for player to DB, overwrites existing player data
      *
-     * @param uuid player uuid
+     * @param uuid                   player uuid
      * @param cooldownExpirationTime long
      */
     public static void savePlayerData(UUID uuid, long cooldownExpirationTime) {

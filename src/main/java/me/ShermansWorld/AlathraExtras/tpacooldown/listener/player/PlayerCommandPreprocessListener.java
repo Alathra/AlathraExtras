@@ -1,7 +1,7 @@
 package me.ShermansWorld.AlathraExtras.tpacooldown.listener.player;
 
-import me.ShermansWorld.AlathraExtras.Helper;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
+import me.ShermansWorld.AlathraExtras.Helper;
 import me.ShermansWorld.AlathraExtras.tpacooldown.CooldownCache;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
@@ -13,10 +13,10 @@ import java.util.List;
 
 public class PlayerCommandPreprocessListener implements Listener {
     private final static List<String> BLOCKED_COMMANDS = List.of(new String[]{
-            "/tpa",
-            "/essentials:tpa",
-            "/tpask",
-            "/essentials:tpask",
+        "/tpa",
+        "/essentials:tpa",
+        "/tpask",
+        "/essentials:tpask",
     });
 
     @EventHandler(priority = EventPriority.NORMAL)

@@ -2,8 +2,8 @@ package me.ShermansWorld.AlathraExtras.joinleavemessages.listener.player;
 
 import com.earth2me.essentials.Essentials;
 import com.github.milkdrinkers.Crate.Config;
-import me.ShermansWorld.AlathraExtras.Helper;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
+import me.ShermansWorld.AlathraExtras.Helper;
 import me.ShermansWorld.AlathraExtras.joinleavemessages.JoinLeaveMessages;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
@@ -34,7 +34,7 @@ public class PlayerQuitListener implements Listener {
         // Load normal leave messages from groups and register permission nodes
         final Map<String, List<String>> groupNames = cfg.getMapParameterized("Leaving.Messages");
         messagesLeave.putAll(groupNames);
-        messagesLeave.forEach((groupName, messages) -> Bukkit.getPluginManager().addPermission(new Permission(( "alathraextras.leave.%s" ).formatted(groupName))));
+        messagesLeave.forEach((groupName, messages) -> Bukkit.getPluginManager().addPermission(new Permission(("alathraextras.leave.%s").formatted(groupName))));
     }
 
     /**
@@ -50,15 +50,14 @@ public class PlayerQuitListener implements Listener {
      * @return prefix
      */
     private String getMessagePrefix() {
-        return ( !messagePrefix.isEmpty() ? ( "%s " ).formatted(messagePrefix) : "" );
+        return (!messagePrefix.isEmpty() ? ("%s ").formatted(messagePrefix) : "");
     }
 
     /**
      * Get a random message for player
      *
-     * @param p player
+     * @param p        player
      * @param messages List of messages
-     *
      * @return message
      */
     private String getRandomMessageFromList(Player p, List<String> messages) {
@@ -69,12 +68,11 @@ public class PlayerQuitListener implements Listener {
      * Get messages for one of the players' groups
      *
      * @param p player
-     *
      * @return List of messages or null
      */
     private List<String> getMessageFromPlayerGroup(Player p) {
         for (Map.Entry<String, List<String>> set : messagesLeave.entrySet()) {
-            if (p.hasPermission(( "alathraextras.leave.%s" ).formatted(set.getKey()))) {
+            if (p.hasPermission(("alathraextras.leave.%s").formatted(set.getKey()))) {
                 return set.getValue();
             }
         }

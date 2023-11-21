@@ -12,17 +12,17 @@ import java.util.List;
 
 public class PlaytimeTabCompleter implements TabCompleter {
 
-	@Override
-	public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
-		List<String> completions = new ArrayList<>();
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
+        List<String> completions = new ArrayList<>();
 
-		if (args.length == 1) {
-			for (Player player : Bukkit.getOnlinePlayers()) {
-				completions.add(player.getName());
-			}
-			return completions;
-		}
+        if (args.length == 1) {
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                completions.add(player.getName());
+            }
+            return completions;
+        }
 
-		return Collections.emptyList();
-	}
+        return Collections.emptyList();
+    }
 }

@@ -27,8 +27,8 @@ Strikes fear righteous into their wretched hearts
  */
 public class HeadScourgeListener implements Listener {
     private static final ArrayList<Component> protectedHeads = new ArrayList<>(List.of(
-            ColorParser.of("darksaid98").build() // There's room for more heads here
-        ));
+        ColorParser.of("darksaid98").build() // There's room for more heads here
+    ));
 
     @EventHandler
     public void onDrop(PlayerDropItemEvent e) {
@@ -134,7 +134,7 @@ public class HeadScourgeListener implements Listener {
         Random r = new Random();
 
         double randomRadius = r.nextDouble(minRange, maxRange);
-        double theta =  Math.toRadians(r.nextDouble() * 360);
+        double theta = Math.toRadians(r.nextDouble() * 360);
         double phi = Math.toRadians(r.nextDouble() * 180 - 90);
 
         double x = randomRadius * Math.cos(theta) * Math.sin(phi);
