@@ -16,31 +16,18 @@ import java.util.List;
 public class Woodcutting {
 
     public static void setWoodcuttingRecipes() {
-        String[] woodcuttingItems = {
-            "BUTTON",
-            "FENCE",
-            "FENCE_GATE",
-            "PLANKS",
-            "PRESSURE_PLATE",
-            "SIGN",
-            "SLAB",
-            "STAIRS",
-            "TRAPDOOR",
-            "DOOR"
-        };
-
-        int[] woodcuttingCount = {
-            4,
-            8,
-            4,
-            4,
-            4,
-            4,
-            8,
-            4,
-            4,
-            1
-        };
+        Map<String, Integer> map = Map.of(
+			"BUTTON", 4,
+			"FENCE", 8,
+			"FENCE_GATE", 4,
+			"PLANKS", 4,
+			"PRESSURE_PLATE", 4,
+			"SIGN", 4,
+			"SLAB", 8,
+			"STAIRS", 4,
+			"TRAPDOOR", 4,
+			"DOOR", 1
+		);
 
         for (Material log : Tag.LOGS.getValues()) {
             String logString = log.toString();
