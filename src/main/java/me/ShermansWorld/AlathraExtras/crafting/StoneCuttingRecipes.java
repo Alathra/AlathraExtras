@@ -1,19 +1,17 @@
 package me.ShermansWorld.AlathraExtras.crafting;
 
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Tag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.StonecuttingRecipe;
-import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class Woodcutting {
+public class StoneCuttingRecipes {
 
     public static void setWoodcuttingRecipes() {
         Map<String, Integer> map = Map.of(
@@ -31,11 +29,14 @@ public class Woodcutting {
 
         for (Material log : Tag.LOGS.getValues()) {
             String logString = log.toString();
+
+            //Removes "STRIPPED_" from stripped logs.
             if (logString.contains("STRIPPED")) {
                 logString = logString.substring(9);
             }
             String[] materialArray = logString.split("_");
 
+            // Handles dark oak.
             if (materialArray.length > 2 && materialArray[2] != null) {
                 materialArray[0] = materialArray[0].concat("_").concat(materialArray[1]);
             }
@@ -49,10 +50,10 @@ public class Woodcutting {
                 itemStackList.add(itemStack);
             });
 
-            String key = log.name() + Math.random();
-
             for (ItemStack item : itemStackList) {
-                NamespacedKey namespacedKey = new NamespacedKey((Plugin) AlathraExtras.getInstance(), key.concat(item.getType().name()));
+                NamespacedKey namespacedKey = new NamespacedKey(AlathraExtras.getInstance(),
+                        AlathraExtras.getInstance().getDescription().getName()
+                        .concat(log.toString()).concat("_").concat(item.getType().toString()));
                 StonecuttingRecipe recipe = new StonecuttingRecipe(namespacedKey, item, log);
 
                 AlathraExtras.getInstance().getServer().addRecipe(recipe);

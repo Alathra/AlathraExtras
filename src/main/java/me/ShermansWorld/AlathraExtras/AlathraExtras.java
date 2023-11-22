@@ -7,6 +7,7 @@ import me.ShermansWorld.AlathraExtras.chatitem.ShowItemCommand;
 import me.ShermansWorld.AlathraExtras.crafting.CraftingRecipes;
 import me.ShermansWorld.AlathraExtras.crafting.FurnaceRecipes;
 import me.ShermansWorld.AlathraExtras.crafting.FurnaceRecipesListener;
+import me.ShermansWorld.AlathraExtras.crafting.StoneCuttingRecipes;
 import me.ShermansWorld.AlathraExtras.disablespawners.DisableSpawners;
 import me.ShermansWorld.AlathraExtras.enderchersblock.EnderChestBlockListener;
 import me.ShermansWorld.AlathraExtras.endermanexp.EndermanExpDropListener;
@@ -39,7 +40,6 @@ import me.ShermansWorld.AlathraExtras.tutorialbook.GiveTutorialBookCommand;
 import me.ShermansWorld.AlathraExtras.tutorialbook.PlayerClickHelpBook;
 import me.ShermansWorld.AlathraExtras.tutorialbook.PlayerFirstJoin;
 import me.ShermansWorld.AlathraExtras.voting.VotingListener;
-import me.ShermansWorld.AlathraExtras.woodcutting.Woodcutting;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -182,7 +182,7 @@ public class AlathraExtras extends JavaPlugin {
         craftingRecipes.carrotPouchToCarrot();
         craftingRecipes.potatoPouchToPotato();
 
-        Woodcutting.setWoodcuttingRecipes();;
+        StoneCuttingRecipes.setWoodcuttingRecipes();;
 
         setupEconomy();
         logger = new AlathraExtrasLogger();
