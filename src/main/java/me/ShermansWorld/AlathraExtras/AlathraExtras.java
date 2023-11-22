@@ -7,6 +7,7 @@ import me.ShermansWorld.AlathraExtras.chatitem.ShowItemCommand;
 import me.ShermansWorld.AlathraExtras.crafting.CraftingRecipes;
 import me.ShermansWorld.AlathraExtras.crafting.FurnaceRecipes;
 import me.ShermansWorld.AlathraExtras.crafting.FurnaceRecipesListener;
+import me.ShermansWorld.AlathraExtras.crafting.StoneCuttingRecipes;
 import me.ShermansWorld.AlathraExtras.disablespawners.DisableSpawners;
 import me.ShermansWorld.AlathraExtras.enderchersblock.EnderChestBlockListener;
 import me.ShermansWorld.AlathraExtras.endermanexp.EndermanExpDropListener;
@@ -42,6 +43,7 @@ import me.ShermansWorld.AlathraExtras.voting.VotingListener;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -58,7 +60,6 @@ public class AlathraExtras extends JavaPlugin {
 
     public static Economy economy = null;
     public static Random rand;
-
 
     public static AlathraExtras getInstance() {
         return AlathraExtras.instance;
@@ -82,7 +83,7 @@ public class AlathraExtras extends JavaPlugin {
             return false;
         }
         economy = rsp.getProvider();
-        return economy != null;
+        return true;
     }
 
     public static void initLogs() {
@@ -181,6 +182,9 @@ public class AlathraExtras extends JavaPlugin {
         craftingRecipes.carrotPouchToCarrot();
         craftingRecipes.potatoPouchToPotato();
 
+        StoneCuttingRecipes.setWoodcuttingRecipes();
+        StoneCuttingRecipes.setBamboocuttingRecipes();
+
         setupEconomy();
         logger = new AlathraExtrasLogger();
         new RollCommand(this);
@@ -190,8 +194,14 @@ public class AlathraExtras extends JavaPlugin {
         new AlathraExtrasCommands(this);
         new PlaytimeCommand(this);
         new ShowItemCommand(this);
-        getCommand("alathraextras").setTabCompleter(new AlathraExtrasTabCompleter());
-        getCommand("playtime").setTabCompleter(new PlaytimeTabCompleter());
+
+        PluginCommand alathraextrasCommands = getCommand("alathraextras");
+        PluginCommand playtimeCommands = getCommand("playtime");
+
+        if (alathraextrasCommands != null) alathraextrasCommands.setTabCompleter(new AlathraExtrasTabCompleter());
+
+        if (playtimeCommands != null) playtimeCommands.setTabCompleter(new PlaytimeTabCompleter());
+
         rand = new Random();
         if (instance.getServer().getPluginManager().isPluginEnabled("Essentials")) CooldownManager.getInstance();
         JoinLeaveMessages.getInstance().onEnable();
