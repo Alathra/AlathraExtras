@@ -42,15 +42,12 @@ public class Woodcutting {
 
             List<ItemStack> itemStackList = new ArrayList<ItemStack>();
 
-            for (int i = 0; i < woodcuttingItems.length; i++) {
-                String item = woodcuttingItems[i];
-                int count = woodcuttingCount[i];
-
+            map.forEach((item, count) -> {
                 Material itemName = Material.getMaterial(materialArray[0].concat("_").concat(item));
 
                 ItemStack itemStack = new ItemStack(itemName, count);
                 itemStackList.add(itemStack);
-            }
+            });
 
             String key = log.name() + Math.random();
 
