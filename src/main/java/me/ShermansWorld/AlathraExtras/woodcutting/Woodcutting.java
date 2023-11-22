@@ -1,4 +1,4 @@
-package me.ShermansWorld.AlathraExtras.woodcutting;
+package me.ShermansWorld.AlathraExtras.crafting;
 
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import org.bukkit.Bukkit;
