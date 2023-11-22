@@ -8,7 +8,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.StonecuttingRecipe;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -63,22 +62,23 @@ public class StoneCuttingRecipes {
     }
 
     public static void setBamboocuttingRecipes() {
-        Map<String, Integer> map = new HashMap<>(Map.of(
-            "BUTTON", 2,
-            "FENCE", 4,
-            "FENCE_GATE", 2,
-            "PLANKS", 2,
-            "PRESSURE_PLATE", 2,
-            "SIGN", 2,
-            "SLAB", 4,
-            "STAIRS", 2,
-            "TRAPDOOR", 2,
-            "DOOR", 1
-        ));
+        Map<String, Integer> map = Map.ofEntries(
+            Map.entry("BUTTON", 2),
+            Map.entry("FENCE", 4),
+            Map.entry("FENCE_GATE", 2),
+            Map.entry("PLANKS", 2),
+            Map.entry("PRESSURE_PLATE", 2),
+            Map.entry("SIGN", 2),
+            Map.entry("SLAB", 4),
+            Map.entry("STAIRS", 2),
+            Map.entry("TRAPDOOR", 2),
+            Map.entry("DOOR", 1),
+            Map.entry("MOSAIC", 2),
+            Map.entry("MOSAIC_SLAB", 4),
+            Map.entry("MOSAIC_STAIRS", 4)
+        );
 
-        map.put("MOSAIC", 2);
-        map.put("MOSAIC_SLAB", 4);
-        map.put("MOSAIC_STAIRS", 2);
+
 
         for (Material bambooBlock : Tag.BAMBOO_BLOCKS.getValues()) {
             String blockString = bambooBlock.toString();
