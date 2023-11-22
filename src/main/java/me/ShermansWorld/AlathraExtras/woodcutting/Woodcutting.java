@@ -1,0 +1,79 @@
+package me.ShermansWorld.AlathraExtras.woodcutting;
+
+import me.ShermansWorld.AlathraExtras.AlathraExtras;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
+import org.bukkit.Tag;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.StonecuttingRecipe;
+import org.bukkit.plugin.Plugin;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+public class Woodcutting {
+
+    public static void setWoodcuttingRecipes() {
+        String[] woodcuttingItems = {
+            "BUTTON",
+            "FENCE",
+            "FENCE_GATE",
+            "PLANKS",
+            "PRESSURE_PLATE",
+            "SIGN",
+            "SLAB",
+            "STAIRS",
+            "TRAPDOOR",
+            "DOOR"
+        };
+
+        int[] woodcuttingCount = {
+            4,
+            8,
+            4,
+            4,
+            4,
+            4,
+            8,
+            4,
+            4,
+            1
+        };
+
+        for (Material log : Tag.LOGS.getValues()) {
+            String logString = log.toString();
+            if (logString.contains("STRIPPED")) {
+                logString = logString.substring(9);
+            }
+            String[] materialArray = logString.split("_");
+
+            if (materialArray.length > 2 && materialArray[2] != null) {
+                materialArray[0] = materialArray[0].concat("_").concat(materialArray[1]);
+            }
+
+            List<ItemStack> itemStackList = new ArrayList<ItemStack>();
+
+            for (int i = 0; i < woodcuttingItems.length; i++) {
+                String item = woodcuttingItems[i];
+                int count = woodcuttingCount[i];
+
+                Material itemName = Material.getMaterial(materialArray[0].concat("_").concat(item));
+
+                ItemStack itemStack = new ItemStack(itemName, count);
+                itemStackList.add(itemStack);
+            }
+
+            String key = log.name() + Math.random();
+
+            for (ItemStack item : itemStackList) {
+                NamespacedKey namespacedKey = new NamespacedKey((Plugin) AlathraExtras.getInstance(), key.concat(item.getType().name()));
+                StonecuttingRecipe recipe = new StonecuttingRecipe(namespacedKey, item, log);
+
+                AlathraExtras.getInstance().getServer().addRecipe(recipe);
+            }
+
+        }
+    }
+}
