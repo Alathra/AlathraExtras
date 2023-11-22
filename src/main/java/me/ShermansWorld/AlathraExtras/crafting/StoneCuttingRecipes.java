@@ -46,8 +46,10 @@ public class StoneCuttingRecipes {
             map.forEach((item, count) -> {
                 Material itemName = Material.getMaterial(materialArray[0].concat("_").concat(item));
 
-                ItemStack itemStack = new ItemStack(itemName, count);
-                itemStackList.add(itemStack);
+                if (itemName != null) {
+                    ItemStack itemStack = new ItemStack(itemName, count);
+                    itemStackList.add(itemStack);
+                }
             });
 
             for (ItemStack item : itemStackList) {
@@ -95,8 +97,10 @@ public class StoneCuttingRecipes {
             map.forEach((item, count) -> {
                 Material itemName = Material.getMaterial(materialArray[0].concat("_").concat(item));
 
-                ItemStack itemStack = new ItemStack(itemName, count);
-                itemStackList.add(itemStack);
+                if (itemName != null) {
+                    ItemStack itemStack = new ItemStack(itemName, count);
+                    itemStackList.add(itemStack);
+                }
             });
 
             for (ItemStack item : itemStackList) {
