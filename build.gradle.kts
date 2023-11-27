@@ -77,7 +77,7 @@ dependencies {
         exclude(group = "*", module = "*")
     }
 
-    compileOnly("com.palmergames.bukkit.towny:towny:0.99.2.6")
+    compileOnly("com.palmergames.bukkit.towny:towny:0.100.0.7")
     compileOnly("com.github.TownyAdvanced:TownyChat:0.108")
     compileOnly("com.bencodez:votingplugin:6.14.2") {
         exclude(group = "*", module = "*")
