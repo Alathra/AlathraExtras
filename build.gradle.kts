@@ -64,7 +64,7 @@ repositories {
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.20.2-R0.1-SNAPSHOT")
 
-    compileOnly("org.jetbrains:annotations:24.0.1")
+    compileOnly("org.jetbrains:annotations:24.1.0")
 
     implementation("com.github.milkdrinkers:crate:1.1.0")
     implementation("com.github.milkdrinkers:colorparser:2.0.0")
