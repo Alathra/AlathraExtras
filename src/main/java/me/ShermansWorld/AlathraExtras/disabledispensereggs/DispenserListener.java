@@ -18,7 +18,6 @@ public class DispenserListener implements Listener {
     public void onProjectileLaunch(ProjectileLaunchEvent e) {
         if (e.getEntity().getShooter() instanceof BlockProjectileSource) {
             if (e.getEntity().getType().equals(EntityType.EGG)) {
-                Bukkit.getLogger().info("Egg detected.");
                 e.setCancelled(true);
                 Location location = e.getEntity().getLocation();
                 location.getWorld().dropItem(location, new ItemStack(Material.EGG, 1)).setVelocity(e.getEntity().getVelocity());
