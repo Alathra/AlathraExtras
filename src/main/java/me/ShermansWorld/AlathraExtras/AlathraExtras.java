@@ -20,9 +20,10 @@ import me.ShermansWorld.AlathraExtras.joinleavemessages.JoinLeaveMessages;
 import me.ShermansWorld.AlathraExtras.metrics.MetricsManager;
 import me.ShermansWorld.AlathraExtras.metrics.PlayerFirstJoinListener;
 import me.ShermansWorld.AlathraExtras.misc.CommandListener;
-import me.ShermansWorld.AlathraExtras.misc.CraftingListener;
+import me.ShermansWorld.AlathraExtras.misc.PaperRecipesListener;
 import me.ShermansWorld.AlathraExtras.misc.ItemFrameListener;
 import me.ShermansWorld.AlathraExtras.misc.MsgEditor;
+import me.ShermansWorld.AlathraExtras.crafting.CraftingListener;
 import me.ShermansWorld.AlathraExtras.playtime.PlaytimeCommand;
 import me.ShermansWorld.AlathraExtras.playtime.PlaytimeTabCompleter;
 import me.ShermansWorld.AlathraExtras.puke.HopperListener;
@@ -130,6 +131,7 @@ public class AlathraExtras extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new EnderChestBlockListener(), this);
         this.getServer().getPluginManager().registerEvents(new EndermanExpDropListener(), this);
         this.getServer().getPluginManager().registerEvents(new DisableSpawners(), this);
+        this.getServer().getPluginManager().registerEvents(new DispenserListener(), this);
         this.getServer().getPluginManager().registerEvents(new FurnaceRecipesListener(), this);
         this.getServer().getPluginManager().registerEvents(new GrindstoneListener(), this);
         // this.getServer().getPluginManager().registerEvents(new HeadScourgeListener(), this);
@@ -139,6 +141,7 @@ public class AlathraExtras extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new ItemFrameListener(), this);
         this.getServer().getPluginManager().registerEvents(new ItemsListener(), this);
         this.getServer().getPluginManager().registerEvents(new MsgEditor(), this);
+        this.getServer().getPluginManager().registerEvents(new PaperRecipesListener(), this);
         this.getServer().getPluginManager().registerEvents(new PlayerClickHelpBook(), this);
         this.getServer().getPluginManager().registerEvents(new PlayerCommandPreprocessListener(), this);
         this.getServer().getPluginManager().registerEvents(new PlayerFirstJoin(), this);
@@ -153,7 +156,6 @@ public class AlathraExtras extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new TeleportRequestResponseListener(), this);
         this.getServer().getPluginManager().registerEvents(new TownyListener(), this);
         this.getServer().getPluginManager().registerEvents(new VotingListener(), this);
-        this.getServer().getPluginManager().registerEvents(new DispenserListener(), this);
 
         initRecipeItems();
         FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
