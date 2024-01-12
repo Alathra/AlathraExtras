@@ -160,29 +160,7 @@ public class AlathraExtras extends JavaPlugin {
         furnaceRecipes.rottenFleshtoLeather();
         furnaceRecipes.mossyCobbletoAndesite();
 
-        CraftingRecipes craftingRecipes = new CraftingRecipes();
-        craftingRecipes.saddleRecipe();
-        craftingRecipes.charcoalBlock();
-        craftingRecipes.redDyeRecipe();
-        craftingRecipes.redSandRecipe();
-        craftingRecipes.bellRecipe();
-        craftingRecipes.blackDyeRecipe1();
-        craftingRecipes.blackDyeRecipe2();
-        craftingRecipes.beetRootPouchRecipe();
-        craftingRecipes.carrotPouchRecipe();
-        craftingRecipes.potatoPouchRecipe();
-        craftingRecipes.dioriteRecipe1();
-        craftingRecipes.dioriteRecipe2();
-        craftingRecipes.dioriteRecipe3();
-        craftingRecipes.greenDyeRecipe();
-        craftingRecipes.pinkPetalsRecipe();
-        craftingRecipes.stonesToGravel();
-        craftingRecipes.gravelToSand();
-        craftingRecipes.dioriteToQuartz();
-        craftingRecipes.coarseDirtToDirt();
-        craftingRecipes.beetrootPouchToBeetroot();
-        craftingRecipes.carrotPouchToCarrot();
-        craftingRecipes.potatoPouchToPotato();
+        CraftingRecipes.registerAllCraftingRecipes();
 
         StoneCuttingRecipes.setWoodcuttingRecipes();
         StoneCuttingRecipes.setBamboocuttingRecipes();
