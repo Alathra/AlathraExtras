@@ -16,6 +16,8 @@ public class CraftingListener implements Listener {
         for (int a = 0; a <= 8; a++) {
             if (a == 4) continue;
 
+            if (craftingGrid[a] == null) return;
+
             if (craftingGrid[a].getType() != Material.COBBLESTONE) return;
         }
 
