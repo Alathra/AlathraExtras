@@ -1,9 +1,9 @@
 package me.ShermansWorld.AlathraExtras.crafting;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.inventory.PrepareItemCraftEvent;
 import org.bukkit.inventory.ItemStack;
 
@@ -11,14 +11,24 @@ public class CraftingListener implements Listener {
     @EventHandler
     public void stoneRecipeOverrides(PrepareItemCraftEvent event) {
         ItemStack[] craftingGridItemStacks = event.getInventory().getMatrix();
-        Material[] craftingGrid = new Material[9];
+        Material[] craftingGrid = new Material[craftingGridItemStacks.length];
 
-        for (int a = 0; a <= 8; a++) {
+        for (int a = 0; a < craftingGridItemStacks.length; a++) {
             if (craftingGridItemStacks[a] != null) {
                 craftingGrid[a] = craftingGridItemStacks[a].getType();
             }
         }
 
+        if (event.getInventory().getType() == InventoryType.WORKBENCH) {
+            craftingTableStoneRecipeOverrides(event, craftingGrid);
+
+            return;
+        }
+
+        playerCraftingStoneRecipeOverrides(event, craftingGrid);
+    }
+
+    public void craftingTableStoneRecipeOverrides(PrepareItemCraftEvent event, Material[] craftingGrid) {
         if (furnaceOverride(craftingGrid)) {
             event.getInventory().setResult(new ItemStack(Material.FURNACE));
 
@@ -61,7 +71,13 @@ public class CraftingListener implements Listener {
             return;
         }
 
-        if (polishedDeepslateOverride(craftingGrid)) {
+        if (polishedDeepslateCraftingTableOverride(craftingGrid)) {
+            event.getInventory().setResult(new ItemStack(Material.POLISHED_DEEPSLATE, 4));
+        }
+    }
+
+    public void playerCraftingStoneRecipeOverrides(PrepareItemCraftEvent event, Material[] craftingGrid) {
+        if (polishedDeepslatePlayerCraftingOverride(craftingGrid)) {
             event.getInventory().setResult(new ItemStack(Material.POLISHED_DEEPSLATE, 4));
         }
     }
@@ -89,11 +105,11 @@ public class CraftingListener implements Listener {
         Material[] slabRecipe2 = new Material[]{null, null, null, material, material, material, null, null, null};
         Material[] slabRecipe3 = new Material[]{null, null, null, null, null, null, material, material, material};
 
-        if (recipeCheck(craftingGrid, slabRecipe1)) return true;
+        if (recipeCheck(craftingGrid, slabRecipe1, true)) return true;
 
-        if (recipeCheck(craftingGrid, slabRecipe2)) return true;
+        if (recipeCheck(craftingGrid, slabRecipe2, true)) return true;
 
-        return recipeCheck(craftingGrid, slabRecipe3);
+        return recipeCheck(craftingGrid, slabRecipe3, true);
     }
 
     public boolean wallOverride(Material[] craftingGrid, Material material) {
@@ -102,9 +118,9 @@ public class CraftingListener implements Listener {
         Material[] wallRecipe2 = new Material[]{null, null, null, material, material, material,
             material, material, material};
 
-        if (recipeCheck(craftingGrid, wallRecipe1)) return true;
+        if (recipeCheck(craftingGrid, wallRecipe1, true)) return true;
 
-        return recipeCheck(craftingGrid, wallRecipe2);
+        return recipeCheck(craftingGrid, wallRecipe2, true);
     }
 
     public boolean stairOverride(Material[] craftingGrid, Material material) {
@@ -113,34 +129,43 @@ public class CraftingListener implements Listener {
         Material[] stairRecipe2 = new Material[]{null, null, material, null, material, material,
             material, material, material};
 
-        if (recipeCheck(craftingGrid, stairRecipe1)) return true;
+        if (recipeCheck(craftingGrid, stairRecipe1, true)) return true;
 
-        return recipeCheck(craftingGrid, stairRecipe2);
+        return recipeCheck(craftingGrid, stairRecipe2, true);
     }
 
-    public boolean polishedDeepslateOverride(Material[] craftingGrid) {
-        Material material = Material.COBBLED_DEEPSLATE;
+    public boolean polishedDeepslateCraftingTableOverride(Material[] craftingGrid) {
+        Material[] polishedDeepslateRecipe1 = new Material[]{Material.COBBLED_DEEPSLATE, Material.COBBLED_DEEPSLATE,
+            null, Material.COBBLED_DEEPSLATE, Material.COBBLED_DEEPSLATE, null, null, null, null};
+        Material[] polishedDeepslateRecipe2 = new Material[]{null, Material.COBBLED_DEEPSLATE,
+            Material.COBBLED_DEEPSLATE, null, Material.COBBLED_DEEPSLATE, Material.COBBLED_DEEPSLATE, null, null, null};
+        Material[] polishedDeepslateRecipe3 = new Material[]{null, null, null, Material.COBBLED_DEEPSLATE,
+            Material.COBBLED_DEEPSLATE, null, Material.COBBLED_DEEPSLATE, Material.COBBLED_DEEPSLATE, null};
+        Material[] polishedDeepslateRecipe4 = new Material[]{null, null, null, null, Material.COBBLED_DEEPSLATE,
+            Material.COBBLED_DEEPSLATE, null, Material.COBBLED_DEEPSLATE, Material.COBBLED_DEEPSLATE};
 
-        Material[] polishedDeepslateRecipe1 = new Material[]{material, material, null, material, material, null,
-        null, null, null};
-        Material[] polishedDeepslateRecipe2 = new Material[]{null, material, material, null, material, material,
-        null, null, null};
-        Material[] polishedDeepslateRecipe3 = new Material[]{null, null, null, material, material, null,
-        material, material, null};
-        Material[] polishedDeepslateRecipe4 = new Material[]{null, null, null, null, material, material,
-        null, material, material};
+        if (recipeCheck(craftingGrid, polishedDeepslateRecipe1, true)) return true;
 
-        if (recipeCheck(craftingGrid, polishedDeepslateRecipe1)) return true;
+        if (recipeCheck(craftingGrid, polishedDeepslateRecipe2, true)) return true;
 
-        if (recipeCheck(craftingGrid, polishedDeepslateRecipe2)) return true;
+        if (recipeCheck(craftingGrid, polishedDeepslateRecipe3, true)) return true;
 
-        if (recipeCheck(craftingGrid, polishedDeepslateRecipe3)) return true;
-
-        return recipeCheck(craftingGrid, polishedDeepslateRecipe4);
+        return recipeCheck(craftingGrid, polishedDeepslateRecipe4, true);
     }
 
-    public boolean recipeCheck(Material[] craftingGrid, Material[] recipe) {
-        for (int a = 0; a <= 8; a++) {
+    public boolean polishedDeepslatePlayerCraftingOverride(Material[] craftingGrid) {
+        return recipeCheck(craftingGrid, new Material[]{Material.COBBLED_DEEPSLATE, Material.COBBLED_DEEPSLATE,
+            Material.COBBLED_DEEPSLATE, Material.COBBLED_DEEPSLATE}, false);
+    }
+
+    public boolean recipeCheck(Material[] craftingGrid, Material[] recipe, boolean craftingTable) {
+        int slots;
+
+        if (craftingTable) slots = 9;
+
+        else slots = 4;
+
+        for (int a = 0; a < slots; a++) {
             if (craftingGrid[a] != recipe[a]) return false;
         }
 
