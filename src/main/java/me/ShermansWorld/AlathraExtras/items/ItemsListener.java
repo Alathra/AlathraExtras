@@ -1,6 +1,5 @@
 package me.ShermansWorld.AlathraExtras.items;
 
-import net.citizensnpcs.api.npc.NPC;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.ExperienceOrb;
