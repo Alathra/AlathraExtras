@@ -7,191 +7,177 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.plugin.Plugin;
 
 public class CraftingRecipes {
-
-    public void saddleRecipe() {
+    public static void saddleRecipe() {
         ItemStack saddle = new ItemStack(Material.SADDLE, 1);
-        NamespacedKey key = new NamespacedKey((Plugin) AlathraExtras.getInstance(),
-            String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "2");
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "saddleRecipe");
         ShapedRecipe saddleRecipe = new ShapedRecipe(key, saddle);
-        saddleRecipe.shape(new String[]{"%%%", "@ @"});
+        saddleRecipe.shape("%%%", "@ @");
         saddleRecipe.setIngredient('@', Material.TRIPWIRE_HOOK);
         saddleRecipe.setIngredient('%', Material.LEATHER);
-        AlathraExtras.getInstance().getServer().addRecipe((Recipe) saddleRecipe);
+        AlathraExtras.getInstance().getServer().addRecipe(saddleRecipe);
     }
 
-    public void charcoalBlock() {
+    public static void charcoalBlock() {
         ItemStack charcoalBlock = new ItemStack(Material.COAL_BLOCK, 1);
         ItemMeta meta = charcoalBlock.getItemMeta();
         meta.setDisplayName(Helper.color("&8Block of Charcoal"));
         charcoalBlock.setItemMeta(meta);
-        NamespacedKey key = new NamespacedKey((Plugin) AlathraExtras.getInstance(),
-            String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "3");
-        ShapedRecipe charcoalBlockRecipe = new ShapedRecipe(key, charcoalBlock);
-        charcoalBlockRecipe.shape(new String[]{"@@@", "@@@", "@@@"});
-        charcoalBlockRecipe.setIngredient('@', Material.CHARCOAL);
-        AlathraExtras.getInstance().getServer().addRecipe((Recipe) charcoalBlockRecipe);
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "charcoalBlock");
+        ShapelessRecipe charcoalBlockRecipe = new ShapelessRecipe(key, charcoalBlock);
+        charcoalBlockRecipe.addIngredient(9, Material.CHARCOAL);
+        AlathraExtras.getInstance().getServer().addRecipe(charcoalBlockRecipe);
     }
 
-    public void redDyeRecipe() {
+    public static void redDyeRecipe() {
         ItemStack redDye = new ItemStack(Material.RED_DYE, 1);
-        NamespacedKey key = new NamespacedKey((Plugin) AlathraExtras.getInstance(),
-            String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "4");
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "redDyeRecipe");
         ShapelessRecipe redDyeRecipe = new ShapelessRecipe(key, redDye);
         redDyeRecipe.addIngredient(1, Material.REDSTONE);
-        AlathraExtras.getInstance().getServer().addRecipe((Recipe) redDyeRecipe);
+        AlathraExtras.getInstance().getServer().addRecipe(redDyeRecipe);
     }
 
-    public void redSandRecipe() {
+    public static void redSandRecipe() {
         ItemStack redSand = new ItemStack(Material.RED_SAND, 8);
-        NamespacedKey key = new NamespacedKey((Plugin) AlathraExtras.getInstance(),
-            String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "5");
-        ShapedRecipe redSandRecipe = new ShapedRecipe(key, redSand);
-        redSandRecipe.shape(new String[]{"@@@", "@%@", "@@@"});
-        redSandRecipe.setIngredient('@', Material.SAND);
-        redSandRecipe.setIngredient('%', Material.RED_DYE);
-        AlathraExtras.getInstance().getServer().addRecipe((Recipe) redSandRecipe);
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "redSandRecipe");
+        ShapelessRecipe redSandRecipe = new ShapelessRecipe(key, redSand);
+        redSandRecipe.addIngredient(8, Material.SAND);
+        redSandRecipe.addIngredient(1, Material.RED_DYE);
+        AlathraExtras.getInstance().getServer().addRecipe(redSandRecipe);
     }
 
-    public void bellRecipe() {
+    public static void bellRecipe() {
         ItemStack bell = new ItemStack(Material.BELL, 1);
-        NamespacedKey key = new NamespacedKey((Plugin) AlathraExtras.getInstance(),
-            String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "6");
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "bellRecipe");
         ShapedRecipe bellRecipe = new ShapedRecipe(key, bell);
-        bellRecipe.shape(new String[]{" @ ", "@%@"});
+        bellRecipe.shape(" @ ", "@%@");
         bellRecipe.setIngredient('@', Material.GOLD_BLOCK);
         bellRecipe.setIngredient('%', Material.GOLD_INGOT);
-        AlathraExtras.getInstance().getServer().addRecipe((Recipe) bellRecipe);
+        AlathraExtras.getInstance().getServer().addRecipe(bellRecipe);
     }
 
-    public void blackDyeRecipe1() {
-        ItemStack blackDye1 = new ItemStack(Material.BLACK_DYE, 1);
-        NamespacedKey key = new NamespacedKey((Plugin) AlathraExtras.getInstance(),
-            String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "7");
-        ShapelessRecipe blackDyeRecipe1 = new ShapelessRecipe(key, blackDye1);
-        blackDyeRecipe1.addIngredient(1, Material.COAL);
-        AlathraExtras.getInstance().getServer().addRecipe((Recipe) blackDyeRecipe1);
+    public static void blackDyeRecipe() {
+        ItemStack blackDye = new ItemStack(Material.BLACK_DYE, 1);
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "blackDyeRecipe");
+        RecipeChoice.MaterialChoice input = new RecipeChoice.MaterialChoice(Material.COAL, Material.CHARCOAL);
+        ShapelessRecipe blackDyeRecipe = new ShapelessRecipe(key, blackDye);
+        blackDyeRecipe.addIngredient(input);
+        AlathraExtras.getInstance().getServer().addRecipe(blackDyeRecipe);
     }
 
-    public void blackDyeRecipe2() {
-        ItemStack blackDye2 = new ItemStack(Material.BLACK_DYE, 1);
-        NamespacedKey key = new NamespacedKey((Plugin) AlathraExtras.getInstance(),
-            String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "8");
-        ShapelessRecipe blackDyeRecipe2 = new ShapelessRecipe(key, blackDye2);
-        blackDyeRecipe2.addIngredient(1, Material.CHARCOAL);
-        AlathraExtras.getInstance().getServer().addRecipe((Recipe) blackDyeRecipe2);
-    }
-
-    public void beetRootPouchRecipe() {
+    public static void beetrootPouchRecipe() {
         ItemStack beetRootPouch = CustomItems.getBeetrootPouch();
-        NamespacedKey key = new NamespacedKey((Plugin) AlathraExtras.getInstance(),
-            String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "9");
-        ShapedRecipe beetRootPouchRecipe = new ShapedRecipe(key, beetRootPouch);
-        beetRootPouchRecipe.shape(new String[]{"@@@", "@@@", "@@@"});
-        beetRootPouchRecipe.setIngredient('@', Material.BEETROOT);
-        AlathraExtras.getInstance().getServer().addRecipe((Recipe) beetRootPouchRecipe);
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "beetrootPouchRecipe");
+        ShapelessRecipe beetrootPouchRecipe = new ShapelessRecipe(key, beetRootPouch);
+        beetrootPouchRecipe.addIngredient(9, Material.BEETROOT);
+        AlathraExtras.getInstance().getServer().addRecipe(beetrootPouchRecipe);
     }
 
-    public void carrotPouchRecipe() {
+    public static void carrotPouchRecipe() {
         ItemStack carrotPouch = CustomItems.getCarrotPouch();
-        NamespacedKey key = new NamespacedKey((Plugin) AlathraExtras.getInstance(),
-            String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "10");
-        ShapedRecipe CarrotPouchRecipe = new ShapedRecipe(key, carrotPouch);
-        CarrotPouchRecipe.shape(new String[]{"@@@", "@@@", "@@@"});
-        CarrotPouchRecipe.setIngredient('@', Material.CARROT);
-        AlathraExtras.getInstance().getServer().addRecipe((Recipe) CarrotPouchRecipe);
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "carrotPouchRecipe");
+        ShapelessRecipe carrotPouchRecipe = new ShapelessRecipe(key, carrotPouch);
+        carrotPouchRecipe.addIngredient(9, Material.CARROT);
+        AlathraExtras.getInstance().getServer().addRecipe(carrotPouchRecipe);
     }
 
-    public void potatoPouchRecipe() {
+    public static void potatoPouchRecipe() {
         ItemStack potatoPouch = CustomItems.getPotatoPouch();
-        NamespacedKey key = new NamespacedKey((Plugin) AlathraExtras.getInstance(),
-            String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "11");
-        ShapedRecipe PotatoPouchRecipe = new ShapedRecipe(key, potatoPouch);
-        PotatoPouchRecipe.shape(new String[]{"@@@", "@@@", "@@@"});
-        PotatoPouchRecipe.setIngredient('@', Material.POTATO);
-        AlathraExtras.getInstance().getServer().addRecipe((Recipe) PotatoPouchRecipe);
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "potatoPouchRecipe");
+        ShapelessRecipe potatoPouchRecipe = new ShapelessRecipe(key, potatoPouch);
+        potatoPouchRecipe.addIngredient(9, Material.POTATO);
+        AlathraExtras.getInstance().getServer().addRecipe(potatoPouchRecipe);
     }
 
-    public void dioriteRecipe1() {
+    public static void dioriteRecipe1() {
         ItemStack diorite1 = new ItemStack(Material.DIORITE, 2);
-        NamespacedKey key = new NamespacedKey((Plugin) AlathraExtras.getInstance(),
-            String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "12");
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "dioriteRecipe1");
         ShapelessRecipe dioriteRecipe1 = new ShapelessRecipe(key, diorite1);
         dioriteRecipe1.addIngredient(2, Material.ANDESITE);
         dioriteRecipe1.addIngredient(1, Material.QUARTZ);
-        AlathraExtras.getInstance().getServer().addRecipe((Recipe) dioriteRecipe1);
+        AlathraExtras.getInstance().getServer().addRecipe(dioriteRecipe1);
     }
 
-    public void dioriteRecipe2() {
+    public static void dioriteRecipe2() {
         ItemStack diorite2 = new ItemStack(Material.DIORITE, 2);
-        NamespacedKey key = new NamespacedKey((Plugin) AlathraExtras.getInstance(),
-            String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "13");
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "dioriteRecipe2");
         ShapelessRecipe dioriteRecipe2 = new ShapelessRecipe(key, diorite2);
         dioriteRecipe2.addIngredient(1, Material.GRANITE);
         dioriteRecipe2.addIngredient(1, Material.COBBLESTONE);
-        AlathraExtras.getInstance().getServer().addRecipe((Recipe) dioriteRecipe2);
+        AlathraExtras.getInstance().getServer().addRecipe(dioriteRecipe2);
     }
 
-    public void dioriteRecipe3() {
+    public static void dioriteRecipe3() {
         ItemStack diorite3 = new ItemStack(Material.DIORITE, 3);
-        NamespacedKey key = new NamespacedKey((Plugin) AlathraExtras.getInstance(),
-            String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "14");
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "dioriteRecipe3");
         ShapelessRecipe dioriteRecipe3 = new ShapelessRecipe(key, diorite3);
         dioriteRecipe3.addIngredient(2, Material.ANDESITE);
         dioriteRecipe3.addIngredient(1, Material.GRANITE);
-        AlathraExtras.getInstance().getServer().addRecipe((Recipe) dioriteRecipe3);
+        AlathraExtras.getInstance().getServer().addRecipe(dioriteRecipe3);
     }
 
-    public void greenDyeRecipe() {
+    public static void greenDyeRecipe() {
         ItemStack greenDye = new ItemStack(Material.GREEN_DYE, 2);
-        NamespacedKey key = new NamespacedKey((Plugin) AlathraExtras.getInstance(),
-            String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "16");
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "greenDyeRecipe");
         ShapelessRecipe greenDyeRecipe = new ShapelessRecipe(key, greenDye);
         greenDyeRecipe.addIngredient(1, Material.BLUE_DYE);
         greenDyeRecipe.addIngredient(1, Material.YELLOW_DYE);
-        AlathraExtras.getInstance().getServer().addRecipe((Recipe) greenDyeRecipe);
+        AlathraExtras.getInstance().getServer().addRecipe(greenDyeRecipe);
     }
 
-    public void pinkPetalsRecipe() {
+    public static void pinkPetalsRecipe() {
         ItemStack pinkPetals = new ItemStack(Material.PINK_PETALS, 1);
-        NamespacedKey key = new NamespacedKey((Plugin) AlathraExtras.getInstance(),
-            String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "17");
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "pinkPetalsRecipe");
         ShapelessRecipe pinkPetalsRecipe = new ShapelessRecipe(key, pinkPetals);
         pinkPetalsRecipe.addIngredient(1, Material.CHERRY_LEAVES);
-        AlathraExtras.getInstance().getServer().addRecipe((Recipe) pinkPetalsRecipe);
+        AlathraExtras.getInstance().getServer().addRecipe(pinkPetalsRecipe);
     }
 
-    public void stonesToGravel() {
+    public static void stonesToGravel(int a) {
+        for (int b = 0; b <= a; b++) {
+            NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+                AlathraExtras.getInstance().getName() + "stonesToGravela" + a + "b" + b);
+            ItemStack result = new ItemStack(Material.GRAVEL, a);
+
+            ShapelessRecipe recipe = new ShapelessRecipe(key, result);
+
+            recipe.addIngredient(a - b, Material.COBBLESTONE);
+            recipe.addIngredient(b, Material.COBBLED_DEEPSLATE);
+
+            AlathraExtras.getInstance().getServer().addRecipe(recipe);
+        }
+    }
+
+    public static void gravelToSand(int a) {
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
-            String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "18");
-        RecipeChoice.MaterialChoice input = new RecipeChoice.MaterialChoice(Material.COBBLESTONE, Material.COBBLED_DEEPSLATE);
-        ItemStack result = new ItemStack(Material.GRAVEL, 1);
+            AlathraExtras.getInstance().getName() + "gravelToSand" + a);
+        ItemStack result = new ItemStack(Material.SAND, a);
 
         ShapelessRecipe recipe = new ShapelessRecipe(key, result);
 
-        recipe.addIngredient(input);
+        recipe.addIngredient(a, Material.GRAVEL);
 
         AlathraExtras.getInstance().getServer().addRecipe(recipe);
     }
 
-    public void gravelToSand() {
+    public static void dioriteToQuartz() {
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
-            String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "19");
-        RecipeChoice.MaterialChoice input = new RecipeChoice.MaterialChoice(Material.GRAVEL);
-        ItemStack result = new ItemStack(Material.SAND, 1);
-
-        ShapelessRecipe recipe = new ShapelessRecipe(key, result);
-
-        recipe.addIngredient(input);
-
-        AlathraExtras.getInstance().getServer().addRecipe(recipe);
-    }
-
-    public void dioriteToQuartz() {
-        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
-            String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "20");
+            AlathraExtras.getInstance().getName() + "dioriteToQuartz");
         RecipeChoice.MaterialChoice input = new RecipeChoice.MaterialChoice(Material.DIORITE);
         ItemStack result = new ItemStack(Material.QUARTZ, 1);
 
@@ -202,22 +188,21 @@ public class CraftingRecipes {
         AlathraExtras.getInstance().getServer().addRecipe(recipe);
     }
 
-    public void coarseDirtToDirt() {
+    public static void coarseDirtToDirt(int a) {
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
-            String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "21");
-        RecipeChoice.MaterialChoice input = new RecipeChoice.MaterialChoice(Material.COARSE_DIRT);
-        ItemStack result = new ItemStack(Material.DIRT, 1);
+            AlathraExtras.getInstance().getName() + "coarseDirtToDirt" + a);
+        ItemStack result = new ItemStack(Material.DIRT, a);
 
         ShapelessRecipe recipe = new ShapelessRecipe(key, result);
 
-        recipe.addIngredient(input);
+        recipe.addIngredient(a, Material.COARSE_DIRT);
 
         AlathraExtras.getInstance().getServer().addRecipe(recipe);
     }
 
-    public void beetrootPouchToBeetroot() {
+    public static void beetrootPouchToBeetroots() {
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
-            String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "22");
+            AlathraExtras.getInstance().getName() + "beetrootPouchToBeetroots");
         RecipeChoice.ExactChoice input = new RecipeChoice.ExactChoice(CustomItems.getBeetrootPouch());
         ItemStack result = new ItemStack(Material.BEETROOT, 9);
 
@@ -228,9 +213,9 @@ public class CraftingRecipes {
         AlathraExtras.getInstance().getServer().addRecipe(recipe);
     }
 
-    public void carrotPouchToCarrot() {
+    public static void carrotPouchToCarrots() {
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
-            String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "23");
+            AlathraExtras.getInstance().getName() + "carrotPouchToCarrots");
         RecipeChoice.ExactChoice input = new RecipeChoice.ExactChoice(CustomItems.getCarrotPouch());
         ItemStack result = new ItemStack(Material.CARROT, 9);
 
@@ -241,9 +226,9 @@ public class CraftingRecipes {
         AlathraExtras.getInstance().getServer().addRecipe(recipe);
     }
 
-    public void potatoPouchToPotato() {
+    public static void potatoPouchToPotatos() {
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
-            String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "24");
+            AlathraExtras.getInstance().getName() + "potatoPouchToPotatos");
         RecipeChoice.ExactChoice input = new RecipeChoice.ExactChoice(CustomItems.getPotatoPouch());
         ItemStack result = new ItemStack(Material.POTATO, 9);
 
@@ -253,8 +238,16 @@ public class CraftingRecipes {
 
         AlathraExtras.getInstance().getServer().addRecipe(recipe);
     }
-
-    public void cryingObsidianRecipe() {
+  
+    public static void allMultiBlockRecipes() {
+        for (int a = 1; a <= 9; a++) {
+            stonesToGravel(a);
+            gravelToSand(a);
+            coarseDirtToDirt(a);
+        }
+    }
+  
+     public void cryingObsidianRecipe() {
         ItemStack cryingObsidian = new ItemStack(Material.CRYING_OBSIDIAN, 4);
         NamespacedKey key = new NamespacedKey((Plugin) AlathraExtras.getInstance(),
             String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "25");
@@ -270,5 +263,26 @@ public class CraftingRecipes {
 
         AlathraExtras.getInstance().getServer().addRecipe((Recipe) cryingObsidianRecipe);
 
+    public static void registerAllCraftingRecipes() {
+        saddleRecipe();
+        charcoalBlock();
+        redDyeRecipe();
+        redSandRecipe();
+        bellRecipe();
+        blackDyeRecipe();
+        beetrootPouchRecipe();
+        carrotPouchRecipe();
+        potatoPouchRecipe();
+        dioriteRecipe1();
+        dioriteRecipe2();
+        dioriteRecipe3();
+        greenDyeRecipe();
+        pinkPetalsRecipe();
+        dioriteToQuartz();
+        beetrootPouchToBeetroots();
+        carrotPouchToCarrots();
+        potatoPouchToPotatos();
+        cryingObsidianRecipe();
+        allMultiBlockRecipes();
     }
 }
