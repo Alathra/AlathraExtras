@@ -282,7 +282,7 @@ public class CraftingRecipes {
         beetrootPouchToBeetroots();
         carrotPouchToCarrots();
         potatoPouchToPotatos();
-        cryingObsidianRecipe()
+        cryingObsidianRecipe();
         allMultiBlockRecipes();
     }
 }
