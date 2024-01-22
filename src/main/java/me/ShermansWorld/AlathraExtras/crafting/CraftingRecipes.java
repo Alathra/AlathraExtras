@@ -7,6 +7,8 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.Plugin;
+import org.jetbrains.annotations.NotNull;
 
 public class CraftingRecipes {
     public static void saddleRecipe() {
@@ -247,9 +249,9 @@ public class CraftingRecipes {
         }
     }
   
-     public void cryingObsidianRecipe() {
+     public static void cryingObsidianRecipe() {
         ItemStack cryingObsidian = new ItemStack(Material.CRYING_OBSIDIAN, 4);
-        NamespacedKey key = new NamespacedKey((Plugin) AlathraExtras.getInstance(),
+        NamespacedKey key = new NamespacedKey((@NotNull Plugin) AlathraExtras.getInstance(),
             String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "25");
         ShapedRecipe cryingObsidianRecipe = new ShapedRecipe(key, cryingObsidian);
         cryingObsidianRecipe.shape(new String[]{
@@ -262,6 +264,7 @@ public class CraftingRecipes {
         cryingObsidianRecipe.setIngredient('#', Material.WATER_BUCKET);
 
         AlathraExtras.getInstance().getServer().addRecipe((Recipe) cryingObsidianRecipe);
+     }
 
     public static void registerAllCraftingRecipes() {
         saddleRecipe();
