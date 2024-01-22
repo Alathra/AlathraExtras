@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.Arrays;
 
-public class CraftingListener implements Listener {
+public class PaperRecipesListener implements Listener {
     @EventHandler
     public void craftEvent(CraftItemEvent e) {
         if (Arrays.asList(e.getInventory().getStorageContents()).contains(CustomItems.tutorialBook())) {
