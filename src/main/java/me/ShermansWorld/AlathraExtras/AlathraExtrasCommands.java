@@ -2,6 +2,7 @@ package me.ShermansWorld.AlathraExtras;
 
 
 import me.ShermansWorld.AlathraExtras.items.Items;
+import me.ShermansWorld.AlathraExtras.npcs.bossItemMerchantNPC;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -39,7 +40,10 @@ public class AlathraExtrasCommands implements CommandExecutor {
                     sender.sendMessage(Helper.Chatlabel() + Helper.color("&eItem damage enabled"));
                     itemDamageOn = true;
                 }
-            }
+            } else if (args[0].equalsIgnoreCase("relocatebossmerchant")) {
+                sender.sendMessage(Helper.Chatlabel() + Helper.color("&cBoss Merchant Moved."));
+                bossItemMerchantNPC.teleportMerchant();
+		    }
         } else if (args.length == 2) {
             if (args[0].equalsIgnoreCase("give")) {
                 if (args[1].equalsIgnoreCase("tiny_xp_pouch")) {

@@ -23,6 +23,7 @@ import me.ShermansWorld.AlathraExtras.misc.CommandListener;
 import me.ShermansWorld.AlathraExtras.misc.CraftingListener;
 import me.ShermansWorld.AlathraExtras.misc.ItemFrameListener;
 import me.ShermansWorld.AlathraExtras.misc.MsgEditor;
+import me.ShermansWorld.AlathraExtras.npcs.NPCListener;
 import me.ShermansWorld.AlathraExtras.npcs.bossItemMerchantNPC;
 import me.ShermansWorld.AlathraExtras.playtime.PlaytimeCommand;
 import me.ShermansWorld.AlathraExtras.playtime.PlaytimeTabCompleter;
@@ -155,6 +156,7 @@ public class AlathraExtras extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new TownyListener(), this);
         this.getServer().getPluginManager().registerEvents(new VotingListener(), this);
         this.getServer().getPluginManager().registerEvents(new DispenserListener(), this);
+        this.getServer().getPluginManager().registerEvents(new NPCListener(), this);
 
         initRecipeItems();
         FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
@@ -204,8 +206,6 @@ public class AlathraExtras extends JavaPlugin {
         if (alathraextrasCommands != null) alathraextrasCommands.setTabCompleter(new AlathraExtrasTabCompleter());
 
         if (playtimeCommands != null) playtimeCommands.setTabCompleter(new PlaytimeTabCompleter());
-
-        bossItemMerchantNPC.teleportMerchant();
 
         rand = new Random();
         if (instance.getServer().getPluginManager().isPluginEnabled("Essentials")) CooldownManager.getInstance();

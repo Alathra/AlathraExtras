@@ -14,6 +14,7 @@ public class AlathraExtrasTabCompleter implements TabCompleter {
         if (args.length == 1) {
             completions.add("give");
             completions.add("toggleitemdamage");
+            completions.add("relocatebossmerchant");
             return completions;
         } else if (args.length == 2) {
             completions.add("tiny_xp_pouch");
