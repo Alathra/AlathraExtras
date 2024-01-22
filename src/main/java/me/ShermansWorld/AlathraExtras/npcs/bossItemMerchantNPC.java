@@ -47,8 +47,9 @@ public class bossItemMerchantNPC{
         final int MerchantID = 83; //needs to match the value in NPCListener
 
         Random random = new Random();
-        int newLocationIndex = random.nextInt(locationArrayList.size());
+        int newLocationIndex = random.nextInt(locationArrayList.size()); //Pick random location
 
+        //Teleport the npc
         CitizensAPI.getNPCRegistry().getById(MerchantID).teleport(locationArrayList.get(newLocationIndex), PlayerTeleportEvent.TeleportCause.COMMAND);
 
     }
