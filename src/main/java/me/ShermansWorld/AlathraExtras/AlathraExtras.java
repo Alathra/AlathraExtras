@@ -183,6 +183,7 @@ public class AlathraExtras extends JavaPlugin {
         craftingRecipes.beetrootPouchToBeetroot();
         craftingRecipes.carrotPouchToCarrot();
         craftingRecipes.potatoPouchToPotato();
+        craftingRecipes.cryingObsidianRecipe();
 
         StoneCuttingRecipes.setWoodcuttingRecipes();
         StoneCuttingRecipes.setBamboocuttingRecipes();
