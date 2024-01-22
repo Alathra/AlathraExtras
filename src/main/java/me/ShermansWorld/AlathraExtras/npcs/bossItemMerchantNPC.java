@@ -1,6 +1,7 @@
 package me.ShermansWorld.AlathraExtras.npcs;
 
 import net.citizensnpcs.api.CitizensAPI;
+import net.citizensnpcs.api.event.SpawnReason;
 import net.citizensnpcs.api.npc.NPC;
 import net.citizensnpcs.api.npc.NPCRegistry;
 import net.citizensnpcs.api.trait.Trait;
@@ -12,6 +13,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.EntityType;
+import org.bukkit.event.player.PlayerTeleportEvent;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -29,22 +31,15 @@ public class bossItemMerchantNPC{
         // Location information
         final World world = Bukkit.getWorld("world");
         ArrayList<Location> locationHashSet = new ArrayList<>();
-        locationHashSet.add(new Location(world, 22.5, 72, 123.5));
-
-
-
-        NPCRegistry registry = CitizensAPI.getNPCRegistry();
-        EntityController entityController = EntityControllers.createForType(EntityType.PLAYER);
-        merchant = new CitizensNPC(merchantUUID, 300, "Mysterious Merchant", entityController, registry);
+        locationHashSet.add(new Location(world, -14.5, 110, 157.5));
+        locationHashSet.add(new Location(world, -66.5, 66, -95.5));
+        locationHashSet.add(new Location(world, 105.5, 65, 298.5));
+        final int MerchantID = 83;
 
         Random random = new Random();
         int newLocationIndex = random.nextInt(locationHashSet.size());
 
-        merchant.spawn(locationHashSet.get(newLocationIndex));
-
-        ShopTrait shopTrait = new ShopTrait();
-
-        merchant.addTrait(shopTrait);
+        CitizensAPI.getNPCRegistry().getById(83).teleport(locationHashSet.get(newLocationIndex), PlayerTeleportEvent.TeleportCause.COMMAND);
 
 
     }
