@@ -81,7 +81,6 @@ public class StoneCuttingRecipes {
         );
 
 
-
         for (Material bambooBlock : Tag.BAMBOO_BLOCKS.getValues()) {
             String blockString = bambooBlock.toString();
 

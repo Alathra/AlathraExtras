@@ -240,7 +240,7 @@ public class CraftingRecipes {
 
         AlathraExtras.getInstance().getServer().addRecipe(recipe);
     }
-  
+
     public static void allMultiBlockRecipes() {
         for (int a = 1; a <= 9; a++) {
             stonesToGravel(a);
@@ -248,8 +248,8 @@ public class CraftingRecipes {
             coarseDirtToDirt(a);
         }
     }
-  
-     public static void cryingObsidianRecipe() {
+
+    public static void cryingObsidianRecipe() {
         ItemStack cryingObsidian = new ItemStack(Material.CRYING_OBSIDIAN, 4);
         NamespacedKey key = new NamespacedKey((@NotNull Plugin) AlathraExtras.getInstance(),
             String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "25");
@@ -264,7 +264,7 @@ public class CraftingRecipes {
         cryingObsidianRecipe.setIngredient('#', Material.WATER_BUCKET);
 
         AlathraExtras.getInstance().getServer().addRecipe((Recipe) cryingObsidianRecipe);
-     }
+    }
 
     public static void registerAllCraftingRecipes() {
         saddleRecipe();
