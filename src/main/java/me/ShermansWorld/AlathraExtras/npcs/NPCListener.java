@@ -8,7 +8,7 @@ import org.bukkit.event.Listener;
 public class NPCListener implements Listener {
 
     @EventHandler
-    public void NPCSpawnListener(NPCSpawnEvent e) {
+    public void npcSpawnListener(NPCSpawnEvent e) {
         if (e.getNPC().getId() == bossItemMerchantNPC.ID){
             bossItemMerchantNPC.teleportMerchant();
         }
