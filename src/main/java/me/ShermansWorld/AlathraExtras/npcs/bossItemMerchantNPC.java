@@ -1,24 +1,13 @@
 package me.ShermansWorld.AlathraExtras.npcs;
 
-import net.citizensnpcs.Citizens;
 import net.citizensnpcs.api.CitizensAPI;
-import net.citizensnpcs.api.event.SpawnReason;
-import net.citizensnpcs.api.npc.NPC;
-import net.citizensnpcs.api.npc.NPCRegistry;
-import net.citizensnpcs.api.trait.Trait;
-import net.citizensnpcs.npc.CitizensNPC;
-import net.citizensnpcs.npc.EntityController;
-import net.citizensnpcs.npc.EntityControllers;
-import net.citizensnpcs.trait.ShopTrait;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.entity.EntityType;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
-import java.util.*;
-import java.util.random.RandomGenerator;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Handles code for the boss item merchant, specifically the one for the nether update.
@@ -51,12 +40,5 @@ public class bossItemMerchantNPC{
 
         //Teleport the npc
         CitizensAPI.getNPCRegistry().getById(ID).teleport(locationArrayList.get(newLocationIndex), PlayerTeleportEvent.TeleportCause.COMMAND);
-
     }
-
-
-
-
-
-
 }
