@@ -9,7 +9,7 @@ public class NPCListener implements Listener {
 
     @EventHandler
     public void npcSpawnListener(NPCSpawnEvent e) {
-        if (e.getNPC().getId() == bossItemMerchantNPC.ID){
+        if (e.getNPC().getId().equals(bossItemMerchantNPC.ID)){
             bossItemMerchantNPC.teleportMerchant();
         }
     }
