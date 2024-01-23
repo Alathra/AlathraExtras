@@ -147,7 +147,7 @@ bukkit {
     version = "${project.version}"
     description = "${project.description}"
     authors = listOf("ShermansWorld")
-    contributors = listOf("darksaid98", "NuclearDonut47", "NinjaMandalorian", "AubriTheHuman", "LOUofSPARTA", "rooooose-b")
+    contributors = listOf("darksaid98", "NuclearDonut47", "Xavbeat03", "NinjaMandalorian", "AubriTheHuman", "LOUofSPARTA", "rooooose-b")
     apiVersion = "1.19"
 
     // Misc properties
