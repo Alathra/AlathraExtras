@@ -21,6 +21,8 @@ public class bossItemMerchantNPC{
     public static void teleportMerchant(){
         // Location information
         final World world = Bukkit.getWorld("world");
+        if (world == null) return;
+
         ArrayList<Location> locationArrayList = new ArrayList<>();
         locationArrayList.add(new Location(world, -14.5, 109, 157.5)); //
         locationArrayList.add(new Location(world, -66.5, 65, -95.5)); //
