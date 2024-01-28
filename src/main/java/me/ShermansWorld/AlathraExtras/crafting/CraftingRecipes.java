@@ -3,6 +3,7 @@ package me.ShermansWorld.AlathraExtras.crafting;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import me.ShermansWorld.AlathraExtras.Helper;
 import me.ShermansWorld.AlathraExtras.misc.CustomItems;
+
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.*;
@@ -11,6 +12,7 @@ import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 
 public class CraftingRecipes {
+	
     public static void saddleRecipe() {
         ItemStack saddle = new ItemStack(Material.SADDLE, 1);
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),

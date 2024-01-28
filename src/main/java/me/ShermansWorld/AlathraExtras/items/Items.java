@@ -1,9 +1,12 @@
 package me.ShermansWorld.AlathraExtras.items;
 
 import me.ShermansWorld.AlathraExtras.Helper;
+
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import io.lumine.mythic.bukkit.MythicBukkit;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,4 +31,8 @@ public class Items {
         tinyXPPouch.setItemMeta(meta);
         return tinyXPPouch;
     }
+    
+	public static ItemStack getAlathranIron() {
+		return MythicBukkit.inst().getItemManager().getItemStack("Alathran_Iron");
+	}
 }

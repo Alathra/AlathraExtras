@@ -46,6 +46,10 @@ public class AlathraExtrasCommands implements CommandExecutor {
                     player.getInventory().addItem(Items.getTinyXPPouch());
                     return true;
                 }
+                if (args[1].equalsIgnoreCase("alathran_iron")) {
+                    player.getInventory().addItem(Items.getAlathranIron());
+                    return true;
+                }
             }
         }
         return false;
