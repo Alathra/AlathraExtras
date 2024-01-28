@@ -12,7 +12,7 @@ plugins {
 }
 
 group = "me.ShermansWorld"
-version = "1.22.0"
+version = "1.23.0"
 description = ""
 val mainPackage = "${project.group}.${rootProject.name}"
 
@@ -59,6 +59,10 @@ repositories {
     }
     
     maven("https://repo.codemc.org/repository/maven-public/")
+    
+    maven("https://mvn.lumine.io/repository/maven-public/") {
+        content { includeGroup("io.lumine") }
+    }
 }
 
 dependencies {
@@ -87,6 +91,8 @@ dependencies {
     compileOnly("me.clip:placeholderapi:2.11.5")
     compileOnly("dev.cubxity.plugins:unifiedmetrics-api:0.3.8")
     compileOnly("nl.rutgerkok:blocklocker:1.10.4")
+    compileOnly("io.lumine:Mythic-Dist:5.4.1")
+    compileOnly(files("lib/SiegeEngines-0.7.5.jar"))
 }
 
 tasks {

@@ -17,6 +17,7 @@ public class AlathraExtrasTabCompleter implements TabCompleter {
             return completions;
         } else if (args.length == 2) {
             completions.add("tiny_xp_pouch");
+            completions.add("alathran_iron");
             return completions;
         }
         return Collections.emptyList();
