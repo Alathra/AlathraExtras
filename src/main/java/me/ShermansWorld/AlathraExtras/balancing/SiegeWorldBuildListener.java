@@ -17,12 +17,7 @@ public class SiegeWorldBuildListener implements Listener {
     private static final Set<Material> allowedBlocks = new HashSet<>();
 
     static {
-        allowedBlocks.add(Material.BLACK_WOOL);
-        allowedBlocks.add(Material.STONE_BUTTON);
-        allowedBlocks.add(Material.IRON_BLOCK);
-        allowedBlocks.add(Material.HEAVY_WEIGHTED_PRESSURE_PLATE);
-        allowedBlocks.add(Material.WALL_TORCH);
-        allowedBlocks.add(Material.TORCH);
+        allowedBlocks.add(Material.CARVED_PUMPKIN);
     }
 
     @EventHandler
