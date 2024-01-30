@@ -11,6 +11,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 
+import com.github.alathra.siegeengines.api.SiegeEnginesAPI;
+
 public class CraftingRecipes {
 	
     public static void saddleRecipe() {
@@ -267,6 +269,35 @@ public class CraftingRecipes {
 
         AlathraExtras.getInstance().getServer().addRecipe((Recipe) cryingObsidianRecipe);
     }
+    
+    public static Recipe trebuchetRecipe() {
+		ItemStack trebuchet = SiegeEnginesAPI.getTrebuchetItem();
+		NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+				AlathraExtras.getInstance().getName() + "trebuchetRecipe");
+		ShapedRecipe trebuchetRecipe = new ShapedRecipe(key, trebuchet);
+		trebuchetRecipe.shape("$@$", "%#$", "@^@");
+		trebuchetRecipe.setIngredient('@', Material.OAK_FENCE);
+		trebuchetRecipe.setIngredient('%', Material.OAK_LOG);
+		trebuchetRecipe.setIngredient('#', Material.OAK_TRAPDOOR);
+		trebuchetRecipe.setIngredient('$', Material.STRING);
+		trebuchetRecipe.setIngredient('^', Material.BOWL);
+		AlathraExtras.getInstance().getServer().addRecipe(trebuchetRecipe);
+		return trebuchetRecipe;
+	}
+	
+	public static Recipe ballistaRecipe() {
+		ItemStack ballista = SiegeEnginesAPI.getBallistaItem();
+		NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+				AlathraExtras.getInstance().getName() + "ballistaRecipe");
+		ShapedRecipe ballistaRecipe = new ShapedRecipe(key, ballista);
+		ballistaRecipe.shape("@%%", "%# ", "% $");
+		ballistaRecipe.setIngredient('@', Material.CROSSBOW);
+		ballistaRecipe.setIngredient('%', Material.STICK);
+		ballistaRecipe.setIngredient('#', Material.OAK_PLANKS);
+		ballistaRecipe.setIngredient('$', Material.OAK_LOG);
+		AlathraExtras.getInstance().getServer().addRecipe(ballistaRecipe);
+		return ballistaRecipe;
+	}
 
     public static void registerAllCraftingRecipes() {
         saddleRecipe();
@@ -288,6 +319,8 @@ public class CraftingRecipes {
         carrotPouchToCarrots();
         potatoPouchToPotatos();
         cryingObsidianRecipe();
+        trebuchetRecipe();
+        ballistaRecipe();
         allMultiBlockRecipes();
     }
 }
