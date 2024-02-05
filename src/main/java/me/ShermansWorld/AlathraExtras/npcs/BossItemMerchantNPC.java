@@ -13,7 +13,7 @@ import java.util.Random;
  * Handles code for the boss item merchant, specifically the one for the nether update.
  */
 public class BossItemMerchantNPC {
-    public static final int ID = 83;
+    public static final int ID = 98;
 
     /**
      * Teleports the merchant to one of their random locations
