@@ -91,7 +91,7 @@ dependencies {
     compileOnly("me.clip:placeholderapi:2.11.5")
     compileOnly("dev.cubxity.plugins:unifiedmetrics-api:0.3.8")
     compileOnly("nl.rutgerkok:blocklocker:1.10.4")
-    compileOnly("io.lumine:Mythic-Dist:5.4.1")
+    compileOnly("io.lumine:Mythic-Dist:5.5.1")
     compileOnly(files("lib/SiegeEngines-0.7.6.jar"))
 }
 
