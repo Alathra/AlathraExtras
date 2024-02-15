@@ -6,7 +6,15 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
+/**
+ * Listens for trapdoor interaction events
+ */
 public class TrapdoorListener implements Listener {
+
+    /**
+     * Checks for player interactions with a trapdoor.
+     * @param e the player interaction event
+     */
     @EventHandler
     public void onInteract(PlayerInteractEvent e) {
         // Checks if the action is right click, and the right click is at a block.
