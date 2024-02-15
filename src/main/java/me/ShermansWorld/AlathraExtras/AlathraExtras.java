@@ -154,7 +154,6 @@ public class AlathraExtras extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new TeleportRequestResponseListener(), this);
         this.getServer().getPluginManager().registerEvents(new TownyListener(), this);
         this.getServer().getPluginManager().registerEvents(new VotingListener(), this);
-        this.getServer().getPluginManager().registerEvents(new DispenserListener(), this);
         this.getServer().getPluginManager().registerEvents(new NPCListener(), this);
         this.getServer().getPluginManager().registerEvents(new TrapdoorListener(), this);
 
