@@ -7,6 +7,7 @@ import me.ShermansWorld.AlathraExtras.chatitem.ShowItemCommand;
 import me.ShermansWorld.AlathraExtras.crafting.*;
 import me.ShermansWorld.AlathraExtras.disabledispensereggs.DispenserListener;
 import me.ShermansWorld.AlathraExtras.disablespawners.DisableSpawners;
+import me.ShermansWorld.AlathraExtras.disabletrapdoorflipping.TrapdoorListener;
 import me.ShermansWorld.AlathraExtras.enderchersblock.EnderChestBlockListener;
 import me.ShermansWorld.AlathraExtras.endermanexp.EndermanExpDropListener;
 import me.ShermansWorld.AlathraExtras.funny.AetherPortalListener;
@@ -155,6 +156,7 @@ public class AlathraExtras extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new VotingListener(), this);
         this.getServer().getPluginManager().registerEvents(new DispenserListener(), this);
         this.getServer().getPluginManager().registerEvents(new NPCListener(), this);
+        this.getServer().getPluginManager().registerEvents(new TrapdoorListener(), this);
 
         initRecipeItems();
         FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
