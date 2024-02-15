@@ -27,7 +27,6 @@ public class TrapdoorListener implements Listener {
             && e.getPlayer().getGameMode() != GameMode.CREATIVE
         ) // If so, cancel the interaction.
         {
-            AlathraExtras.logger.log("Test log.");
             e.setCancelled(true);
         }
     }
