@@ -1,6 +1,7 @@
 package me.ShermansWorld.AlathraExtras.disabletrapdoorflipping;
 
 import com.destroystokyo.paper.MaterialTags;
+import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import org.bukkit.GameMode;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -21,11 +22,12 @@ public class TrapdoorListener implements Listener {
         // Checks if the action is right click, and the right click is at a block.
         if(e.getAction() == Action.RIGHT_CLICK_BLOCK
             && e.getClickedBlock() != null
-            && (MaterialTags.TRAPDOORS.isTagged(e.getClickedBlock().getType())
+            && e.getClickedBlock().getType().toString().toLowerCase().contains("trapdoor")
             && e.getClickedBlock().getWorld().getName().equals("world")
             && e.getPlayer().getGameMode() != GameMode.CREATIVE
-        )) // If so, cancel the interaction.
+        ) // If so, cancel the interaction.
         {
+            AlathraExtras.logger.log("Test log.");
             e.setCancelled(true);
         }
     }
