@@ -19,7 +19,7 @@ public class YeetCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if (args.length != 0) {
+        if (args.length == 1) {
             Player target = Bukkit.getPlayer(args[0]);
             target.setVelocity(new Vector(0, 10, 0));
             return true;
