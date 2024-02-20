@@ -190,6 +190,10 @@ bukkit {
             description = "Show an item in chat."
             usage = "/showitem"
         }
+        register("yeet") {
+            description = "Guess."
+            usage = "/yeet <player>"
+        }
     }
 }
 
