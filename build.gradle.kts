@@ -83,7 +83,7 @@ dependencies {
 
     compileOnly("com.palmergames.bukkit.towny:towny:0.100.1.11")
     compileOnly("com.github.TownyAdvanced:TownyChat:0.114")
-    compileOnly("com.bencodez:votingplugin:6.15") {
+    compileOnly("com.bencodez:votingplugin:6.15.1") {
         exclude(group = "*", module = "*")
     }
     compileOnly("com.github.MilkBowl:VaultAPI:1.7.1")
