@@ -17,24 +17,25 @@ public class AppleConsumeListener implements Listener {
 
     @EventHandler
     public void ConsumeAppleEvent(PlayerItemConsumeEvent e){
-        if(e.getItem().getType()== Material.APPLE){
+        if(e.getItem().getType()== Material.GOLDEN_APPLE){
             Player p = e.getPlayer();
+            p.clearActivePotionEffects();
             List<PotionEffect> potionEffectList = new ArrayList<>();
             switch (e.getItem().getItemMeta().getCustomModelData()){
                 case 420 -> { // Alathran Copper Apple
-                    potionEffectList.add(new PotionEffect(PotionEffectType.ABSORPTION, secondsToTicks(120), 2));
-                    potionEffectList.add(new PotionEffect(PotionEffectType.REGENERATION, secondsToTicks(7), 2));
+                    potionEffectList.add(new PotionEffect(PotionEffectType.ABSORPTION, secondsToTicks(120), 1));
+                    potionEffectList.add(new PotionEffect(PotionEffectType.REGENERATION, secondsToTicks(7), 1));
                 }
                 case 421 -> { // Alathran Iron Apple
-                    potionEffectList.add(new PotionEffect(PotionEffectType.ABSORPTION, secondsToTicks(180), 3));
-                    potionEffectList.add(new PotionEffect(PotionEffectType.REGENERATION, secondsToTicks(15), 2));
-                    potionEffectList.add(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, secondsToTicks(60), 1));
+                    potionEffectList.add(new PotionEffect(PotionEffectType.ABSORPTION, secondsToTicks(180), 2));
+                    potionEffectList.add(new PotionEffect(PotionEffectType.REGENERATION, secondsToTicks(15), 1));
+                    potionEffectList.add(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, secondsToTicks(60), 0));
                 }
                 case 422 -> { // Alathran Gold Apple
-                    potionEffectList.add(new PotionEffect(PotionEffectType.ABSORPTION, secondsToTicks(180), 4));
-                    potionEffectList.add(new PotionEffect(PotionEffectType.REGENERATION, secondsToTicks(25), 2));
-                    potionEffectList.add(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, secondsToTicks(300), 1));
-                    potionEffectList.add(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, secondsToTicks(5), 1));
+                    potionEffectList.add(new PotionEffect(PotionEffectType.ABSORPTION, secondsToTicks(180), 3));
+                    potionEffectList.add(new PotionEffect(PotionEffectType.REGENERATION, secondsToTicks(25), 1));
+                    potionEffectList.add(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, secondsToTicks(300), 0));
+                    potionEffectList.add(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, secondsToTicks(5), 0));
                 }
             }
             if(!potionEffectList.isEmpty()) p.addPotionEffects(potionEffectList);
