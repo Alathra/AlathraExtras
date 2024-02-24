@@ -67,7 +67,6 @@ public class CraftingListener implements Listener {
 					&& craftingGridItemStacks[4].equals(SiegeEnginesAPI.getSwivelCannonItem())
                     && craftingGridItemStacks[2].equals(new ItemStack(Material.CAULDRON, 1))
                     && craftingGridItemStacks[6].equals(new ItemStack(Material.ANVIL, 1))
-
             ) {
 				event.getInventory().setResult(SiegeEnginesAPI.getBreachCannonItem());
 			}
