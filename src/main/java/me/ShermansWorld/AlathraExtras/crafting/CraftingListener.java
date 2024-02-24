@@ -42,7 +42,12 @@ public class CraftingListener implements Listener {
 		if (recipeCheck(craftingGrid, swivelCannonRecipe, true)) {
 			if (craftingGridItemStacks[0].equals(Items.getAlathranIron())
 					&& craftingGridItemStacks[1].equals(Items.getAlathranIron())
-					&& craftingGridItemStacks[2].equals(Items.getAlathranIron())) {
+					&& craftingGridItemStacks[2].equals(Items.getAlathranIron())
+                    && craftingGridItemStacks[3].equals(new ItemStack(Material.IRON_BLOCK, 1))
+                    && craftingGridItemStacks[4].equals(new ItemStack(Material.IRON_BLOCK, 1))
+                    && craftingGridItemStacks[5].equals(new ItemStack(Material.CAULDRON, 1))
+                    && craftingGridItemStacks[8].equals(new ItemStack(Material.ANVIL, 1))
+            ) {
 				event.getInventory().setResult(SiegeEnginesAPI.getSwivelCannonItem());
 			}
 		}
@@ -59,7 +64,11 @@ public class CraftingListener implements Listener {
 					&& craftingGridItemStacks[3].equals(Items.getAlathranIron())
 					&& craftingGridItemStacks[5].equals(Items.getAlathranIron())
 					&& craftingGridItemStacks[7].equals(Items.getAlathranIron())
-					&& craftingGridItemStacks[4].equals(SiegeEnginesAPI.getSwivelCannonItem())) {
+					&& craftingGridItemStacks[4].equals(SiegeEnginesAPI.getSwivelCannonItem())
+                    && craftingGridItemStacks[2].equals(new ItemStack(Material.CAULDRON, 1))
+                    && craftingGridItemStacks[6].equals(new ItemStack(Material.ANVIL, 1))
+
+            ) {
 				event.getInventory().setResult(SiegeEnginesAPI.getBreachCannonItem());
 			}
 		}
