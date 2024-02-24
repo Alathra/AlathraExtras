@@ -1,5 +1,6 @@
 package me.ShermansWorld.AlathraExtras.crafting;
 
+import com.github.alathra.siegeengines.libs.colorparser.ColorParser;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import me.ShermansWorld.AlathraExtras.Helper;
 import me.ShermansWorld.AlathraExtras.misc.CustomItems;
@@ -272,6 +273,9 @@ public class CraftingRecipes {
     
     public static Recipe trebuchetRecipe() {
 		ItemStack trebuchet = SiegeEnginesAPI.getTrebuchetItem();
+        ItemMeta trebuchetItemMeta = trebuchet.getItemMeta();
+        trebuchetItemMeta.displayName(ColorParser.of("<yellow><bold>Trebuchet</bold></yellow>").build());
+        trebuchet.setItemMeta(trebuchetItemMeta);
 		NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
 				AlathraExtras.getInstance().getName() + "trebuchetRecipe");
 		ShapedRecipe trebuchetRecipe = new ShapedRecipe(key, trebuchet);
@@ -287,6 +291,9 @@ public class CraftingRecipes {
 	
 	public static Recipe ballistaRecipe() {
 		ItemStack ballista = SiegeEnginesAPI.getBallistaItem();
+        ItemMeta ballistaItemMeta = ballista.getItemMeta();
+        ballistaItemMeta.displayName(ColorParser.of("<yellow><bold>Ballista</bold></yellow>").build());
+        ballista.setItemMeta(ballistaItemMeta);
 		NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
 				AlathraExtras.getInstance().getName() + "ballistaRecipe");
 		ShapedRecipe ballistaRecipe = new ShapedRecipe(key, ballista);
