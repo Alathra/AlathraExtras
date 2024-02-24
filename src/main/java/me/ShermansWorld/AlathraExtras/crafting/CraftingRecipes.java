@@ -14,6 +14,8 @@ import org.jetbrains.annotations.NotNull;
 
 import com.github.alathra.siegeengines.api.SiegeEnginesAPI;
 
+import java.util.Collections;
+
 public class CraftingRecipes {
 	
     public static void saddleRecipe() {
@@ -275,6 +277,7 @@ public class CraftingRecipes {
 		ItemStack trebuchet = SiegeEnginesAPI.getTrebuchetItem();
         ItemMeta trebuchetItemMeta = trebuchet.getItemMeta();
         trebuchetItemMeta.displayName(ColorParser.of("<yellow><bold>Trebuchet</bold></yellow>").build());
+        trebuchetItemMeta.lore(Collections.singletonList(ColorParser.of("<reset><yellow>Place as a block to spawn a Trebuchet</yellow>").build()));
         trebuchet.setItemMeta(trebuchetItemMeta);
 		NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
 				AlathraExtras.getInstance().getName() + "trebuchetRecipe");
@@ -293,6 +296,7 @@ public class CraftingRecipes {
 		ItemStack ballista = SiegeEnginesAPI.getBallistaItem();
         ItemMeta ballistaItemMeta = ballista.getItemMeta();
         ballistaItemMeta.displayName(ColorParser.of("<yellow><bold>Ballista</bold></yellow>").build());
+        ballistaItemMeta.lore(Collections.singletonList(ColorParser.of("<reset><yellow>Place as a block to spawn a Ballista</yellow>").build()));
         ballista.setItemMeta(ballistaItemMeta);
 		NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
 				AlathraExtras.getInstance().getName() + "ballistaRecipe");
