@@ -3,12 +3,9 @@ package me.ShermansWorld.AlathraExtras.towny;
 import com.palmergames.bukkit.TownyChat.Chat;
 import com.palmergames.bukkit.TownyChat.channels.Channel;
 import com.palmergames.bukkit.TownyChat.channels.ChannelsHolder;
-import com.palmergames.bukkit.towny.TownyAPI;
 import com.palmergames.bukkit.towny.event.NewNationEvent;
 import com.palmergames.bukkit.towny.event.town.TownRuinedEvent;
-import com.palmergames.bukkit.towny.exceptions.NotRegisteredException;
 import com.palmergames.bukkit.towny.object.Nation;
-import com.palmergames.bukkit.towny.object.Resident;
 import com.palmergames.bukkit.towny.object.Town;
 import com.palmergames.bukkit.towny.object.TownBlock;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
@@ -17,14 +14,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
-import org.bukkit.damage.DamageSource;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityCombustByEntityEvent;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -186,43 +178,5 @@ public class TownyListener implements Listener {
 		nation.getAccount().deposit(2000.0, "Nation Creation");
 		nation.getKing().getPlayer().sendMessage(Helper.Chatlabel() + Helper.color(
 				"&b$2000 &chas been deposited into your nation bank. Nations use money each day or they fall into ruin. To put money in your nation type &e/t deposit [amount]"));
-	}
-
-	@EventHandler
-    public void onArmorStandDamage1(EntityDamageByEntityEvent e) {
-    	
-    	// If entity is not an armor stand, return
-    	if (e.getEntity().getType() != EntityType.ARMOR_STAND) {
-    		return;
-    	}
-    	
-    	// If damager is player, check if they are part of the town
-    	if (e.getDamager() instanceof Player) {
-    		Resident resident = TownyAPI.getInstance().getResident((Player) e.getDamager());
-    			try {
-					if (resident.getTown().equals(TownyAPI.getInstance().getTown(e.getEntity().getLocation()))) {
-						return;
-					} else {
-						e.setCancelled(true);
-						return;
-					}
-				} catch (NotRegisteredException e1) {
-				}
-    	}
-	}
-	
-	@EventHandler
-    public void onArmorStandDamage2(ProjectileHitEvent e) {
-		
-		// If entity is not an armor stand, return
-    	if (e.getHitEntity().getType() != EntityType.ARMOR_STAND) {
-    		return;
-    	}
-    	
-    	// If armor stand is in a town, cancel the event and return
-    	if (TownyAPI.getInstance().getTown(e.getHitBlock().getLocation()) != null) {
-    		e.setCancelled(true);
-    		return;
-    	}
 	}
 }
