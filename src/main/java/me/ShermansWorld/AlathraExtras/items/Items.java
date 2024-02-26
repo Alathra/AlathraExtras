@@ -6,6 +6,8 @@ import me.ShermansWorld.AlathraExtras.Helper;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -39,11 +41,12 @@ public class Items {
 		return MythicBukkit.inst().getItemManager().getItemStack("Alathran_Iron");
 	}
 
+    //TODO: Adjust method and command names away from apple to something else.
     public static ItemStack getUnchargedCopperApple() {
         ItemStack alathranCopperApple = new ItemStack(Material.GOLDEN_APPLE, 1);
         ItemMeta meta = alathranCopperApple.getItemMeta();
         meta.setCustomModelData(420);
-        meta.displayName(ColorParser.of("<bold><gold>Uncharged Copper Apple</gold></bold>").build());
+        meta.displayName(ColorParser.of("<bold><gold>Uncharged Copper Fruit</gold></bold>").build());
         List<Component> lore = new ArrayList<>();
         lore.add(ColorParser.of("<green>It's metallic surface is shiny and</green>").build());
         lore.add(ColorParser.of("<green>looks tasty to eat.</green>").build());
@@ -58,13 +61,15 @@ public class Items {
         ItemStack alathranCopperApple = new ItemStack(Material.GOLDEN_APPLE, 1);
         ItemMeta meta = alathranCopperApple.getItemMeta();
         meta.setCustomModelData(421);
-        meta.displayName(ColorParser.of("<bold><gold>Charged Copper Apple</gold></bold>").build());
+        meta.displayName(ColorParser.of("<bold><gold>Charged Copper Fruit</gold></bold>").build());
         List<Component> lore = new ArrayList<>();
         lore.add(ColorParser.of("<green>It's metallic surface is sparking and glimmering.</green>").build());
         lore.add(ColorParser.of("<green>Looks painful to eat.</green>").build());
         lore.add(ColorParser.of("&a&lAlathran Item").build());
         lore.forEach( component -> component = component.decoration(TextDecoration.ITALIC, false));
         meta.lore(lore);
+        meta.addEnchant(Enchantment.LURE, 0, false);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         alathranCopperApple.setItemMeta(meta);
         return alathranCopperApple;
     }

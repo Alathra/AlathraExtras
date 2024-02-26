@@ -50,6 +50,14 @@ public class AlathraExtrasCommands implements CommandExecutor {
                     player.getInventory().addItem(Items.getAlathranIron());
                     return true;
                 }
+                if (args[1].equalsIgnoreCase("uncharged_copper_apple")) {
+                    player.getInventory().addItem(Items.getUnchargedCopperApple());
+                    return true;
+                }
+                if (args[1].equalsIgnoreCase("charged_copper_apple")) {
+                    player.getInventory().addItem(Items.getChargedCopperApple());
+                    return true;
+                }
             }
         }
         return false;

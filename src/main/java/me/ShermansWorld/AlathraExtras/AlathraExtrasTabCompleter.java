@@ -15,9 +15,11 @@ public class AlathraExtrasTabCompleter implements TabCompleter {
             completions.add("give");
             completions.add("toggleitemdamage");
             return completions;
-        } else if (args.length == 2) {
+        } else if (args.length == 2 && args[0].equalsIgnoreCase("give")) {
             completions.add("tiny_xp_pouch");
             completions.add("alathran_iron");
+            completions.add("uncharged_copper_apple");
+            completions.add("charged_copper_apple");
             return completions;
         }
         return Collections.emptyList();
