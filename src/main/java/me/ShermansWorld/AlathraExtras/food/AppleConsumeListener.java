@@ -22,26 +22,27 @@ public class AppleConsumeListener implements Listener {
             p.clearActivePotionEffects();
             List<PotionEffect> potionEffectList = new ArrayList<>();
             switch (e.getItem().getItemMeta().getCustomModelData()){
-                case 420 -> { // Alathran Copper Apple
-                    potionEffectList.add(new PotionEffect(PotionEffectType.ABSORPTION, secondsToTicks(120), 1));
-                    potionEffectList.add(new PotionEffect(PotionEffectType.REGENERATION, secondsToTicks(7), 1));
+                case 420 -> { // Uncharged Copper Apple
+                    potionEffectList.add(new PotionEffect(PotionEffectType.NIGHT_VISION, minutesToTicks(15), 0));
+                    potionEffectList.add(new PotionEffect(PotionEffectType.FAST_DIGGING, minutesToTicks(15), 2));
+                    potionEffectList.add(new PotionEffect(PotionEffectType.WEAKNESS, minutesToTicks(15), 0));
                 }
-                case 421 -> { // Alathran Iron Apple
-                    potionEffectList.add(new PotionEffect(PotionEffectType.ABSORPTION, secondsToTicks(180), 2));
-                    potionEffectList.add(new PotionEffect(PotionEffectType.REGENERATION, secondsToTicks(15), 1));
-                    potionEffectList.add(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, secondsToTicks(60), 0));
+                case 421 -> { // Charged Copper Apple
+                    potionEffectList.add(new PotionEffect(PotionEffectType.NIGHT_VISION, minutesToTicks(30), 0));
+                    potionEffectList.add(new PotionEffect(PotionEffectType.FAST_DIGGING, minutesToTicks(30), 3));
+                    potionEffectList.add(new PotionEffect(PotionEffectType.WEAKNESS, minutesToTicks(30), 0));
+                    p.damage(2);
                 }
-                case 422 -> { // Alathran Gold Apple
-                    potionEffectList.add(new PotionEffect(PotionEffectType.ABSORPTION, secondsToTicks(180), 3));
-                    potionEffectList.add(new PotionEffect(PotionEffectType.REGENERATION, secondsToTicks(25), 1));
-                    potionEffectList.add(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, secondsToTicks(300), 0));
-                    potionEffectList.add(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, secondsToTicks(5), 0));
-                }
-            }
+			}
             if(!potionEffectList.isEmpty()) p.addPotionEffects(potionEffectList);
         }
     }
 
+    //TODO: Write Listener for when uncharged copper apple is struck by lightning
+
+    private int minutesToTicks(int mins){
+        return secondsToTicks(mins * 60);
+    }
     private int secondsToTicks(int ticks){
         return 20 * ticks;
     }
