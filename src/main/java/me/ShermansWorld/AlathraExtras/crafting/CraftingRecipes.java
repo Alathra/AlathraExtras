@@ -256,19 +256,17 @@ public class CraftingRecipes {
 
     public static void cryingObsidianRecipe() {
         ItemStack cryingObsidian = new ItemStack(Material.CRYING_OBSIDIAN, 4);
-        NamespacedKey key = new NamespacedKey((@NotNull Plugin) AlathraExtras.getInstance(),
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
             String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "25");
         ShapedRecipe cryingObsidianRecipe = new ShapedRecipe(key, cryingObsidian);
-        cryingObsidianRecipe.shape(new String[]{
-            "%@%",
-            "@#@",
-            "%@%"
-        });
+        cryingObsidianRecipe.shape("%@%",
+			"@#@",
+			"%@%");
         cryingObsidianRecipe.setIngredient('@', Material.GHAST_TEAR);
         cryingObsidianRecipe.setIngredient('%', Material.OBSIDIAN);
         cryingObsidianRecipe.setIngredient('#', Material.WATER_BUCKET);
 
-        AlathraExtras.getInstance().getServer().addRecipe((Recipe) cryingObsidianRecipe);
+        AlathraExtras.getInstance().getServer().addRecipe(cryingObsidianRecipe);
     }
     
     public static Recipe trebuchetRecipe() {
@@ -353,5 +351,7 @@ public class CraftingRecipes {
         trebuchetRecipe();
         ballistaRecipe();
         allMultiBlockRecipes();
+        unchargedSilverMelonRecipe();
+        chargedSilverMelonRecipe();
     }
 }
