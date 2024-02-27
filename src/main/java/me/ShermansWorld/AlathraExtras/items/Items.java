@@ -48,7 +48,8 @@ public class Items {
         ItemStack silverMelon = new ItemStack(Material.GOLDEN_APPLE, 1);
         ItemMeta meta = silverMelon.getItemMeta();
         meta.setCustomModelData(420);
-        meta.displayName(ColorParser.of("<bold><white>Uncharged Silver Melon</white></bold>").build());
+        meta.displayName(ColorParser.of("<bold><white>Uncharged Silver Melon</white></bold>").build()
+            .decoration(TextDecoration.ITALIC, false));
         List<Component> lore = new ArrayList<>();
         lore.add(ColorParser.of("<yellow>It's metallic surface is shiny and</yellow>").build());
         lore.add(ColorParser.of("<yellow>looks tasty to eat.</yellow>").build());
@@ -67,7 +68,8 @@ public class Items {
         ItemStack chargedSilverMelon = new ItemStack(Material.GOLDEN_APPLE, 1);
         ItemMeta meta = chargedSilverMelon.getItemMeta();
         meta.setCustomModelData(421);
-        meta.displayName(ColorParser.of("<bold><white>Charged Silver Melon</white></bold>").build());
+        meta.displayName(ColorParser.of("<bold><white>Charged Silver Melon</white></bold>").build()
+            .decoration(TextDecoration.ITALIC, false));
         List<Component> lore = new ArrayList<>();
         lore.add(ColorParser.of("<yellow>It's metallic surface is sparking and glimmering.</yellow>").build());
         lore.add(ColorParser.of("<yellow>Looks painful to eat.</yellow>").build());
@@ -85,10 +87,11 @@ public class Items {
     }
 
     public static ItemStack getTungsten() {
-        ItemStack tungsten = new ItemStack(Material.IRON_INGOT, 1);
+        ItemStack tungsten = new ItemStack(Material.COPPER_INGOT, 1);
         ItemMeta meta = tungsten.getItemMeta();
         meta.setCustomModelData(2);
-        meta.displayName(ColorParser.of("<bold><dark_gray>Tungsten</dark_gray></bold>").build());
+        meta.displayName(ColorParser.of("<bold><dark_gray>Tungsten</dark_gray></bold>").build()
+            .decoration(TextDecoration.ITALIC, false));
         List<Component> lore = new ArrayList<>();
         lore.add(ALATHRAN_ITEM_TAG);
         meta.lore(lore);
@@ -97,10 +100,11 @@ public class Items {
     }
 
     public static ItemStack getPlatinum() {
-        ItemStack platinum = new ItemStack(Material.IRON_INGOT, 1);
+        ItemStack platinum = new ItemStack(Material.COPPER_INGOT, 1);
         ItemMeta meta = platinum.getItemMeta();
         meta.setCustomModelData(3);
-        meta.displayName(ColorParser.of("<bold><dark_aqua>Platinum</dark_aqua></bold>").build());
+        meta.displayName(ColorParser.of("<bold><dark_aqua>Platinum</dark_aqua></bold>").build()
+            .decoration(TextDecoration.ITALIC, false));
         List<Component> lore = new ArrayList<>();
         lore.add(ALATHRAN_ITEM_TAG);
         meta.lore(lore);
@@ -110,10 +114,11 @@ public class Items {
     }
 
     public static ItemStack getSilver() {
-        ItemStack silver = new ItemStack(Material.IRON_INGOT, 1);
+        ItemStack silver = new ItemStack(Material.COPPER_INGOT, 1);
         ItemMeta meta = silver.getItemMeta();
         meta.setCustomModelData(4);
-        meta.displayName(ColorParser.of("<bold><gray>Silver</gray></bold>").build());
+        meta.displayName(ColorParser.of("<bold><gray>Silver</gray></bold>").build()
+            .decoration(TextDecoration.ITALIC, false));
         List<Component> lore = new ArrayList<>();
         lore.add(ALATHRAN_ITEM_TAG);
         meta.lore(lore);
