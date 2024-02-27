@@ -298,6 +298,34 @@ public class CraftingRecipes {
 		return ballistaRecipe;
 	}
 
+    public static Recipe breachCannonRecipe() {
+        ItemStack breachCannon = SiegeEnginesAPI.getBreachCannonItem();
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "breachCannonRecipe");
+        ShapedRecipe breachCannonRecipe = new ShapedRecipe(key, breachCannon);
+        breachCannonRecipe.shape(" XC", "XBX", "AX");
+        breachCannonRecipe.setIngredient('X', Items.getTungsten());
+        breachCannonRecipe.setIngredient('C', Material.CAULDRON);
+        breachCannonRecipe.setIngredient('B', SiegeEnginesAPI.getSwivelCannonItem());
+        breachCannonRecipe.setIngredient('A', Material.ANVIL);
+        AlathraExtras.getInstance().getServer().addRecipe(breachCannonRecipe);
+        return breachCannonRecipe;
+    }
+
+    public static Recipe swivelCannonRecipe() {
+        ItemStack swivelCannon = SiegeEnginesAPI.getSwivelCannonItem();
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "swivelCannonRecipe");
+        ShapedRecipe swivelCannonRecipe = new ShapedRecipe(key, swivelCannon);
+        swivelCannonRecipe.shape("XXX", "BBC", "  A");
+        swivelCannonRecipe.setIngredient('X', Items.getTungsten());
+        swivelCannonRecipe.setIngredient('B', Material.IRON_BLOCK);
+        swivelCannonRecipe.setIngredient('C', Material.CAULDRON);
+        swivelCannonRecipe.setIngredient('A', Material.ANVIL);
+        AlathraExtras.getInstance().getServer().addRecipe(swivelCannonRecipe);
+        return swivelCannonRecipe;
+    }
+
     public static Recipe unchargedSilverMelonRecipe() {
         ItemStack unchargedSilverMelon = Items.getUnchargedSilverMelon();
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
@@ -350,6 +378,8 @@ public class CraftingRecipes {
         cryingObsidianRecipe();
         trebuchetRecipe();
         ballistaRecipe();
+        breachCannonRecipe();
+        swivelCannonRecipe();
         allMultiBlockRecipes();
         unchargedSilverMelonRecipe();
         chargedSilverMelonRecipe();
