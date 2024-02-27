@@ -298,22 +298,23 @@ public class CraftingRecipes {
 		return ballistaRecipe;
 	}
 
-    public static Recipe breachCannonRecipe() {
+    public static void breachCannonRecipe() {
         ItemStack breachCannon = SiegeEnginesAPI.getBreachCannonItem();
+        breachCannon.setAmount(1);
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
             AlathraExtras.getInstance().getName() + "breachCannonRecipe");
         ShapedRecipe breachCannonRecipe = new ShapedRecipe(key, breachCannon);
-        breachCannonRecipe.shape(" XC", "XBX", "AX");
+        breachCannonRecipe.shape(" XC", "XBX", "AX ");
         breachCannonRecipe.setIngredient('X', Items.getTungsten());
         breachCannonRecipe.setIngredient('C', Material.CAULDRON);
         breachCannonRecipe.setIngredient('B', SiegeEnginesAPI.getSwivelCannonItem());
         breachCannonRecipe.setIngredient('A', Material.ANVIL);
         AlathraExtras.getInstance().getServer().addRecipe(breachCannonRecipe);
-        return breachCannonRecipe;
     }
 
-    public static Recipe swivelCannonRecipe() {
+    public static void swivelCannonRecipe() {
         ItemStack swivelCannon = SiegeEnginesAPI.getSwivelCannonItem();
+        swivelCannon.setAmount(1);
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
             AlathraExtras.getInstance().getName() + "swivelCannonRecipe");
         ShapedRecipe swivelCannonRecipe = new ShapedRecipe(key, swivelCannon);
@@ -323,10 +324,9 @@ public class CraftingRecipes {
         swivelCannonRecipe.setIngredient('C', Material.CAULDRON);
         swivelCannonRecipe.setIngredient('A', Material.ANVIL);
         AlathraExtras.getInstance().getServer().addRecipe(swivelCannonRecipe);
-        return swivelCannonRecipe;
     }
 
-    public static Recipe unchargedSilverMelonRecipe() {
+    public static void unchargedSilverMelonRecipe() {
         ItemStack unchargedSilverMelon = Items.getUnchargedSilverMelon();
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
             AlathraExtras.getInstance().getName() + "unchargedSilverMelonRecipe");
@@ -335,10 +335,9 @@ public class CraftingRecipes {
         unchargedSilverMelonRecipe.setIngredient('%', Items.getSilver());
         unchargedSilverMelonRecipe.setIngredient('D', Material.GLISTERING_MELON_SLICE);
         AlathraExtras.getInstance().getServer().addRecipe(unchargedSilverMelonRecipe);
-        return unchargedSilverMelonRecipe;
     }
 
-    public static Recipe chargedSilverMelonRecipe() {
+    public static void chargedSilverMelonRecipe() {
         ItemStack chargedSilverMelon = Items.getChargedSilverMelon();
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
             AlathraExtras.getInstance().getName() + "chargedSilverMelonRecipe");
@@ -349,7 +348,6 @@ public class CraftingRecipes {
         chargedSilverMelonRecipe.addIngredient(Material.REDSTONE);
         chargedSilverMelonRecipe.addIngredient(Material.GLOWSTONE_DUST);
         AlathraExtras.getInstance().getServer().addRecipe(chargedSilverMelonRecipe);
-        return chargedSilverMelonRecipe;
     }
 
 
