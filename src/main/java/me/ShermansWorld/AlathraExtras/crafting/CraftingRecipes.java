@@ -2,6 +2,7 @@ package me.ShermansWorld.AlathraExtras.crafting;
 
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import me.ShermansWorld.AlathraExtras.Helper;
+import me.ShermansWorld.AlathraExtras.items.Items;
 import me.ShermansWorld.AlathraExtras.misc.CustomItems;
 
 import org.bukkit.Material;
@@ -298,6 +299,20 @@ public class CraftingRecipes {
 		AlathraExtras.getInstance().getServer().addRecipe(ballistaRecipe);
 		return ballistaRecipe;
 	}
+
+    public static Recipe unchargedSilverMelonRecipe() {
+        ItemStack unchargedSilverMelon = Items.getUnchargedSilverMelon();
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "unchargedSilverMelonRecipe");
+        ShapedRecipe unchargedSilverMelonRecipe = new ShapedRecipe(key, unchargedSilverMelon);
+        unchargedSilverMelonRecipe.shape("%%%", "%D%", "%%%");
+        unchargedSilverMelonRecipe.setIngredient('%', Material.IRON_INGOT);
+        unchargedSilverMelonRecipe.setIngredient('D', Material.GLISTERING_MELON_SLICE);
+        AlathraExtras.getInstance().getServer().addRecipe(unchargedSilverMelonRecipe);
+        return unchargedSilverMelonRecipe;
+    }
+
+
 
     public static void registerAllCraftingRecipes() {
         saddleRecipe();

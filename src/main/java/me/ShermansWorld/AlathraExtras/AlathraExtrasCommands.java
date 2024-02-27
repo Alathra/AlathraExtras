@@ -42,22 +42,38 @@ public class AlathraExtrasCommands implements CommandExecutor {
             }
         } else if (args.length == 2) {
             if (args[0].equalsIgnoreCase("give")) {
-                if (args[1].equalsIgnoreCase("tiny_xp_pouch")) {
-                    player.getInventory().addItem(Items.getTinyXPPouch());
-                    return true;
+                switch(args[1].toLowerCase()){
+                    case "tiny_xp_pouch" -> {
+                        player.getInventory().addItem(Items.getTinyXPPouch());
+                        return true;
+                    }
+                    case "alathran_iron" -> {
+                        player.getInventory().addItem(Items.getAlathranIron());
+                        return true;
+                    }
+                    case "uncharged_silver_melon" -> {
+                        player.getInventory().addItem(Items.getUnchargedSilverMelon());
+                        return true;
+                    }
+                    case "charged_silver_melon" -> {
+                        player.getInventory().addItem(Items.getChargedSilverMelon());
+                        return true;
+                    }
+                    case "tungsten" -> {
+                        player.getInventory().addItem(Items.getTungsten());
+                        return true;
+                    }
+                    case "silver" -> {
+                        player.getInventory().addItem(Items.getSilver());
+                        return true;
+                    }
+                    case "platinum" -> {
+                        player.getInventory().addItem(Items.getPlatinum());
+                        return true;
+                    }
+                    default -> {return false;}
                 }
-                if (args[1].equalsIgnoreCase("alathran_iron")) {
-                    player.getInventory().addItem(Items.getAlathranIron());
-                    return true;
-                }
-                if (args[1].equalsIgnoreCase("uncharged_silver_melon")) {
-                    player.getInventory().addItem(Items.getUnchargedSilverMelon());
-                    return true;
-                }
-                if (args[1].equalsIgnoreCase("charged_silver_melon")) {
-                    player.getInventory().addItem(Items.getChargedSilverMelon());
-                    return true;
-                }
+
             }
         }
         return false;
