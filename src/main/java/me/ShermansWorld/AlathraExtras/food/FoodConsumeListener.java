@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityPotionEffectEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -17,6 +18,7 @@ public class FoodConsumeListener implements Listener {
     @EventHandler
     public void ConsumeFruitEvent(PlayerItemConsumeEvent e){
         if(e.getItem().getType()== Material.GOLDEN_APPLE){
+            //TODO Potion effects from golden apple aren't clearing as intended.
             Player p = e.getPlayer();
             List<PotionEffect> potionEffectList = new ArrayList<>();
             switch (e.getItem().getItemMeta().getCustomModelData()){
@@ -35,6 +37,13 @@ public class FoodConsumeListener implements Listener {
                 }
 			}
             if(!potionEffectList.isEmpty()) p.addPotionEffects(potionEffectList);
+        }
+    }
+
+    @EventHandler
+    public void onPotionEffect(EntityPotionEffectEvent e){
+        if (e.getCause() == EntityPotionEffectEvent.Cause.FOOD) {
+            e.getCause();
         }
     }
 
