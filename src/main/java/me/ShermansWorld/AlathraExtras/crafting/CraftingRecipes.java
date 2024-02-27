@@ -306,11 +306,27 @@ public class CraftingRecipes {
             AlathraExtras.getInstance().getName() + "unchargedSilverMelonRecipe");
         ShapedRecipe unchargedSilverMelonRecipe = new ShapedRecipe(key, unchargedSilverMelon);
         unchargedSilverMelonRecipe.shape("%%%", "%D%", "%%%");
-        unchargedSilverMelonRecipe.setIngredient('%', Material.IRON_INGOT);
+        unchargedSilverMelonRecipe.setIngredient('%', Items.getSilver());
         unchargedSilverMelonRecipe.setIngredient('D', Material.GLISTERING_MELON_SLICE);
         AlathraExtras.getInstance().getServer().addRecipe(unchargedSilverMelonRecipe);
         return unchargedSilverMelonRecipe;
     }
+
+    public static Recipe chargedSilverMelonRecipe() {
+        ItemStack chargedSilverMelon = Items.getChargedSilverMelon();
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "chargedSilverMelonRecipe");
+        ShapelessRecipe chargedSilverMelonRecipe = new ShapelessRecipe(key, chargedSilverMelon);
+        chargedSilverMelonRecipe.addIngredient(Items.getUnchargedSilverMelon());
+        chargedSilverMelonRecipe.addIngredient(Material.DRAGON_BREATH);
+        chargedSilverMelonRecipe.addIngredient(Material.BLAZE_POWDER);
+        chargedSilverMelonRecipe.addIngredient(Material.REDSTONE);
+        chargedSilverMelonRecipe.addIngredient(Material.GLOWSTONE_DUST);
+        AlathraExtras.getInstance().getServer().addRecipe(chargedSilverMelonRecipe);
+        return chargedSilverMelonRecipe;
+    }
+
+
 
 
 
