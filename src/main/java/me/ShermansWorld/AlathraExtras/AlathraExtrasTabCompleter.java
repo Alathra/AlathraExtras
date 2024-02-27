@@ -18,8 +18,8 @@ public class AlathraExtrasTabCompleter implements TabCompleter {
         } else if (args.length == 2 && args[0].equalsIgnoreCase("give")) {
             completions.add("tiny_xp_pouch");
             completions.add("alathran_iron");
-            completions.add("uncharged_copper_apple");
-            completions.add("charged_copper_apple");
+            completions.add("uncharged_silver_melon");
+            completions.add("charged_silver_melon");
             return completions;
         }
         return Collections.emptyList();

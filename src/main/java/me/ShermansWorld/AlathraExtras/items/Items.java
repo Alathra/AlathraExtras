@@ -42,26 +42,26 @@ public class Items {
 	}
 
     //TODO: Adjust method and command names away from apple to something else.
-    public static ItemStack getUnchargedCopperApple() {
-        ItemStack alathranCopperApple = new ItemStack(Material.GOLDEN_APPLE, 1);
-        ItemMeta meta = alathranCopperApple.getItemMeta();
+    public static ItemStack getUnchargedSilverMelon() {
+        ItemStack silverMelon = new ItemStack(Material.GOLDEN_APPLE, 1);
+        ItemMeta meta = silverMelon.getItemMeta();
         meta.setCustomModelData(420);
-        meta.displayName(ColorParser.of("<bold><gold>Uncharged Copper Fruit</gold></bold>").build());
+        meta.displayName(ColorParser.of("<bold><gold>Uncharged Silver Melon</gold></bold>").build());
         List<Component> lore = new ArrayList<>();
         lore.add(ColorParser.of("<green>It's metallic surface is shiny and</green>").build());
         lore.add(ColorParser.of("<green>looks tasty to eat.</green>").build());
         lore.add(ColorParser.of("&a&lAlathran Item").build());
         lore.forEach( component -> component = component.decoration(TextDecoration.ITALIC, false));
         meta.lore(lore);
-        alathranCopperApple.setItemMeta(meta);
-        return alathranCopperApple;
+        silverMelon.setItemMeta(meta);
+        return silverMelon;
     }
 
-    public static ItemStack getChargedCopperApple() {
-        ItemStack alathranCopperApple = new ItemStack(Material.GOLDEN_APPLE, 1);
-        ItemMeta meta = alathranCopperApple.getItemMeta();
+    public static ItemStack getChargedSilverMelon() {
+        ItemStack chargedSilverMelon = new ItemStack(Material.GOLDEN_APPLE, 1);
+        ItemMeta meta = chargedSilverMelon.getItemMeta();
         meta.setCustomModelData(421);
-        meta.displayName(ColorParser.of("<bold><gold>Charged Copper Fruit</gold></bold>").build());
+        meta.displayName(ColorParser.of("<bold><gold>Charged Silver Melon</gold></bold>").build());
         List<Component> lore = new ArrayList<>();
         lore.add(ColorParser.of("<green>It's metallic surface is sparking and glimmering.</green>").build());
         lore.add(ColorParser.of("<green>Looks painful to eat.</green>").build());
@@ -70,7 +70,7 @@ public class Items {
         meta.lore(lore);
         meta.addEnchant(Enchantment.LURE, 0, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        alathranCopperApple.setItemMeta(meta);
-        return alathranCopperApple;
+        chargedSilverMelon.setItemMeta(meta);
+        return chargedSilverMelon;
     }
 }
