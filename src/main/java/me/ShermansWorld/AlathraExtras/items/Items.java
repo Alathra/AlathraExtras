@@ -113,7 +113,7 @@ public class Items {
         ItemStack silver = new ItemStack(Material.IRON_INGOT, 1);
         ItemMeta meta = silver.getItemMeta();
         meta.setCustomModelData(4);
-        meta.displayName(ColorParser.of("<bold><gray>Platinum</gray></bold>").build());
+        meta.displayName(ColorParser.of("<bold><gray>Silver</gray></bold>").build());
         List<Component> lore = new ArrayList<>();
         lore.add(ALATHRAN_ITEM_TAG);
         meta.lore(lore);

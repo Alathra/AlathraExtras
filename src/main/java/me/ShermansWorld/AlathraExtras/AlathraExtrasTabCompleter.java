@@ -27,10 +27,10 @@ public class AlathraExtrasTabCompleter implements TabCompleter {
     );
 
 	public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
-		if (args.length == 0) {
+		if (args.length == 1) {
 			return new ArrayList<String>(commandCompletions);
-        } else if(args.length <= 2){
-            switch (args[0].toLowerCase()){
+        } else if(args.length <= 3){
+            switch (args[1].toLowerCase()){
                 case "give" -> {
                     return giveCompletions;
                 }
@@ -38,7 +38,7 @@ public class AlathraExtrasTabCompleter implements TabCompleter {
                     return Collections.emptyList();
                 }
                 default -> {
-                    if (args[0].equals("give")) return NameUtil.filterByStart(giveCompletions, args[1]);
+                    if (args[1].equals("give")) return NameUtil.filterByStart(giveCompletions, args[2]);
                     return Collections.emptyList();
                 }
             }
