@@ -42,7 +42,6 @@ public class Items {
 		return MythicBukkit.inst().getItemManager().getItemStack("Alathran_Iron");
 	}
 
-    //TODO: Adjust method and command names away from apple to something else.
     public static ItemStack getUnchargedSilverMelon() {
         ItemStack silverMelon = new ItemStack(Material.GOLDEN_APPLE, 1);
         ItemMeta meta = silverMelon.getItemMeta();
@@ -113,5 +112,5 @@ public class Items {
         silver.setItemMeta(meta);
         return silver;
     }
-    
+
 }
