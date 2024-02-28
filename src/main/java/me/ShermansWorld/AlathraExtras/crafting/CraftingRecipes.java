@@ -1,5 +1,6 @@
 package me.ShermansWorld.AlathraExtras.crafting;
 
+import com.github.alathra.siegeengines.libs.colorparser.ColorParser;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import me.ShermansWorld.AlathraExtras.Helper;
 import me.ShermansWorld.AlathraExtras.misc.CustomItems;
@@ -12,6 +13,8 @@ import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 
 import com.github.alathra.siegeengines.api.SiegeEnginesAPI;
+
+import java.util.Collections;
 
 public class CraftingRecipes {
 	
@@ -258,11 +261,11 @@ public class CraftingRecipes {
         NamespacedKey key = new NamespacedKey((@NotNull Plugin) AlathraExtras.getInstance(),
             String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "25");
         ShapedRecipe cryingObsidianRecipe = new ShapedRecipe(key, cryingObsidian);
-        cryingObsidianRecipe.shape(new String[]{
+        cryingObsidianRecipe.shape(
             "%@%",
             "@#@",
             "%@%"
-        });
+        );
         cryingObsidianRecipe.setIngredient('@', Material.GHAST_TEAR);
         cryingObsidianRecipe.setIngredient('%', Material.OBSIDIAN);
         cryingObsidianRecipe.setIngredient('#', Material.WATER_BUCKET);
@@ -272,6 +275,10 @@ public class CraftingRecipes {
     
     public static Recipe trebuchetRecipe() {
 		ItemStack trebuchet = SiegeEnginesAPI.getTrebuchetItem();
+        ItemMeta trebuchetItemMeta = trebuchet.getItemMeta();
+        trebuchetItemMeta.displayName(ColorParser.of("<yellow><bold>Trebuchet</bold></yellow>").build());
+        trebuchetItemMeta.lore(Collections.singletonList(ColorParser.of("<reset><yellow>Place as a block to spawn a Trebuchet</yellow>").build()));
+        trebuchet.setItemMeta(trebuchetItemMeta);
 		NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
 				AlathraExtras.getInstance().getName() + "trebuchetRecipe");
 		ShapedRecipe trebuchetRecipe = new ShapedRecipe(key, trebuchet);
@@ -287,6 +294,10 @@ public class CraftingRecipes {
 	
 	public static Recipe ballistaRecipe() {
 		ItemStack ballista = SiegeEnginesAPI.getBallistaItem();
+        ItemMeta ballistaItemMeta = ballista.getItemMeta();
+        ballistaItemMeta.displayName(ColorParser.of("<yellow><bold>Ballista</bold></yellow>").build());
+        ballistaItemMeta.lore(Collections.singletonList(ColorParser.of("<reset><yellow>Place as a block to spawn a Ballista</yellow>").build()));
+        ballista.setItemMeta(ballistaItemMeta);
 		NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
 				AlathraExtras.getInstance().getName() + "ballistaRecipe");
 		ShapedRecipe ballistaRecipe = new ShapedRecipe(key, ballista);
