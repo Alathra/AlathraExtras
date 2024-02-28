@@ -331,9 +331,10 @@ public class CraftingRecipes {
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
             AlathraExtras.getInstance().getName() + "unchargedSilverMelonRecipe");
         ShapedRecipe unchargedSilverMelonRecipe = new ShapedRecipe(key, unchargedSilverMelon);
-        unchargedSilverMelonRecipe.shape("%%%", "%D%", "%%%");
+        unchargedSilverMelonRecipe.shape("C%C", "%D%", "C%C");
         unchargedSilverMelonRecipe.setIngredient('%', Items.getSilver());
         unchargedSilverMelonRecipe.setIngredient('D', Material.GLISTERING_MELON_SLICE);
+        unchargedSilverMelonRecipe.setIngredient('C', Material.COPPER_INGOT);
         AlathraExtras.getInstance().getServer().addRecipe(unchargedSilverMelonRecipe);
     }
 
