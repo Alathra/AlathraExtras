@@ -43,7 +43,7 @@ public class FoodConsumeListener implements Listener {
                         case 421 -> { // Charged Silver Fruit
                             p.clearActivePotionEffects();
                             potionEffectList.addAll(chargedCopperMelonPotionEffects);
-                            p.damage(4.0);
+                            p.damage(8.0);
                         }
 				    }
 					if (!potionEffectList.isEmpty()) p.addPotionEffects(potionEffectList);
