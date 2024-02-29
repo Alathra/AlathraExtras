@@ -41,6 +41,7 @@ import me.ShermansWorld.AlathraExtras.tutorialbook.GiveTutorialBookCommand;
 import me.ShermansWorld.AlathraExtras.tutorialbook.PlayerClickHelpBook;
 import me.ShermansWorld.AlathraExtras.tutorialbook.PlayerFirstJoin;
 import me.ShermansWorld.AlathraExtras.voting.VotingListener;
+import me.ShermansWorld.AlathraExtras.yeet.YeetCommand;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -178,6 +179,7 @@ public class AlathraExtras extends JavaPlugin {
         new AlathraExtrasCommands(this);
         new PlaytimeCommand(this);
         new ShowItemCommand(this);
+        new YeetCommand(this);
 
         PluginCommand alathraextrasCommands = getCommand("alathraextras");
         PluginCommand playtimeCommands = getCommand("playtime");

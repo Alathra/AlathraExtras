@@ -10,92 +10,99 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class FurnaceRecipesListener implements Listener {
     @EventHandler
-    public void cookedSharkMeat(FurnaceSmeltEvent e) {
+    public void cookedMeats(FurnaceSmeltEvent event) {
+        if (!event.getSource().getItemMeta().hasCustomModelData()) return;
 
-        if (!(e.getSource().getType() == Material.COD))
-            return;
+        ItemStack cookedMeat = null;
 
-        if (!e.getSource().getItemMeta().hasCustomModelData())
-            return;
+        if (event.getSource().getType() == Material.COD)
+            cookedMeat = cookedCods(event.getSource());
 
-        if (!(e.getSource().getItemMeta().getCustomModelData() == 2800))
-            return;
+        if (event.getSource().getType() == Material.MUTTON)
+            cookedMeat = cookedMuttons(event.getSource());
 
-        ItemStack cooked = new ItemStack(Material.COOKED_COD);
-        ItemMeta meta = cooked.getItemMeta();
+        if (event.getSource().getType() == Material.BEEF)
+            cookedMeat = cookedBeefs(event.getSource());
 
-        meta.displayName(ColorParser.of("Cooked Shark Meat").build());
-        meta.setCustomModelData(2800);
+        if (event.getSource().getType() == Material.PORKCHOP)
+            cookedMeat = cookedPorks(event.getSource());
 
-        cooked.setItemMeta(meta);
+        if (cookedMeat == null) return;
 
-        e.setResult(cooked);
+        event.setResult(cookedMeat);
     }
 
-    @EventHandler
-    public void cookedVenison(FurnaceSmeltEvent e) {
+    private ItemStack cookedCods(ItemStack cooking) {
+        String substituteName = null;
+        int substituteCustomModelData = 0;
 
-        if (!(e.getSource().getType() == Material.MUTTON))
-            return;
+        if (cooking.getItemMeta().getCustomModelData() == 2800) {
+            substituteName = "Cooked Shark Meat";
+            substituteCustomModelData = 2800;
+        }
 
-        if (!e.getSource().getItemMeta().hasCustomModelData())
-            return;
+        if (cooking.getItemMeta().getCustomModelData() == 2801) {
+            substituteName  = "Cooked Calamari";
+            substituteCustomModelData = 2801;
+        }
 
-        if (!(e.getSource().getItemMeta().getCustomModelData() == 2800))
-            return;
+        if (substituteName == null) return null;
 
-        ItemStack cooked = new ItemStack(Material.COOKED_MUTTON);
-        ItemMeta meta = cooked.getItemMeta();
-
-        meta.displayName(ColorParser.of("Cooked Venison").build());
-        meta.setCustomModelData(2800);
-
-        cooked.setItemMeta(meta);
-
-        e.setResult(cooked);
+        return makeCooked(Material.COOKED_COD, substituteName, substituteCustomModelData);
     }
 
-    @EventHandler
-    public static void cookedElephantMeat(FurnaceSmeltEvent e) {
-        if (!(e.getSource().getType() == Material.BEEF))
-            return;
+    private ItemStack cookedMuttons(ItemStack cooking) {
+        String substituteName = null;
+        int substituteCustomModelData = 0;
 
-        if (!e.getSource().getItemMeta().hasCustomModelData())
-            return;
+        if (cooking.getItemMeta().getCustomModelData() == 2800) {
+            substituteName = "Cooked Venison";
+            substituteCustomModelData = 2800;
+        }
 
-        if (!(e.getSource().getItemMeta().getCustomModelData() == 2800))
-            return;
+        if (substituteName == null) return null;
 
-        ItemStack cooked = new ItemStack(Material.COOKED_BEEF);
-        ItemMeta meta = cooked.getItemMeta();
-
-        meta.displayName(ColorParser.of("Cooked Elephant Meat").build());
-        meta.setCustomModelData(2800);
-
-        cooked.setItemMeta(meta);
-
-        e.setResult(cooked);
+        return makeCooked(Material.COOKED_MUTTON, substituteName, substituteCustomModelData);
     }
 
-    @EventHandler
-    public static void cookedCalamari(FurnaceSmeltEvent e) {
-        if (!(e.getSource().getType() == Material.COD))
-            return;
+    private ItemStack cookedBeefs(ItemStack cooking) {
+        String substituteName = null;
+        int substituteCustomModelData = 0;
 
-        if (!e.getSource().getItemMeta().hasCustomModelData())
-            return;
+        if (cooking.getItemMeta().getCustomModelData() == 2800) {
+            substituteName = "Cooked Elephant Meat";
+            substituteCustomModelData = 2800;
+        }
 
-        if (!(e.getSource().getItemMeta().getCustomModelData() == 2801))
-            return;
+        if (substituteName == null) return null;
 
-        ItemStack cooked = new ItemStack(Material.COOKED_COD);
+        return makeCooked(Material.COOKED_BEEF, substituteName, substituteCustomModelData);
+    }
+
+    private ItemStack cookedPorks(ItemStack cooking) {
+        String substituteName = null;
+        int substituteCustomModelData = 0;
+
+        if (cooking.getItemMeta().getCustomModelData() == 2800) {
+            substituteName = "Cooked Boar Meat";
+            substituteCustomModelData = 2800;
+        }
+
+        if (substituteName == null) return null;
+
+        return makeCooked(Material.COOKED_PORKCHOP, substituteName, substituteCustomModelData);
+    }
+
+    private ItemStack makeCooked(Material material, String name, int customModelData) {
+        ItemStack cooked = new ItemStack(material);
+
         ItemMeta meta = cooked.getItemMeta();
 
-        meta.displayName(ColorParser.of("Cooked Calamari").build());
-        meta.setCustomModelData(2801);
+        meta.displayName(ColorParser.of(name).build());
+        meta.setCustomModelData(customModelData);
 
         cooked.setItemMeta(meta);
 
-        e.setResult(cooked);
+        return cooked;
     }
 }

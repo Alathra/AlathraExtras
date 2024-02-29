@@ -12,7 +12,7 @@ plugins {
 }
 
 group = "me.ShermansWorld"
-version = "1.23.1"
+version = "1.25.0"
 description = ""
 val mainPackage = "${project.group}.${rootProject.name}"
 
@@ -81,18 +81,18 @@ dependencies {
         exclude(group = "*", module = "*")
     }
 
-    compileOnly("com.palmergames.bukkit.towny:towny:0.100.1.11")
-    compileOnly("com.github.TownyAdvanced:TownyChat:0.112")
-    compileOnly("com.bencodez:votingplugin:6.15") {
+    compileOnly("com.palmergames.bukkit.towny:towny:0.100.1.16")
+    compileOnly("com.github.TownyAdvanced:TownyChat:0.114")
+    compileOnly("com.bencodez:votingplugin:6.15.1") {
         exclude(group = "*", module = "*")
     }
     compileOnly("com.github.MilkBowl:VaultAPI:1.7.1")
     compileOnly("net.essentialsx:EssentialsX:2.20.1")
     compileOnly("me.clip:placeholderapi:2.11.5")
     compileOnly("dev.cubxity.plugins:unifiedmetrics-api:0.3.8")
-    compileOnly("nl.rutgerkok:blocklocker:1.10.4")
-    compileOnly("io.lumine:Mythic-Dist:5.6.0")
-    compileOnly(files("lib/SiegeEngines-0.7.6.jar"))
+    compileOnly("nl.rutgerkok:blocklocker:1.12.1")
+    compileOnly("io.lumine:Mythic-Dist:5.6.1")
+    compileOnly(files("lib/SiegeEngines-0.8.4.jar"))
 }
 
 tasks {
@@ -189,6 +189,10 @@ bukkit {
         register("showitem") {
             description = "Show an item in chat."
             usage = "/showitem"
+        }
+        register("yeet") {
+            description = "Guess."
+            usage = "/yeet <player>"
         }
     }
 }
