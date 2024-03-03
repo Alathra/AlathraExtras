@@ -12,7 +12,8 @@ plugins {
 }
 
 group = "me.ShermansWorld"
-version = "1.24.1"
+
+version = "1.25.1"
 description = ""
 val mainPackage = "${project.group}.${rootProject.name}"
 
@@ -81,7 +82,7 @@ dependencies {
         exclude(group = "*", module = "*")
     }
 
-    compileOnly("com.palmergames.bukkit.towny:towny:0.100.1.11")
+    compileOnly("com.palmergames.bukkit.towny:towny:0.100.1.16")
     compileOnly("com.github.TownyAdvanced:TownyChat:0.114")
     compileOnly("com.bencodez:votingplugin:6.15.1") {
         exclude(group = "*", module = "*")
@@ -91,7 +92,7 @@ dependencies {
     compileOnly("me.clip:placeholderapi:2.11.5")
     compileOnly("dev.cubxity.plugins:unifiedmetrics-api:0.3.8")
     compileOnly("nl.rutgerkok:blocklocker:1.12.1")
-    compileOnly("io.lumine:Mythic-Dist:5.6.0")
+    compileOnly("io.lumine:Mythic-Dist:5.6.1")
     compileOnly(files("lib/SiegeEngines-0.8.4.jar"))
 }
 

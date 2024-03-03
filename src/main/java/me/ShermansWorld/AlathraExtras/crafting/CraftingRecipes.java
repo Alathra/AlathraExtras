@@ -1,7 +1,9 @@
 package me.ShermansWorld.AlathraExtras.crafting;
 
+import com.github.alathra.siegeengines.libs.colorparser.ColorParser;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import me.ShermansWorld.AlathraExtras.Helper;
+import me.ShermansWorld.AlathraExtras.items.Items;
 import me.ShermansWorld.AlathraExtras.misc.CustomItems;
 
 import org.bukkit.Material;
@@ -12,6 +14,8 @@ import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 
 import com.github.alathra.siegeengines.api.SiegeEnginesAPI;
+
+import java.util.Collections;
 
 public class CraftingRecipes {
 	
@@ -255,23 +259,27 @@ public class CraftingRecipes {
 
     public static void cryingObsidianRecipe() {
         ItemStack cryingObsidian = new ItemStack(Material.CRYING_OBSIDIAN, 4);
-        NamespacedKey key = new NamespacedKey((@NotNull Plugin) AlathraExtras.getInstance(),
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
             String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "25");
         ShapedRecipe cryingObsidianRecipe = new ShapedRecipe(key, cryingObsidian);
-        cryingObsidianRecipe.shape(new String[]{
+        cryingObsidianRecipe.shape(
             "%@%",
             "@#@",
             "%@%"
-        });
+        );
         cryingObsidianRecipe.setIngredient('@', Material.GHAST_TEAR);
         cryingObsidianRecipe.setIngredient('%', Material.OBSIDIAN);
         cryingObsidianRecipe.setIngredient('#', Material.WATER_BUCKET);
 
-        AlathraExtras.getInstance().getServer().addRecipe((Recipe) cryingObsidianRecipe);
+        AlathraExtras.getInstance().getServer().addRecipe(cryingObsidianRecipe);
     }
     
     public static Recipe trebuchetRecipe() {
 		ItemStack trebuchet = SiegeEnginesAPI.getTrebuchetItem();
+        ItemMeta trebuchetItemMeta = trebuchet.getItemMeta();
+        trebuchetItemMeta.displayName(ColorParser.of("<yellow><bold>Trebuchet</bold></yellow>").build());
+        trebuchetItemMeta.lore(Collections.singletonList(ColorParser.of("<reset><yellow>Place as a block to spawn a Trebuchet</yellow>").build()));
+        trebuchet.setItemMeta(trebuchetItemMeta);
 		NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
 				AlathraExtras.getInstance().getName() + "trebuchetRecipe");
 		ShapedRecipe trebuchetRecipe = new ShapedRecipe(key, trebuchet);
@@ -287,6 +295,10 @@ public class CraftingRecipes {
 	
 	public static Recipe ballistaRecipe() {
 		ItemStack ballista = SiegeEnginesAPI.getBallistaItem();
+        ItemMeta ballistaItemMeta = ballista.getItemMeta();
+        ballistaItemMeta.displayName(ColorParser.of("<yellow><bold>Ballista</bold></yellow>").build());
+        ballistaItemMeta.lore(Collections.singletonList(ColorParser.of("<reset><yellow>Place as a block to spawn a Ballista</yellow>").build()));
+        ballista.setItemMeta(ballistaItemMeta);
 		NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
 				AlathraExtras.getInstance().getName() + "ballistaRecipe");
 		ShapedRecipe ballistaRecipe = new ShapedRecipe(key, ballista);
@@ -298,6 +310,63 @@ public class CraftingRecipes {
 		AlathraExtras.getInstance().getServer().addRecipe(ballistaRecipe);
 		return ballistaRecipe;
 	}
+
+    public static void breachCannonRecipe() {
+        ItemStack breachCannon = SiegeEnginesAPI.getBreachCannonItem();
+        breachCannon.setAmount(1);
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "breachCannonRecipe");
+        ShapedRecipe breachCannonRecipe = new ShapedRecipe(key, breachCannon);
+        breachCannonRecipe.shape(" XC", "XBX", "AX ");
+        breachCannonRecipe.setIngredient('X', Items.getTungsten());
+        breachCannonRecipe.setIngredient('C', Material.CAULDRON);
+        breachCannonRecipe.setIngredient('B', SiegeEnginesAPI.getSwivelCannonItem());
+        breachCannonRecipe.setIngredient('A', Material.ANVIL);
+        AlathraExtras.getInstance().getServer().addRecipe(breachCannonRecipe);
+    }
+
+    public static void swivelCannonRecipe() {
+        ItemStack swivelCannon = SiegeEnginesAPI.getSwivelCannonItem();
+        swivelCannon.setAmount(1);
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "swivelCannonRecipe");
+        ShapedRecipe swivelCannonRecipe = new ShapedRecipe(key, swivelCannon);
+        swivelCannonRecipe.shape("XXX", "BBC", "  A");
+        swivelCannonRecipe.setIngredient('X', Items.getTungsten());
+        swivelCannonRecipe.setIngredient('B', Material.IRON_BLOCK);
+        swivelCannonRecipe.setIngredient('C', Material.CAULDRON);
+        swivelCannonRecipe.setIngredient('A', Material.ANVIL);
+        AlathraExtras.getInstance().getServer().addRecipe(swivelCannonRecipe);
+    }
+
+    public static void unchargedSilverMelonRecipe() {
+        ItemStack unchargedSilverMelon = Items.getUnchargedSilverMelon();
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "unchargedSilverMelonRecipe");
+        ShapedRecipe unchargedSilverMelonRecipe = new ShapedRecipe(key, unchargedSilverMelon);
+        unchargedSilverMelonRecipe.shape("C%C", "%D%", "C%C");
+        unchargedSilverMelonRecipe.setIngredient('%', Items.getSilver());
+        unchargedSilverMelonRecipe.setIngredient('D', Material.GLISTERING_MELON_SLICE);
+        unchargedSilverMelonRecipe.setIngredient('C', Material.COPPER_INGOT);
+        AlathraExtras.getInstance().getServer().addRecipe(unchargedSilverMelonRecipe);
+    }
+
+    public static void chargedSilverMelonRecipe() {
+        ItemStack chargedSilverMelon = Items.getChargedSilverMelon();
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "chargedSilverMelonRecipe");
+        ShapelessRecipe chargedSilverMelonRecipe = new ShapelessRecipe(key, chargedSilverMelon);
+        chargedSilverMelonRecipe.addIngredient(Items.getUnchargedSilverMelon());
+        chargedSilverMelonRecipe.addIngredient(Material.DRAGON_BREATH);
+        chargedSilverMelonRecipe.addIngredient(Material.BLAZE_POWDER);
+        chargedSilverMelonRecipe.addIngredient(Material.REDSTONE);
+        chargedSilverMelonRecipe.addIngredient(Material.GLOWSTONE_DUST);
+        AlathraExtras.getInstance().getServer().addRecipe(chargedSilverMelonRecipe);
+    }
+
+
+
+
 
     public static void registerAllCraftingRecipes() {
         saddleRecipe();
@@ -321,6 +390,10 @@ public class CraftingRecipes {
         cryingObsidianRecipe();
         trebuchetRecipe();
         ballistaRecipe();
+        breachCannonRecipe();
+        swivelCannonRecipe();
         allMultiBlockRecipes();
+        unchargedSilverMelonRecipe();
+        chargedSilverMelonRecipe();
     }
 }
