@@ -45,6 +45,7 @@ public class Items {
 	}
 
     public static ItemStack getUnchargedSilverMelon() {
+
         ItemStack silverMelon = new ItemStack(Material.GOLDEN_APPLE, 1);
         ItemMeta meta = silverMelon.getItemMeta();
         meta.setCustomModelData(420);
@@ -87,43 +88,53 @@ public class Items {
     }
 
     public static ItemStack getTungsten() {
-        ItemStack tungsten = new ItemStack(Material.COPPER_INGOT, 1);
-        ItemMeta meta = tungsten.getItemMeta();
-        meta.setCustomModelData(2);
-        meta.displayName(ColorParser.of("<bold><dark_gray>Tungsten</dark_gray></bold>").build()
-            .decoration(TextDecoration.ITALIC, false));
-        List<Component> lore = new ArrayList<>();
-        lore.add(ALATHRAN_ITEM_TAG);
-        meta.lore(lore);
-        tungsten.setItemMeta(meta);
-        return tungsten;
+        try(MythicBukkit mythicBukkit = MythicBukkit.inst()) {
+            return mythicBukkit.getItemManager().getItemStack("Tungsten");
+        } catch (Exception e){
+            ItemStack tungsten = new ItemStack(Material.COPPER_INGOT, 1);
+            ItemMeta meta = tungsten.getItemMeta();
+            meta.setCustomModelData(2);
+            meta.displayName(ColorParser.of("<bold><dark_gray>Tungsten</dark_gray></bold>").build()
+                .decoration(TextDecoration.ITALIC, false));
+            List<Component> lore = new ArrayList<>();
+            lore.add(ALATHRAN_ITEM_TAG);
+            meta.lore(lore);
+            tungsten.setItemMeta(meta);
+            return tungsten;
+        }
     }
 
     public static ItemStack getPlatinum() {
-        ItemStack platinum = new ItemStack(Material.COPPER_INGOT, 1);
-        ItemMeta meta = platinum.getItemMeta();
-        meta.setCustomModelData(3);
-        meta.displayName(ColorParser.of("<bold><dark_aqua>Platinum</dark_aqua></bold>").build()
-            .decoration(TextDecoration.ITALIC, false));
-        List<Component> lore = new ArrayList<>();
-        lore.add(ALATHRAN_ITEM_TAG);
-        meta.lore(lore);
-        platinum.setItemMeta(meta);
-        return platinum;
-
+        try(MythicBukkit mythicBukkit = MythicBukkit.inst()) {
+            return mythicBukkit.getItemManager().getItemStack("Platinum");
+        } catch (Exception e) {
+            ItemStack platinum = new ItemStack(Material.COPPER_INGOT, 1);
+            ItemMeta meta = platinum.getItemMeta();
+            meta.setCustomModelData(3);
+            meta.displayName(ColorParser.of("<bold><dark_aqua>Platinum</dark_aqua></bold>").build()
+                .decoration(TextDecoration.ITALIC, false));
+            List<Component> lore = new ArrayList<>();
+            lore.add(ALATHRAN_ITEM_TAG);
+            meta.lore(lore);
+            platinum.setItemMeta(meta);
+            return platinum;
+        }
     }
 
     public static ItemStack getSilver() {
-        ItemStack silver = new ItemStack(Material.COPPER_INGOT, 1);
-        ItemMeta meta = silver.getItemMeta();
-        meta.setCustomModelData(4);
-        meta.displayName(ColorParser.of("<bold><gray>Silver</gray></bold>").build()
-            .decoration(TextDecoration.ITALIC, false));
-        List<Component> lore = new ArrayList<>();
-        lore.add(ALATHRAN_ITEM_TAG);
-        meta.lore(lore);
-        silver.setItemMeta(meta);
-        return silver;
+        try(MythicBukkit mythicBukkit = MythicBukkit.inst()){
+            return mythicBukkit.getItemManager().getItemStack("Silver");
+        } catch (Exception e) {
+            ItemStack silver = new ItemStack(Material.COPPER_INGOT, 1);
+            ItemMeta meta = silver.getItemMeta();
+            meta.setCustomModelData(4);
+            meta.displayName(ColorParser.of("<bold><gray>Silver</gray></bold>").build()
+                .decoration(TextDecoration.ITALIC, false));
+            List<Component> lore = new ArrayList<>();
+            lore.add(ALATHRAN_ITEM_TAG);
+            meta.lore(lore);
+            silver.setItemMeta(meta);
+            return silver;
+        }
     }
-
 }
