@@ -29,11 +29,12 @@ public class StoneCuttingRecipes {
 
         for (Material log : Tag.LOGS.getValues()) {
             String logString = log.toString();
+            boolean stripped = logString.contains("STRIPPED");
 
             //Removes "STRIPPED_" from stripped logs.
-            if (logString.contains("STRIPPED")) {
+            if (stripped)
                 logString = logString.substring(9);
-            }
+
             String[] materialArray = logString.split("_");
 
             // Handles dark oak.
@@ -51,6 +52,16 @@ public class StoneCuttingRecipes {
                     itemStackList.add(itemStack);
                 }
             });
+
+            // Adds ItemStack for stripped logs if the log isn't already stripped.
+            if (!stripped) {
+                Material itemName = Material.getMaterial("STRIPPED_".concat(materialArray[0]).concat("_LOG"));
+
+                if (itemName != null) {
+                    ItemStack itemStack = new ItemStack(itemName);
+                    itemStackList.add(itemStack);
+                }
+            }
 
             for (ItemStack item : itemStackList) {
                 NamespacedKey namespacedKey = new NamespacedKey(AlathraExtras.getInstance(),
@@ -83,11 +94,11 @@ public class StoneCuttingRecipes {
 
         for (Material bambooBlock : Tag.BAMBOO_BLOCKS.getValues()) {
             String blockString = bambooBlock.toString();
+            boolean stripped = blockString.contains("STRIPPED");
 
             //Removes "STRIPPED_" from stripped bamboo blocks.
-            if (blockString.contains("STRIPPED")) {
+            if (stripped)
                 blockString = blockString.substring(9);
-            }
 
             String[] materialArray = blockString.split("_");
 
@@ -101,6 +112,16 @@ public class StoneCuttingRecipes {
                     itemStackList.add(itemStack);
                 }
             });
+
+            // Adds ItemStack for stripped bamboo block if block isn't already stripped.
+            if (!stripped) {
+                Material itemName = Material.getMaterial("STRIPPED_".concat(materialArray[0]).concat("_BLOCK"));
+
+                if (itemName != null) {
+                    ItemStack itemStack = new ItemStack(itemName);
+                    itemStackList.add(itemStack);
+                }
+            }
 
             for (ItemStack item : itemStackList) {
                 NamespacedKey namespacedKey = new NamespacedKey(AlathraExtras.getInstance(),
