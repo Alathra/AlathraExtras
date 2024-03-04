@@ -6,6 +6,7 @@ import me.ShermansWorld.AlathraExtras.Helper;
 import me.ShermansWorld.AlathraExtras.items.Items;
 import me.ShermansWorld.AlathraExtras.misc.CustomItems;
 
+import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.*;
@@ -276,10 +277,8 @@ public class CraftingRecipes {
     
     public static Recipe trebuchetRecipe() {
 		ItemStack trebuchet = SiegeEnginesAPI.getTrebuchetItem();
-        ItemMeta trebuchetItemMeta = trebuchet.getItemMeta();
-        trebuchetItemMeta.displayName(ColorParser.of("<yellow><bold>Trebuchet</bold></yellow>").build());
-        trebuchetItemMeta.lore(Collections.singletonList(ColorParser.of("<reset><yellow>Place as a block to spawn a Trebuchet</yellow>").build()));
-        trebuchet.setItemMeta(trebuchetItemMeta);
+        setSiegeEngineItemMeta(trebuchet, "Trebuchet");
+        trebuchet.setAmount(1);
 		NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
 				AlathraExtras.getInstance().getName() + "trebuchetRecipe");
 		ShapedRecipe trebuchetRecipe = new ShapedRecipe(key, trebuchet);
@@ -295,10 +294,8 @@ public class CraftingRecipes {
 	
 	public static Recipe ballistaRecipe() {
 		ItemStack ballista = SiegeEnginesAPI.getBallistaItem();
-        ItemMeta ballistaItemMeta = ballista.getItemMeta();
-        ballistaItemMeta.displayName(ColorParser.of("<yellow><bold>Ballista</bold></yellow>").build());
-        ballistaItemMeta.lore(Collections.singletonList(ColorParser.of("<reset><yellow>Place as a block to spawn a Ballista</yellow>").build()));
-        ballista.setItemMeta(ballistaItemMeta);
+        setSiegeEngineItemMeta(ballista, "Ballista");
+        ballista.setAmount(1);
 		NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
 				AlathraExtras.getInstance().getName() + "ballistaRecipe");
 		ShapedRecipe ballistaRecipe = new ShapedRecipe(key, ballista);
@@ -313,6 +310,7 @@ public class CraftingRecipes {
 
     public static void breachCannonRecipe() {
         ItemStack breachCannon = SiegeEnginesAPI.getBreachCannonItem();
+        setSiegeEngineItemMeta(breachCannon, "Breach Cannon");
         breachCannon.setAmount(1);
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
             AlathraExtras.getInstance().getName() + "breachCannonRecipe");
@@ -327,6 +325,7 @@ public class CraftingRecipes {
 
     public static void swivelCannonRecipe() {
         ItemStack swivelCannon = SiegeEnginesAPI.getSwivelCannonItem();
+        setSiegeEngineItemMeta(swivelCannon, "Swivel Cannon");
         swivelCannon.setAmount(1);
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
             AlathraExtras.getInstance().getName() + "swivelCannonRecipe");
@@ -337,6 +336,13 @@ public class CraftingRecipes {
         swivelCannonRecipe.setIngredient('C', Material.CAULDRON);
         swivelCannonRecipe.setIngredient('A', Material.ANVIL);
         AlathraExtras.getInstance().getServer().addRecipe(swivelCannonRecipe);
+    }
+
+    private static void setSiegeEngineItemMeta(ItemStack itemStack, String s) {
+        ItemMeta itemMeta = itemStack.getItemMeta();
+        itemMeta.displayName(ColorParser.of("<bold><yellow>Place as a block to spawn a %s</yellow></bold>".formatted(s)).build().decoration(TextDecoration.ITALIC, false));
+        itemMeta.lore(Collections.singletonList(ColorParser.of("<yellow>Place as a block to spawn a Ballista</yellow>").build().decoration(TextDecoration.ITALIC, false)));
+        itemStack.setItemMeta(itemMeta);
     }
 
     public static void unchargedSilverMelonRecipe() {
