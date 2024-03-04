@@ -1,5 +1,6 @@
 package me.ShermansWorld.AlathraExtras.items;
 
+import com.github.alathra.siegeengines.api.SiegeEnginesAPI;
 import com.github.alathra.siegeengines.libs.colorparser.ColorParser;
 import me.ShermansWorld.AlathraExtras.Helper;
 
@@ -16,6 +17,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import io.lumine.mythic.bukkit.MythicBukkit;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Items {
@@ -97,5 +99,16 @@ public class Items {
 
     public static ItemStack getSilver() {
         return MythicBukkit.inst().getItemManager().getItemStack("Silver");
+    }
+
+    public static ItemStack getFormattedSwivelCannon(){
+        ItemStack swivelCannon = SiegeEnginesAPI.getSwivelCannonItem();
+        String s = "Swivel Cannon";
+        swivelCannon.setAmount(1);
+        ItemMeta swivelCannonMeta = swivelCannon.getItemMeta();
+        swivelCannonMeta.displayName(ColorParser.of("<bold><yellow>%s</yellow></bold>".formatted(s)).build().decoration(TextDecoration.ITALIC, false));
+        swivelCannonMeta.lore(Collections.singletonList(ColorParser.of("<yellow>Place as a block to spawn a %s</yellow>".formatted(s)).build().decoration(TextDecoration.ITALIC, false)));
+        swivelCannon.setItemMeta(swivelCannonMeta);
+        return swivelCannon;
     }
 }

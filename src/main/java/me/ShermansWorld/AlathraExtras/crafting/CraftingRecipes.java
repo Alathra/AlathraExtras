@@ -318,15 +318,13 @@ public class CraftingRecipes {
         breachCannonRecipe.shape(" XC", "XBX", "AX ");
         breachCannonRecipe.setIngredient('X', Items.getTungsten());
         breachCannonRecipe.setIngredient('C', Material.CAULDRON);
-        breachCannonRecipe.setIngredient('B', SiegeEnginesAPI.getSwivelCannonItem());
+        breachCannonRecipe.setIngredient('B', Items.getFormattedSwivelCannon());
         breachCannonRecipe.setIngredient('A', Material.ANVIL);
         AlathraExtras.getInstance().getServer().addRecipe(breachCannonRecipe);
     }
 
     public static void swivelCannonRecipe() {
-        ItemStack swivelCannon = SiegeEnginesAPI.getSwivelCannonItem();
-        setSiegeEngineItemMeta(swivelCannon, "Swivel Cannon");
-        swivelCannon.setAmount(1);
+        ItemStack swivelCannon = Items.getFormattedSwivelCannon();
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
             AlathraExtras.getInstance().getName() + "swivelCannonRecipe");
         ShapedRecipe swivelCannonRecipe = new ShapedRecipe(key, swivelCannon);
@@ -340,8 +338,8 @@ public class CraftingRecipes {
 
     private static void setSiegeEngineItemMeta(ItemStack itemStack, String s) {
         ItemMeta itemMeta = itemStack.getItemMeta();
-        itemMeta.displayName(ColorParser.of("<bold><yellow>Place as a block to spawn a %s</yellow></bold>".formatted(s)).build().decoration(TextDecoration.ITALIC, false));
-        itemMeta.lore(Collections.singletonList(ColorParser.of("<yellow>Place as a block to spawn a Ballista</yellow>").build().decoration(TextDecoration.ITALIC, false)));
+        itemMeta.displayName(ColorParser.of("<bold><yellow>%s</yellow></bold>".formatted(s)).build().decoration(TextDecoration.ITALIC, false));
+        itemMeta.lore(Collections.singletonList(ColorParser.of("<yellow>Place as a block to spawn a %s</yellow>".formatted(s)).build().decoration(TextDecoration.ITALIC, false)));
         itemStack.setItemMeta(itemMeta);
     }
 
