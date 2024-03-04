@@ -46,6 +46,10 @@ public class Items {
 		return MythicBukkit.inst().getItemManager().getItemStack("Alathran_Iron");
 	}
 
+    /**
+     * Gets an Uncharged Silver Melon item
+     * @return the Uncharged Silver Melon item
+     */
     public static ItemStack getUnchargedSilverMelon() {
 
         ItemStack silverMelon = new ItemStack(Material.GOLDEN_APPLE, 1);
@@ -67,6 +71,10 @@ public class Items {
         return silverMelon;
     }
 
+    /**
+     * Gets a charged Silver Melon item
+     * @return the charged Silver Melon item
+     */
     public static ItemStack getChargedSilverMelon() {
         ItemStack chargedSilverMelon = new ItemStack(Material.GOLDEN_APPLE, 1);
         ItemMeta meta = chargedSilverMelon.getItemMeta();
@@ -89,18 +97,34 @@ public class Items {
         return chargedSilverMelon;
     }
 
+    /**
+     * Gets a mythic mobs Tungsten item
+     * @return the mythic mobs Tungsten item
+     */
     public static ItemStack getTungsten() {
         return MythicBukkit.inst().getItemManager().getItemStack("Tungsten");
     }
 
+    /**
+     * Gets a mythic mobs Platinum item
+     * @return the mythic mobs Platinum item
+     */
     public static ItemStack getPlatinum() {
         return  MythicBukkit.inst().getItemManager().getItemStack("Platinum");
     }
 
+    /**
+     * Gets a mythic mobs Silver item
+     * @return the mythic mobs Silver item
+     */
     public static ItemStack getSilver() {
         return MythicBukkit.inst().getItemManager().getItemStack("Silver");
     }
 
+    /**
+     * Gets a formatted Swivel Cannon item
+     * @return the formatted Swivel Cannon item
+     */
     public static ItemStack getFormattedSwivelCannon(){
         ItemStack swivelCannon = SiegeEnginesAPI.getSwivelCannonItem();
         String s = "Swivel Cannon";
