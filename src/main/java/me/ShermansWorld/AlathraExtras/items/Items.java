@@ -1,5 +1,6 @@
 package me.ShermansWorld.AlathraExtras.items;
 
+import com.github.alathra.siegeengines.api.SiegeEnginesAPI;
 import com.github.alathra.siegeengines.libs.colorparser.ColorParser;
 import me.ShermansWorld.AlathraExtras.Helper;
 
@@ -16,6 +17,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import io.lumine.mythic.bukkit.MythicBukkit;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Items {
@@ -44,6 +46,10 @@ public class Items {
 		return MythicBukkit.inst().getItemManager().getItemStack("Alathran_Iron");
 	}
 
+    /**
+     * Gets an Uncharged Silver Melon item
+     * @return the Uncharged Silver Melon item
+     */
     public static ItemStack getUnchargedSilverMelon() {
 
         ItemStack silverMelon = new ItemStack(Material.GOLDEN_APPLE, 1);
@@ -65,6 +71,10 @@ public class Items {
         return silverMelon;
     }
 
+    /**
+     * Gets a charged Silver Melon item
+     * @return the charged Silver Melon item
+     */
     public static ItemStack getChargedSilverMelon() {
         ItemStack chargedSilverMelon = new ItemStack(Material.GOLDEN_APPLE, 1);
         ItemMeta meta = chargedSilverMelon.getItemMeta();
@@ -87,54 +97,42 @@ public class Items {
         return chargedSilverMelon;
     }
 
+    /**
+     * Gets a mythic mobs Tungsten item
+     * @return the mythic mobs Tungsten item
+     */
     public static ItemStack getTungsten() {
-        try(MythicBukkit mythicBukkit = MythicBukkit.inst()) {
-            return mythicBukkit.getItemManager().getItemStack("Tungsten");
-        } catch (Exception e){
-            ItemStack tungsten = new ItemStack(Material.COPPER_INGOT, 1);
-            ItemMeta meta = tungsten.getItemMeta();
-            meta.setCustomModelData(2);
-            meta.displayName(ColorParser.of("<bold><dark_gray>Tungsten</dark_gray></bold>").build()
-                .decoration(TextDecoration.ITALIC, false));
-            List<Component> lore = new ArrayList<>();
-            lore.add(ALATHRAN_ITEM_TAG);
-            meta.lore(lore);
-            tungsten.setItemMeta(meta);
-            return tungsten;
-        }
+        return MythicBukkit.inst().getItemManager().getItemStack("Tungsten");
     }
 
+    /**
+     * Gets a mythic mobs Platinum item
+     * @return the mythic mobs Platinum item
+     */
     public static ItemStack getPlatinum() {
-        try(MythicBukkit mythicBukkit = MythicBukkit.inst()) {
-            return mythicBukkit.getItemManager().getItemStack("Platinum");
-        } catch (Exception e) {
-            ItemStack platinum = new ItemStack(Material.COPPER_INGOT, 1);
-            ItemMeta meta = platinum.getItemMeta();
-            meta.setCustomModelData(3);
-            meta.displayName(ColorParser.of("<bold><dark_aqua>Platinum</dark_aqua></bold>").build()
-                .decoration(TextDecoration.ITALIC, false));
-            List<Component> lore = new ArrayList<>();
-            lore.add(ALATHRAN_ITEM_TAG);
-            meta.lore(lore);
-            platinum.setItemMeta(meta);
-            return platinum;
-        }
+        return  MythicBukkit.inst().getItemManager().getItemStack("Platinum");
     }
 
+    /**
+     * Gets a mythic mobs Silver item
+     * @return the mythic mobs Silver item
+     */
     public static ItemStack getSilver() {
-        try(MythicBukkit mythicBukkit = MythicBukkit.inst()){
-            return mythicBukkit.getItemManager().getItemStack("Silver");
-        } catch (Exception e) {
-            ItemStack silver = new ItemStack(Material.COPPER_INGOT, 1);
-            ItemMeta meta = silver.getItemMeta();
-            meta.setCustomModelData(4);
-            meta.displayName(ColorParser.of("<bold><gray>Silver</gray></bold>").build()
-                .decoration(TextDecoration.ITALIC, false));
-            List<Component> lore = new ArrayList<>();
-            lore.add(ALATHRAN_ITEM_TAG);
-            meta.lore(lore);
-            silver.setItemMeta(meta);
-            return silver;
-        }
+        return MythicBukkit.inst().getItemManager().getItemStack("Silver");
+    }
+
+    /**
+     * Gets a formatted Swivel Cannon item
+     * @return the formatted Swivel Cannon item
+     */
+    public static ItemStack getFormattedSwivelCannon(){
+        ItemStack swivelCannon = SiegeEnginesAPI.getSwivelCannonItem();
+        String s = "Swivel Cannon";
+        swivelCannon.setAmount(1);
+        ItemMeta swivelCannonMeta = swivelCannon.getItemMeta();
+        swivelCannonMeta.displayName(ColorParser.of("<bold><yellow>%s</yellow></bold>".formatted(s)).build().decoration(TextDecoration.ITALIC, false));
+        swivelCannonMeta.lore(Collections.singletonList(ColorParser.of("<yellow>Place as a block to spawn a %s</yellow>".formatted(s)).build().decoration(TextDecoration.ITALIC, false)));
+        swivelCannon.setItemMeta(swivelCannonMeta);
+        return swivelCannon;
     }
 }
