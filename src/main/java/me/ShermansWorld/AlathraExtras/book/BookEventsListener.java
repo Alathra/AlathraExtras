@@ -18,14 +18,13 @@ public class BookEventsListener implements Listener {
     @EventHandler
     public void onPlayerEditBook(PlayerEditBookEvent e) {
         if(e.isSigning()){
-            BookMeta bookMeta = e.getNewBookMeta();
-            List<Component> bookLore = bookMeta.hasLore() ? bookMeta.lore() : Collections.emptyList();
-            Component dateLore = ColorParser.of("<white>" + Date.from(Time.now()).toString() + "</white>").build();
-            if(bookLore != null ) {
-                bookLore.add(dateLore);
-                bookMeta.lore(bookLore);
-                e.setNewBookMeta(bookMeta);
-            }
+            BookMeta bookMeta = e.getPreviousBookMeta();
+            List<Component> list = new java.util.ArrayList<>(Collections.emptyList());
+            list.add(ColorParser.of("<white>Signed by %s</white>".formatted(e.getPlayer().getName())).build());
+            list.add(ColorParser.of("<white>%s</white>".formatted(e.getPlayer().getUniqueId().toString())).build());
+            list.add(ColorParser.of("<white>" + Date.from(Time.now()).toString() + "</white>").build());
+            bookMeta.lore(list);
+            e.setNewBookMeta(bookMeta);
         }
     }
 }
