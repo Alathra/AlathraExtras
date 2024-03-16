@@ -1,41 +1,49 @@
 package me.ShermansWorld.AlathraExtras.book;
 
-import net.md_5.bungee.api.chat.hover.content.Item;
+import me.ShermansWorld.AlathraExtras.AlathraExtras;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.block.Lectern;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
 
 public class UnwritableBookClickListener implements Listener {
 
     @EventHandler
     public void onInteract(PlayerInteractEvent event){
-        if(event.getAction().isRightClick()){
-            PlayerInventory inventory = event.getPlayer().getInventory();
-            //Player is holding a book in their main hand, and a written book in their offhand
-            if(inventory.getItemInMainHand().getType() == Material.BOOK
-                && inventory.getItemInOffHand().isSimilar(new ItemStack(Material.WRITTEN_BOOK).asOne())){
-                // Take the book info from their off hand
-                ItemStack book = inventory.getItemInOffHand();
-                // Get the amount of books being copied from the main hand
-                int unwrittenBookAmount = inventory.getItemInMainHand().getAmount();
-                // Update the item stack so that it matches the number of books being copied
-                book.setAmount(unwrittenBookAmount);
-                // Update the inventory slot appropriately
-                inventory.setItemInMainHand(book);
-            } else if (inventory.getItemInOffHand().getType() == Material.BOOK
-                && inventory.getItemInMainHand().isSimilar(new ItemStack(Material.WRITTEN_BOOK).asOne())){
-                // Take the book info from their off hand
-                ItemStack book = inventory.getItemInMainHand();
-                // Get the amount of books being copied from the main hand
-                int unwrittenBookAmount = inventory.getItemInOffHand().getAmount();
-                // Update the item stack so that it matches the number of books being copied
-                book.setAmount(unwrittenBookAmount);
-                // Update the inventory slot appropriately
-                inventory.setItemInOffHand(book);
-            }
+        // Check that the player sneak right clicked a lectern
+        Player player = event.getPlayer();
+        if(event.getAction().isRightClick() && player.isSneaking() &&
+            (event.getClickedBlock() != null && event.getClickedBlock().getType() == Material.LECTERN)){
+                Lectern lectern = (Lectern) event.getClickedBlock();
+                // Check that the lectern isn't empty and that the player is holding a book while having >50 experience points
+                if(!lectern.getInventory().isEmpty() &&
+                    (player.getInventory().getItemInMainHand().getType() == Material.BOOK &&
+                        player.getTotalExperience() > 50)){
+                        // Get the book from the lectern
+                        ItemStack writtenBook = lectern.getSnapshotInventory().getItem(lectern.getSnapshotInventory().first(Material.WRITTEN_BOOK));
+                        if(writtenBook==null) return;
+                        // Make sure its just one in the itemstack
+                        writtenBook.asOne();
+                        // Get the book in the players hand
+                        ItemStack book = player.getInventory().getItemInMainHand();
+                        // Only get one
+                        book.asOne();
+                        // Schedule a task to remove the book, give them the item and add the new book.
+                        Bukkit.getScheduler().scheduleSyncDelayedTask(AlathraExtras.getInstance(), ()->
+                        {
+                            // Check the players values again so that nothing breaks.
+                            if(player.getTotalExperience() > 50 && player.getInventory().contains(book)) {
+                                player.getInventory().remove(book);
+                                player.giveExp(-50);
+                                player.getInventory().addItem(writtenBook);
+                            }
+                        }, 1L);
+                }
+
         }
     }
 }
