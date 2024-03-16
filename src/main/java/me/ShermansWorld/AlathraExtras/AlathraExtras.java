@@ -3,6 +3,7 @@ package me.ShermansWorld.AlathraExtras;
 import me.ShermansWorld.AlathraExtras.anitblockclimb.BlockPlaceListener;
 import me.ShermansWorld.AlathraExtras.announcer.Announcer;
 import me.ShermansWorld.AlathraExtras.balancing.*;
+import me.ShermansWorld.AlathraExtras.book.BookEventsListener;
 import me.ShermansWorld.AlathraExtras.chatitem.ShowItemCommand;
 import me.ShermansWorld.AlathraExtras.crafting.*;
 import me.ShermansWorld.AlathraExtras.disabledispensereggs.DispenserListener;
@@ -159,6 +160,7 @@ public class AlathraExtras extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new NPCListener(), this);
         this.getServer().getPluginManager().registerEvents(new TrapdoorListener(), this);
         this.getServer().getPluginManager().registerEvents(new FoodConsumeListener(), this);
+        this.getServer().getPluginManager().registerEvents(new BookEventsListener(), this);
 
         initRecipeItems();
         FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
