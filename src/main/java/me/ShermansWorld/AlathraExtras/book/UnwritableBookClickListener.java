@@ -39,7 +39,7 @@ public class UnwritableBookClickListener implements Listener {
 
                     ItemStack duplicateBook = writtenBook.clone();
                     ItemMeta duplicateBookMeta = duplicateBook.getItemMeta();
-                    if(duplicateBook.getType() == Material.WRITABLE_BOOK) {
+                    if(duplicateBook.getType() != Material.WRITABLE_BOOK) {
                         if (duplicateBook.getItemMeta().lore() != null)
                             duplicateBookMeta.lore().add(ColorParser.of("<yellow>Copy</yellow>").build());
                         else
