@@ -6,6 +6,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.hanging.HangingBreakEvent;
 import org.bukkit.event.hanging.HangingBreakEvent.RemoveCause;
+
+import me.ShermansWorld.AlathraExtras.items.Items;
+
 import org.bukkit.event.hanging.HangingPlaceEvent;
 
 public class ItemFrameListener implements Listener {
@@ -17,7 +20,7 @@ public class ItemFrameListener implements Listener {
                 if (!itemFrame.isVisible()) {
                     e.getEntity().remove();
                     e.getEntity().getWorld().dropItem(e.getEntity().getLocation(), itemFrame.getItem());
-                    e.getEntity().getWorld().dropItem(e.getEntity().getLocation(), CustomItems.getInvisibleItemFrame());
+                    e.getEntity().getWorld().dropItem(e.getEntity().getLocation(), Items.getInvisibleItemFrame());
                     e.setCancelled(true);
                 }
             }
@@ -28,7 +31,7 @@ public class ItemFrameListener implements Listener {
     public void itemFramePlaceEvent(HangingPlaceEvent e) {
         if (e.getEntity().getType().equals(EntityType.ITEM_FRAME)) {
             ItemFrame itemFrame = (ItemFrame) e.getEntity();
-            if (e.getItemStack().isSimilar(CustomItems.getInvisibleItemFrame())) {
+            if (e.getItemStack().isSimilar(Items.getInvisibleItemFrame())) {
                 itemFrame.setVisible(false);
             }
         }

@@ -15,6 +15,7 @@ import me.ShermansWorld.AlathraExtras.food.FoodConsumeListener;
 import me.ShermansWorld.AlathraExtras.funny.AetherPortalListener;
 import me.ShermansWorld.AlathraExtras.funny.FreeOpCommand;
 import me.ShermansWorld.AlathraExtras.halloween.CandyEatListener;
+import me.ShermansWorld.AlathraExtras.items.ItemConverter;
 import me.ShermansWorld.AlathraExtras.items.ItemsListener;
 import me.ShermansWorld.AlathraExtras.joinleavemessages.JoinLeaveMessages;
 import me.ShermansWorld.AlathraExtras.metrics.MetricsManager;
@@ -22,7 +23,6 @@ import me.ShermansWorld.AlathraExtras.metrics.PlayerFirstJoinListener;
 import me.ShermansWorld.AlathraExtras.misc.CommandListener;
 import me.ShermansWorld.AlathraExtras.misc.ItemFrameListener;
 import me.ShermansWorld.AlathraExtras.misc.MsgEditor;
-import me.ShermansWorld.AlathraExtras.misc.PaperRecipesListener;
 import me.ShermansWorld.AlathraExtras.npcs.NPCListener;
 import me.ShermansWorld.AlathraExtras.playtime.PlaytimeCommand;
 import me.ShermansWorld.AlathraExtras.playtime.PlaytimeTabCompleter;
@@ -142,7 +142,6 @@ public class AlathraExtras extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new ItemFrameListener(), this);
         this.getServer().getPluginManager().registerEvents(new ItemsListener(), this);
         this.getServer().getPluginManager().registerEvents(new MsgEditor(), this);
-        this.getServer().getPluginManager().registerEvents(new PaperRecipesListener(), this);
         this.getServer().getPluginManager().registerEvents(new PlayerClickHelpBook(), this);
         this.getServer().getPluginManager().registerEvents(new PlayerCommandPreprocessListener(), this);
         this.getServer().getPluginManager().registerEvents(new PlayerFirstJoin(), this);
@@ -161,6 +160,8 @@ public class AlathraExtras extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new TrapdoorListener(), this);
         this.getServer().getPluginManager().registerEvents(new FoodConsumeListener(), this);
         this.getServer().getPluginManager().registerEvents(new BookEventsListener(), this);
+        this.getServer().getPluginManager().registerEvents(new ItemConverter(), this);
+
 
         initRecipeItems();
         FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
