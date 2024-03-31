@@ -4,8 +4,7 @@ import com.github.alathra.siegeengines.libs.colorparser.ColorParser;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import me.ShermansWorld.AlathraExtras.Helper;
 import me.ShermansWorld.AlathraExtras.items.Items;
-import me.ShermansWorld.AlathraExtras.misc.CustomItems;
-
+import me.ShermansWorld.AlathraExtras.items.Items;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -84,7 +83,7 @@ public class CraftingRecipes {
     }
 
     public static void beetrootPouchRecipe() {
-        ItemStack beetRootPouch = CustomItems.getBeetrootPouch();
+        ItemStack beetRootPouch = Items.getBeetrootPouch();
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
             AlathraExtras.getInstance().getName() + "beetrootPouchRecipe");
         ShapelessRecipe beetrootPouchRecipe = new ShapelessRecipe(key, beetRootPouch);
@@ -93,7 +92,7 @@ public class CraftingRecipes {
     }
 
     public static void carrotPouchRecipe() {
-        ItemStack carrotPouch = CustomItems.getCarrotPouch();
+        ItemStack carrotPouch = Items.getCarrotPouch();
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
             AlathraExtras.getInstance().getName() + "carrotPouchRecipe");
         ShapelessRecipe carrotPouchRecipe = new ShapelessRecipe(key, carrotPouch);
@@ -102,7 +101,7 @@ public class CraftingRecipes {
     }
 
     public static void potatoPouchRecipe() {
-        ItemStack potatoPouch = CustomItems.getPotatoPouch();
+        ItemStack potatoPouch = Items.getPotatoPouch();
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
             AlathraExtras.getInstance().getName() + "potatoPouchRecipe");
         ShapelessRecipe potatoPouchRecipe = new ShapelessRecipe(key, potatoPouch);
@@ -214,7 +213,7 @@ public class CraftingRecipes {
     public static void beetrootPouchToBeetroots() {
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
             AlathraExtras.getInstance().getName() + "beetrootPouchToBeetroots");
-        RecipeChoice.ExactChoice input = new RecipeChoice.ExactChoice(CustomItems.getBeetrootPouch());
+        RecipeChoice.ExactChoice input = new RecipeChoice.ExactChoice(Items.getBeetrootPouch());
         ItemStack result = new ItemStack(Material.BEETROOT, 9);
 
         ShapelessRecipe recipe = new ShapelessRecipe(key, result);
@@ -227,7 +226,7 @@ public class CraftingRecipes {
     public static void carrotPouchToCarrots() {
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
             AlathraExtras.getInstance().getName() + "carrotPouchToCarrots");
-        RecipeChoice.ExactChoice input = new RecipeChoice.ExactChoice(CustomItems.getCarrotPouch());
+        RecipeChoice.ExactChoice input = new RecipeChoice.ExactChoice(Items.getCarrotPouch());
         ItemStack result = new ItemStack(Material.CARROT, 9);
 
         ShapelessRecipe recipe = new ShapelessRecipe(key, result);
@@ -240,7 +239,7 @@ public class CraftingRecipes {
     public static void potatoPouchToPotatos() {
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
             AlathraExtras.getInstance().getName() + "potatoPouchToPotatos");
-        RecipeChoice.ExactChoice input = new RecipeChoice.ExactChoice(CustomItems.getPotatoPouch());
+        RecipeChoice.ExactChoice input = new RecipeChoice.ExactChoice(Items.getPotatoPouch());
         ItemStack result = new ItemStack(Material.POTATO, 9);
 
         ShapelessRecipe recipe = new ShapelessRecipe(key, result);
