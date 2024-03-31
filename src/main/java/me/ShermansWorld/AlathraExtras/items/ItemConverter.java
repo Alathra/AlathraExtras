@@ -16,14 +16,18 @@ public class ItemConverter implements Listener {
 	 */
 
 	String oldPlatinum = "ItemStack{COPPER_INGOT x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name={\"bold\":true,\"italic\":false,\"color\":\"dark_aqua\",\"text\":\"Platinum\"}, lore=[{\"bold\":true,\"italic\":false,\"color\":\"green\",\"text\":\"Alathran Item\"}], custom-model-data=3}}";
+	String oldPlatinum2 = "ItemStack{COPPER_INGOT x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name={\"bold\":true,\"italic\":false,\"color\":\"dark_aqua\",\"text\":\"Platinum\"}, lore=[{\"bold\":true,\"italic\":false,\"color\":\"green\",\"text\":\"Alathran Item\"}], custom-model-data=3, internal=H4sIAAAAAAAA/+NiYOBg4PaNDPHwdI4PiQxwZeAIyEksycwrzWUAALGXIoYcAAAA}}";
 	String oldSilver = "ItemStack{COPPER_INGOT x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name={\"bold\":true,\"italic\":false,\"color\":\"gray\",\"text\":\"Silver\"}, lore=[{\"bold\":true,\"italic\":false,\"color\":\"green\",\"text\":\"Alathran Item\"}], custom-model-data=4}}";
+	String oldSilver2 = "ItemStack{COPPER_INGOT x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name={\"bold\":true,\"italic\":false,\"color\":\"gray\",\"text\":\"Silver\"}, lore=[{\"bold\":true,\"italic\":false,\"color\":\"green\",\"text\":\"Alathran Item\"}], custom-model-data=4, internal=H4sIAAAAAAAA/+NiYOBg4PaNDPHwdI4PiQxwZWALzswpSy1iAAB/RFAdGgAAAA==}}";
 	String oldTungsten = "ItemStack{COPPER_INGOT x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name={\"bold\":true,\"italic\":false,\"color\":\"dark_gray\",\"text\":\"Tungsten\"}, lore=[{\"bold\":true,\"italic\":false,\"color\":\"green\",\"text\":\"Alathran Item\"}], custom-model-data=2}}";
+	String oldTungsten2 = "ItemStack{COPPER_INGOT x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name={\"bold\":true,\"italic\":false,\"color\":\"dark_gray\",\"text\":\"Tungsten\"}, lore=[{\"bold\":true,\"italic\":false,\"color\":\"green\",\"text\":\"Alathran Item\"}], custom-model-data=2, internal=H4sIAAAAAAAA/+NiYOBg4PaNDPHwdI4PiQxwZeAIKc1LLy5JzWMAAAokz+kcAAAA}}";
 	
 	String oldCarrotPouch = "ItemStack{PAPER x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name={\"extra\":[{\"bold\":false,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"color\":\"gold\",\"text\":\"Carrot Pouch\"}],\"text\":\"\"}, custom-model-data=14701}}";
 	String oldBeetrootPouch = "ItemStack{PAPER x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name={\"extra\":[{\"bold\":false,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"color\":\"dark_red\",\"text\":\"Beetroot Pouch\"}],\"text\":\"\"}, custom-model-data=14700}}";
 	String oldPotatoPouch = "ItemStack{PAPER x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name={\"extra\":[{\"bold\":false,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"color\":\"yellow\",\"text\":\"Potato Pouch\"}],\"text\":\"\"}, custom-model-data=14713}}";
 	
 	String oldNetherHeart = "ItemStack{PAPER x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name={\"bold\":true,\"italic\":false,\"color\":\"dark_red\",\"text\":\"Nether Heart\"}, lore=[{\"bold\":true,\"italic\":false,\"color\":\"green\",\"text\":\"Alathran Item\"}], custom-model-data=14801}}";
+	String oldNetherHeart2 = "ItemStack{PAPER x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name={\"bold\":true,\"italic\":false,\"color\":\"dark_red\",\"text\":\"Nether Heart\"}, lore=[{\"bold\":true,\"italic\":false,\"color\":\"green\",\"text\":\"Alathran Item\"}], custom-model-data=14801, internal=H4sIAAAAAAAA/+NiYOBg4PaNDPHwdI4PiQxwZeDxSy3JSC2K90hNLCphAAAcY4rIIAAAAA==}}";
 	
 	@EventHandler
 	public void onInventoryOpen(InventoryOpenEvent event) {
@@ -38,12 +42,27 @@ public class ItemConverter implements Listener {
 					amount = storageContents[i].getAmount();
 					item.setAmount(amount);
 					event.getInventory().setItem(i, item);
+				} else if(storageContents[i].asOne().toString().equals(oldPlatinum2)) {
+					item = Items.getPlatinum();
+					amount = storageContents[i].getAmount();
+					item.setAmount(amount);
+					event.getInventory().setItem(i, item);
 				} else if (storageContents[i].asOne().toString().equals(oldSilver)) {
 					item = Items.getSilver();
 					amount = storageContents[i].getAmount();
 					item.setAmount(amount);
 					event.getInventory().setItem(i, item);
+				} else if (storageContents[i].asOne().toString().equals(oldSilver2)) {
+					item = Items.getSilver();
+					amount = storageContents[i].getAmount();
+					item.setAmount(amount);
+					event.getInventory().setItem(i, item);
 				} else if (storageContents[i].asOne().toString().equals(oldTungsten)) {
+					item = Items.getTungsten();
+					amount = storageContents[i].getAmount();
+					item.setAmount(amount);
+					event.getInventory().setItem(i, item);
+				} else if (storageContents[i].asOne().toString().equals(oldTungsten2)) {
 					item = Items.getTungsten();
 					amount = storageContents[i].getAmount();
 					item.setAmount(amount);
@@ -68,7 +87,12 @@ public class ItemConverter implements Listener {
 					amount = storageContents[i].getAmount();
 					item.setAmount(amount);
 					event.getInventory().setItem(i, item);
-				}//else {
+				} else if (storageContents[i].asOne().toString().equals(oldNetherHeart2)) {
+					item = Items.getNetherHeart();
+					amount = storageContents[i].getAmount();
+					item.setAmount(amount);
+					event.getInventory().setItem(i, item);
+				} //else {
 					//Bukkit.broadcastMessage(storageContents[i].asOne().toString());
 				//}
 			}
