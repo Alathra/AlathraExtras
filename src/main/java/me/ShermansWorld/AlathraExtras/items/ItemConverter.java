@@ -127,7 +127,7 @@ public class ItemConverter implements Listener {
 			} else if (storageContents[i].asOne().toString().equals(wildCitrine)) {
 				replaceItem(event.getInventory(), CustomResources.getWildCitrine(), i, amount);
 			} else {
-				Bukkit.broadcastMessage(storageContents[i].asOne().toString());
+				//Bukkit.broadcastMessage(storageContents[i].asOne().toString());
 			}
 		}
 	}
