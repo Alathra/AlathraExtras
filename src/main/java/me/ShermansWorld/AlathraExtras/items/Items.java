@@ -172,6 +172,21 @@ public class Items {
     public static ItemStack getNetherHeart() {
         return MythicBukkit.inst().getItemManager().getItemStack("Nether_Heart");
     }
+    
+    public static ItemStack getRawBoarMeat() {
+        return MythicBukkit.inst().getItemManager().getItemStack("Boar_Meat");
+    }
+    
+    public static ItemStack getRawElephantMeat() {
+        return MythicBukkit.inst().getItemManager().getItemStack("Elephant_Meat");
+    }
+    
+    public static ItemStack getRawSharkMeat() {
+        return MythicBukkit.inst().getItemManager().getItemStack("Shark_Meat");
+    }
+    public static ItemStack getRawVenison() {
+        return MythicBukkit.inst().getItemManager().getItemStack("Venison");
+    }
 
     /**
      * Gets a formatted Swivel Cannon item

@@ -57,6 +57,12 @@ public class ItemConverter implements Listener {
 	String velotite = "ItemStack{PAPER x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name={\"extra\":[{\"bold\":true,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"color\":\"dark_green\",\"text\":\"Velotite\"}],\"text\":\"\"}, lore=[{\"extra\":[{\"bold\":true,\"italic\":false,\"color\":\"green\",\"text\":\"Alathran Item\"}],\"text\":\"\"}], custom-model-data=14614}}";
 	String wildCitrine = "ItemStack{PAPER x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name={\"extra\":[{\"bold\":true,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"color\":\"gold\",\"text\":\"Wild Citrine\"}],\"text\":\"\"}, lore=[{\"extra\":[{\"bold\":true,\"italic\":false,\"color\":\"green\",\"text\":\"Alathran Item\"}],\"text\":\"\"}], custom-model-data=14615}}";
 	
+	// Meats
+	String rawBoarMeat = "ItemStack{PORKCHOP x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name={\"italic\":true,\"color\":\"white\",\"text\":\"Boar Meat\"}, lore=[{\"bold\":true,\"italic\":false,\"color\":\"green\",\"text\":\"Alathran Item\"}], custom-model-data=2800, internal=H4sIAAAAAAAA/+NiYOBg4PaNDPHwdI4PiQxwZeB0yk8sivdNTSxhAACHaniQHQAAAA==}}";
+	String rawElephantMeat = "ItemStack{BEEF x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name={\"italic\":false,\"color\":\"white\",\"text\":\"Raw Elephant Meat\"}, lore=[{\"bold\":true,\"italic\":false,\"color\":\"green\",\"text\":\"Alathran Item\"}], custom-model-data=2800, internal=H4sIAAAAAAAA/+NiYOBg4PaNDPHwdI4PiQxwZeB1zUktyEjMK4n3TU0sYQAAEWqiTyEAAAA=}}";
+	String rawSharkMeat = "ItemStack{COD x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name={\"italic\":false,\"color\":\"white\",\"text\":\"Raw Shark Meat\"}, lore=[{\"bold\":true,\"italic\":false,\"color\":\"green\",\"text\":\"Alathran Item\"}], custom-model-data=2800, internal=H4sIAAAAAAAA/+NiYOBg4PaNDPHwdI4PiQxwZeAKzkgsyo73TU0sYQAAzF8rZh4AAAA=}}";
+	String rawVenison = "ItemStack{MUTTON x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name={\"italic\":false,\"color\":\"white\",\"text\":\"Raw Venison\"}, lore=[{\"bold\":true,\"italic\":false,\"color\":\"green\",\"text\":\"Alathran Item\"}], custom-model-data=2800, internal=H4sIAAAAAAAA/+NiYOBg4PaNDPHwdI4PiQxwZWAPS83LLM7PYwAAJnwUvxsAAAA=}}";
+	
 	@EventHandler
 	public void onInventoryOpen(InventoryOpenEvent event) {
 		ItemStack[] storageContents = event.getInventory().getStorageContents();
@@ -126,6 +132,14 @@ public class ItemConverter implements Listener {
 				replaceItem(event.getInventory(), CustomResources.getVelotite(), i, amount);
 			} else if (storageContents[i].asOne().toString().equals(wildCitrine)) {
 				replaceItem(event.getInventory(), CustomResources.getWildCitrine(), i, amount);
+			} else if (storageContents[i].asOne().toString().equals(rawBoarMeat)) {
+				replaceItem(event.getInventory(), Items.getRawBoarMeat(), i, amount);
+			} else if (storageContents[i].asOne().toString().equals(rawElephantMeat)) {
+				replaceItem(event.getInventory(), Items.getRawElephantMeat(), i, amount);
+			} else if (storageContents[i].asOne().toString().equals(rawSharkMeat)) {
+				replaceItem(event.getInventory(), Items.getRawSharkMeat(), i, amount);
+			} else if (storageContents[i].asOne().toString().equals(rawVenison)) {
+				replaceItem(event.getInventory(), Items.getRawVenison(), i, amount);
 			} else {
 				//Bukkit.broadcastMessage(storageContents[i].asOne().toString());
 			}
