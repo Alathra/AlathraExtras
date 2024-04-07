@@ -1,17 +1,44 @@
 package me.ShermansWorld.AlathraExtras.crafting;
 
+import java.util.Arrays;
+
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.inventory.PrepareItemCraftEvent;
 import org.bukkit.inventory.ItemStack;
 
-import com.github.alathra.siegeengines.api.SiegeEnginesAPI;
-
+import me.ShermansWorld.AlathraExtras.Helper;
 import me.ShermansWorld.AlathraExtras.items.Items;
 
 public class CraftingListener implements Listener {
+
+	@EventHandler
+	public void craftEvent(CraftItemEvent e) {
+		if (Arrays.asList(e.getInventory().getStorageContents()).contains(Items.tutorialBook())) {
+			e.getWhoClicked()
+					.sendMessage(Helper.Chatlabel() + Helper.color("&cYou cannot craft with the Player's Guide!"));
+			e.setCancelled(true);
+		} else if (Arrays.asList(e.getInventory().getStorageContents()).contains(Items.getBeetrootPouch())
+				|| Arrays.asList(e.getInventory().getStorageContents()).contains(Items.getCarrotPouch())) {
+			if (!e.getCurrentItem().equals(Items.getBeetrootPouch())
+					|| e.getCurrentItem().equals(Items.getCarrotPouch())) {
+				if (!e.getRecipe().getResult().equals(new ItemStack(Material.BEETROOT, 9))
+						&& !e.getRecipe().getResult().equals(new ItemStack(Material.CARROT, 9))
+						&& !e.getRecipe().getResult().equals(new ItemStack(Material.POTATO, 9))
+						&& !e.getRecipe().getResult().equals(Items.getBeetrootPouch())
+						&& !e.getRecipe().getResult().equals(Items.getCarrotPouch())
+						&& !e.getRecipe().getResult().equals(Items.getPotatoPouch())) {
+					e.getWhoClicked()
+							.sendMessage(Helper.Chatlabel() + Helper.color("&cYou cannot craft with this item!"));
+					e.setCancelled(true);
+				}
+			}
+		}
+	}
+
 	@EventHandler
 	public void onCraftPrepare(PrepareItemCraftEvent event) {
 		ItemStack[] craftingGridItemStacks = event.getInventory().getMatrix();
