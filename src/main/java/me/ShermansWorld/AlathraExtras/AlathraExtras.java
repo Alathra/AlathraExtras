@@ -160,7 +160,7 @@ public class AlathraExtras extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new NPCListener(), this);
         this.getServer().getPluginManager().registerEvents(new TrapdoorListener(), this);
         this.getServer().getPluginManager().registerEvents(new FoodConsumeListener(), this);
-        this.getServer().getPluginManager().registerEvents(new BookEventsListener(), this);
+        //this.getServer().getPluginManager().registerEvents(new BookEventsListener(), this);
 
         initRecipeItems();
         FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
