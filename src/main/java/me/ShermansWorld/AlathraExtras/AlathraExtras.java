@@ -31,6 +31,7 @@ import me.ShermansWorld.AlathraExtras.puke.PukeCommand;
 import me.ShermansWorld.AlathraExtras.repair.RepairListener;
 import me.ShermansWorld.AlathraExtras.roll.RollCommand;
 import me.ShermansWorld.AlathraExtras.towny.TownyListener;
+import me.ShermansWorld.AlathraExtras.towny.TownyMenu;
 import me.ShermansWorld.AlathraExtras.tpacooldown.CooldownManager;
 import me.ShermansWorld.AlathraExtras.tpacooldown.listener.essentialsx.PreTeleportListener;
 import me.ShermansWorld.AlathraExtras.tpacooldown.listener.essentialsx.TeleportRequestResponseListener;
@@ -162,6 +163,7 @@ public class AlathraExtras extends JavaPlugin {
         // this.getServer().getPluginManager().registerEvents(new BookEventsListener(), this);
         // This is broken do not enable unless you have confirmed its working.
         this.getServer().getPluginManager().registerEvents(new ItemConverter(), this);
+        this.getServer().getPluginManager().registerEvents(new TownyMenu(), this);
 
         initRecipeItems();
         FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
