@@ -61,6 +61,20 @@ public class StoneCuttingRecipes {
                     ItemStack itemStack = new ItemStack(itemName);
                     itemStackList.add(itemStack);
                 }
+
+                itemName = Material.getMaterial(materialArray[0].concat("_WOOD"));
+
+                if (itemName != null) {
+                    ItemStack itemStack = new ItemStack(itemName);
+                    itemStackList.add(itemStack);
+                }
+            } else {
+                Material itemName = Material.getMaterial("STRIPPED_".concat(materialArray[0]).concat("_WOOD"));
+
+                if (itemName != null) {
+                    ItemStack itemStack = new ItemStack(itemName);
+                    itemStackList.add(itemStack);
+                }
             }
 
             for (ItemStack item : itemStackList) {
