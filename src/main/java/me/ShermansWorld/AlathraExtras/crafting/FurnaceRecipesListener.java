@@ -34,63 +34,46 @@ public class FurnaceRecipesListener implements Listener {
 
     private ItemStack cookedCods(ItemStack cooking) {
         String substituteName = null;
-        int substituteCustomModelData = 0;
 
-        if (cooking.getItemMeta().getCustomModelData() == 2800) {
-            substituteName = "Cooked Shark Meat";
-            substituteCustomModelData = 2800;
-        }
+        if (cooking.getItemMeta().getCustomModelData() == 2800) substituteName = "Cooked Shark Meat";
 
-        if (cooking.getItemMeta().getCustomModelData() == 2801) {
-            substituteName  = "Cooked Calamari";
-            substituteCustomModelData = 2801;
-        }
+        if (cooking.getItemMeta().getCustomModelData() == 2801) substituteName  = "Cooked Calamari";
+
+        if (cooking.getItemMeta().getCustomModelData() == 2802) substituteName = "Cooked Whale Blubber";
 
         if (substituteName == null) return null;
 
-        return makeCooked(Material.COOKED_COD, substituteName, substituteCustomModelData);
+        return makeCooked(Material.COOKED_COD, substituteName, cooking.getItemMeta().getCustomModelData());
     }
 
     private ItemStack cookedMuttons(ItemStack cooking) {
         String substituteName = null;
-        int substituteCustomModelData = 0;
 
-        if (cooking.getItemMeta().getCustomModelData() == 2800) {
-            substituteName = "Cooked Venison";
-            substituteCustomModelData = 2800;
-        }
+        if (cooking.getItemMeta().getCustomModelData() == 2800) substituteName = "Cooked Venison";
 
         if (substituteName == null) return null;
 
-        return makeCooked(Material.COOKED_MUTTON, substituteName, substituteCustomModelData);
+        return makeCooked(Material.COOKED_MUTTON, substituteName, cooking.getItemMeta().getCustomModelData());
     }
 
     private ItemStack cookedBeefs(ItemStack cooking) {
         String substituteName = null;
-        int substituteCustomModelData = 0;
 
-        if (cooking.getItemMeta().getCustomModelData() == 2800) {
-            substituteName = "Cooked Elephant Meat";
-            substituteCustomModelData = 2800;
-        }
+        if (cooking.getItemMeta().getCustomModelData() == 2800) substituteName = "Cooked Elephant Meat";
 
         if (substituteName == null) return null;
 
-        return makeCooked(Material.COOKED_BEEF, substituteName, substituteCustomModelData);
+        return makeCooked(Material.COOKED_BEEF, substituteName, cooking.getItemMeta().getCustomModelData());
     }
 
     private ItemStack cookedPorks(ItemStack cooking) {
         String substituteName = null;
-        int substituteCustomModelData = 0;
 
-        if (cooking.getItemMeta().getCustomModelData() == 2800) {
-            substituteName = "Cooked Boar Meat";
-            substituteCustomModelData = 2800;
-        }
+        if (cooking.getItemMeta().getCustomModelData() == 2800) substituteName = "Cooked Boar Meat";
 
         if (substituteName == null) return null;
 
-        return makeCooked(Material.COOKED_PORKCHOP, substituteName, substituteCustomModelData);
+        return makeCooked(Material.COOKED_PORKCHOP, substituteName, cooking.getItemMeta().getCustomModelData());
     }
 
     private ItemStack makeCooked(Material material, String name, int customModelData) {
