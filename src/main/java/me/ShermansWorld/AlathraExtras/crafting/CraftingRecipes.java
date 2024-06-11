@@ -4,14 +4,11 @@ import com.github.alathra.siegeengines.libs.colorparser.ColorParser;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import me.ShermansWorld.AlathraExtras.Helper;
 import me.ShermansWorld.AlathraExtras.items.Items;
-import me.ShermansWorld.AlathraExtras.items.Items;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.plugin.Plugin;
-import org.jetbrains.annotations.NotNull;
 
 import com.github.alathra.siegeengines.api.SiegeEnginesAPI;
 
@@ -261,7 +258,7 @@ public class CraftingRecipes {
     public static void cryingObsidianRecipe() {
         ItemStack cryingObsidian = new ItemStack(Material.CRYING_OBSIDIAN, 4);
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
-            String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "25");
+            AlathraExtras.getInstance().getName() + "25");
         ShapedRecipe cryingObsidianRecipe = new ShapedRecipe(key, cryingObsidian);
         cryingObsidianRecipe.shape(
             "%@%",
