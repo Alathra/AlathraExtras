@@ -43,18 +43,18 @@ public class CauldronRecipesListener implements Listener {
     public void CauldronListener(PlayerDropItemEvent dropEvent) {
         if (!transformations.containsKey(dropEvent.getItemDrop().getItemStack().getType())) return;
 
-        CauldronEvent cauldronEvent = new CauldronEvent(dropEvent.getItemDrop());
+        CauldronRunnable cauldronRunnable = new CauldronRunnable(dropEvent.getItemDrop());
 
-        cauldronEvent.runTaskTimer(AlathraExtras.getInstance(), 1, 1);
+        cauldronRunnable.runTaskTimer(AlathraExtras.getInstance(), 1, 1);
     }
 
-    private static class CauldronEvent extends BukkitRunnable {
+    private static class CauldronRunnable extends BukkitRunnable {
         Item dropItem;
         Location lastItemLocation;
         Location updatedItemLocation;
         int count;
 
-        private CauldronEvent(Item dropItem) {
+        private CauldronRunnable(Item dropItem) {
             this.dropItem = dropItem;
             lastItemLocation = null;
             count = 0;
