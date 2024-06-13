@@ -8,6 +8,7 @@ import org.bukkit.block.data.Levelled;
 import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.ItemMergeEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -39,13 +40,24 @@ public class CauldronRecipesListener implements Listener {
         Map.entry(Material.YELLOW_CONCRETE_POWDER, Material.YELLOW_CONCRETE)
     ));
 
-    @EventHandler @SuppressWarnings("unused")
+    @EventHandler
+    @SuppressWarnings("unused")
     public void CauldronListener(PlayerDropItemEvent dropEvent) {
         if (!transformations.containsKey(dropEvent.getItemDrop().getItemStack().getType())) return;
 
         CauldronRunnable cauldronRunnable = new CauldronRunnable(dropEvent.getItemDrop());
 
         cauldronRunnable.runTaskTimer(AlathraExtras.getInstance(), 1, 1);
+    }
+
+    @EventHandler()
+    @SuppressWarnings("unused")
+    public void onDropMerge(ItemMergeEvent e) {
+        // Only run check on concrete powder
+        if (!transformations.containsKey(e.getTarget().getItemStack().getType())) return;
+
+        // Cancel merges and run drop logic independently to not fuckup item stacks
+        e.setCancelled(true);
     }
 
     private static class CauldronRunnable extends BukkitRunnable {
