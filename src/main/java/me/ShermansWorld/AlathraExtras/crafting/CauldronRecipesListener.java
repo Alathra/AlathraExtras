@@ -47,7 +47,7 @@ public class CauldronRecipesListener implements Listener {
 
         CauldronRunnable cauldronRunnable = new CauldronRunnable(dropEvent.getItemDrop());
 
-        cauldronRunnable.runTaskTimer(AlathraExtras.getInstance(), 1, 1);
+        cauldronRunnable.runTaskTimer(AlathraExtras.getInstance(), 1, 10);
     }
 
     @EventHandler()
@@ -76,7 +76,7 @@ public class CauldronRecipesListener implements Listener {
         public void run() {
             count++;
 
-            if (count >= 6000) {
+            if (count >= 120) {
                 AlathraExtras.getInstance().getLogger().info("Error: Cauldron event never terminated. " +
                     "Ending manually.");
                 cancel();
