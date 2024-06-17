@@ -1,4 +1,4 @@
-package me.ShermansWorld.AlathraExtras.disabledispensereggs;
+package me.ShermansWorld.AlathraExtras.balancing.disabledispensereggs;
 
 import org.bukkit.Location;
 import org.bukkit.Material;

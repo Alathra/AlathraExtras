@@ -1,4 +1,4 @@
-package me.ShermansWorld.AlathraExtras.disablespawners;
+package me.ShermansWorld.AlathraExtras.balancing.disablespawners;
 
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import org.bukkit.Material;

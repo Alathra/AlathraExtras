@@ -1,4 +1,4 @@
-package me.ShermansWorld.AlathraExtras.disabletrapdoorflipping;
+package me.ShermansWorld.AlathraExtras.balancing.disabletrapdoorflipping;
 
 import com.destroystokyo.paper.MaterialTags;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;

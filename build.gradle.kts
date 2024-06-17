@@ -13,7 +13,7 @@ plugins {
 
 group = "me.ShermansWorld"
 
-version = "1.27.1"
+version = "1.27.2"
 description = ""
 val mainPackage = "${project.group}.${rootProject.name}"
 
@@ -72,7 +72,9 @@ dependencies {
     compileOnly("org.jetbrains:annotations:24.1.0")
 
     implementation("com.github.milkdrinkers:crate:1.1.0")
-    implementation("com.github.milkdrinkers:colorparser:2.0.0")
+    implementation("com.github.milkdrinkers:colorparser:2.0.3") {
+        exclude("net.kyori")
+    }
 
 //    implementation("dev.jorel:commandapi-bukkit-shade:9.0.3")
 //    compileOnly("dev.jorel:commandapi-annotations:9.0.3")
