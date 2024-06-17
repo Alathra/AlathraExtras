@@ -1,5 +1,6 @@
 package me.ShermansWorld.AlathraExtras.towny;
 
+import com.github.milkdrinkers.colorparser.ColorParser;
 import com.palmergames.bukkit.TownyChat.Chat;
 import com.palmergames.bukkit.TownyChat.channels.Channel;
 import com.palmergames.bukkit.TownyChat.channels.ChannelsHolder;
@@ -23,15 +24,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.HashSet;
 import java.util.Set;
 
+@SuppressWarnings("CommentedOutCode")
 public class TownyListener implements Listener {
-
-	private static Chat tc;
-	private static ChannelsHolder ch;
-	private static Channel g;
+    private static Channel g;
 
 	private static long delay = 20;
-	private static final Set<Material> signs = new HashSet<Material>();
-	private static final Set<Character> approvedChars = new HashSet<Character>();
+	private static final Set<Material> signs = new HashSet<>();
+	//private static final Set<Character> approvedChars = new HashSet<>();
 
 	static {
 		signs.add(Material.ACACIA_SIGN);
@@ -53,6 +52,7 @@ public class TownyListener implements Listener {
 		signs.add(Material.WARPED_WALL_SIGN);
 		signs.add(Material.MANGROVE_WALL_SIGN);
 
+        /*
 		approvedChars.add('1');
 		approvedChars.add('2');
 		approvedChars.add('3');
@@ -116,9 +116,10 @@ public class TownyListener implements Listener {
 		approvedChars.add('Z');
 		approvedChars.add('_');
 		approvedChars.add(' ');
+         */
 	}
 
-	public void deleteSignsInChunk(TownBlock townBlock, World w, long delay) {
+	public void deleteSignsInChunk(TownBlock townBlock, World w) {
 		int x = townBlock.getX() * 16;
 		int z = townBlock.getZ() * 16;
 		for (int xx = x; xx < x + 16; xx++) {
@@ -140,18 +141,33 @@ public class TownyListener implements Listener {
 		Town town = e.getTown();
 		final World w = town.getWorld();
 		for (final TownBlock townBlock : town.getTownBlocks()) {
-			Bukkit.getScheduler().scheduleSyncDelayedTask(AlathraExtras.getInstance(), new Runnable() {
-				public void run() {
-					deleteSignsInChunk(townBlock, w, delay);
-				}
-			}, delay); // 20 Tick (1 Second) delay before run() is called
+			Bukkit.getScheduler().scheduleSyncDelayedTask(AlathraExtras.getInstance(), new deleteSignsRunnable(this, townBlock, w),
+                delay); // 20 Tick (1 Second) delay before run() is called
 			delay += 100; // 5 seconds
 		}
 	}
 
+    @SuppressWarnings("ClassCanBeRecord")
+    private static class deleteSignsRunnable implements Runnable {
+        private final TownyListener listenerClass;
+        private final TownBlock townBlock;
+        private final World w;
+
+        private deleteSignsRunnable(TownyListener listenerClass, TownBlock townBlock, World w) {
+            this.listenerClass = listenerClass;
+            this.townBlock = townBlock;
+            this.w = w;
+        }
+
+        @Override
+        public void run() {
+            listenerClass.deleteSignsInChunk(townBlock, w);
+        }
+    }
+
 	public static void initTownyChat() {
-		tc = JavaPlugin.getPlugin(Chat.class);
-		ch = tc.getChannelsHandler();
+        Chat tc = JavaPlugin.getPlugin(Chat.class);
+        ChannelsHolder ch = tc.getChannelsHandler();
 		g = ch.getDefaultChannel();
 	}
 
@@ -163,20 +179,34 @@ public class TownyListener implements Listener {
 	public void onPlayerJoin(PlayerJoinEvent e) {
 		Player p = e.getPlayer();
 		if (hasGeneralChatMuted(p.getName())) {
-			Bukkit.getScheduler().scheduleSyncDelayedTask(AlathraExtras.getInstance(), new Runnable() {
-				public void run() {
-					p.sendMessage(Helper.Chatlabel() + Helper.color(
-							"&5You are getting this notification because you have muted general chat. To see general chat again type &e/channel join general"));
-				}
-			}, 80L); // 20 Tick (3 second delay)
+			Bukkit.getScheduler().scheduleSyncDelayedTask(AlathraExtras.getInstance(), new playerJoinRunnable(p), 80L); // 20 Tick (3 second delay)
 		}
 	}
+
+    @SuppressWarnings("ClassCanBeRecord")
+    private static class playerJoinRunnable implements Runnable {
+        private final Player p;
+
+        private playerJoinRunnable(Player p) {
+            this.p = p;
+        }
+
+        @Override
+        public void run() {
+            p.sendMessage(ColorParser.of(Helper.Chatlabel() + "&5You are getting this notification because you have muted general chat. To see general chat again type &e/channel join general").parseLegacy().build());
+        }
+    }
 
 	@EventHandler
 	public void onNationCreation(NewNationEvent e) {
 		Nation nation = e.getNation();
 		nation.getAccount().deposit(2000.0, "Nation Creation");
-		nation.getKing().getPlayer().sendMessage(Helper.Chatlabel() + Helper.color(
-				"&b$2000 &chas been deposited into your nation bank. Nations use money each day or they fall into ruin. To put money in your nation type &e/t deposit [amount]"));
+
+        Player foundingPlayer = nation.getKing().getPlayer();
+
+        if (foundingPlayer == null) return;
+
+		nation.getKing().getPlayer().sendMessage(ColorParser.of(Helper.Chatlabel() +
+				"&b$2000 &chas been deposited into your nation bank. Nations use money each day or they fall into ruin. To put money in your nation type &e/t deposit [amount]").parseLegacy().build());
 	}
 }

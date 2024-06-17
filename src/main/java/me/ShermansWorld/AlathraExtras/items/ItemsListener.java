@@ -2,9 +2,7 @@ package me.ShermansWorld.AlathraExtras.items;
 
 import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.block.Block;
 import org.bukkit.entity.ExperienceOrb;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -14,7 +12,6 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
 public class ItemsListener implements Listener {
-
     @EventHandler
     public void tinyXPPouchUse(PlayerInteractEvent e) {
         if (e.getHand() == EquipmentSlot.HAND) {
@@ -37,10 +34,10 @@ public class ItemsListener implements Listener {
                                     e.getPlayer().getInventory().remove(item);
                                 }
                                 e.getPlayer().getWorld().playSound(e.getPlayer().getLocation(),
-                                    Sound.ITEM_BUNDLE_REMOVE_ONE, 5F, 1F);
+                                    Sound.ENTITY_ITEM_FRAME_REMOVE_ITEM, 5F, 1F);
                             }
 
-                            int xpAmount = 0;
+                            int xpAmount;
                             switch (item.getItemMeta().getCustomModelData()) {
                                 // xp 1
                                 case 14703:
@@ -97,8 +94,7 @@ public class ItemsListener implements Listener {
                                 e.getPlayer().getInventory().remove(item);
                             }
                             e.getPlayer().getWorld().playSound(e.getPlayer().getLocation(),
-                                Sound.ITEM_BUNDLE_REMOVE_ONE, 5F, 1F);
-
+                                Sound.ENTITY_ITEM_FRAME_REMOVE_ITEM, 5F, 1F);
                         }
                     }
                 }
@@ -110,11 +106,11 @@ public class ItemsListener implements Listener {
     public void alathraAccessoriesHats(BlockPlaceEvent e) {
         ItemStack item = e.getItemInHand();
         if (item.getType() == Material.CARVED_PUMPKIN) {
-            boolean cancel = false;
+            boolean cancel;
             if (item.hasItemMeta()) {
                 cancel = switch (item.getItemMeta().getCustomModelData()) {
                     case 201, 202, 203, 204, 205, 206, 207 -> true;
-                    default -> cancel;
+                    default -> false;
                 };
                 if (cancel) {
                     e.setCancelled(true);

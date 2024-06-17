@@ -1,15 +1,16 @@
 package me.ShermansWorld.AlathraExtras;
 
+import com.github.milkdrinkers.colorparser.ColorParser;
 import me.ShermansWorld.AlathraExtras.anitblockclimb.BlockPlaceListener;
 import me.ShermansWorld.AlathraExtras.announcer.Announcer;
 import me.ShermansWorld.AlathraExtras.balancing.*;
 import me.ShermansWorld.AlathraExtras.chatitem.ShowItemCommand;
 import me.ShermansWorld.AlathraExtras.crafting.*;
-import me.ShermansWorld.AlathraExtras.disabledispensereggs.DispenserListener;
-import me.ShermansWorld.AlathraExtras.disablespawners.DisableSpawners;
-import me.ShermansWorld.AlathraExtras.disabletrapdoorflipping.TrapdoorListener;
+import me.ShermansWorld.AlathraExtras.balancing.disabledispensereggs.DispenserListener;
+import me.ShermansWorld.AlathraExtras.balancing.disablespawners.DisableSpawners;
+import me.ShermansWorld.AlathraExtras.balancing.disabletrapdoorflipping.TrapdoorListener;
 import me.ShermansWorld.AlathraExtras.balancing.enderchersblock.EnderChestBlockListener;
-import me.ShermansWorld.AlathraExtras.endermanexp.EndermanExpDropListener;
+import me.ShermansWorld.AlathraExtras.balancing.endermanexp.EndermanExpDropListener;
 import me.ShermansWorld.AlathraExtras.food.FoodConsumeListener;
 import me.ShermansWorld.AlathraExtras.funny.AetherPortalListener;
 import me.ShermansWorld.AlathraExtras.funny.FreeOpCommand;
@@ -44,7 +45,6 @@ import me.ShermansWorld.AlathraExtras.tutorialbook.PlayerFirstJoin;
 import me.ShermansWorld.AlathraExtras.voting.VotingListener;
 import me.ShermansWorld.AlathraExtras.yeet.YeetCommand;
 import net.milkbowl.vault.economy.Economy;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.inventory.ItemStack;
@@ -73,22 +73,22 @@ public class AlathraExtras extends JavaPlugin {
     public static void initRecipeItems() {
         recycledLeather = new ItemStack(Material.LEATHER, 1);
         ItemMeta meta = recycledLeather.getItemMeta();
-        meta.setDisplayName(Helper.color("&aRecycled Leather"));
+        meta.displayName(ColorParser.of("&aRecycled Leather").parseLegacy().build());
         recycledLeather.setItemMeta(meta);
     }
 
-    private boolean setupEconomy() {
+    private void setupEconomy() {
         if (getServer().getPluginManager().getPlugin("Vault") == null) {
-            return false;
+            return;
         }
         RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
         if (rsp == null) {
-            return false;
+            return;
         }
         economy = rsp.getProvider();
-        return true;
     }
 
+    @SuppressWarnings({"ResultOfMethodCallIgnored", "InstantiationOfUtilityClass"})
     public static void initLogs() {
         File logsFolder = new File("plugins" + File.separator + "AlathraExtras" + File.separator + "logs");
         if (!logsFolder.exists()) {
@@ -100,7 +100,7 @@ public class AlathraExtras extends JavaPlugin {
             try {
                 log.createNewFile();
             } catch (IOException e) {
-                Bukkit.getLogger().warning("[AlathraExtras] Encountered error when creating log file!");
+                AlathraExtras.getInstance().getLogger().warning("[AlathraExtras] Encountered error when creating log file!");
             }
         }
         logger = new AlathraExtrasLogger();
@@ -114,6 +114,7 @@ public class AlathraExtras extends JavaPlugin {
         Announcer.getInstance().onLoad();
     }
 
+    @SuppressWarnings("InstantiationOfUtilityClass")
     @Override
     public void onEnable() {
 

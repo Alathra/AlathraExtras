@@ -1,11 +1,14 @@
 package me.ShermansWorld.AlathraExtras;
 
 
+import com.github.milkdrinkers.colorparser.ColorParser;
 import me.ShermansWorld.AlathraExtras.items.Items;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 
 public class AlathraExtrasCommands implements CommandExecutor {
@@ -13,17 +16,21 @@ public class AlathraExtrasCommands implements CommandExecutor {
     public static boolean itemDamageOn;
 
     public AlathraExtrasCommands(AlathraExtras plugin) {
-        plugin.getCommand("alathraextras").setExecutor(this);
+        PluginCommand alathraextrasCommand = plugin.getCommand("alathraextras");
+
+        if (alathraextrasCommand == null) return;
+
+        alathraextrasCommand.setExecutor(this);
         itemDamageOn = true;
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         Player player;
         if (sender instanceof Player) {
             player = (Player) sender;
             if (!player.hasPermission("AlathraExtras.admin")) {
-                sender.sendMessage(Helper.Chatlabel() + Helper.color("&cYou do not have permission to use this command"));
+                sender.sendMessage(ColorParser.of(Helper.Chatlabel() + "&cYou do not have permission to use this command").parseLegacy().build());
                 return false;
             }
         } else {
@@ -33,10 +40,10 @@ public class AlathraExtrasCommands implements CommandExecutor {
         if (args.length == 1) {
             if (args[0].equalsIgnoreCase("toggleitemdamage")) {
                 if (itemDamageOn) {
-                    sender.sendMessage(Helper.Chatlabel() + Helper.color("&eItem damage disabled"));
+                    sender.sendMessage(ColorParser.of(Helper.Chatlabel() + "&eItem damage disabled").parseLegacy().build());
                     itemDamageOn = false;
                 } else {
-                    sender.sendMessage(Helper.Chatlabel() + Helper.color("&eItem damage enabled"));
+                    sender.sendMessage(ColorParser.of(Helper.Chatlabel() + "&eItem damage enabled").parseLegacy().build());
                     itemDamageOn = true;
                 }
             }

@@ -1,7 +1,6 @@
-package me.ShermansWorld.AlathraExtras.disabletrapdoorflipping;
+package me.ShermansWorld.AlathraExtras.balancing.disabletrapdoorflipping;
 
 import com.destroystokyo.paper.MaterialTags;
-import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import org.bukkit.GameMode;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

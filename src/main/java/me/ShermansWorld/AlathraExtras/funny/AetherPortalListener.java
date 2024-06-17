@@ -62,15 +62,11 @@ public class AetherPortalListener implements Listener {
 
         Block A1 = null;
         Block A2 = null;
-        ;
         Block A3 = null;
-        ;
         Block A4 = null;
-        ;
         Block A5 = null;
-        ;
         Block A6 = null;
-        ;
+
         World world = start.getWorld();
 
         switch (placeLocation) {
@@ -172,6 +168,10 @@ public class AetherPortalListener implements Listener {
                 break;
         }
 
+        if (A1 == null) return;
+
+        if (A2 == null) return;
+
         world.spawnParticle(Particle.SMOKE_LARGE, A1.getLocation(), 120);
         world.spawnParticle(Particle.SMOKE_LARGE, A2.getLocation(), 120);
         world.spawnParticle(Particle.SMOKE_LARGE, A3.getLocation(), 120);
@@ -182,12 +182,9 @@ public class AetherPortalListener implements Listener {
     }
 
     private boolean checkValidPositions(Block block) {
-        if (checkPos1X(block) || checkPos1Z(block) || checkPos2X(block) || checkPos2Z(block) || checkPos3X(block)
-            || checkPos3Z(block) || checkPos4X(block) || checkPos4Z(block) || checkPos5X(block) || checkPos5Z(block)
-            || checkPos6X(block) || checkPos6Z(block)) {
-            return true;
-        }
-        return false;
+        return checkPos1X(block) || checkPos1Z(block) || checkPos2X(block) || checkPos2Z(block) || checkPos3X(block)
+                || checkPos3Z(block) || checkPos4X(block) || checkPos4Z(block) || checkPos5X(block) || checkPos5Z(block)
+                || checkPos6X(block) || checkPos6Z(block);
     }
 
     private boolean checkPos1X(Block start) {
@@ -198,8 +195,8 @@ public class AetherPortalListener implements Listener {
         // X9 A5 A6 X10
         // X11 X12 X13 X14
 
-        ArrayList<Block> glowstoneBlocks = new ArrayList<Block>();
-        ArrayList<Block> airBlocks = new ArrayList<Block>();
+        ArrayList<Block> glowstoneBlocks = new ArrayList<>();
+        ArrayList<Block> airBlocks = new ArrayList<>();
 
         // X1
         glowstoneBlocks.add(start.getRelative(-1, 1, 0));
@@ -265,8 +262,8 @@ public class AetherPortalListener implements Listener {
         // X9 A5 A6 X10
         // X11 X12 X13 X14
 
-        ArrayList<Block> glowstoneBlocks = new ArrayList<Block>();
-        ArrayList<Block> airBlocks = new ArrayList<Block>();
+        ArrayList<Block> glowstoneBlocks = new ArrayList<>();
+        ArrayList<Block> airBlocks = new ArrayList<>();
 
         // X1
         glowstoneBlocks.add(start.getRelative(0, 1, -1));
@@ -332,8 +329,8 @@ public class AetherPortalListener implements Listener {
         // X9 A5 A6 X10
         // X11 X12 X13 X14
 
-        ArrayList<Block> glowstoneBlocks = new ArrayList<Block>();
-        ArrayList<Block> airBlocks = new ArrayList<Block>();
+        ArrayList<Block> glowstoneBlocks = new ArrayList<>();
+        ArrayList<Block> airBlocks = new ArrayList<>();
 
         // X1
         glowstoneBlocks.add(start.getRelative(-2, 1, 0));
@@ -399,8 +396,8 @@ public class AetherPortalListener implements Listener {
         // X9 A5 A6 X10
         // X11 X12 X13 X14
 
-        ArrayList<Block> glowstoneBlocks = new ArrayList<Block>();
-        ArrayList<Block> airBlocks = new ArrayList<Block>();
+        ArrayList<Block> glowstoneBlocks = new ArrayList<>();
+        ArrayList<Block> airBlocks = new ArrayList<>();
 
         // X1
         glowstoneBlocks.add(start.getRelative(0, 1, -2));
@@ -466,8 +463,8 @@ public class AetherPortalListener implements Listener {
         // X9 A5 A6 X10
         // X11 X12 X13 X14
 
-        ArrayList<Block> glowstoneBlocks = new ArrayList<Block>();
-        ArrayList<Block> airBlocks = new ArrayList<Block>();
+        ArrayList<Block> glowstoneBlocks = new ArrayList<>();
+        ArrayList<Block> airBlocks = new ArrayList<>();
 
         // X1
         glowstoneBlocks.add(start.getRelative(-1, 2, 0));
@@ -533,8 +530,8 @@ public class AetherPortalListener implements Listener {
         // X9 A5 A6 X10
         // X11 X12 X13 X14
 
-        ArrayList<Block> glowstoneBlocks = new ArrayList<Block>();
-        ArrayList<Block> airBlocks = new ArrayList<Block>();
+        ArrayList<Block> glowstoneBlocks = new ArrayList<>();
+        ArrayList<Block> airBlocks = new ArrayList<>();
 
         // X1
         glowstoneBlocks.add(start.getRelative(0, 2, -1));
@@ -600,8 +597,8 @@ public class AetherPortalListener implements Listener {
         // X9 A5 A6 X10
         // X11 X12 X13 X14
 
-        ArrayList<Block> glowstoneBlocks = new ArrayList<Block>();
-        ArrayList<Block> airBlocks = new ArrayList<Block>();
+        ArrayList<Block> glowstoneBlocks = new ArrayList<>();
+        ArrayList<Block> airBlocks = new ArrayList<>();
 
         // X1
         glowstoneBlocks.add(start.getRelative(-2, 2, 0));
@@ -667,8 +664,8 @@ public class AetherPortalListener implements Listener {
         // X9 A5 A6 X10
         // X11 X12 X13 X14
 
-        ArrayList<Block> glowstoneBlocks = new ArrayList<Block>();
-        ArrayList<Block> airBlocks = new ArrayList<Block>();
+        ArrayList<Block> glowstoneBlocks = new ArrayList<>();
+        ArrayList<Block> airBlocks = new ArrayList<>();
 
         // X1
         glowstoneBlocks.add(start.getRelative(0, 2, -2));
@@ -734,8 +731,8 @@ public class AetherPortalListener implements Listener {
         // X9 A5 A6 X10
         // X11 X12 X13 X14
 
-        ArrayList<Block> glowstoneBlocks = new ArrayList<Block>();
-        ArrayList<Block> airBlocks = new ArrayList<Block>();
+        ArrayList<Block> glowstoneBlocks = new ArrayList<>();
+        ArrayList<Block> airBlocks = new ArrayList<>();
 
         // X1
         glowstoneBlocks.add(start.getRelative(-1, 3, 0));
@@ -801,8 +798,8 @@ public class AetherPortalListener implements Listener {
         // X9 A5 A6 X10
         // X11 X12 X13 X14
 
-        ArrayList<Block> glowstoneBlocks = new ArrayList<Block>();
-        ArrayList<Block> airBlocks = new ArrayList<Block>();
+        ArrayList<Block> glowstoneBlocks = new ArrayList<>();
+        ArrayList<Block> airBlocks = new ArrayList<>();
 
         // X1
         glowstoneBlocks.add(start.getRelative(0, 3, -1));
@@ -868,8 +865,8 @@ public class AetherPortalListener implements Listener {
         // X9 A5 A6 X10
         // X11 X12 X13 X14
 
-        ArrayList<Block> glowstoneBlocks = new ArrayList<Block>();
-        ArrayList<Block> airBlocks = new ArrayList<Block>();
+        ArrayList<Block> glowstoneBlocks = new ArrayList<>();
+        ArrayList<Block> airBlocks = new ArrayList<>();
 
         // X1
         glowstoneBlocks.add(start.getRelative(-2, 3, 0));
@@ -935,8 +932,8 @@ public class AetherPortalListener implements Listener {
         // X9 A5 A6 X10
         // X11 X12 X13 X14
 
-        ArrayList<Block> glowstoneBlocks = new ArrayList<Block>();
-        ArrayList<Block> airBlocks = new ArrayList<Block>();
+        ArrayList<Block> glowstoneBlocks = new ArrayList<>();
+        ArrayList<Block> airBlocks = new ArrayList<>();
 
         // X1
         glowstoneBlocks.add(start.getRelative(0, 3, -2));

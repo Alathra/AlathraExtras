@@ -34,7 +34,7 @@ public class HeadScourgeListener implements Listener {
     public void onDrop(PlayerDropItemEvent e) {
         Item item = e.getItemDrop();
 
-        if (!containsProtectedHead(item))
+        if (missingProtectedHead(item))
             return;
 
         Player p = e.getPlayer();
@@ -52,7 +52,7 @@ public class HeadScourgeListener implements Listener {
         item.getScheduler().runAtFixedRate(AlathraExtras.getInstance(),
             (task) -> {
                 final Location itemLocation = item.getLocation().clone();
-                final Location lightningLocation = getRandomLocation(itemLocation, 5.0, 12.0);
+                final Location lightningLocation = getRandomLocation(itemLocation);
                 lightningLocation.setY(lightningLocation.getWorld().getHighestBlockYAt(lightningLocation));
                 item.getWorld().strikeLightning(lightningLocation);
             },
@@ -67,7 +67,7 @@ public class HeadScourgeListener implements Listener {
     public void onPickup(EntityPickupItemEvent e) {
         Item item = e.getItem();
 
-        if (!containsProtectedHead(item))
+        if (missingProtectedHead(item))
             return;
 
         if (!(e.getEntity() instanceof Player p))
@@ -117,23 +117,23 @@ public class HeadScourgeListener implements Listener {
         }
     }
 
-    private static boolean containsProtectedHead(Item item) {
+    private static boolean missingProtectedHead(Item item) {
         if (!item.getItemStack().getType().equals(Material.PLAYER_HEAD))
-            return false;
+            return true;
 
         final Component itemName = item.getItemStack().displayName();
         for (final Component component : protectedHeads) {
             itemName.contains(component);
-            return true;
+            return false;
 
         }
-        return false;
+        return true;
     }
 
-    private static Location getRandomLocation(Location origin, double minRange, double maxRange) {
+    private static Location getRandomLocation(Location origin) {
         Random r = new Random();
 
-        double randomRadius = r.nextDouble(minRange, maxRange);
+        double randomRadius = r.nextDouble(5.0, 12.0);
         double theta = Math.toRadians(r.nextDouble() * 360);
         double phi = Math.toRadians(r.nextDouble() * 180 - 90);
 

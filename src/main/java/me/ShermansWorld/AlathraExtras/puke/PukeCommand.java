@@ -1,15 +1,13 @@
 package me.ShermansWorld.AlathraExtras.puke;
 
+import com.github.milkdrinkers.colorparser.ColorParser;
 import com.palmergames.bukkit.towny.utils.NameUtil;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import me.ShermansWorld.AlathraExtras.Helper;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
+import org.bukkit.command.*;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -26,8 +24,12 @@ public class PukeCommand implements CommandExecutor, TabCompleter {
     static int[] bukkitId = new int[1];
 
     public PukeCommand(final AlathraExtras plugin) {
-        plugin.getCommand("puke").setExecutor(this);
-        plugin.getCommand("puke").setTabCompleter(this);
+        PluginCommand pukeCommand = plugin.getCommand("puke");
+
+        if (pukeCommand == null) return;
+
+        pukeCommand.setExecutor(this);
+        pukeCommand.setTabCompleter(this);
 
         //tick loop
         bukkitId[0] = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(AlathraExtras.getInstance(),
@@ -65,9 +67,9 @@ public class PukeCommand implements CommandExecutor, TabCompleter {
         //item
         ItemStack puking = new ItemStack(Material.NETHERITE_BLOCK);
         if (puke.getItem() != null) {
-            puking.setType(puke.getItem());
+            puking = puking.withType(puke.getItem());
         } else {
-            puking.setType(ramdomMat());
+            puking = puking.withType(ramdomMat());
         }
 
 
@@ -85,7 +87,7 @@ public class PukeCommand implements CommandExecutor, TabCompleter {
         //spawn item
         Item item = puke.getTarget().getWorld().dropItem(loc, puking);
         item.setPickupDelay(32767);
-        item.setCustomName(String.valueOf(new Random().nextInt(999999999)));
+        item.customName(ColorParser.of(String.valueOf(new Random().nextInt(999999999))).build());
         item.setCustomNameVisible(false);
         item.setTicksLived(5800);
         item.setVelocity(direction);
@@ -113,7 +115,7 @@ public class PukeCommand implements CommandExecutor, TabCompleter {
         boolean doAll = false;
         if (args.length >= 1) {
             if (args[0].equalsIgnoreCase("help")) {
-                sender.sendMessage(Helper.Chatlabel() + Helper.color("&r/puke (amount) (rate) (material) (player) (speed) (xzSpread) (ySpread)"));
+                sender.sendMessage(ColorParser.of(Helper.Chatlabel() + "&r/puke (amount) (rate) (material) (player) (speed) (xzSpread) (ySpread)").parseLegacy().build());
                 return true;
             }
         }
@@ -159,7 +161,7 @@ public class PukeCommand implements CommandExecutor, TabCompleter {
                                         }
                                     }
                                 } else {
-                                    sender.sendMessage(Helper.Chatlabel() + Helper.color("&cNot a valid player!"));
+                                    sender.sendMessage(ColorParser.of(Helper.Chatlabel() + "&cNot a valid player!").parseLegacy().build());
                                     return true;
                                 }
                             }
@@ -171,7 +173,7 @@ public class PukeCommand implements CommandExecutor, TabCompleter {
                     }
                 }
             } catch (NumberFormatException ex) {
-                sender.sendMessage(Helper.Chatlabel() + Helper.color("&cNot a valid number!"));
+                sender.sendMessage(ColorParser.of(Helper.Chatlabel() + "&cNot a valid number!").parseLegacy().build());
                 return true;
             }
         }
@@ -186,7 +188,7 @@ public class PukeCommand implements CommandExecutor, TabCompleter {
                 if (sender instanceof Player player) {
                     target = player;
                 } else {
-                    sender.sendMessage(Helper.Chatlabel() + Helper.color("&cMust define a player from console."));
+                    sender.sendMessage(ColorParser.of(Helper.Chatlabel() + "&cMust define a player from console.").parseLegacy().build());
                     return true;
                 }
             }

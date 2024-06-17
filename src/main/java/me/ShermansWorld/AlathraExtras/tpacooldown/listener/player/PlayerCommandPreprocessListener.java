@@ -1,5 +1,6 @@
 package me.ShermansWorld.AlathraExtras.tpacooldown.listener.player;
 
+import com.github.milkdrinkers.colorparser.ColorParser;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import me.ShermansWorld.AlathraExtras.Helper;
 import me.ShermansWorld.AlathraExtras.tpacooldown.CooldownCache;
@@ -34,7 +35,7 @@ public class PlayerCommandPreprocessListener implements Listener {
         // Tpa cost
         final double bal = AlathraExtras.economy.getBalance(Bukkit.getOfflinePlayer(e.getPlayer().getUniqueId()));
         if (bal < 50) {
-            e.getPlayer().sendMessage(Helper.Chatlabel() + Helper.color("&cTeleportation request canceled. You need at least &a$50 &cto run this command!"));
+            e.getPlayer().sendMessage(ColorParser.of(Helper.Chatlabel() + "&cTeleportation request canceled. You need at least &a$50 &cto run this command!").parseLegacy().build());
             e.setCancelled(true);
             return;
         }
@@ -42,7 +43,6 @@ public class PlayerCommandPreprocessListener implements Listener {
         if (CooldownCache.isCooldownActive(e.getPlayer().getUniqueId())) {
             e.setCancelled(true);
             e.getPlayer().sendMessage(CooldownCache.getCooldownMessage(CooldownCache.get(e.getPlayer().getUniqueId())));
-            return;
         }
     }
 }

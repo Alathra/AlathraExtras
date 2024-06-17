@@ -1,33 +1,38 @@
 package me.ShermansWorld.AlathraExtras.funny;
 
+import com.github.milkdrinkers.colorparser.ColorParser;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
-import me.ShermansWorld.AlathraExtras.Helper;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
 public class FreeOpCommand implements CommandExecutor {
 
-    public static ArrayList<Player> freeOpList = new ArrayList<Player>();
+    public static ArrayList<Player> freeOpList = new ArrayList<>();
 
     public FreeOpCommand(final AlathraExtras plugin) {
-        plugin.getCommand("freeop").setExecutor((CommandExecutor) this);
+        PluginCommand freeopCommand = plugin.getCommand("freeop");
+
+        if (freeopCommand == null) return;
+
+        freeopCommand.setExecutor(this);
     }
 
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
+        if (!(sender instanceof Player p)) {
             return false;
         }
 
         int randNum = AlathraExtras.rand.nextInt(13) + 1; // random number between 1 and 10
-        final Player p = (Player) sender;
 
         if (freeOpList.contains(p)) {
-            p.sendMessage(Helper.color("&cThis command has a 30 second cooldown"));
+            p.sendMessage(ColorParser.of("&cThis command has a 30 second cooldown").parseLegacy().build());
             return false;
         }
 
@@ -73,14 +78,21 @@ public class FreeOpCommand implements CommandExecutor {
                 break;
         }
         freeOpList.add(p);
-        Bukkit.getScheduler().scheduleSyncDelayedTask(AlathraExtras.getInstance(), new Runnable() {
-            public void run() {
-                if (freeOpList.contains(p)) {
-                    freeOpList.remove(p);
-                }
-            }
-        }, 600L); //30 seconds
+        Bukkit.getScheduler().scheduleSyncDelayedTask(AlathraExtras.getInstance(), new removepFromfreeOpListRunnable(p), 600L); //30 seconds
         return true;
     }
 
+    @SuppressWarnings("ClassCanBeRecord")
+    private static class removepFromfreeOpListRunnable implements Runnable {
+        private final Player p;
+
+        private removepFromfreeOpListRunnable(Player p) {
+            this.p = p;
+        }
+
+        @Override
+        public void run() {
+            freeOpList.remove(p);
+        }
+    }
 }

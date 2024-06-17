@@ -1,5 +1,6 @@
 package me.ShermansWorld.AlathraExtras.tpacooldown.listener.essentialsx;
 
+import com.github.milkdrinkers.colorparser.ColorParser;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import me.ShermansWorld.AlathraExtras.Helper;
 import me.ShermansWorld.AlathraExtras.tpacooldown.CooldownCache;
@@ -32,7 +33,7 @@ public class PreTeleportListener implements Listener {
         // Check TPA Cost
         final double bal = AlathraExtras.economy.getBalance(Bukkit.getOfflinePlayer(p.getUniqueId()));
         if (bal < 50) {
-            p.sendMessage(Helper.Chatlabel() + Helper.color("&cTeleportation canceled. You need at least &a$50 &cto teleport!"));
+            p.sendMessage(ColorParser.of(Helper.Chatlabel() + "&cTeleportation canceled. You need at least &a$50 &cto teleport!").parseLegacy().build());
             e.setCancelled(true);
             return;
         }

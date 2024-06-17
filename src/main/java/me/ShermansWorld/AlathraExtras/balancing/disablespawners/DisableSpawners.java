@@ -1,4 +1,4 @@
-package me.ShermansWorld.AlathraExtras.disablespawners;
+package me.ShermansWorld.AlathraExtras.balancing.disablespawners;
 
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import org.bukkit.Material;
@@ -29,6 +29,8 @@ public class DisableSpawners implements Listener {
         if (!activeWorlds.contains(e.getLocation().getWorld())) return;
 
         CreatureSpawner spawner = e.getSpawner();
+
+        if (spawner == null) return;
 
         if (!badSpawners.contains(spawner.getSpawnedType())) return;
 

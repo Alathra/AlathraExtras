@@ -1,5 +1,6 @@
 package me.ShermansWorld.AlathraExtras.balancing;
 
+import com.github.milkdrinkers.colorparser.ColorParser;
 import me.ShermansWorld.AlathraExtras.Helper;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -27,12 +28,11 @@ public class SiegeWorldBuildListener implements Listener {
                 return;
             }
             if (!allowedBlocks.contains(e.getBlockPlaced().getType())) {
-                e.getPlayer().sendMessage(Helper.Chatlabel() + Helper.color("&cYou can only build cannons during the siege event!"));
+                e.getPlayer().sendMessage(ColorParser.of(Helper.Chatlabel() +
+                    "&cYou can only build cannons during the siege event!").parseLegacy().build());
                 e.setCancelled(true);
-                return;
             }
         }
-        return;
     }
 
     @EventHandler
@@ -42,10 +42,10 @@ public class SiegeWorldBuildListener implements Listener {
                 return;
             }
             if (!allowedBlocks.contains(e.getBlock().getType())) {
-                e.getPlayer().sendMessage(Helper.Chatlabel() + Helper.color("&cYou can only build cannons during the siege event!"));
+                e.getPlayer().sendMessage(ColorParser.of(Helper.Chatlabel() +
+                    "&cYou can only build cannons during the siege event!").parseLegacy().build());
                 e.setCancelled(true);
             }
         }
-        return;
     }
 }

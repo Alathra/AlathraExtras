@@ -1,4 +1,4 @@
-package me.ShermansWorld.AlathraExtras.disabledispensereggs;
+package me.ShermansWorld.AlathraExtras.balancing.disabledispensereggs;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -10,7 +10,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.projectiles.BlockProjectileSource;
 
 public class DispenserListener implements Listener {
-
     @EventHandler
     public void onProjectileLaunch(ProjectileLaunchEvent e) {
         if (e.getEntity().getShooter() instanceof BlockProjectileSource) {

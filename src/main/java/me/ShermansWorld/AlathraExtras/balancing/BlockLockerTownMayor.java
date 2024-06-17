@@ -1,5 +1,6 @@
 package me.ShermansWorld.AlathraExtras.balancing;
 
+import com.github.milkdrinkers.colorparser.ColorParser;
 import com.palmergames.bukkit.towny.TownyAPI;
 import com.palmergames.bukkit.towny.object.Town;
 import me.ShermansWorld.AlathraExtras.Helper;
@@ -15,7 +16,7 @@ import java.util.Set;
 
 public class BlockLockerTownMayor implements Listener {
 
-    public static Set<Material> signs = new HashSet<Material>();
+    public static Set<Material> signs = new HashSet<>();
 
     static {
         signs.add(Material.ACACIA_SIGN);
@@ -54,18 +55,21 @@ public class BlockLockerTownMayor implements Listener {
                 Town town = townyAPI.getTownOrNull(townyAPI.getTownBlock(e.getBlock().getLocation()));
                 if (town != null) {
                     if (town.getMayor().equals(townyAPI.getResident(e.getPlayer()))) {
-                        BlockLockerAPIv2.getPlugin().getProtectionUpdater().update(
-                            BlockLockerAPIv2.getPlugin().getProtectionFinder().findProtection(e.getBlock()).get(),
-                            false);
-                        e.getPlayer().getWorld().dropItem(e.getBlock().getLocation(),
-                            new ItemStack(e.getBlock().getType(), 1));
-                        e.getBlock().setType(Material.AIR);
-                        e.getPlayer().sendMessage(
-                            Helper.Chatlabel() + Helper.color("&eThe protection sign has been cleared"));
+                        if (BlockLockerAPIv2.getPlugin().getProtectionFinder()
+                            .findProtection(e.getBlock()).isPresent()) {
+                            BlockLockerAPIv2.getPlugin().getProtectionUpdater().update(
+                                BlockLockerAPIv2.getPlugin().getProtectionFinder().findProtection(e.getBlock()).get(),
+                                false);
+                            e.getPlayer().getWorld().dropItem(e.getBlock().getLocation(),
+                                new ItemStack(e.getBlock().getType(), 1));
+                            e.getBlock().setType(Material.AIR);
+                            e.getPlayer().sendMessage(
+                                ColorParser.of(Helper.Chatlabel() + "&eThe protection sign has been cleared")
+                                    .parseLegacy().build());
+                        }
                     }
                 }
             }
         }
     }
-
 }

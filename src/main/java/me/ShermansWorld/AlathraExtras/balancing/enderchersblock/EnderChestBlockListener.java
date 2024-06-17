@@ -13,15 +13,16 @@ public class EnderChestBlockListener implements Listener {
         if (!e.getAction().equals(Action.RIGHT_CLICK_BLOCK))
             return;
 
-        if (!e.getClickedBlock().getType().equals(Material.ENDER_CHEST))
+        if (e.getClickedBlock() == null)
+            return;
+
+        if (e.getClickedBlock().getType() != Material.ENDER_CHEST)
             return;
 
         if (e.getPlayer().hasPermission("AlathraExtras.enderchest.bypass"))
             return;
 
-        e.getPlayer().sendMessage(
-            new ColorParser("<red>Ender chests are disabled on our server.").build()
-        );
+        e.getPlayer().sendMessage(ColorParser.of("<red>Ender chests are disabled on our server.").build());
 
         e.setCancelled(true);
     }

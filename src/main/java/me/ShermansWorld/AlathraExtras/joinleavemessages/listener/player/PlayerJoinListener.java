@@ -2,8 +2,8 @@ package me.ShermansWorld.AlathraExtras.joinleavemessages.listener.player;
 
 import com.earth2me.essentials.Essentials;
 import com.github.milkdrinkers.Crate.Config;
+import com.github.milkdrinkers.colorparser.ColorParser;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
-import me.ShermansWorld.AlathraExtras.Helper;
 import me.ShermansWorld.AlathraExtras.joinleavemessages.JoinLeaveMessages;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
@@ -61,7 +61,7 @@ public class PlayerJoinListener implements Listener {
      * @return message
      */
     private String getRandomFirstJoinMessage(Player p) {
-        return Helper.color(getMessagePrefix() + PlaceholderAPI.setPlaceholders(p, messagesFirstJoin.get(random.nextInt(messagesFirstJoin.size()))));
+        return getMessagePrefix() + PlaceholderAPI.setPlaceholders(p, messagesFirstJoin.get(random.nextInt(messagesFirstJoin.size())));
     }
 
     /**
@@ -72,7 +72,7 @@ public class PlayerJoinListener implements Listener {
      * @return message
      */
     private String getRandomMessageFromList(Player p, List<String> messages) {
-        return Helper.color(getMessagePrefix() + PlaceholderAPI.setPlaceholders(p, messages.get(random.nextInt(messages.size()))));
+        return getMessagePrefix() + PlaceholderAPI.setPlaceholders(p, messages.get(random.nextInt(messages.size())));
     }
 
     /**
@@ -96,6 +96,8 @@ public class PlayerJoinListener implements Listener {
 
         String msg = null;
 
+        if (essentials == null) return;
+
         if (!essentialsLoaded || !essentials.getUser(p).isHidden()) { // Check vanish
             if (!p.hasPlayedBefore()) { // First join message
                 msg = getRandomFirstJoinMessage(p);
@@ -107,6 +109,6 @@ public class PlayerJoinListener implements Listener {
             }
         }
 
-        e.setJoinMessage(msg);
+        e.joinMessage(ColorParser.of(msg).parseLegacy().build());
     }
 }

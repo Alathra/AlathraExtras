@@ -4,9 +4,6 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class CooldownManager {
-    private static final CooldownDB cooldownDB = new CooldownDB();
-    private static final CooldownCache cooldownCache = new CooldownCache();
-    private static final CooldownTPACache cooldownTPACache = new CooldownTPACache();
     private static CooldownManager instance;
 
     /**
@@ -14,6 +11,7 @@ public class CooldownManager {
      *
      * @return
      */
+    @SuppressWarnings({"JavadocDeclaration", "InstantiationOfUtilityClass"})
     public static CooldownManager getInstance() {
         if (instance == null) {
             instance = new CooldownManager();

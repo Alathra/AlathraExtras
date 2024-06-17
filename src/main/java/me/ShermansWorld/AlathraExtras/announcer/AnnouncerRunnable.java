@@ -27,7 +27,7 @@ public class AnnouncerRunnable extends BukkitRunnable {
         final int size = messages.size();
         final int value = new Random().nextInt(size);
 
-        if (value != lastMessageIndex || size <= 1) {
+        if (value != lastMessageIndex || size == 1) {
             lastMessageIndex = value;
             return messages.get(value);
         } else {
@@ -45,11 +45,7 @@ public class AnnouncerRunnable extends BukkitRunnable {
     private void announce(String message) {
         for (Player p : AlathraExtras.getInstance().getServer().getOnlinePlayers()) {
             if ((!essentialsEnabled || !essentials.getUser(p).isAfk()))
-                p.sendMessage(
-                    new ColorParser(message)
-                        .parsePAPIPlaceholders(p)
-                        .build()
-                );
+                p.sendMessage(ColorParser.of(message).parsePAPIPlaceholders(p).build());
         }
     }
 }

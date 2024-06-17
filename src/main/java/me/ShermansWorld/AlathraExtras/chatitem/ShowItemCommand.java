@@ -14,9 +14,11 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -30,11 +32,15 @@ public class ShowItemCommand implements CommandExecutor {
 
 
     public ShowItemCommand(final JavaPlugin plugin) {
-        plugin.getCommand("showitem").setExecutor(this);
+        PluginCommand showItemCommand = plugin.getCommand("showitem");
+
+        if (showItemCommand == null) return;
+
+        showItemCommand.setExecutor(this);
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         if (sender instanceof Player player) {
             var channel = Chat.getTownyChat().getPlayerChannel(player);
             Resident resident = TownyUniverse.getInstance().getResident(player.getUniqueId());

@@ -15,12 +15,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FoodConsumeListener implements Listener {
-    private List<PotionEffect> unchargedSilverMelonPotionEffects = List.of(
+    private final List<PotionEffect> unchargedSilverMelonPotionEffects = List.of(
         new PotionEffect(PotionEffectType.NIGHT_VISION, minutesToTicks(15), 0),
         new PotionEffect(PotionEffectType.FAST_DIGGING, minutesToTicks(15), 2),
         new PotionEffect(PotionEffectType.WEAKNESS, minutesToTicks(15), 2)
     );
-    private List<PotionEffect> chargedSilverMelonPotionEffects = List.of(
+    private final List<PotionEffect> chargedSilverMelonPotionEffects = List.of(
         new PotionEffect(PotionEffectType.NIGHT_VISION, minutesToTicks(25), 0),
         new PotionEffect(PotionEffectType.FAST_DIGGING, minutesToTicks(25), 3),
         new PotionEffect(PotionEffectType.WEAKNESS, minutesToTicks(25), 2)

@@ -10,6 +10,7 @@ import org.bukkit.event.hanging.HangingBreakEvent.RemoveCause;
 import me.ShermansWorld.AlathraExtras.items.Items;
 
 import org.bukkit.event.hanging.HangingPlaceEvent;
+import org.bukkit.inventory.ItemStack;
 
 public class ItemFrameListener implements Listener {
     @EventHandler
@@ -31,7 +32,11 @@ public class ItemFrameListener implements Listener {
     public void itemFramePlaceEvent(HangingPlaceEvent e) {
         if (e.getEntity().getType().equals(EntityType.ITEM_FRAME)) {
             ItemFrame itemFrame = (ItemFrame) e.getEntity();
-            if (e.getItemStack().isSimilar(Items.getInvisibleItemFrame())) {
+            ItemStack item = e.getItemStack();
+
+            if (item == null) return;
+
+            if (item.isSimilar(Items.getInvisibleItemFrame())) {
                 itemFrame.setVisible(false);
             }
         }

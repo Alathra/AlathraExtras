@@ -1,12 +1,16 @@
 package me.ShermansWorld.AlathraExtras.balancing;
 
+import com.github.milkdrinkers.colorparser.ColorParser;
 import me.ShermansWorld.AlathraExtras.Helper;
+import net.kyori.adventure.text.Component;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.GrindstoneInventory;
 import org.bukkit.inventory.ItemStack;
+
+import java.util.List;
 
 public class GrindstoneListener implements Listener {
     @EventHandler
@@ -18,9 +22,16 @@ public class GrindstoneListener implements Listener {
             for (ItemStack item : grindstoneInv.getContents()) {
                 if (item != null && item.hasItemMeta()) {
                     if (item.getItemMeta().hasLore()) {
-                        for (String loreLine : item.getItemMeta().getLore()) {
-                            if (loreLine.contains(Helper.color("&a&lAlathran Item"))) {
-                                grindstoneInv.getViewers().get(0).sendMessage(Helper.Chatlabel() + Helper.color("&cYou cannot repair Alathran items in the grindstone!"));
+                        List<Component> loreList = item.getItemMeta().lore();
+
+                        if (loreList == null) return;
+
+                        for (Component loreLine : loreList) {
+                            if (loreLine.toString().contains("Alathran Item")) {
+                                grindstoneInv.getViewers().get(0).sendMessage(ColorParser.of(
+                                    Helper.Chatlabel() +
+                                        "&cYou cannot repair Alathran items in the grindstone!")
+                                    .parseLegacy().build());
                                 e.setCancelled(true);
                             }
                         }

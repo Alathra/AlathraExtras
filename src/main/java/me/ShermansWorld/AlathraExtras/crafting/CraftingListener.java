@@ -2,6 +2,7 @@ package me.ShermansWorld.AlathraExtras.crafting;
 
 import java.util.Arrays;
 
+import com.github.milkdrinkers.colorparser.ColorParser;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,10 +20,12 @@ public class CraftingListener implements Listener {
 	public void craftEvent(CraftItemEvent e) {
 		if (Arrays.asList(e.getInventory().getStorageContents()).contains(Items.tutorialBook())) {
 			e.getWhoClicked()
-					.sendMessage(Helper.Chatlabel() + Helper.color("&cYou cannot craft with the Player's Guide!"));
+					.sendMessage(ColorParser.of(Helper.Chatlabel() +
+                        "&cYou cannot craft with the Player's Guide!").parseLegacy().build());
 			e.setCancelled(true);
 		} else if (Arrays.asList(e.getInventory().getStorageContents()).contains(Items.getBeetrootPouch())
 				|| Arrays.asList(e.getInventory().getStorageContents()).contains(Items.getCarrotPouch())) {
+            if (e.getCurrentItem() == null) return;
 			if (!e.getCurrentItem().equals(Items.getBeetrootPouch())
 					|| e.getCurrentItem().equals(Items.getCarrotPouch())) {
 				if (!e.getRecipe().getResult().equals(new ItemStack(Material.BEETROOT, 9))
@@ -32,7 +35,8 @@ public class CraftingListener implements Listener {
 						&& !e.getRecipe().getResult().equals(Items.getCarrotPouch())
 						&& !e.getRecipe().getResult().equals(Items.getPotatoPouch())) {
 					e.getWhoClicked()
-							.sendMessage(Helper.Chatlabel() + Helper.color("&cYou cannot craft with this item!"));
+							.sendMessage(ColorParser.of(Helper.Chatlabel() +
+                                "&cYou cannot craft with this item!").parseLegacy().build());
 					e.setCancelled(true);
 				}
 			}

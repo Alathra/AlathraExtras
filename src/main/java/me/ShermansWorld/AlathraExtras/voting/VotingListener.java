@@ -13,10 +13,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.ArrayList;
 
 public class VotingListener implements Listener {
-
     public static VotingPluginMain votingPlugin = null;
     public static UserManager votingUserManager = null;
-    public static ArrayList<Player> playersWhoVoted = new ArrayList<Player>();
+    public static ArrayList<Player> playersWhoVoted = new ArrayList<>();
 
     public static void initVotingPlugin() {
         if (votingPlugin == null) {
@@ -27,14 +26,10 @@ public class VotingListener implements Listener {
 
     @EventHandler
     public static void onVote(PlayerVoteEvent e) {
-
         initVotingPlugin();
 
-        Bukkit.getScheduler().scheduleSyncDelayedTask(AlathraExtras.getInstance(), new Runnable() {
-            public void run() {
-                CustomVotingListener.checkForAllSitesVoted();
-            }
-        }, 20L); //20 Tick (1 Second) delay before run() is called
+        Bukkit.getScheduler().scheduleSyncDelayedTask(AlathraExtras.getInstance(), new playerVoteRunnable(),
+            20L); //20 Tick (1 Second) delay before run() is called
 
         try {
             Player p = Bukkit.getPlayer(e.getPlayer());
@@ -45,10 +40,13 @@ public class VotingListener implements Listener {
                     playersWhoVoted.add(p);
                 }
             }
-        } catch (NullPointerException err) {
-
-        }
-
+        } catch (Exception ignored) {}
     }
 
+    private static class playerVoteRunnable implements Runnable {
+        @Override
+        public void run() {
+            CustomVotingListener.checkForAllSitesVoted();
+        }
+    }
 }

@@ -2,8 +2,8 @@ package me.ShermansWorld.AlathraExtras.joinleavemessages.listener.player;
 
 import com.earth2me.essentials.Essentials;
 import com.github.milkdrinkers.Crate.Config;
+import com.github.milkdrinkers.colorparser.ColorParser;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
-import me.ShermansWorld.AlathraExtras.Helper;
 import me.ShermansWorld.AlathraExtras.joinleavemessages.JoinLeaveMessages;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
@@ -61,7 +61,7 @@ public class PlayerQuitListener implements Listener {
      * @return message
      */
     private String getRandomMessageFromList(Player p, List<String> messages) {
-        return Helper.color(getMessagePrefix() + PlaceholderAPI.setPlaceholders(p, messages.get(random.nextInt(messages.size()))));
+        return getMessagePrefix() + PlaceholderAPI.setPlaceholders(p, messages.get(random.nextInt(messages.size())));
     }
 
     /**
@@ -85,6 +85,8 @@ public class PlayerQuitListener implements Listener {
 
         String msg = null;
 
+        if (essentials == null) return;
+
         if (!essentialsLoaded || !essentials.getUser(p).isHidden()) { // Check vanish
             final List<String> messages = getMessageFromPlayerGroup(p);
             if (messages != null) {
@@ -92,6 +94,6 @@ public class PlayerQuitListener implements Listener {
             }
         }
 
-        e.setQuitMessage(msg);
+        e.quitMessage(ColorParser.of(msg).parseLegacy().build());
     }
 }

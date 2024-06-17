@@ -2,12 +2,9 @@ package me.ShermansWorld.AlathraExtras.items;
 
 import com.github.alathra.siegeengines.api.SiegeEnginesAPI;
 import com.github.alathra.siegeengines.libs.colorparser.ColorParser;
-import me.ShermansWorld.AlathraExtras.Helper;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
-import net.md_5.bungee.api.chat.hover.content.Item;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
@@ -25,18 +22,19 @@ public class Items {
     private static final Component ALATHRAN_ITEM_TAG = ColorParser.of("<green><bold>Alathran Item</bold></green>").build().decoration(TextDecoration.ITALIC, false);
     private static ItemStack setAlathranItem(ItemStack item) {
         ItemMeta meta = item.getItemMeta();
-        List<String> lore = new ArrayList<String>();
-        lore.add(Helper.color("&a&lAlathran Item"));
-        meta.setLore(lore);
+        List<Component> lore = new ArrayList<>();
+        lore.add(ColorParser.of("&a&lAlathran Item").parseLegacy().build());
+        meta.lore(lore);
         item.setItemMeta(meta);
         return item;
     }
 
+    @SuppressWarnings("DataFlowIssue")
     public static ItemStack getTinyXPPouch() {
         ItemStack tinyXPPouch = new ItemStack(Material.PAPER, 1);
         tinyXPPouch = setAlathranItem(tinyXPPouch);
         ItemMeta meta = tinyXPPouch.getItemMeta();
-        meta.setDisplayName(Helper.color("&5Tiny XP Pouch"));
+        meta.displayName(ColorParser.of("&5Tiny XP Pouch").parseLegacy().build());
         meta.setCustomModelData(14702);
         tinyXPPouch.setItemMeta(meta);
         return tinyXPPouch;
@@ -49,11 +47,11 @@ public class Items {
 	public static ItemStack tutorialBook() {
         ItemStack tutorialBook = new ItemStack(Material.BOOK, 1);
         ItemMeta meta = tutorialBook.getItemMeta();
-        ArrayList<String> lore = new ArrayList<String>();
-        lore.add(Helper.color("&eRight click the book in your hand or type /help"));
-        meta.setLore(lore);
+        ArrayList<Component> lore = new ArrayList<>();
+        lore.add(ColorParser.of("&eRight click the book in your hand or type /help").parseLegacy().build());
+        meta.lore(lore);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        meta.setDisplayName(Helper.color("&6&lPlayer's Guide to &a&lAlathra&2&lMC"));
+        meta.displayName(ColorParser.of("&6&lPlayer's Guide to &a&lAlathra&2&lMC").parseLegacy().build());
         meta.setCustomModelData(14899);
         tutorialBook.setItemMeta(meta);
         return tutorialBook;
@@ -63,7 +61,7 @@ public class Items {
         ItemStack carrotPouch = new ItemStack(Material.PAPER, 1);
         ItemMeta meta = carrotPouch.getItemMeta();
         meta.setCustomModelData(14701);
-        meta.setDisplayName(Helper.color("&6Carrot Pouch"));
+        meta.displayName(ColorParser.of("&6Carrot Pouch").parseLegacy().build());
         carrotPouch.setItemMeta(meta);
         return carrotPouch;
     }
@@ -72,7 +70,7 @@ public class Items {
         ItemStack beeetrootPouch = new ItemStack(Material.PAPER, 1);
         ItemMeta meta = beeetrootPouch.getItemMeta();
         meta.setCustomModelData(14700);
-        meta.setDisplayName(Helper.color("&4Beetroot Pouch"));
+        meta.displayName(ColorParser.of("&4Beetroot Pouch").parseLegacy().build());
         beeetrootPouch.setItemMeta(meta);
         return beeetrootPouch;
     }
@@ -81,7 +79,7 @@ public class Items {
         ItemStack potatoPouch = new ItemStack(Material.PAPER, 1);
         ItemMeta meta = potatoPouch.getItemMeta();
         meta.setCustomModelData(14713);
-        meta.setDisplayName(Helper.color("&ePotato Pouch"));
+        meta.displayName(ColorParser.of("&ePotato Pouch").parseLegacy().build());
         potatoPouch.setItemMeta(meta);
         return potatoPouch;
     }
@@ -89,7 +87,7 @@ public class Items {
     public static ItemStack getInvisibleItemFrame() {
         ItemStack item = new ItemStack(Material.ITEM_FRAME, 1);
         ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(Helper.color("&cInvisible Item Frame"));
+        meta.displayName(ColorParser.of("&cInvisible Item Frame").parseLegacy().build());
         item.setItemMeta(meta);
         return item;
     }

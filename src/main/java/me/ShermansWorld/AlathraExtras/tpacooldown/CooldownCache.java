@@ -1,6 +1,7 @@
 package me.ShermansWorld.AlathraExtras.tpacooldown;
 
-import me.ShermansWorld.AlathraExtras.Helper;
+import com.github.milkdrinkers.colorparser.ColorParser;
+import net.kyori.adventure.text.Component;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -19,18 +20,18 @@ public final class CooldownCache {
      * @return message
      * @apiNote Check isCooldownApplicable before using this
      */
-    public static String getCooldownMessage(long cooldownExpirationTime) {
+    public static Component getCooldownMessage(long cooldownExpirationTime) {
         Instant expirationTime = Instant.ofEpochMilli(cooldownExpirationTime);
         final Duration duration = Duration.between(Instant.now(), expirationTime);
 
         // This only happens if
         if (duration.isNegative()) {
-            return "";
+            return Component.empty();
         }
 
         final String durationString = ("%s hours, %s minutes and %s seconds").formatted(duration.toHoursPart(), duration.toMinutesPart(), duration.toSecondsPart());
 
-        return Helper.color(("&cYou can teleport again in %s.").formatted(durationString));
+        return ColorParser.of(("&cYou can teleport again in %s.").formatted(durationString)).parseLegacy().build();
     }
 
     /**

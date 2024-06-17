@@ -1,6 +1,5 @@
 package me.ShermansWorld.AlathraExtras.items;
 
-import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryOpenEvent;
@@ -11,13 +10,13 @@ public class ItemConverter implements Listener {
 	/**
 	 * Used for converting older item stacks to new ones since NBT data changed and
 	 * broke some items when the server was updated from 1.20.1 to 1.20.4.
-	 * 
+     * .
 	 * This listener makes it so when a player opens a container with the old items
 	 * it will replace the item with the new version, if detected.
 	 */
 	
 	// Alathran ores
-	String oldPlatinum = "ItemStack{COPPER_INGOT x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name={\"bold\":true,\"italic\":false,\"color\":\"dark_aqua\",\"text\":\"Platinum\"}, lore=[{\"bold\":true,\"italic\":false,\"color\":\"green\",\"text\":\"Alathran Item\"}], custom-model-data=3}}";
+    String oldPlatinum = "ItemStack{COPPER_INGOT x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name={\"bold\":true,\"italic\":false,\"color\":\"dark_aqua\",\"text\":\"Platinum\"}, lore=[{\"bold\":true,\"italic\":false,\"color\":\"green\",\"text\":\"Alathran Item\"}], custom-model-data=3}}";
 	String oldPlatinum2 = "ItemStack{COPPER_INGOT x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name={\"bold\":true,\"italic\":false,\"color\":\"dark_aqua\",\"text\":\"Platinum\"}, lore=[{\"bold\":true,\"italic\":false,\"color\":\"green\",\"text\":\"Alathran Item\"}], custom-model-data=3, internal=H4sIAAAAAAAA/+NiYOBg4PaNDPHwdI4PiQxwZeAIyEksycwrzWUAALGXIoYcAAAA}}";
 	String oldSilver = "ItemStack{COPPER_INGOT x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name={\"bold\":true,\"italic\":false,\"color\":\"gray\",\"text\":\"Silver\"}, lore=[{\"bold\":true,\"italic\":false,\"color\":\"green\",\"text\":\"Alathran Item\"}], custom-model-data=4}}";
 	String oldSilver2 = "ItemStack{COPPER_INGOT x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name={\"bold\":true,\"italic\":false,\"color\":\"gray\",\"text\":\"Silver\"}, lore=[{\"bold\":true,\"italic\":false,\"color\":\"green\",\"text\":\"Alathran Item\"}], custom-model-data=4, internal=H4sIAAAAAAAA/+NiYOBg4PaNDPHwdI4PiQxwZWALzswpSy1iAAB/RFAdGgAAAA==}}";
@@ -140,9 +139,9 @@ public class ItemConverter implements Listener {
 				replaceItem(event.getInventory(), Items.getRawSharkMeat(), i, amount);
 			} else if (storageContents[i].asOne().toString().equals(rawVenison)) {
 				replaceItem(event.getInventory(), Items.getRawVenison(), i, amount);
-			} else {
+			} //else {
 				//Bukkit.broadcastMessage(storageContents[i].asOne().toString());
-			}
+			//}
 		}
 	}
 

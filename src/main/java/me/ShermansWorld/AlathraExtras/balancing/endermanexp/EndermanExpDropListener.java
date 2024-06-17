@@ -1,4 +1,4 @@
-package me.ShermansWorld.AlathraExtras.endermanexp;
+package me.ShermansWorld.AlathraExtras.balancing.endermanexp;
 
 import org.bukkit.World;
 import org.bukkit.entity.EntityType;

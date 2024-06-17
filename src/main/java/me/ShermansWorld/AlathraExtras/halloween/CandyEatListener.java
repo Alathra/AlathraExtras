@@ -34,8 +34,6 @@ public class CandyEatListener implements Listener {
                 default:
                     break;
             }
-        } else {
-            return;
         }
     }
 }

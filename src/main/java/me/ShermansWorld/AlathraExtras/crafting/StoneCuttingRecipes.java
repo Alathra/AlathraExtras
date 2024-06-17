@@ -42,7 +42,7 @@ public class StoneCuttingRecipes {
                 materialArray[0] = materialArray[0].concat("_").concat(materialArray[1]);
             }
 
-            List<ItemStack> itemStackList = new ArrayList<ItemStack>();
+            List<ItemStack> itemStackList = new ArrayList<>();
 
             map.forEach((item, count) -> {
                 Material itemName = Material.getMaterial(materialArray[0].concat("_").concat(item));
@@ -79,7 +79,7 @@ public class StoneCuttingRecipes {
 
             for (ItemStack item : itemStackList) {
                 NamespacedKey namespacedKey = new NamespacedKey(AlathraExtras.getInstance(),
-                    AlathraExtras.getInstance().getDescription().getName()
+                    AlathraExtras.getInstance().getName()
                         .concat(log.toString()).concat("_").concat(item.getType().toString()));
                 StonecuttingRecipe recipe = new StonecuttingRecipe(namespacedKey, item, log);
 
@@ -116,7 +116,7 @@ public class StoneCuttingRecipes {
 
             String[] materialArray = blockString.split("_");
 
-            List<ItemStack> itemStackList = new ArrayList<ItemStack>();
+            List<ItemStack> itemStackList = new ArrayList<>();
 
             map.forEach((item, count) -> {
                 Material itemName = Material.getMaterial(materialArray[0].concat("_").concat(item));
@@ -139,7 +139,7 @@ public class StoneCuttingRecipes {
 
             for (ItemStack item : itemStackList) {
                 NamespacedKey namespacedKey = new NamespacedKey(AlathraExtras.getInstance(),
-                    AlathraExtras.getInstance().getDescription().getName()
+                    AlathraExtras.getInstance().getName()
                         .concat(bambooBlock.toString()).concat("_").concat(item.getType().toString()));
                 StonecuttingRecipe recipe = new StonecuttingRecipe(namespacedKey, item, bambooBlock);
 

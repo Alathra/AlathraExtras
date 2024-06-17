@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class CustomVotingListener {
 
-    public static ArrayList<Player> playersWithAllSitesVoted = new ArrayList<Player>();
+    public static ArrayList<Player> playersWithAllSitesVoted = new ArrayList<>();
 
     public static void checkForAllSitesVoted() {
         // MUST BE CALLED AFTER DELAY
@@ -40,8 +40,7 @@ public class CustomVotingListener {
                         }
                     }
                 }
-            } catch (NullPointerException e) {
-            }
+            } catch (Exception ignored) {}
         }
     }
 

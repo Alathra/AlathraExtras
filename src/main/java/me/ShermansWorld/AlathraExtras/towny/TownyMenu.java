@@ -19,7 +19,7 @@ public class TownyMenu implements Listener {
 	public void onTownStatusScreen(TownStatusScreenEvent event) {
 		
 		Town town = event.getTown();
-		ArrayList<Resident> activeResidents = new ArrayList<Resident>();
+		ArrayList<Resident> activeResidents = new ArrayList<>();
 		for (Resident resident : town.getResidents()) {
 			long now = System.currentTimeMillis();
 			long lastPlayed = resident.getLastOnline();
@@ -30,21 +30,21 @@ public class TownyMenu implements Listener {
 				activeResidents.add(resident);
 			}
 		}
-		String activeResidentsStr = "&2Active Residents (Online in the last 30 days) &a[" + String.valueOf(activeResidents.size() + "]:&r ");
+		StringBuilder activeResidentsStr = new StringBuilder("&2Active Residents (Online in the last 30 days) &a[" + activeResidents.size() + "]:&r ");
 		for (Resident resident : activeResidents) {
-			activeResidentsStr += resident.getName() + ", ";
+			activeResidentsStr.append(resident.getName()).append(", ");
 		}
 		
 		// Remove the last comma and space
-		activeResidentsStr = activeResidentsStr.substring(0, activeResidentsStr.length() -2);
+		activeResidentsStr = new StringBuilder(activeResidentsStr.substring(0, activeResidentsStr.length() - 2));
 		
 		// Translate legancy color codes
-		activeResidentsStr = Colors.translateColorCodes(activeResidentsStr);
+		activeResidentsStr = new StringBuilder(Colors.translateColorCodes(activeResidentsStr.toString()));
 		
 		// Build component
 		Component component = Component.empty();
 		component = component
-				.append(Component.text(Colors.translateColorCodes("&7[&aActive Residents&7]&r")).hoverEvent(HoverEvent.showText(Component.text(activeResidentsStr))));
+				.append(Component.text(Colors.translateColorCodes("&7[&aActive Residents&7]&r")).hoverEvent(HoverEvent.showText(Component.text(activeResidentsStr.toString()))));
 		component = component.append(Component.newline());
 		
 		// Add component to Towny Menu

@@ -2,7 +2,6 @@ package me.ShermansWorld.AlathraExtras.crafting;
 
 import com.github.alathra.siegeengines.libs.colorparser.ColorParser;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
-import me.ShermansWorld.AlathraExtras.Helper;
 import me.ShermansWorld.AlathraExtras.items.Items;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
@@ -31,7 +30,7 @@ public class CraftingRecipes {
     public static void charcoalBlock() {
         ItemStack charcoalBlock = new ItemStack(Material.COAL_BLOCK, 1);
         ItemMeta meta = charcoalBlock.getItemMeta();
-        meta.setDisplayName(Helper.color("&8Block of Charcoal"));
+        meta.displayName(ColorParser.of("&8Block of Charcoal").parseLegacy().build());
         charcoalBlock.setItemMeta(meta);
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
             AlathraExtras.getInstance().getName() + "charcoalBlock");
@@ -272,7 +271,7 @@ public class CraftingRecipes {
         AlathraExtras.getInstance().getServer().addRecipe(cryingObsidianRecipe);
     }
     
-    public static Recipe trebuchetRecipe() {
+    public static void trebuchetRecipe() {
 		ItemStack trebuchet = SiegeEnginesAPI.getTrebuchetItem();
         setSiegeEngineItemMeta(trebuchet, "Trebuchet");
         trebuchet.setAmount(1);
@@ -286,10 +285,9 @@ public class CraftingRecipes {
 		trebuchetRecipe.setIngredient('$', Material.STRING);
 		trebuchetRecipe.setIngredient('^', Material.BOWL);
 		AlathraExtras.getInstance().getServer().addRecipe(trebuchetRecipe);
-		return trebuchetRecipe;
-	}
+    }
 	
-	public static Recipe ballistaRecipe() {
+	public static void ballistaRecipe() {
 		ItemStack ballista = SiegeEnginesAPI.getBallistaItem();
         setSiegeEngineItemMeta(ballista, "Ballista");
         ballista.setAmount(1);
@@ -302,7 +300,6 @@ public class CraftingRecipes {
 		ballistaRecipe.setIngredient('#', Material.OAK_PLANKS);
 		ballistaRecipe.setIngredient('$', Material.OAK_LOG);
 		AlathraExtras.getInstance().getServer().addRecipe(ballistaRecipe);
-		return ballistaRecipe;
 	}
 
     public static void breachCannonRecipe() {
