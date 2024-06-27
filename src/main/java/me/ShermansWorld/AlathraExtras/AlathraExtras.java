@@ -14,6 +14,7 @@ import me.ShermansWorld.AlathraExtras.endermanexp.EndermanExpDropListener;
 import me.ShermansWorld.AlathraExtras.food.FoodConsumeListener;
 import me.ShermansWorld.AlathraExtras.funny.AetherPortalListener;
 import me.ShermansWorld.AlathraExtras.funny.FreeOpCommand;
+import me.ShermansWorld.AlathraExtras.funny.HeadScourgeListener;
 import me.ShermansWorld.AlathraExtras.halloween.CandyEatListener;
 import me.ShermansWorld.AlathraExtras.items.ItemConverter;
 import me.ShermansWorld.AlathraExtras.items.ItemUseListener;
@@ -135,6 +136,7 @@ public class AlathraExtras extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new DispenserListener(), this);
         this.getServer().getPluginManager().registerEvents(new FurnaceRecipesListener(), this);
         this.getServer().getPluginManager().registerEvents(new GrindstoneListener(), this);
+        this.getServer().getPluginManager().registerEvents(new HeadScourgeListener(), this);
         this.getServer().getPluginManager().registerEvents(new ItemDamageListener(), this);
         this.getServer().getPluginManager().registerEvents(new ItemFrameListener(), this);
         this.getServer().getPluginManager().registerEvents(new ItemUseListener(), this);
