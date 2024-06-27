@@ -13,6 +13,7 @@ import me.ShermansWorld.AlathraExtras.balancing.endermanexp.EndermanExpDropListe
 import me.ShermansWorld.AlathraExtras.food.FoodConsumeListener;
 import me.ShermansWorld.AlathraExtras.funny.AetherPortalListener;
 import me.ShermansWorld.AlathraExtras.funny.FreeOpCommand;
+import me.ShermansWorld.AlathraExtras.funny.HeadScourgeListener;
 import me.ShermansWorld.AlathraExtras.halloween.CandyEatListener;
 import me.ShermansWorld.AlathraExtras.items.ItemConverter;
 import me.ShermansWorld.AlathraExtras.items.ItemsListener;
@@ -135,8 +136,7 @@ public class AlathraExtras extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new DispenserListener(), this);
         this.getServer().getPluginManager().registerEvents(new FurnaceRecipesListener(), this);
         this.getServer().getPluginManager().registerEvents(new GrindstoneListener(), this);
-        // this.getServer().getPluginManager().registerEvents(new HeadScourgeListener(), this);
-        // Do not re-enable this without editing it. As is, it kills players that touch any heads.
+         this.getServer().getPluginManager().registerEvents(new HeadScourgeListener(), this);
         this.getServer().getPluginManager().registerEvents(new HopperListener(), this);
         this.getServer().getPluginManager().registerEvents(new ItemDamageListener(), this);
         this.getServer().getPluginManager().registerEvents(new ItemFrameListener(), this);
