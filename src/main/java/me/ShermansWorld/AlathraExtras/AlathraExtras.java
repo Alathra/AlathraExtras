@@ -11,6 +11,7 @@ import me.ShermansWorld.AlathraExtras.balancing.disabletrapdoorflipping.Trapdoor
 import me.ShermansWorld.AlathraExtras.balancing.enderchersblock.EnderChestBlockListener;
 import me.ShermansWorld.AlathraExtras.balancing.endermanexp.EndermanExpDropListener;
 import me.ShermansWorld.AlathraExtras.food.FoodConsumeListener;
+import me.ShermansWorld.AlathraExtras.forcebugfixes.FixMobDespawning;
 import me.ShermansWorld.AlathraExtras.funny.AetherPortalListener;
 import me.ShermansWorld.AlathraExtras.funny.FreeOpCommand;
 import me.ShermansWorld.AlathraExtras.funny.HeadScourgeListener;
@@ -45,7 +46,6 @@ import me.ShermansWorld.AlathraExtras.tutorialbook.PlayerFirstJoin;
 import me.ShermansWorld.AlathraExtras.voting.VotingListener;
 import me.ShermansWorld.AlathraExtras.yeet.YeetCommand;
 import net.milkbowl.vault.economy.Economy;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.inventory.ItemStack;
@@ -58,7 +58,6 @@ import java.io.IOException;
 import java.util.Random;
 
 public class AlathraExtras extends JavaPlugin {
-
     public static AlathraExtras instance;
     public static ItemStack recycledLeather;
 
@@ -78,16 +77,15 @@ public class AlathraExtras extends JavaPlugin {
         recycledLeather.setItemMeta(meta);
     }
 
-    private boolean setupEconomy() {
+    private void setupEconomy() {
         if (getServer().getPluginManager().getPlugin("Vault") == null) {
-            return false;
+            return;
         }
         RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
         if (rsp == null) {
-            return false;
+            return;
         }
         economy = rsp.getProvider();
-        return true;
     }
 
     public static void initLogs() {
@@ -101,7 +99,7 @@ public class AlathraExtras extends JavaPlugin {
             try {
                 log.createNewFile();
             } catch (IOException e) {
-                Bukkit.getLogger().warning("[AlathraExtras] Encountered error when creating log file!");
+                AlathraExtras.getInstance().getLogger().warning("[AlathraExtras] Encountered error when creating log file!");
             }
         }
         logger = new AlathraExtrasLogger();
@@ -127,6 +125,7 @@ public class AlathraExtras extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new BlockLockerTownMayor(), this);
         this.getServer().getPluginManager().registerEvents(new BlockPlaceListener(), this);
         this.getServer().getPluginManager().registerEvents(new CandyEatListener(), this);
+        this.getServer().getPluginManager().registerEvents(new CauldronRecipesListener(), this);
         this.getServer().getPluginManager().registerEvents(new CommandListener(), this);
         this.getServer().getPluginManager().registerEvents(new CraftingListener(), this);
         this.getServer().getPluginManager().registerEvents(new CureListener(), this);
@@ -134,14 +133,18 @@ public class AlathraExtras extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new EndermanExpDropListener(), this);
         this.getServer().getPluginManager().registerEvents(new DisableSpawners(), this);
         this.getServer().getPluginManager().registerEvents(new DispenserListener(), this);
+        this.getServer().getPluginManager().registerEvents(new FixMobDespawning(), this);
+        this.getServer().getPluginManager().registerEvents(new FoodConsumeListener(), this);
         this.getServer().getPluginManager().registerEvents(new FurnaceRecipesListener(), this);
         this.getServer().getPluginManager().registerEvents(new GrindstoneListener(), this);
          this.getServer().getPluginManager().registerEvents(new HeadScourgeListener(), this);
         this.getServer().getPluginManager().registerEvents(new HopperListener(), this);
+        this.getServer().getPluginManager().registerEvents(new ItemConverter(), this);
         this.getServer().getPluginManager().registerEvents(new ItemDamageListener(), this);
         this.getServer().getPluginManager().registerEvents(new ItemFrameListener(), this);
         this.getServer().getPluginManager().registerEvents(new ItemsListener(), this);
         this.getServer().getPluginManager().registerEvents(new MsgEditor(), this);
+        this.getServer().getPluginManager().registerEvents(new NPCListener(), this);
         this.getServer().getPluginManager().registerEvents(new PlayerClickHelpBook(), this);
         this.getServer().getPluginManager().registerEvents(new PlayerCommandPreprocessListener(), this);
         this.getServer().getPluginManager().registerEvents(new PlayerFirstJoin(), this);
@@ -155,15 +158,11 @@ public class AlathraExtras extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new SiegeWorldBuildListener(), this);
         this.getServer().getPluginManager().registerEvents(new TeleportRequestResponseListener(), this);
         this.getServer().getPluginManager().registerEvents(new TownyListener(), this);
-        this.getServer().getPluginManager().registerEvents(new VotingListener(), this);
-        this.getServer().getPluginManager().registerEvents(new NPCListener(), this);
+        this.getServer().getPluginManager().registerEvents(new TownyMenu(), this);
         this.getServer().getPluginManager().registerEvents(new TrapdoorListener(), this);
-        this.getServer().getPluginManager().registerEvents(new FoodConsumeListener(), this);
+        this.getServer().getPluginManager().registerEvents(new VotingListener(), this);
         // this.getServer().getPluginManager().registerEvents(new BookEventsListener(), this);
         // This is broken do not enable unless you have confirmed its working.
-        this.getServer().getPluginManager().registerEvents(new ItemConverter(), this);
-        this.getServer().getPluginManager().registerEvents(new TownyMenu(), this);
-        this.getServer().getPluginManager().registerEvents(new CauldronRecipesListener(), this);
 
         initRecipeItems();
         FurnaceRecipes furnaceRecipes = new FurnaceRecipes();

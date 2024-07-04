@@ -5,20 +5,25 @@ import me.ShermansWorld.AlathraExtras.items.Items;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 
 public class AlathraExtrasCommands implements CommandExecutor {
-
     public static boolean itemDamageOn;
 
     public AlathraExtrasCommands(AlathraExtras plugin) {
-        plugin.getCommand("alathraextras").setExecutor(this);
+        PluginCommand alathraextrasCommand = plugin.getCommand("alathraextras");
+
+        if (alathraextrasCommand == null) return;
+
+        alathraextrasCommand.setExecutor(this);
         itemDamageOn = true;
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         Player player;
         if (sender instanceof Player) {
             player = (Player) sender;

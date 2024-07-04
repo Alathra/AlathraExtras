@@ -7,20 +7,23 @@ import me.ShermansWorld.AlathraExtras.items.Items;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 public class GiveTutorialBookCommand implements CommandExecutor {
-
     public GiveTutorialBookCommand(final AlathraExtras plugin) {
-        plugin.getCommand("tutorialbook").setExecutor((CommandExecutor) this);
+        PluginCommand tutorialbookCommand = plugin.getCommand("tutorialbook");
+
+        if (tutorialbookCommand == null) return;
+
+        tutorialbookCommand.setExecutor(this);
     }
 
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
+        if (!(sender instanceof Player p)) {
             return false;
         }
-
-        Player p = (Player) sender;
 
         if (!p.hasPermission("AlathraExtras.tutorialbook")) {
             p.sendMessage(Helper.Chatlabel() + Helper.color("&cYou do not have permission to do this!"));

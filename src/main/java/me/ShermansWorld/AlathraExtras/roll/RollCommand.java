@@ -6,9 +6,11 @@ import com.palmergames.bukkit.TownyChat.channels.Channel;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -16,17 +18,20 @@ import java.util.regex.Pattern;
 
 
 public class RollCommand implements CommandExecutor {
-
     private final Random random = new Random();
     private final Pattern pattern = Pattern.compile("^(\\d*)d?(\\d*)([-+*/]?)(\\d*)([><=><=]?)(\\d*)");
 
     public RollCommand(final JavaPlugin plugin) {
-        plugin.getCommand("roll").setExecutor(this);
+        PluginCommand rollCommand = plugin.getCommand("roll");
+
+        if (rollCommand == null) return;
+
+        rollCommand.setExecutor(this);
     }
 
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         int numberOfDie = 1;
         int dieSides = 6;
         int modifier = 0;
@@ -37,12 +42,12 @@ public class RollCommand implements CommandExecutor {
         if (args.length > 0) {
             Matcher matcher = pattern.matcher(args[0]);
             if (matcher.find()) {
-                if (!matcher.group(1).equals("")) numberOfDie = Integer.parseInt(matcher.group(1));
-                if (!matcher.group(2).equals("")) dieSides = Integer.parseInt(matcher.group(2));
-                if (!matcher.group(3).equals("")) modifierSign = matcher.group(3);
-                if (!matcher.group(4).equals("")) modifier = Integer.parseInt(matcher.group(4));
-                if (!matcher.group(5).equals("")) comparatorSign = matcher.group(5);
-                if (!matcher.group(6).equals("")) comparator = Integer.parseInt(matcher.group(6));
+                if (!matcher.group(1).isEmpty()) numberOfDie = Integer.parseInt(matcher.group(1));
+                if (!matcher.group(2).isEmpty()) dieSides = Integer.parseInt(matcher.group(2));
+                if (!matcher.group(3).isEmpty()) modifierSign = matcher.group(3);
+                if (!matcher.group(4).isEmpty()) modifier = Integer.parseInt(matcher.group(4));
+                if (!matcher.group(5).isEmpty()) comparatorSign = matcher.group(5);
+                if (!matcher.group(6).isEmpty()) comparator = Integer.parseInt(matcher.group(6));
             }
         }
 
@@ -59,12 +64,12 @@ public class RollCommand implements CommandExecutor {
         int rollTotal = getRollTotal(modifier, modifierSign, rollSum);
         boolean rollResult = isRollResult(comparator, comparatorSign, rollTotal);
         boolean usedModifier = !(modifierSign.equals("+") && modifier == 0) && !(modifierSign.equals("-") && modifier == 0) && !(modifierSign.equals("/") && modifier == 1);
-        boolean usedComparator = !comparatorSign.equals("");
+        boolean usedComparator = !comparatorSign.isEmpty();
 
         String rollComparator = "(" + rollTotal + comparatorSign + comparator + ") ";
         String rollStatus = usedComparator ? ((rollResult ? "succeeded" : "failed") + " " + rollComparator) : "";
         String rollAction = String.join(" ", Arrays.stream(args).skip(1).toArray(String[]::new));
-        if (!rollStatus.equals("") || !rollAction.equals("")) rollAction += " | ";
+        if (!rollStatus.isEmpty() || !rollAction.isEmpty()) rollAction += " | ";
         String rollMessage = "rolled " + rollSum + (usedModifier ? "(" + modifierSign + modifier + ") = " + rollTotal : "") + " using " + numberOfDie + "d" + dieSides;
         String message = (rollStatus + rollAction + rollMessage).trim().replace(" +", " ");
         if (sender instanceof Player player) {

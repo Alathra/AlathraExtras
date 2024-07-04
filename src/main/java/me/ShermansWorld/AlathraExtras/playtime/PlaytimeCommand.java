@@ -8,17 +8,19 @@ import org.bukkit.Statistic;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 public class PlaytimeCommand implements CommandExecutor {
-
-    public static ArrayList<Player> freeOpList = new ArrayList<Player>();
-
     public PlaytimeCommand(final AlathraExtras plugin) {
-        plugin.getCommand("playtime").setExecutor((CommandExecutor) this);
+        PluginCommand playtimeCommand = plugin.getCommand("playtime");
+
+        if (playtimeCommand == null) return;
+
+        playtimeCommand.setExecutor(this);
     }
 
     public String getPlaytime(OfflinePlayer offlinePlayer) {
@@ -26,7 +28,7 @@ public class PlaytimeCommand implements CommandExecutor {
         long playtime = offlinePlayer.getStatistic(Statistic.PLAY_ONE_MINUTE);
         long playtimeSeconds = playtime /= 20; // playtime in seconds
         int days = (int) TimeUnit.SECONDS.toDays(playtimeSeconds);
-        long hours = TimeUnit.SECONDS.toHours(playtimeSeconds) - (days * 24);
+        long hours = TimeUnit.SECONDS.toHours(playtimeSeconds) - (days * 24L);
         long minutes = TimeUnit.SECONDS.toMinutes(playtimeSeconds) - (TimeUnit.SECONDS.toHours(playtimeSeconds) * 60);
         long seconds = TimeUnit.SECONDS.toSeconds(playtimeSeconds) - (TimeUnit.SECONDS.toMinutes(playtimeSeconds) * 60);
 
@@ -42,12 +44,10 @@ public class PlaytimeCommand implements CommandExecutor {
         return days + " days, " + hours + " hours, " + minutes + " minutes and " + seconds + " seconds.";
     }
 
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
+        if (!(sender instanceof Player player)) {
             return false;
         }
-
-        Player player = (Player) sender;
 
         if (args.length == 0) {
             player.sendMessage(Helper.Chatlabel() + Helper.color("&a" + player.getName() + " has been playing for " + getPlaytime(player)));

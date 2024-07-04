@@ -6,10 +6,7 @@ import me.ShermansWorld.AlathraExtras.Helper;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
+import org.bukkit.command.*;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -26,8 +23,12 @@ public class PukeCommand implements CommandExecutor, TabCompleter {
     static int[] bukkitId = new int[1];
 
     public PukeCommand(final AlathraExtras plugin) {
-        plugin.getCommand("puke").setExecutor(this);
-        plugin.getCommand("puke").setTabCompleter(this);
+        PluginCommand pukeCommand = plugin.getCommand("puke");
+
+        if (pukeCommand == null) return;
+
+        pukeCommand.setExecutor(this);
+        pukeCommand.setTabCompleter(this);
 
         //tick loop
         bukkitId[0] = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(AlathraExtras.getInstance(),

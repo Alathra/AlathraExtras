@@ -1,21 +1,23 @@
 package me.ShermansWorld.AlathraExtras.yeet;
 
 import com.github.milkdrinkers.colorparser.ColorParser;
-import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 import org.jetbrains.annotations.NotNull;
 
 public class YeetCommand implements CommandExecutor {
-
-
     public YeetCommand(final JavaPlugin plugin) {
-        plugin.getCommand("yeet").setExecutor(this);
+        PluginCommand yeetCommand = plugin.getCommand("yeet");
+
+        if (yeetCommand == null) return;
+
+        yeetCommand.setExecutor(this);
     }
 
     @Override
