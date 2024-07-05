@@ -1,9 +1,9 @@
-package me.ShermansWorld.AlathraExtras.joinleavemessages.listener;
+package me.ShermansWorld.AlathraExtras.chat.joinleavemessages.listener;
 
 import com.github.milkdrinkers.Crate.Config;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
-import me.ShermansWorld.AlathraExtras.joinleavemessages.listener.player.PlayerJoinListener;
-import me.ShermansWorld.AlathraExtras.joinleavemessages.listener.player.PlayerQuitListener;
+import me.ShermansWorld.AlathraExtras.chat.joinleavemessages.listener.player.PlayerJoinListener;
+import me.ShermansWorld.AlathraExtras.chat.joinleavemessages.listener.player.PlayerQuitListener;
 
 public class ListenerHandler {
     private final Config cfg;

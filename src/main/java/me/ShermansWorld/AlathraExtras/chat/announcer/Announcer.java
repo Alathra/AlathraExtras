@@ -1,4 +1,4 @@
-package me.ShermansWorld.AlathraExtras.announcer;
+package me.ShermansWorld.AlathraExtras.chat.announcer;
 
 import com.github.milkdrinkers.Crate.Config;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;

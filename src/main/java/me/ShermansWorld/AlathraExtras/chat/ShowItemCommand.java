@@ -1,4 +1,4 @@
-package me.ShermansWorld.AlathraExtras.chatitem;
+package me.ShermansWorld.AlathraExtras.chat;
 
 
 import com.github.milkdrinkers.colorparser.ColorParser;

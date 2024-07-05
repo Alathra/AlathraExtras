@@ -1,4 +1,4 @@
-package me.ShermansWorld.AlathraExtras.announcer;
+package me.ShermansWorld.AlathraExtras.chat.announcer;
 
 import com.earth2me.essentials.Essentials;
 import com.github.milkdrinkers.colorparser.ColorParser;
