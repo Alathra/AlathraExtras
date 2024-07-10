@@ -29,6 +29,7 @@ repositories {
     maven("https://jitpack.io/") {
         content {
             includeGroup("com.github.milkdrinkers")
+            includeGroup("com.github.darksaid98")
             includeGroup("com.palmergames.bukkit.towny")
             includeGroup("com.github.MilkBowl")
             includeGroup("com.github.TownyAdvanced")
@@ -83,7 +84,7 @@ dependencies {
     }
 
     compileOnly("com.palmergames.bukkit.towny:towny:0.100.3.3")
-    compileOnly("com.github.TownyAdvanced:TownyChat:0.115")
+    compileOnly("com.github.darksaid98:TownyChat:feat~adventure-SNAPSHOT")
     compileOnly("com.bencodez:votingplugin:6.15.1") {
         exclude(group = "*", module = "*")
     }
