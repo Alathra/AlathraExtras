@@ -1,61 +1,44 @@
 package me.ShermansWorld.AlathraExtras.chat;
 
+import io.papermc.paper.event.player.AsyncChatEvent;
 import me.ShermansWorld.AlathraExtras.Helper;
+import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ChatListener implements Listener {
-
+    private static final PlainTextComponentSerializer plainText = PlainTextComponentSerializer.plainText();
+    private static final Map<String, String> replacements;
+    static {
+        replacements = new HashMap<>();
+        replacements.put("(?i)stoneworks", "rock function ");
+        replacements.put("(?i)stone works", "rock function ");
+        replacements.put("(?i)stonework", "rock function ");
+        replacements.put("(?i)\\ssw\\s", "rock function ");
+        replacements.put("(?i)shears", "✂");
+        replacements.put("(?i)o_o", Helper.color("&9&lO_O&r"));
+        replacements.put("->", "➡");
+        replacements.put("<-", "⬅");
+        replacements.put(":\\)", "☺");
+        replacements.put(":\\(", "☹");
+        replacements.put("~~", "〰");
+        replacements.put("<3", Helper.color("&c❤&r"));
+        replacements.put("(?i)\\^up", "⬆");
+        replacements.put("<>", Helper.color("&a♢&r"));
+        replacements.put("(?i)o==", Helper.color("&b☄&r"));
+    }
+    
     @EventHandler
-    public void chatReplace(AsyncPlayerChatEvent e) {
-        if (e.getMessage().toLowerCase().contains("stoneworks")) {
-            e.setMessage(e.getMessage().toLowerCase().replace("stoneworks", "rock function "));
+    public void chatReplace(AsyncChatEvent e) {
+        String msg = plainText.serialize(e.message());
+
+        for (String s : replacements.keySet()) {
+            msg = msg.replaceAll(s, replacements.get(s));
         }
-        if (e.getMessage().toLowerCase().contains("stone works")) {
-            e.setMessage(e.getMessage().toLowerCase().replace("stone works", "rock function "));
-        }
-        if (e.getMessage().toLowerCase().contains("stonework")) {
-            e.setMessage(e.getMessage().toLowerCase().replace("stonework", "rock function "));
-        }
-        if (e.getMessage().toLowerCase().contains(" sw ")) {
-            e.setMessage(e.getMessage().toLowerCase().replace(" sw ", "rock function "));
-        }
-        if (e.getMessage().toLowerCase().contains("shears")) {
-            e.setMessage(e.getMessage().toLowerCase().replace("shears", "✂"));
-        }
-        if (e.getMessage().toLowerCase().contains("o_o")) {
-            e.setMessage(e.getMessage().replace("o_o", Helper.color("&9&lO_O&r")));
-        }
-        if (e.getMessage().toLowerCase().contains("->")) {
-            e.setMessage(e.getMessage().replace("->", "➡"));
-        }
-        if (e.getMessage().toLowerCase().contains("<-")) {
-            e.setMessage(e.getMessage().replace("<-", "⬅"));
-        }
-        if (e.getMessage().toLowerCase().contains(":)")) {
-            e.setMessage(e.getMessage().replace(":)", "☺"));
-        }
-        if (e.getMessage().toLowerCase().contains(":(")) {
-            e.setMessage(e.getMessage().replace(":(", "☹"));
-        }
-        if (e.getMessage().toLowerCase().contains("~~")) {
-            e.setMessage(e.getMessage().replace("~~", "〰"));
-        }
-        if (e.getMessage().toLowerCase().contains("<3")) {
-            e.setMessage(e.getMessage().replace("<3", Helper.color("&c❤&r")));
-        }
-        if (e.getMessage().toLowerCase().contains("<>")) {
-            e.setMessage(e.getMessage().replace("<>", Helper.color("&a♢&r")));
-        }
-        if (e.getMessage().toLowerCase().contains("^up")) {
-            e.setMessage(e.getMessage().toLowerCase().replace("^up", "⬆"));
-        }
-        if (e.getMessage().toLowerCase().contains("<>")) {
-            e.setMessage(e.getMessage().replace("<>", Helper.color("&a♢&r")));
-        }
-        if (e.getMessage().toLowerCase().contains("o==")) {
-            e.setMessage(e.getMessage().replace("o==", Helper.color("&b☄&r")));
-        }
+
+        e.message(plainText.deserialize(msg));
     }
 }
