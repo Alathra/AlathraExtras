@@ -85,7 +85,7 @@ dependencies {
 
     compileOnly("com.palmergames.bukkit.towny:towny:0.100.3.3")
     compileOnly("com.github.darksaid98:TownyChat:feat~adventure-SNAPSHOT")
-    compileOnly("com.bencodez:votingplugin:6.15.1") {
+    compileOnly("com.bencodez:votingplugin:6.17") {
         exclude(group = "*", module = "*")
     }
     compileOnly("com.github.MilkBowl:VaultAPI:1.7.1")
