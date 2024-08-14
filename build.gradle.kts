@@ -13,7 +13,7 @@ plugins {
 
 group = "me.ShermansWorld"
 
-version = "1.27.1"
+version = "1.27.2"
 description = ""
 val mainPackage = "${project.group}.${rootProject.name}"
 
