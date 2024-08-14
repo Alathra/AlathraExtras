@@ -40,6 +40,7 @@ public class StoneCuttingRecipes {
             // Handles dark oak.
             if (materialArray.length > 2 && materialArray[2] != null) {
                 materialArray[0] = materialArray[0].concat("_").concat(materialArray[1]);
+                materialArray[1] = materialArray[2];
             }
 
             List<ItemStack> itemStackList = new ArrayList<ItemStack>();
@@ -55,21 +56,62 @@ public class StoneCuttingRecipes {
 
             // Adds ItemStack for stripped logs if the log isn't already stripped.
             if (!stripped) {
-                Material itemName = Material.getMaterial("STRIPPED_".concat(materialArray[0]).concat("_LOG"));
+                Material itemName;
+                boolean nether = materialArray[0].equals("CRIMSON") || materialArray[0].equals("WARPED");
+                if (nether) {
+                    if (materialArray[1].equals("STEM")) {
+                        itemName = Material.getMaterial("STRIPPED_".concat(materialArray[0]).concat("_STEM"));
+                    } else {
+                        itemName = Material.getMaterial("STRIPPED_".concat(materialArray[0]).concat("_HYPHAE"));
+                    }
+                } else {
+                    if (materialArray[1].equals("WOOD")) {
+                        itemName = Material.getMaterial("STRIPPED_".concat(materialArray[0]).concat("_WOOD"));
+                    } else {
+                        itemName = Material.getMaterial("STRIPPED_".concat(materialArray[0]).concat("_LOG"));
+                    }
+                }
 
                 if (itemName != null) {
                     ItemStack itemStack = new ItemStack(itemName);
                     itemStackList.add(itemStack);
                 }
 
-                itemName = Material.getMaterial(materialArray[0].concat("_WOOD"));
+                if (nether) {
+                    if (materialArray[1].equals("STEM")) {
+                        itemName = Material.getMaterial(materialArray[0].concat("_HYPHAE"));
+                    } else {
+                        itemName = Material.getMaterial(materialArray[0].concat("_STEM"));
+                    }
+                } else {
+                    if (materialArray[1].equals("LOG")) {
+                        itemName = Material.getMaterial(materialArray[0].concat("_WOOD"));
+                    } else {
+                        itemName = Material.getMaterial(materialArray[0].concat("_LOG"));
+                    }
+                }
 
                 if (itemName != null) {
                     ItemStack itemStack = new ItemStack(itemName);
                     itemStackList.add(itemStack);
                 }
             } else {
-                Material itemName = Material.getMaterial("STRIPPED_".concat(materialArray[0]).concat("_WOOD"));
+                Material itemName;
+                boolean nether = materialArray[0].equals("CRIMSON") || materialArray[0].equals("WARPED");
+
+                if (nether) {
+                    if (materialArray[1].equals("STEM")) {
+                        itemName = Material.getMaterial("STRIPPED_".concat(materialArray[0]).concat("_HYPHAE"));
+                    } else {
+                        itemName = Material.getMaterial("STRIPPED_".concat(materialArray[0]).concat("_STEM"));
+                    }
+                } else {
+                    if (materialArray[1].equals("LOG")) {
+                        itemName = Material.getMaterial("STRIPPED_".concat(materialArray[0]).concat("_WOOD"));
+                    } else {
+                        itemName = Material.getMaterial("STRIPPED_".concat(materialArray[0]).concat("_LOG"));
+                    }
+                }
 
                 if (itemName != null) {
                     ItemStack itemStack = new ItemStack(itemName);
