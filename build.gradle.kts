@@ -32,6 +32,7 @@ repositories {
             includeGroup("com.palmergames.bukkit.towny")
             includeGroup("com.github.MilkBowl")
             includeGroup("com.github.TownyAdvanced")
+            includeGroup("com.github.Xiao-MoMi")
         }
     }
 
@@ -73,6 +74,7 @@ dependencies {
 
     implementation("com.github.milkdrinkers:crate:1.1.0")
     implementation("com.github.milkdrinkers:colorparser:2.0.0")
+    compileOnly("com.github.Xiao-MoMi:Custom-Fishing:2.2.20")
 
 //    implementation("dev.jorel:commandapi-bukkit-shade:9.0.3")
 //    compileOnly("dev.jorel:commandapi-annotations:9.0.3")
