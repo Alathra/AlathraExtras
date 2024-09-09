@@ -43,6 +43,8 @@ import me.ShermansWorld.AlathraExtras.tutorialbook.PlayerFirstJoin;
 import me.ShermansWorld.AlathraExtras.voting.VotingListener;
 import me.ShermansWorld.AlathraExtras.yeet.YeetCommand;
 import net.milkbowl.vault.economy.Economy;
+import net.momirealms.customfishing.api.BukkitCustomFishingPlugin;
+import net.momirealms.customfishing.common.plugin.CustomFishingPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.PluginCommand;
@@ -63,12 +65,16 @@ public class AlathraExtras extends JavaPlugin {
     public static Economy economy = null;
     public static Random rand;
 
+    public static CustomFishingPlugin customFishingPlugin = null;
+    
     public static AlathraExtras getInstance() {
         return AlathraExtras.instance;
     }
 
     public static AlathraExtrasLogger logger;
 
+    
+    
     public static void initRecipeItems() {
         recycledLeather = new ItemStack(Material.LEATHER, 1);
         ItemMeta meta = recycledLeather.getItemMeta();
@@ -194,6 +200,10 @@ public class AlathraExtras extends JavaPlugin {
         Announcer.getInstance().onEnable();
         initLogs();
         if (instance.getServer().getPluginManager().isPluginEnabled("UnifiedMetrics")) new MetricsManager();
+        
+        if (instance.getServer().getPluginManager().isPluginEnabled("Custom-Fishing")) {
+            customFishingPlugin = BukkitCustomFishingPlugin.getInstance();
+        }
     }
 
     @Override
