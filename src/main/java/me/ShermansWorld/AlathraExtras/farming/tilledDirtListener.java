@@ -1,22 +1,15 @@
 package me.ShermansWorld.AlathraExtras.farming;
 
-import com.earth2me.essentials.utils.MaterialUtil;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import net.momirealms.customfishing.api.BukkitCustomFishingPlugin;
-import net.momirealms.customfishing.api.integration.ItemProvider;
 import net.momirealms.customfishing.api.mechanic.context.Context;
-import net.momirealms.customfishing.api.mechanic.item.CustomFishingItem;
-import net.momirealms.customfishing.api.mechanic.item.CustomFishingItemImpl;
-import net.momirealms.customfishing.api.mechanic.item.ItemManager;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
-import javax.net.ssl.ExtendedSSLSession;
 import java.util.EventListener;
 
 public class tilledDirtListener implements EventListener {
