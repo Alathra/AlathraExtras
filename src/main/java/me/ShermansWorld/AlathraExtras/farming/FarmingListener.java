@@ -26,7 +26,7 @@ public class FarmingListener implements Listener {
         
         final String GRUB_BAIT_ID = "basic_bait_4";
         final String playerUsername = playerInteractEvent.getPlayer().getName();
-        final String giveCommand = "cfishing items give %s %s 1".formatted(playerUsername, GRUB_BAIT_ID);
+        final String giveCommand = "cfishing items give %s %s".formatted(playerUsername, GRUB_BAIT_ID);
         
 
         
@@ -50,18 +50,21 @@ public class FarmingListener implements Listener {
         ));
         
         final float fortuneModifier = switch (playerInteractEvent.getPlayer().getInventory().getItemInMainHand().getEnchantmentLevel(Enchantment.LOOT_BONUS_BLOCKS)){
-            case 1 -> 0.015f;
-            case 2 -> 0.02f;
-            case 3 -> 0.025f;
-            case 4 -> 0.03f;
-            case 5 -> 0.035f;
-            default -> 0.01f;
+            case 1 -> 2;
+            case 2 -> 3;
+            case 3 -> 4;
+            case 4 -> 5;
+            case 5 -> 6;
+            default -> 1;
         };
         
-        if(MaterialTags.HOES.isTagged(playerInteractEvent.getPlayer().getInventory().getItemInMainHand().getType()) || seedTypes.contains(playerInteractEvent.getPlayer().getInventory().getItemInMainHand().getType()) && Math.random() < fortuneModifier){
+        if(MaterialTags.HOES.isTagged(playerInteractEvent.getPlayer().getInventory().getItemInMainHand().getType()) || seedTypes.contains(playerInteractEvent.getPlayer().getInventory().getItemInMainHand().getType()) && AlathraExtras.rand.nextInt(0,255) < fortuneModifier){
+            //Debugging comments
+            
             Player player = playerInteractEvent.getPlayer();
             Block block = playerInteractEvent.getClickedBlock();
             AlathraExtras.logger.log("Player " + player.getName() + " interacted with block " + block.getType().name() + " at " + block.getLocation().toString() + " in world " + block.getWorld().getName());
+            
             CommandSenderUtil.sendConsoleCommand(giveCommand);
         }
     }
