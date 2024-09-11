@@ -74,7 +74,6 @@ dependencies {
 
     implementation("com.github.milkdrinkers:crate:1.1.0")
     implementation("com.github.milkdrinkers:colorparser:2.0.0")
-    compileOnly("com.github.Xiao-MoMi:Custom-Fishing:2.2.20")
 
 //    implementation("dev.jorel:commandapi-bukkit-shade:9.0.3")
 //    compileOnly("dev.jorel:commandapi-annotations:9.0.3")
@@ -96,6 +95,7 @@ dependencies {
     compileOnly("nl.rutgerkok:blocklocker:1.12.1")
     compileOnly("io.lumine:Mythic-Dist:5.6.1")
     compileOnly(files("lib/SiegeEngines-0.8.4.jar"))
+    compileOnly("com.github.Xiao-MoMi:Custom-Fishing:2.2.26")
 }
 
 tasks {
@@ -161,7 +161,7 @@ bukkit {
 
     // Misc properties
     load = net.minecrell.pluginyml.bukkit.BukkitPluginDescription.PluginLoadOrder.POSTWORLD // STARTUP or POSTWORLD
-    depend = listOf("Towny", "TownyChat")
+    depend = listOf("Towny", "TownyChat", "CustomFishing")
     softDepend = listOf("Essentials", "PlaceholderAPI", "UnifiedMetrics")
 
     commands {

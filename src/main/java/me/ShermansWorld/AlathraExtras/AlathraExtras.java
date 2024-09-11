@@ -10,6 +10,7 @@ import me.ShermansWorld.AlathraExtras.disablespawners.DisableSpawners;
 import me.ShermansWorld.AlathraExtras.disabletrapdoorflipping.TrapdoorListener;
 import me.ShermansWorld.AlathraExtras.enderchersblock.EnderChestBlockListener;
 import me.ShermansWorld.AlathraExtras.endermanexp.EndermanExpDropListener;
+import me.ShermansWorld.AlathraExtras.farming.tilledDirtListener;
 import me.ShermansWorld.AlathraExtras.food.FoodConsumeListener;
 import me.ShermansWorld.AlathraExtras.funny.AetherPortalListener;
 import me.ShermansWorld.AlathraExtras.funny.FreeOpCommand;
@@ -43,6 +44,7 @@ import me.ShermansWorld.AlathraExtras.tutorialbook.PlayerFirstJoin;
 import me.ShermansWorld.AlathraExtras.voting.VotingListener;
 import me.ShermansWorld.AlathraExtras.yeet.YeetCommand;
 import net.milkbowl.vault.economy.Economy;
+
 import net.momirealms.customfishing.api.BukkitCustomFishingPlugin;
 import net.momirealms.customfishing.common.plugin.CustomFishingPlugin;
 import org.bukkit.Bukkit;
@@ -165,6 +167,7 @@ public class AlathraExtras extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new NPCListener(), this);
         this.getServer().getPluginManager().registerEvents(new TrapdoorListener(), this);
         this.getServer().getPluginManager().registerEvents(new FoodConsumeListener(), this);
+        this.getServer().getPluginManager().registerEvents(new tilledDirtListener(), this);
 
         initRecipeItems();
         FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
@@ -200,9 +203,16 @@ public class AlathraExtras extends JavaPlugin {
         Announcer.getInstance().onEnable();
         initLogs();
         if (instance.getServer().getPluginManager().isPluginEnabled("UnifiedMetrics")) new MetricsManager();
+
+        // Attempt to initialize the customFishingPlugin variable
         
-        if (instance.getServer().getPluginManager().isPluginEnabled("Custom-Fishing")) {
+        if (getServer().getPluginManager().isPluginEnabled("CustomFishing")) {
             customFishingPlugin = BukkitCustomFishingPlugin.getInstance();
+            if (customFishingPlugin == null) {
+                getLogger().warning("Failed to initialize customFishingPlugin hook.");
+            } else {
+                getLogger().info("customFishingPlugin hook initialized successfully.");
+            }
         }
     }
 
