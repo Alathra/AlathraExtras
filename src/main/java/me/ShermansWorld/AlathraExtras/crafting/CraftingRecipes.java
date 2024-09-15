@@ -394,9 +394,8 @@ public class CraftingRecipes {
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
             AlathraExtras.getInstance().getName() + "straw_hat");
         ShapedRecipe strawHatRecipe = new ShapedRecipe(key, strawHat);
-        strawHatRecipe.shape("@@@", "@#@", "$ $");
+        strawHatRecipe.shape("@@@", "@ @", "$ $");
         strawHatRecipe.setIngredient('@', Material.WHEAT);
-        strawHatRecipe.setIngredient('#', Material.LEATHER_HELMET);
         strawHatRecipe.setIngredient('$', Material.STRING);
         AlathraExtras.getInstance().getServer().addRecipe(strawHatRecipe);
     }
