@@ -111,8 +111,8 @@ public class ItemUseListener implements Listener {
             boolean cancel = false;
             if (item.hasItemMeta()) {
                 cancel = switch (item.getItemMeta().getCustomModelData()) {
-                    case 201, 202, 203, 204, 205, 206, 207 -> true;
-                    default -> cancel;
+                    case 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211 -> true;
+                    default -> false;
                 };
                 if (cancel) {
                     e.setCancelled(true);

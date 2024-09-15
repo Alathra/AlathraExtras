@@ -502,6 +502,125 @@ public class CraftingRecipes {
         AlathraExtras.getInstance().getServer().addRecipe(caneRecipe);
     }
 
+    public static void scepterRecipe() {
+        ItemStack scepter = new ItemStack(Material.STICK);
+        ItemMeta scepterMeta = scepter.getItemMeta();
+        scepterMeta.displayName(ColorParser.of("Ruler's Scepter").build());
+        scepterMeta.lore(List.of(ColorParser.of("<green><bold>Alathran Accessory</bold></green>").build()));
+        scepterMeta.setCustomModelData(202);
+        scepter.setItemMeta(scepterMeta);
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "scepter");
+        ShapedRecipe scepterRecipe = new ShapedRecipe(key, scepter);
+        scepterRecipe.shape("@# ", "$%$", " ^%");
+        scepterRecipe.setIngredient('@', Material.AMETHYST_SHARD);
+        scepterRecipe.setIngredient('#', Material.LAPIS_LAZULI);
+        scepterRecipe.setIngredient('$', Material.REDSTONE);
+        scepterRecipe.setIngredient('%', Material.GOLD_INGOT);
+        scepterRecipe.setIngredient('^', Material.EMERALD);
+        AlathraExtras.getInstance().getServer().addRecipe(scepterRecipe);
+    }
+
+    public static void wizardStaffRecipe() {
+        ItemStack wizardStaff = new ItemStack(Material.STICK);
+        ItemMeta wizardStaffMeta = wizardStaff.getItemMeta();
+        wizardStaffMeta.displayName(ColorParser.of("Wizard's Staff").build());
+        wizardStaffMeta.lore(List.of(ColorParser.of("<green><bold>Alathran Accessory</bold></green>").build()));
+        wizardStaffMeta.setCustomModelData(203);
+        wizardStaff.setItemMeta(wizardStaffMeta);
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "wizardStaff");
+        ShapedRecipe wizardStaffRecipe = new ShapedRecipe(key, wizardStaff);
+        wizardStaffRecipe.shape(" @@", " #@", "  @");
+        wizardStaffRecipe.setIngredient('@', Material.STICK);
+        wizardStaffRecipe.setIngredient('#', Material.LAPIS_BLOCK);
+        AlathraExtras.getInstance().getServer().addRecipe(wizardStaffRecipe);
+    }
+
+    public static void tophatRecipe() {
+        ItemStack tophat = new ItemStack(Material.CARVED_PUMPKIN);
+        ItemMeta tophatMeta = tophat.getItemMeta();
+        tophatMeta.displayName(ColorParser.of("Gentleman's Pride").build());
+        tophatMeta.lore(List.of(ColorParser.of("<green><bold>Alathran Accessory</bold></green>").build()));
+        tophatMeta.setCustomModelData(207);
+        tophat.setItemMeta(tophatMeta);
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "tophat");
+        ShapedRecipe tophatRecipe = new ShapedRecipe(key, tophat);
+        tophatRecipe.shape(" @ ", " # ", "$$$");
+        tophatRecipe.setIngredient('@', Material.BLACK_WOOL);
+        tophatRecipe.setIngredient('#', Material.WHITE_WOOL);
+        tophatRecipe.setIngredient('$', Material.BLACK_CARPET);
+        AlathraExtras.getInstance().getServer().addRecipe(tophatRecipe);
+    }
+
+    public static void hornedHelmetRecipe() {
+        ItemStack hornedHelmet = new ItemStack(Material.CARVED_PUMPKIN);
+        ItemMeta hornedHelmetMeta = hornedHelmet.getItemMeta();
+        hornedHelmetMeta.displayName(ColorParser.of("Horned Helmet").build());
+        hornedHelmetMeta.lore(List.of(ColorParser.of("<green><bold>Alathran Accessory</bold></green>").build()));
+        hornedHelmetMeta.setCustomModelData(208);
+        hornedHelmet.setItemMeta(hornedHelmetMeta);
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "hornedHelmet");
+        ShapedRecipe hornedHelmetRecipe = new ShapedRecipe(key, hornedHelmet);
+        hornedHelmetRecipe.shape("@ @", "$#$", "$ $");
+        hornedHelmetRecipe.setIngredient('@', Material.BONE);
+        hornedHelmetRecipe.setIngredient('#', Material.IRON_INGOT);
+        hornedHelmetRecipe.setIngredient('$', Material.LEATHER);
+        AlathraExtras.getInstance().getServer().addRecipe(hornedHelmetRecipe);
+    }
+
+    public static void mustacheRecipe() {
+        ItemStack mustache = new ItemStack(Material.CARVED_PUMPKIN);
+        ItemMeta mustacheMeta = mustache.getItemMeta();
+        mustacheMeta.displayName(ColorParser.of("Mighty Stache").build());
+        mustacheMeta.lore(List.of(ColorParser.of("<green><bold>Alathran Accessory</bold></green>").build()));
+        mustacheMeta.setCustomModelData(209);
+        mustache.setItemMeta(mustacheMeta);
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "mustache");
+        ShapedRecipe mustacheRecipe = new ShapedRecipe(key, mustache);
+        mustacheRecipe.shape("   ", "@@@", "@ @");
+        mustacheRecipe.setIngredient('@', Material.BLACK_WOOL);
+        AlathraExtras.getInstance().getServer().addRecipe(mustacheRecipe);
+    }
+
+    public static void crownRecipe() {
+        ItemStack crown = new ItemStack(Material.CARVED_PUMPKIN);
+        ItemMeta crownMeta = crown.getItemMeta();
+        crownMeta.displayName(ColorParser.of("Ruler's Crown").build());
+        crownMeta.lore(List.of(ColorParser.of("<green><bold>Alathran Accessory</bold></green>").build()));
+        crownMeta.setCustomModelData(210);
+        crown.setItemMeta(crownMeta);
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "crown");
+        ShapedRecipe crownRecipe = new ShapedRecipe(key, crown);
+        crownRecipe.shape("@ @", "###", "$%^");
+        crownRecipe.setIngredient('@', Material.GOLD_INGOT);
+        crownRecipe.setIngredient('#', Material.GOLD_BLOCK);
+        crownRecipe.setIngredient('$', Material.LAPIS_LAZULI);
+        crownRecipe.setIngredient('%', Material.REDSTONE);
+        crownRecipe.setIngredient('^', Material.EMERALD);
+        AlathraExtras.getInstance().getServer().addRecipe(crownRecipe);
+    }
+
+    public static void wreathRecipe() {
+        ItemStack wreath = new ItemStack(Material.CARVED_PUMPKIN);
+        ItemMeta wreathMeta = wreath.getItemMeta();
+        wreathMeta.displayName(ColorParser.of("Wreath of Suns").build());
+        wreathMeta.lore(List.of(ColorParser.of("<green><bold>Alathran Accessory</bold></green>").build()));
+        wreathMeta.setCustomModelData(211);
+        wreath.setItemMeta(wreathMeta);
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "wreath");
+        ShapedRecipe wreathRecipe = new ShapedRecipe(key, wreath);
+        wreathRecipe.shape("@#@", "# #", "@#@");
+        wreathRecipe.setIngredient('@', Material.VINE);
+        wreathRecipe.setIngredient('#', Material.SUNFLOWER);
+        AlathraExtras.getInstance().getServer().addRecipe(wreathRecipe);
+    }
+
     public static void registerAllCraftingRecipes() {
         saddleRecipe();
         charcoalBlock();
@@ -537,5 +656,12 @@ public class CraftingRecipes {
         greenHatRecipe();
         watchRecipe();
         caneRecipe();
+        scepterRecipe();
+        wizardStaffRecipe();
+        tophatRecipe();
+        hornedHelmetRecipe();
+        mustacheRecipe();
+        crownRecipe();
+        wreathRecipe();
     }
 }
