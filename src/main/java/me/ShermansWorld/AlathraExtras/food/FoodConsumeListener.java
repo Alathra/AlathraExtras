@@ -29,7 +29,7 @@ public class FoodConsumeListener implements Listener {
     @EventHandler
     public void ConsumeFruitEvent(PlayerItemConsumeEvent e){
         ItemStack i = e.getItem();
-        if(i.getType()== Material.GOLDEN_APPLE){
+        if(i.getType()== Material.GOLDEN_APPLE && i.getItemMeta().hasCustomModelData()){
             Bukkit.getScheduler().scheduleSyncDelayedTask(AlathraExtras.getInstance(), () -> {
 				Player p = e.getPlayer();
 				List<PotionEffect> potionEffectList = new ArrayList<>();
