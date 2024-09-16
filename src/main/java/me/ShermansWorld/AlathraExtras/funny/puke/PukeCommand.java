@@ -1,4 +1,4 @@
-package me.ShermansWorld.AlathraExtras.puke;
+package me.ShermansWorld.AlathraExtras.funny.puke;
 
 import com.palmergames.bukkit.towny.utils.NameUtil;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;

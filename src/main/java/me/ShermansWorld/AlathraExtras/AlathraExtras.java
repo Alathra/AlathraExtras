@@ -1,36 +1,38 @@
 package me.ShermansWorld.AlathraExtras;
 
 import me.ShermansWorld.AlathraExtras.anitblockclimb.BlockPlaceListener;
-import me.ShermansWorld.AlathraExtras.announcer.Announcer;
+import me.ShermansWorld.AlathraExtras.chat.announcer.Announcer;
 import me.ShermansWorld.AlathraExtras.balancing.*;
-import me.ShermansWorld.AlathraExtras.chatitem.ShowItemCommand;
+import me.ShermansWorld.AlathraExtras.chat.ChatListener;
+import me.ShermansWorld.AlathraExtras.chat.ShowItemCommand;
 import me.ShermansWorld.AlathraExtras.crafting.*;
 import me.ShermansWorld.AlathraExtras.disabledispensereggs.DispenserListener;
 import me.ShermansWorld.AlathraExtras.disablespawners.DisableSpawners;
 import me.ShermansWorld.AlathraExtras.disabletrapdoorflipping.TrapdoorListener;
-import me.ShermansWorld.AlathraExtras.enderchersblock.EnderChestBlockListener;
+import me.ShermansWorld.AlathraExtras.balancing.enderchersblock.EnderChestBlockListener;
 import me.ShermansWorld.AlathraExtras.endermanexp.EndermanExpDropListener;
 import me.ShermansWorld.AlathraExtras.farming.FarmingListener;
 import me.ShermansWorld.AlathraExtras.food.FoodConsumeListener;
 import me.ShermansWorld.AlathraExtras.funny.AetherPortalListener;
 import me.ShermansWorld.AlathraExtras.funny.FreeOpCommand;
+import me.ShermansWorld.AlathraExtras.funny.HeadScourgeListener;
 import me.ShermansWorld.AlathraExtras.halloween.CandyEatListener;
-import me.ShermansWorld.AlathraExtras.items.ItemsListener;
-import me.ShermansWorld.AlathraExtras.joinleavemessages.JoinLeaveMessages;
+import me.ShermansWorld.AlathraExtras.items.ItemConverter;
+import me.ShermansWorld.AlathraExtras.items.ItemUseListener;
+import me.ShermansWorld.AlathraExtras.chat.joinleavemessages.JoinLeaveMessages;
 import me.ShermansWorld.AlathraExtras.metrics.MetricsManager;
 import me.ShermansWorld.AlathraExtras.metrics.PlayerFirstJoinListener;
-import me.ShermansWorld.AlathraExtras.misc.CommandListener;
-import me.ShermansWorld.AlathraExtras.misc.ItemFrameListener;
-import me.ShermansWorld.AlathraExtras.misc.MsgEditor;
-import me.ShermansWorld.AlathraExtras.misc.PaperRecipesListener;
+import me.ShermansWorld.AlathraExtras.chat.CommandListener;
+import me.ShermansWorld.AlathraExtras.items.ItemFrameListener;
+import me.ShermansWorld.AlathraExtras.chat.EssentialsMsgEditor;
 import me.ShermansWorld.AlathraExtras.npcs.NPCListener;
 import me.ShermansWorld.AlathraExtras.playtime.PlaytimeCommand;
 import me.ShermansWorld.AlathraExtras.playtime.PlaytimeTabCompleter;
-import me.ShermansWorld.AlathraExtras.puke.HopperListener;
-import me.ShermansWorld.AlathraExtras.puke.PukeCommand;
+import me.ShermansWorld.AlathraExtras.funny.puke.PukeCommand;
 import me.ShermansWorld.AlathraExtras.repair.RepairListener;
 import me.ShermansWorld.AlathraExtras.roll.RollCommand;
 import me.ShermansWorld.AlathraExtras.towny.TownyListener;
+import me.ShermansWorld.AlathraExtras.towny.TownyMenu;
 import me.ShermansWorld.AlathraExtras.tpacooldown.CooldownManager;
 import me.ShermansWorld.AlathraExtras.tpacooldown.listener.essentialsx.PreTeleportListener;
 import me.ShermansWorld.AlathraExtras.tpacooldown.listener.essentialsx.TeleportRequestResponseListener;
@@ -42,7 +44,7 @@ import me.ShermansWorld.AlathraExtras.tutorialbook.GiveTutorialBookCommand;
 import me.ShermansWorld.AlathraExtras.tutorialbook.PlayerClickHelpBook;
 import me.ShermansWorld.AlathraExtras.tutorialbook.PlayerFirstJoin;
 import me.ShermansWorld.AlathraExtras.voting.VotingListener;
-import me.ShermansWorld.AlathraExtras.yeet.YeetCommand;
+import me.ShermansWorld.AlathraExtras.funny.yeet.YeetCommand;
 import net.milkbowl.vault.economy.Economy;
 
 import net.momirealms.customfishing.api.BukkitCustomFishingPlugin;
@@ -142,20 +144,17 @@ public class AlathraExtras extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new DispenserListener(), this);
         this.getServer().getPluginManager().registerEvents(new FurnaceRecipesListener(), this);
         this.getServer().getPluginManager().registerEvents(new GrindstoneListener(), this);
-        // this.getServer().getPluginManager().registerEvents(new HeadScourgeListener(), this);
-        // Do not re-enable this without editing it. As is, it kills players that touch any heads.
-        this.getServer().getPluginManager().registerEvents(new HopperListener(), this);
+        this.getServer().getPluginManager().registerEvents(new HeadScourgeListener(), this);
         this.getServer().getPluginManager().registerEvents(new ItemDamageListener(), this);
         this.getServer().getPluginManager().registerEvents(new ItemFrameListener(), this);
-        this.getServer().getPluginManager().registerEvents(new ItemsListener(), this);
-        this.getServer().getPluginManager().registerEvents(new MsgEditor(), this);
-        this.getServer().getPluginManager().registerEvents(new PaperRecipesListener(), this);
+        this.getServer().getPluginManager().registerEvents(new ItemUseListener(), this);
+        this.getServer().getPluginManager().registerEvents(new EssentialsMsgEditor(), this);
         this.getServer().getPluginManager().registerEvents(new PlayerClickHelpBook(), this);
         this.getServer().getPluginManager().registerEvents(new PlayerCommandPreprocessListener(), this);
         this.getServer().getPluginManager().registerEvents(new PlayerFirstJoin(), this);
         this.getServer().getPluginManager().registerEvents(new PlayerFirstJoinListener(), this);
         this.getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
-        this.getServer().getPluginManager().registerEvents(new PlayerListeners(), this);
+        this.getServer().getPluginManager().registerEvents(new ChatListener(), this);
         this.getServer().getPluginManager().registerEvents(new PlayerQuitListener(), this);
         this.getServer().getPluginManager().registerEvents(new PreTeleportListener(), this);
         this.getServer().getPluginManager().registerEvents(new RepairListener(), this);
@@ -168,6 +167,12 @@ public class AlathraExtras extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new TrapdoorListener(), this);
         this.getServer().getPluginManager().registerEvents(new FoodConsumeListener(), this);
         this.getServer().getPluginManager().registerEvents(new FarmingListener(), this);
+        // this.getServer().getPluginManager().registerEvents(new BookEventsListener(), this);
+        // This is broken do not enable unless you have confirmed its working.
+        this.getServer().getPluginManager().registerEvents(new ItemConverter(), this);
+        this.getServer().getPluginManager().registerEvents(new TownyMenu(), this);
+        this.getServer().getPluginManager().registerEvents(new CauldronRecipesListener(), this);
+
 
         initRecipeItems();
         FurnaceRecipes furnaceRecipes = new FurnaceRecipes();

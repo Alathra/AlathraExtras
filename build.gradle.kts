@@ -4,7 +4,7 @@ plugins {
     `java-library`
 
     id("com.github.johnrengelman.shadow") version "8.1.1" // Shades and relocates dependencies, See https://imperceptiblethoughts.com/shadow/introduction/
-    id("xyz.jpenilla.run-paper") version "2.2.3" // Adds runServer and runMojangMappedServer tasks for testing
+    id("xyz.jpenilla.run-paper") version "2.3.0" // Adds runServer and runMojangMappedServer tasks for testing
     id("net.minecrell.plugin-yml.bukkit") version "0.6.0" // Automatic plugin.yml generation
 
     eclipse
@@ -13,7 +13,7 @@ plugins {
 
 group = "me.ShermansWorld"
 
-version = "1.25.1"
+version = "1.27.2"
 description = ""
 val mainPackage = "${project.group}.${rootProject.name}"
 
@@ -29,6 +29,7 @@ repositories {
     maven("https://jitpack.io/") {
         content {
             includeGroup("com.github.milkdrinkers")
+            includeGroup("com.github.darksaid98")
             includeGroup("com.palmergames.bukkit.towny")
             includeGroup("com.github.MilkBowl")
             includeGroup("com.github.TownyAdvanced")
@@ -72,19 +73,19 @@ dependencies {
 
     compileOnly("org.jetbrains:annotations:24.1.0")
 
-    implementation("com.github.milkdrinkers:crate:1.1.0")
-    implementation("com.github.milkdrinkers:colorparser:2.0.0")
+    implementation("com.github.milkdrinkers:crate:1.2.1")
+    implementation("com.github.milkdrinkers:colorparser:2.0.3")
 
 //    implementation("dev.jorel:commandapi-bukkit-shade:9.0.3")
 //    compileOnly("dev.jorel:commandapi-annotations:9.0.3")
 //    annotationProcessor("dev.jorel:commandapi-annotations:9.0.3")
 
-    compileOnly("net.citizensnpcs:citizens-main:2.0.33-SNAPSHOT") {
+    compileOnly("net.citizensnpcs:citizens-main:2.0.35-SNAPSHOT") {
         exclude(group = "*", module = "*")
     }
 
-    compileOnly("com.palmergames.bukkit.towny:towny:0.100.1.19")
-    compileOnly("com.github.TownyAdvanced:TownyChat:0.115")
+    compileOnly("com.palmergames.bukkit.towny:towny:0.100.3.12")
+    compileOnly("com.github.darksaid98:TownyChat:feat~adventure-SNAPSHOT")
     compileOnly("com.bencodez:votingplugin:6.15.1") {
         exclude(group = "*", module = "*")
     }
@@ -93,7 +94,7 @@ dependencies {
     compileOnly("me.clip:placeholderapi:2.11.5")
     compileOnly("dev.cubxity.plugins:unifiedmetrics-api:0.3.8")
     compileOnly("nl.rutgerkok:blocklocker:1.12.1")
-    compileOnly("io.lumine:Mythic-Dist:5.6.1")
+    compileOnly("io.lumine:Mythic-Dist:5.6.2")
     compileOnly(files("lib/SiegeEngines-0.8.4.jar"))
     compileOnly("com.github.Xiao-MoMi:Custom-Fishing:2.2.26")
 }

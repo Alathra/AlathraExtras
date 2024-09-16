@@ -45,6 +45,54 @@ public class Items {
 	public static ItemStack getAlathranIron() {
 		return MythicBukkit.inst().getItemManager().getItemStack("Alathran_Iron");
 	}
+	
+	public static ItemStack tutorialBook() {
+        ItemStack tutorialBook = new ItemStack(Material.BOOK, 1);
+        ItemMeta meta = tutorialBook.getItemMeta();
+        ArrayList<String> lore = new ArrayList<String>();
+        lore.add(Helper.color("&eRight click the book in your hand or type /help"));
+        meta.setLore(lore);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        meta.setDisplayName(Helper.color("&6&lPlayer's Guide to &a&lAlathra&2&lMC"));
+        meta.setCustomModelData(14899);
+        tutorialBook.setItemMeta(meta);
+        return tutorialBook;
+    }
+
+    public static ItemStack getCarrotPouch() {
+        ItemStack carrotPouch = new ItemStack(Material.PAPER, 1);
+        ItemMeta meta = carrotPouch.getItemMeta();
+        meta.setCustomModelData(14701);
+        meta.setDisplayName(Helper.color("&6Carrot Pouch"));
+        carrotPouch.setItemMeta(meta);
+        return carrotPouch;
+    }
+
+    public static ItemStack getBeetrootPouch() {
+        ItemStack beeetrootPouch = new ItemStack(Material.PAPER, 1);
+        ItemMeta meta = beeetrootPouch.getItemMeta();
+        meta.setCustomModelData(14700);
+        meta.setDisplayName(Helper.color("&4Beetroot Pouch"));
+        beeetrootPouch.setItemMeta(meta);
+        return beeetrootPouch;
+    }
+
+    public static ItemStack getPotatoPouch() {
+        ItemStack potatoPouch = new ItemStack(Material.PAPER, 1);
+        ItemMeta meta = potatoPouch.getItemMeta();
+        meta.setCustomModelData(14713);
+        meta.setDisplayName(Helper.color("&ePotato Pouch"));
+        potatoPouch.setItemMeta(meta);
+        return potatoPouch;
+    }
+
+    public static ItemStack getInvisibleItemFrame() {
+        ItemStack item = new ItemStack(Material.ITEM_FRAME, 1);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(Helper.color("&cInvisible Item Frame"));
+        item.setItemMeta(meta);
+        return item;
+    }
 
     /**
      * Gets an Uncharged Silver Melon item
@@ -119,6 +167,25 @@ public class Items {
      */
     public static ItemStack getSilver() {
         return MythicBukkit.inst().getItemManager().getItemStack("Silver");
+    }
+    
+    public static ItemStack getNetherHeart() {
+        return MythicBukkit.inst().getItemManager().getItemStack("Nether_Heart");
+    }
+    
+    public static ItemStack getRawBoarMeat() {
+        return MythicBukkit.inst().getItemManager().getItemStack("Boar_Meat");
+    }
+    
+    public static ItemStack getRawElephantMeat() {
+        return MythicBukkit.inst().getItemManager().getItemStack("Elephant_Meat");
+    }
+    
+    public static ItemStack getRawSharkMeat() {
+        return MythicBukkit.inst().getItemManager().getItemStack("Shark_Meat");
+    }
+    public static ItemStack getRawVenison() {
+        return MythicBukkit.inst().getItemManager().getItemStack("Venison");
     }
 
     /**

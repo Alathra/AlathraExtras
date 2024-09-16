@@ -1,7 +1,6 @@
-package me.ShermansWorld.AlathraExtras.yeet;
+package me.ShermansWorld.AlathraExtras.funny.yeet;
 
 import com.github.milkdrinkers.colorparser.ColorParser;
-import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

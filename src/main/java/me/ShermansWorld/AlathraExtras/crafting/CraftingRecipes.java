@@ -4,19 +4,16 @@ import com.github.alathra.siegeengines.libs.colorparser.ColorParser;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import me.ShermansWorld.AlathraExtras.Helper;
 import me.ShermansWorld.AlathraExtras.items.Items;
-import me.ShermansWorld.AlathraExtras.misc.CustomItems;
-
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.plugin.Plugin;
-import org.jetbrains.annotations.NotNull;
 
 import com.github.alathra.siegeengines.api.SiegeEnginesAPI;
 
 import java.util.Collections;
+import java.util.List;
 
 public class CraftingRecipes {
 	
@@ -84,7 +81,7 @@ public class CraftingRecipes {
     }
 
     public static void beetrootPouchRecipe() {
-        ItemStack beetRootPouch = CustomItems.getBeetrootPouch();
+        ItemStack beetRootPouch = Items.getBeetrootPouch();
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
             AlathraExtras.getInstance().getName() + "beetrootPouchRecipe");
         ShapelessRecipe beetrootPouchRecipe = new ShapelessRecipe(key, beetRootPouch);
@@ -93,7 +90,7 @@ public class CraftingRecipes {
     }
 
     public static void carrotPouchRecipe() {
-        ItemStack carrotPouch = CustomItems.getCarrotPouch();
+        ItemStack carrotPouch = Items.getCarrotPouch();
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
             AlathraExtras.getInstance().getName() + "carrotPouchRecipe");
         ShapelessRecipe carrotPouchRecipe = new ShapelessRecipe(key, carrotPouch);
@@ -102,7 +99,7 @@ public class CraftingRecipes {
     }
 
     public static void potatoPouchRecipe() {
-        ItemStack potatoPouch = CustomItems.getPotatoPouch();
+        ItemStack potatoPouch = Items.getPotatoPouch();
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
             AlathraExtras.getInstance().getName() + "potatoPouchRecipe");
         ShapelessRecipe potatoPouchRecipe = new ShapelessRecipe(key, potatoPouch);
@@ -214,7 +211,7 @@ public class CraftingRecipes {
     public static void beetrootPouchToBeetroots() {
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
             AlathraExtras.getInstance().getName() + "beetrootPouchToBeetroots");
-        RecipeChoice.ExactChoice input = new RecipeChoice.ExactChoice(CustomItems.getBeetrootPouch());
+        RecipeChoice.ExactChoice input = new RecipeChoice.ExactChoice(Items.getBeetrootPouch());
         ItemStack result = new ItemStack(Material.BEETROOT, 9);
 
         ShapelessRecipe recipe = new ShapelessRecipe(key, result);
@@ -227,7 +224,7 @@ public class CraftingRecipes {
     public static void carrotPouchToCarrots() {
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
             AlathraExtras.getInstance().getName() + "carrotPouchToCarrots");
-        RecipeChoice.ExactChoice input = new RecipeChoice.ExactChoice(CustomItems.getCarrotPouch());
+        RecipeChoice.ExactChoice input = new RecipeChoice.ExactChoice(Items.getCarrotPouch());
         ItemStack result = new ItemStack(Material.CARROT, 9);
 
         ShapelessRecipe recipe = new ShapelessRecipe(key, result);
@@ -240,7 +237,7 @@ public class CraftingRecipes {
     public static void potatoPouchToPotatos() {
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
             AlathraExtras.getInstance().getName() + "potatoPouchToPotatos");
-        RecipeChoice.ExactChoice input = new RecipeChoice.ExactChoice(CustomItems.getPotatoPouch());
+        RecipeChoice.ExactChoice input = new RecipeChoice.ExactChoice(Items.getPotatoPouch());
         ItemStack result = new ItemStack(Material.POTATO, 9);
 
         ShapelessRecipe recipe = new ShapelessRecipe(key, result);
@@ -261,7 +258,7 @@ public class CraftingRecipes {
     public static void cryingObsidianRecipe() {
         ItemStack cryingObsidian = new ItemStack(Material.CRYING_OBSIDIAN, 4);
         NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
-            String.valueOf(AlathraExtras.getInstance().getDescription().getName()) + "25");
+            AlathraExtras.getInstance().getName() + "25");
         ShapedRecipe cryingObsidianRecipe = new ShapedRecipe(key, cryingObsidian);
         cryingObsidianRecipe.shape(
             "%@%",
@@ -368,9 +365,142 @@ public class CraftingRecipes {
         AlathraExtras.getInstance().getServer().addRecipe(chargedSilverMelonRecipe);
     }
 
+    // ALATHRA ACCESSORIES RECIPES
 
+    public static void orangeHatRecipe() {
+        ItemStack orangeHat = new ItemStack(Material.CARVED_PUMPKIN);
+        ItemMeta orangeHatMeta = orangeHat.getItemMeta();
+        orangeHatMeta.displayName(ColorParser.of("Sunset Hues").build());
+        orangeHatMeta.lore(List.of(ColorParser.of("<green><bold>Alathran Accessory</bold></green>").build()));
+        orangeHatMeta.setCustomModelData(201);
+        orangeHat.setItemMeta(orangeHatMeta);
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "orange_hat");
+        ShapedRecipe orangeHatRecipe = new ShapedRecipe(key, orangeHat);
+        orangeHatRecipe.shape("@@@", "@#@", "$ $");
+        orangeHatRecipe.setIngredient('@', Material.ORANGE_WOOL);
+        orangeHatRecipe.setIngredient('#', Material.LEATHER_HELMET);
+        orangeHatRecipe.setIngredient('$', Material.STRING);
+        AlathraExtras.getInstance().getServer().addRecipe(orangeHatRecipe);
+    }
 
+    public static void strawHatRecipe() {
+        ItemStack strawHat = new ItemStack(Material.CARVED_PUMPKIN);
+        ItemMeta strawHatMeta = strawHat.getItemMeta();
+        strawHatMeta.displayName(ColorParser.of("Strawman Redemption").build());
+        strawHatMeta.lore(List.of(ColorParser.of("<green><bold>Alathran Accessory</bold></green>").build()));
+        strawHatMeta.setCustomModelData(202);
+        strawHat.setItemMeta(strawHatMeta);
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "straw_hat");
+        ShapedRecipe strawHatRecipe = new ShapedRecipe(key, strawHat);
+        strawHatRecipe.shape("@@@", "@#@", "$ $");
+        strawHatRecipe.setIngredient('@', Material.WHEAT);
+        strawHatRecipe.setIngredient('#', Material.LEATHER_HELMET);
+        strawHatRecipe.setIngredient('$', Material.STRING);
+        AlathraExtras.getInstance().getServer().addRecipe(strawHatRecipe);
+    }
 
+    public static void pirateHatRecipe() {
+        ItemStack pirateHat = new ItemStack(Material.CARVED_PUMPKIN);
+        ItemMeta pirateHatMeta = pirateHat.getItemMeta();
+        pirateHatMeta.displayName(ColorParser.of("The High Seas").build());
+        pirateHatMeta.lore(List.of(ColorParser.of("<green><bold>Alathran Accessory</bold></green>").build()));
+        pirateHatMeta.setCustomModelData(203);
+        pirateHat.setItemMeta(pirateHatMeta);
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "pirate_hat");
+        ShapedRecipe pirateHatRecipe = new ShapedRecipe(key, pirateHat);
+        pirateHatRecipe.shape(" % ", "@#@", "$ $");
+        pirateHatRecipe.setIngredient('@', Material.BONE);
+        pirateHatRecipe.setIngredient('#', Material.LEATHER_HELMET);
+        pirateHatRecipe.setIngredient('$', Material.STRING);
+        pirateHatRecipe.setIngredient('%', Material.FEATHER);
+        AlathraExtras.getInstance().getServer().addRecipe(pirateHatRecipe);
+    }
+
+    public static void redHatRecipe() {
+        ItemStack redHat = new ItemStack(Material.CARVED_PUMPKIN);
+        ItemMeta redHatMeta = redHat.getItemMeta();
+        redHatMeta.displayName(ColorParser.of("Merlot Memories").build());
+        redHatMeta.lore(List.of(ColorParser.of("<green><bold>Alathran Accessory</bold></green>").build()));
+        redHatMeta.setCustomModelData(204);
+        redHat.setItemMeta(redHatMeta);
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "red_hat");
+        ShapedRecipe redHatRecipe = new ShapedRecipe(key, redHat);
+        redHatRecipe.shape("@@@", "@#@", "$ $");
+        redHatRecipe.setIngredient('@', Material.RED_WOOL);
+        redHatRecipe.setIngredient('#', Material.LEATHER_HELMET);
+        redHatRecipe.setIngredient('$', Material.STRING);
+        AlathraExtras.getInstance().getServer().addRecipe(redHatRecipe);
+    }
+
+    public static void purpleHatRecipe() {
+        ItemStack purpleHat = new ItemStack(Material.CARVED_PUMPKIN);
+        ItemMeta purpleHatMeta = purpleHat.getItemMeta();
+        purpleHatMeta.displayName(ColorParser.of("Periwinkle Promises").build());
+        purpleHatMeta.lore(List.of(ColorParser.of("<green><bold>Alathran Accessory</bold></green>").build()));
+        purpleHatMeta.setCustomModelData(205);
+        purpleHat.setItemMeta(purpleHatMeta);
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "purple_hat");
+        ShapedRecipe purpleHatRecipe = new ShapedRecipe(key, purpleHat);
+        purpleHatRecipe.shape("@@@", "@#@", "$ $");
+        purpleHatRecipe.setIngredient('@', Material.PURPLE_WOOL);
+        purpleHatRecipe.setIngredient('#', Material.LEATHER_HELMET);
+        purpleHatRecipe.setIngredient('$', Material.STRING);
+        AlathraExtras.getInstance().getServer().addRecipe(purpleHatRecipe);
+    }
+
+    public static void greenHatRecipe() {
+        ItemStack greenHat = new ItemStack(Material.CARVED_PUMPKIN);
+        ItemMeta greenHatMeta = greenHat.getItemMeta();
+        greenHatMeta.displayName(ColorParser.of("Mint Memo").build());
+        greenHatMeta.lore(List.of(ColorParser.of("<green><bold>Alathran Accessory</bold></green>").build()));
+        greenHatMeta.setCustomModelData(207);
+        greenHat.setItemMeta(greenHatMeta);
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "green_hat");
+        ShapedRecipe greenHatRecipe = new ShapedRecipe(key, greenHat);
+        greenHatRecipe.shape("@@@", "@#@", "$ $");
+        greenHatRecipe.setIngredient('@', Material.LIME_WOOL);
+        greenHatRecipe.setIngredient('#', Material.LEATHER_HELMET);
+        greenHatRecipe.setIngredient('$', Material.STRING);
+        AlathraExtras.getInstance().getServer().addRecipe(greenHatRecipe);
+    }
+
+    public static void watchRecipe() {
+        ItemStack watch = new ItemStack(Material.CLOCK);
+        ItemMeta watchMeta = watch.getItemMeta();
+        watchMeta.displayName(ColorParser.of("Punctuality").build());
+        watchMeta.lore(List.of(ColorParser.of("<green><bold>Alathran Accessory</bold></green>").build()));
+        watchMeta.setCustomModelData(201);
+        watch.setItemMeta(watchMeta);
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "watch");
+        ShapedRecipe watchRecipe = new ShapedRecipe(key, watch);
+        watchRecipe.shape("###", "#@#", "###");
+        watchRecipe.setIngredient('@', Material.CLOCK);
+        watchRecipe.setIngredient('#', Material.LEATHER);
+        AlathraExtras.getInstance().getServer().addRecipe(watchRecipe);
+    }
+
+    public static void caneRecipe() {
+        ItemStack cane = new ItemStack(Material.STICK);
+        ItemMeta caneMeta = cane.getItemMeta();
+        caneMeta.displayName(ColorParser.of("Distinguished Soul").build());
+        caneMeta.lore(List.of(ColorParser.of("<green><bold>Alathran Accessory</bold></green>").build()));
+        caneMeta.setCustomModelData(201);
+        cane.setItemMeta(caneMeta);
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "cane");
+        ShapedRecipe caneRecipe = new ShapedRecipe(key, cane);
+        caneRecipe.shape("  #", " @ ", "@  ");
+        caneRecipe.setIngredient('@', Material.IRON_INGOT);
+        caneRecipe.setIngredient('#', Material.COAL_BLOCK);
+        AlathraExtras.getInstance().getServer().addRecipe(caneRecipe);
+    }
 
     public static void registerAllCraftingRecipes() {
         saddleRecipe();
@@ -399,5 +529,13 @@ public class CraftingRecipes {
         allMultiBlockRecipes();
         unchargedSilverMelonRecipe();
         chargedSilverMelonRecipe();
+        strawHatRecipe();
+        pirateHatRecipe();
+        orangeHatRecipe();
+        redHatRecipe();
+        purpleHatRecipe();
+        greenHatRecipe();
+        watchRecipe();
+        caneRecipe();
     }
 }

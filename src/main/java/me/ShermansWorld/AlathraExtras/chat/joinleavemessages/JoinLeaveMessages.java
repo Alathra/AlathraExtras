@@ -1,8 +1,8 @@
-package me.ShermansWorld.AlathraExtras.joinleavemessages;
+package me.ShermansWorld.AlathraExtras.chat.joinleavemessages;
 
 import com.github.milkdrinkers.Crate.Config;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
-import me.ShermansWorld.AlathraExtras.joinleavemessages.listener.ListenerHandler;
+import me.ShermansWorld.AlathraExtras.chat.joinleavemessages.listener.ListenerHandler;
 
 public class JoinLeaveMessages {
     private static JoinLeaveMessages instance;

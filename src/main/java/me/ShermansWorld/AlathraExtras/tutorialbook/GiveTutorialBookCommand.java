@@ -2,7 +2,8 @@ package me.ShermansWorld.AlathraExtras.tutorialbook;
 
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
 import me.ShermansWorld.AlathraExtras.Helper;
-import me.ShermansWorld.AlathraExtras.misc.CustomItems;
+import me.ShermansWorld.AlathraExtras.items.Items;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -26,7 +27,7 @@ public class GiveTutorialBookCommand implements CommandExecutor {
             return false;
         }
 
-        p.getInventory().addItem(CustomItems.tutorialBook());
+        p.getInventory().addItem(Items.tutorialBook());
         return true;
     }
 }

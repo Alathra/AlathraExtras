@@ -1,4 +1,4 @@
-package me.ShermansWorld.AlathraExtras.misc;
+package me.ShermansWorld.AlathraExtras.chat;
 
 import me.ShermansWorld.AlathraExtras.Helper;
 import org.bukkit.Bukkit;

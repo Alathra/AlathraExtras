@@ -6,11 +6,12 @@ import org.bukkit.entity.ExperienceOrb;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
-public class ItemsListener implements Listener {
+public class ItemUseListener implements Listener {
 
     @EventHandler
     public void tinyXPPouchUse(PlayerInteractEvent e) {
@@ -98,6 +99,23 @@ public class ItemsListener implements Listener {
 
                         }
                     }
+                }
+            }
+        }
+    }
+
+    @EventHandler
+    public void alathraAccessoriesHats(BlockPlaceEvent e) {
+        ItemStack item = e.getItemInHand();
+        if (item.getType() == Material.CARVED_PUMPKIN) {
+            boolean cancel = false;
+            if (item.hasItemMeta()) {
+                cancel = switch (item.getItemMeta().getCustomModelData()) {
+                    case 201, 202, 203, 204, 205, 206, 207 -> true;
+                    default -> cancel;
+                };
+                if (cancel) {
+                    e.setCancelled(true);
                 }
             }
         }

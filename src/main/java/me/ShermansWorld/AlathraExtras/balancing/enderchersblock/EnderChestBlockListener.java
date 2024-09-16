@@ -1,4 +1,4 @@
-package me.ShermansWorld.AlathraExtras.enderchersblock;
+package me.ShermansWorld.AlathraExtras.balancing.enderchersblock;
 
 import com.github.milkdrinkers.colorparser.ColorParser;
 import org.bukkit.Material;

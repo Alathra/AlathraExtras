@@ -1,12 +1,13 @@
 package me.ShermansWorld.AlathraExtras.tutorialbook;
 
-import me.ShermansWorld.AlathraExtras.misc.CustomItems;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
+
+import me.ShermansWorld.AlathraExtras.items.Items;
 
 public class PlayerClickHelpBook implements Listener {
 
@@ -17,7 +18,7 @@ public class PlayerClickHelpBook implements Listener {
         if (e.getItem() == null) {
             return;
         }
-        if (e.getItem().isSimilar(CustomItems.tutorialBook())) {
+        if (e.getItem().isSimilar(Items.tutorialBook())) {
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ibooks open tutorial_book " + e.getPlayer().getName());
             p.playSound(p.getLocation(), Sound.ITEM_BOOK_PUT, 10F, 1F);
         }

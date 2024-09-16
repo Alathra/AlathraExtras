@@ -1,4 +1,4 @@
-package me.ShermansWorld.AlathraExtras.chatitem;
+package me.ShermansWorld.AlathraExtras.chat;
 
 
 import com.github.milkdrinkers.colorparser.ColorParser;
@@ -35,22 +35,22 @@ public class ShowItemCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player player) {
-            var channel = Chat.getTownyChat().getPlayerChannel(player);
-            Resident resident = TownyUniverse.getInstance().getResident(player.getUniqueId());
+        if (sender instanceof Player p) {
+            var channel = Chat.getTownyChat().getPlayerChannel(p);
+            Resident resident = TownyUniverse.getInstance().getResident(p.getUniqueId());
             @Nullable Town town = TownyAPI.getInstance().getResidentTownOrNull(resident);
             @Nullable Nation nation = TownyAPI.getInstance().getResidentNationOrNull(resident);
-            var recipients = getRecipients(player, town, nation, channel, new HashSet<>(Bukkit.getOnlinePlayers()));
-            ItemStack itemStack = player.getInventory().getItemInMainHand();
+            var recipients = getRecipients(p, town, nation, channel, new HashSet<>(Bukkit.getOnlinePlayers()));
+            ItemStack itemStack = p.getInventory().getItemInMainHand();
 
             if (itemStack.getType().equals(Material.AIR)) {
-                player.sendMessage(ColorParser.of("<red>No one wants to see your air!").build());
+                p.sendMessage(ColorParser.of("<red>No one wants to see your air!").build());
                 return true;
             }
 
-            var message = ColorParser.of("<channel><#44FFA6><player> <dark_gray>»<#44FFA6> is showing off their item. (Hover to view)")
+            var message = ColorParser.of("<channel><#44FFA6><player> <dark_gray>»<#44FFA6> is showing off their item. (<italic>Hover to view</italic>)")
                 .parseMinimessagePlaceholder("channel", channel.getChannelTag().isEmpty() ? "" : "%s ".formatted(channel.getChannelTag())) // Add trailing space after tag
-                .parseMinimessagePlaceholder("player", player.getName())
+                .parseMinimessagePlaceholder("player", p.getName())
                 .build()
                 .hoverEvent(itemStack.asHoverEvent());
 

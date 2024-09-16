@@ -1,8 +1,7 @@
 package me.ShermansWorld.AlathraExtras.funny;
 
-import com.github.milkdrinkers.colorparser.ColorParser;
 import me.ShermansWorld.AlathraExtras.AlathraExtras;
-import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -26,11 +25,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 Strikes fear righteous into their wretched hearts
  */
 public class HeadScourgeListener implements Listener {
-    private static final ArrayList<Component> protectedHeads = new ArrayList<>(List.of(
-        ColorParser.of("darksaid98").build() // There's room for more heads here
+    private static final PlainTextComponentSerializer plainText = PlainTextComponentSerializer.plainText();
+    private static final ArrayList<String> protectedHeads = new ArrayList<>(List.of(
+        "darksaid98" // There's room for more heads here
     ));
 
     @EventHandler
+    @SuppressWarnings("unused")
     public void onDrop(PlayerDropItemEvent e) {
         Item item = e.getItemDrop();
 
@@ -64,6 +65,7 @@ public class HeadScourgeListener implements Listener {
     }
 
     @EventHandler
+    @SuppressWarnings("unused")
     public void onPickup(EntityPickupItemEvent e) {
         Item item = e.getItem();
 
@@ -121,11 +123,10 @@ public class HeadScourgeListener implements Listener {
         if (!item.getItemStack().getType().equals(Material.PLAYER_HEAD))
             return false;
 
-        final Component itemName = item.getItemStack().displayName();
-        for (final Component component : protectedHeads) {
-            itemName.contains(component);
-            return true;
-
+        final String itemName = plainText.serialize(item.getItemStack().displayName()).toLowerCase();
+        for (String protectedName : protectedHeads) {
+            if (itemName.contains(protectedName))
+                return true;
         }
         return false;
     }
