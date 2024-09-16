@@ -3,6 +3,9 @@ package me.ShermansWorld.AlathraExtras.utilities;
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
 
+/**
+ * Utility class for sending commands.
+ */
 public class CommandSenderUtil {
 
     /**
