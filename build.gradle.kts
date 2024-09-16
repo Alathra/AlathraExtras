@@ -161,8 +161,8 @@ bukkit {
 
     // Misc properties
     load = net.minecrell.pluginyml.bukkit.BukkitPluginDescription.PluginLoadOrder.POSTWORLD // STARTUP or POSTWORLD
-    depend = listOf("Towny", "TownyChat", "CustomFishing")
-    softDepend = listOf("Essentials", "PlaceholderAPI", "UnifiedMetrics")
+    depend = listOf("Towny", "TownyChat")
+    softDepend = listOf("Essentials", "PlaceholderAPI", "UnifiedMetrics", "CustomFishing")
 
     commands {
         register("roll") {
