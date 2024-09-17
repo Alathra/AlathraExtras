@@ -11,6 +11,7 @@ import me.ShermansWorld.AlathraExtras.disablespawners.DisableSpawners;
 import me.ShermansWorld.AlathraExtras.disabletrapdoorflipping.TrapdoorListener;
 import me.ShermansWorld.AlathraExtras.balancing.enderchersblock.EnderChestBlockListener;
 import me.ShermansWorld.AlathraExtras.endermanexp.EndermanExpDropListener;
+import me.ShermansWorld.AlathraExtras.farming.FarmingListener;
 import me.ShermansWorld.AlathraExtras.food.FoodConsumeListener;
 import me.ShermansWorld.AlathraExtras.funny.AetherPortalListener;
 import me.ShermansWorld.AlathraExtras.funny.FreeOpCommand;
@@ -45,6 +46,9 @@ import me.ShermansWorld.AlathraExtras.tutorialbook.PlayerFirstJoin;
 import me.ShermansWorld.AlathraExtras.voting.VotingListener;
 import me.ShermansWorld.AlathraExtras.funny.yeet.YeetCommand;
 import net.milkbowl.vault.economy.Economy;
+
+import net.momirealms.customfishing.api.BukkitCustomFishingPlugin;
+import net.momirealms.customfishing.common.plugin.CustomFishingPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.PluginCommand;
@@ -65,12 +69,16 @@ public class AlathraExtras extends JavaPlugin {
     public static Economy economy = null;
     public static Random rand;
 
+    public static CustomFishingPlugin customFishingPlugin = null;
+    
     public static AlathraExtras getInstance() {
         return AlathraExtras.instance;
     }
 
     public static AlathraExtrasLogger logger;
 
+    
+    
     public static void initRecipeItems() {
         recycledLeather = new ItemStack(Material.LEATHER, 1);
         ItemMeta meta = recycledLeather.getItemMeta();
@@ -158,11 +166,14 @@ public class AlathraExtras extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new NPCListener(), this);
         this.getServer().getPluginManager().registerEvents(new TrapdoorListener(), this);
         this.getServer().getPluginManager().registerEvents(new FoodConsumeListener(), this);
+        if (getServer().getPluginManager().isPluginEnabled("CustomFishing"))
+            this.getServer().getPluginManager().registerEvents(new FarmingListener(), this);
         // this.getServer().getPluginManager().registerEvents(new BookEventsListener(), this);
         // This is broken do not enable unless you have confirmed its working.
         this.getServer().getPluginManager().registerEvents(new ItemConverter(), this);
         this.getServer().getPluginManager().registerEvents(new TownyMenu(), this);
         this.getServer().getPluginManager().registerEvents(new CauldronRecipesListener(), this);
+
 
         initRecipeItems();
         FurnaceRecipes furnaceRecipes = new FurnaceRecipes();
@@ -198,6 +209,18 @@ public class AlathraExtras extends JavaPlugin {
         Announcer.getInstance().onEnable();
         initLogs();
         if (instance.getServer().getPluginManager().isPluginEnabled("UnifiedMetrics")) new MetricsManager();
+
+        // Attempt to initialize the customFishingPlugin variable
+        if (getServer().getPluginManager().isPluginEnabled("CustomFishing")) {
+            customFishingPlugin = BukkitCustomFishingPlugin.getInstance();
+            if (customFishingPlugin == null) {
+                getLogger().warning("Failed to initialize CustomFishing plugin hook.");
+            } else {
+                getLogger().info("CustomFishing plugin hook initialized successfully.");
+            }
+        } else {
+            getLogger().warning("Failed to initialize CustomFishing plugin hook. CustomFishing could not be found on this server.");
+        }
     }
 
     @Override

@@ -33,6 +33,7 @@ repositories {
             includeGroup("com.palmergames.bukkit.towny")
             includeGroup("com.github.MilkBowl")
             includeGroup("com.github.TownyAdvanced")
+            includeGroup("com.github.Xiao-MoMi")
         }
     }
 
@@ -95,6 +96,7 @@ dependencies {
     compileOnly("nl.rutgerkok:blocklocker:1.12.1")
     compileOnly("io.lumine:Mythic-Dist:5.6.2")
     compileOnly(files("lib/SiegeEngines-0.8.4.jar"))
+    compileOnly("com.github.Xiao-MoMi:Custom-Fishing:2.2.26")
 }
 
 tasks {
@@ -161,7 +163,7 @@ bukkit {
     // Misc properties
     load = net.minecrell.pluginyml.bukkit.BukkitPluginDescription.PluginLoadOrder.POSTWORLD // STARTUP or POSTWORLD
     depend = listOf("Towny", "TownyChat")
-    softDepend = listOf("Essentials", "PlaceholderAPI", "UnifiedMetrics")
+    softDepend = listOf("Essentials", "PlaceholderAPI", "UnifiedMetrics", "CustomFishing")
 
     commands {
         register("roll") {
