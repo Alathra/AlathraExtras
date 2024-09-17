@@ -166,7 +166,8 @@ public class AlathraExtras extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new NPCListener(), this);
         this.getServer().getPluginManager().registerEvents(new TrapdoorListener(), this);
         this.getServer().getPluginManager().registerEvents(new FoodConsumeListener(), this);
-        this.getServer().getPluginManager().registerEvents(new FarmingListener(), this);
+        if (getServer().getPluginManager().isPluginEnabled("CustomFishing"))
+            this.getServer().getPluginManager().registerEvents(new FarmingListener(), this);
         // this.getServer().getPluginManager().registerEvents(new BookEventsListener(), this);
         // This is broken do not enable unless you have confirmed its working.
         this.getServer().getPluginManager().registerEvents(new ItemConverter(), this);
