@@ -211,14 +211,15 @@ public class AlathraExtras extends JavaPlugin {
         if (instance.getServer().getPluginManager().isPluginEnabled("UnifiedMetrics")) new MetricsManager();
 
         // Attempt to initialize the customFishingPlugin variable
-        
         if (getServer().getPluginManager().isPluginEnabled("CustomFishing")) {
             customFishingPlugin = BukkitCustomFishingPlugin.getInstance();
             if (customFishingPlugin == null) {
-                getLogger().warning("Failed to initialize customFishingPlugin hook.");
+                getLogger().warning("Failed to initialize CustomFishing plugin hook.");
             } else {
-                getLogger().info("customFishingPlugin hook initialized successfully.");
+                getLogger().info("CustomFishing plugin hook initialized successfully.");
             }
+        } else {
+            getLogger().warning("Failed to initialize CustomFishing plugin hook. CustomFishing could not be found on this server.");
         }
     }
 
