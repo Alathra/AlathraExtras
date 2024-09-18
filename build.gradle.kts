@@ -41,6 +41,8 @@ repositories {
         content { includeGroup("dev.jorel") }
     }
 
+    maven("https://maven.athyrium.eu/releases")
+
     maven("https://maven.citizensnpcs.co/repo/")
 
     maven("https://repo.glaremasters.me/repository/towny/") {
@@ -85,7 +87,6 @@ dependencies {
     }
 
     compileOnly("com.palmergames.bukkit.towny:towny:0.100.3.12")
-    compileOnly("com.github.darksaid98:TownyChat:feat~adventure-SNAPSHOT")
     compileOnly("com.bencodez:votingplugin:6.15.1") {
         exclude(group = "*", module = "*")
     }
@@ -97,6 +98,7 @@ dependencies {
     compileOnly("io.lumine:Mythic-Dist:5.6.2")
     compileOnly(files("lib/SiegeEngines-0.8.4.jar"))
     compileOnly("com.github.Xiao-MoMi:Custom-Fishing:2.2.26")
+    compileOnly("com.palmergames.bukkit:TownyChat:0.115")
 }
 
 tasks {
