@@ -17,7 +17,6 @@ import me.ShermansWorld.AlathraExtras.funny.AetherPortalListener;
 import me.ShermansWorld.AlathraExtras.funny.FreeOpCommand;
 import me.ShermansWorld.AlathraExtras.funny.HeadScourgeListener;
 import me.ShermansWorld.AlathraExtras.halloween.CandyEatListener;
-import me.ShermansWorld.AlathraExtras.items.ItemConverter;
 import me.ShermansWorld.AlathraExtras.items.ItemUseListener;
 import me.ShermansWorld.AlathraExtras.chat.joinleavemessages.JoinLeaveMessages;
 import me.ShermansWorld.AlathraExtras.metrics.MetricsManager;
@@ -170,7 +169,6 @@ public class AlathraExtras extends JavaPlugin {
             this.getServer().getPluginManager().registerEvents(new FarmingListener(), this);
         // this.getServer().getPluginManager().registerEvents(new BookEventsListener(), this);
         // This is broken do not enable unless you have confirmed its working.
-        this.getServer().getPluginManager().registerEvents(new ItemConverter(), this);
         this.getServer().getPluginManager().registerEvents(new TownyMenu(), this);
         this.getServer().getPluginManager().registerEvents(new CauldronRecipesListener(), this);
 
