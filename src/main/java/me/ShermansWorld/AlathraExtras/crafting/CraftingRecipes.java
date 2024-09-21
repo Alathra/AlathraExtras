@@ -271,6 +271,17 @@ public class CraftingRecipes {
 
         AlathraExtras.getInstance().getServer().addRecipe(cryingObsidianRecipe);
     }
+
+    public static void rootedDirtRecipe() {
+        ItemStack rootedDirt = new ItemStack(Material.ROOTED_DIRT, 8);
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "rootedDirtRecipe");
+        ShapedRecipe rootedDirtRecipe = new ShapedRecipe(key, rootedDirt);
+        rootedDirtRecipe.shape("CCC", "CHC", "CCC");
+        rootedDirtRecipe.setIngredient('C', Material.COARSE_DIRT);
+        rootedDirtRecipe.setIngredient('H', Material.HANGING_ROOTS);
+        AlathraExtras.getInstance().getServer().addRecipe(rootedDirtRecipe);
+    }
     
     public static Recipe trebuchetRecipe() {
 		ItemStack trebuchet = SiegeEnginesAPI.getTrebuchetItem();
@@ -622,6 +633,7 @@ public class CraftingRecipes {
 
     public static void registerAllCraftingRecipes() {
         saddleRecipe();
+        rootedDirtRecipe();
         charcoalBlock();
         redDyeRecipe();
         redSandRecipe();
