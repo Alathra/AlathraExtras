@@ -156,6 +156,29 @@ public class CraftingRecipes {
         AlathraExtras.getInstance().getServer().addRecipe(pinkPetalsRecipe);
     }
 
+    public static void railsRecipe() {
+        ItemStack rails = new ItemStack(Material.RAIL, 64);
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "railsRecipe");
+        ShapedRecipe railsRecipe = new ShapedRecipe(key, rails);
+        railsRecipe.shape("I I", "ISI", "I I");
+        railsRecipe.setIngredient('I', Material.IRON_INGOT);
+        railsRecipe.setIngredient('S', Material.STICK);
+        AlathraExtras.getInstance().getServer().addRecipe(railsRecipe);
+    }
+
+    public static void poweredRailsRecipe() {
+        ItemStack poweredRails = new ItemStack(Material.POWERED_RAIL,  24);
+        NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
+            AlathraExtras.getInstance().getName() + "poweredRailsRecipe");
+        ShapedRecipe poweredRailsRecipe = new ShapedRecipe(key, poweredRails);
+        poweredRailsRecipe.shape("G G", "GSG", "GRG");
+        poweredRailsRecipe.setIngredient('G', Material.GOLD_INGOT);
+        poweredRailsRecipe.setIngredient('S', Material.STICK);
+        poweredRailsRecipe.setIngredient('R', Material.REDSTONE);
+        AlathraExtras.getInstance().getServer().addRecipe(poweredRailsRecipe);
+    }
+
     public static void stonesToGravel(int a) {
         for (int b = 0; b <= a; b++) {
             NamespacedKey key = new NamespacedKey(AlathraExtras.getInstance(),
@@ -674,5 +697,7 @@ public class CraftingRecipes {
         mustacheRecipe();
         crownRecipe();
         wreathRecipe();
+        railsRecipe();
+        poweredRailsRecipe();
     }
 }
