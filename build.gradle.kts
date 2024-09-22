@@ -92,7 +92,7 @@ dependencies {
     }
     compileOnly("com.github.MilkBowl:VaultAPI:1.7.1")
     compileOnly("net.essentialsx:EssentialsX:2.20.1")
-    compileOnly("me.clip:placeholderapi:2.11.5")
+    compileOnly("me.clip:placeholderapi:2.11.6")
     compileOnly("dev.cubxity.plugins:unifiedmetrics-api:0.3.8")
     compileOnly("nl.rutgerkok:blocklocker:1.12.1")
     compileOnly("io.lumine:Mythic-Dist:5.6.2")
